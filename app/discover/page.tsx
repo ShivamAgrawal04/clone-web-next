@@ -27,7 +27,7 @@ const DOTS = [
 
 export default function DiscoverPage() {
   return (
-    <main className="min-h-screen bg-[#FFFFFF]">
+    <div className=" bg-[#FFFFFF] overflow-hidden">
       {/* Header */}
       <header className="sticky top-0 z-40 flex items-center justify-between px-5 py-4 backdrop-blur-lg  bg-transparent ">
         {/* Left */}
@@ -232,7 +232,7 @@ export default function DiscoverPage() {
       {/* Cards */}
       <section className="px-4 pt-8 pb-24">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid  [grid-template-columns:repeat(auto-fit,minmax(320px,1fr))] gap-6">
             <CampaignCard
               campaign={{
                 title: "Crown Coins x Terence Crawford",
@@ -355,6 +355,6 @@ export default function DiscoverPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

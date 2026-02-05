@@ -3,15 +3,16 @@ import { Topbar } from "./topbar";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen">
+    <div className="flex h-screen w-full">
       <Sidebar />
 
-      {/* Content area */}
-      <div className="ml-64 flex min-h-screen flex-col">
+      {/* Right content */}
+      <div className="ml-64 flex flex-1 flex-col">
         <Topbar />
 
-        {/* Only this scrolls */}
-        <main className="flex-1 overflow-y-auto bg-background">{children}</main>
+        <main className="flex-1 overflow-y-auto bg-background">
+          {children}
+        </main>
       </div>
     </div>
   );

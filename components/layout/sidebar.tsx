@@ -27,7 +27,7 @@ const navItems = [
 export function Sidebar() {
   const pathname = usePathname();
   return (
-    <aside className=" fixed left-0 top-0 z-40 w-64 border-r bg-side-background px-2 py-6 hidden md:block">
+    <aside className="fixed left-0 top-0 z-40 min-h-screen w-64 border-r bg-side-background px-2 py-6 hidden md:block">
       {/* Logo */}
       <div className="mb-8 text-xl font-semibold">Whop</div>
 
