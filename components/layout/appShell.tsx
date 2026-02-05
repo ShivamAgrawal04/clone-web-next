@@ -1,7 +1,7 @@
 import { Sidebar } from "./sidebar";
 import { Topbar } from "./topbar";
 
-export function AppShell({ children }: { children: React.ReactNode }) {
+export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen">
       <Sidebar />

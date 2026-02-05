@@ -14,7 +14,7 @@ const navItems = [
   { name: "Discover", href: "/discover", icon: CompassIcon },
   { name: "Messages", href: "/messages", icon: MessageCircleIcon },
   { name: "Notifications", href: "/notifications", icon: BellIcon },
-  { name: "Finance", href: "/finance", badge: "New", icon: BadgeDollarIcon },
+  // { name: "Finance", href: "/finance", badge: "New", icon: BadgeDollarIcon },
   {
     name: "Create a business",
     href: "/finance",
@@ -27,7 +27,7 @@ const navItems = [
 export function Sidebar() {
   const pathname = usePathname();
   return (
-    <aside className="w-64 border-r bg-background px-4 py-6 hidden md:block">
+    <aside className="w-64 border-r bg-side-background px-2 py-6 hidden md:block">
       {/* Logo */}
       <div className="mb-8 text-xl font-semibold">Whop</div>
 
@@ -41,9 +41,9 @@ export function Sidebar() {
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center gap-3 rounded-xl px-1 py-2 text-[18px] font-medium transition-colors ${
+              className={`flex items-center gap-2.5 rounded-xl px-2.5 py-2 text-[18px] font-medium transition-colors ${
                 isActive
-                  ? "bg-muted text-foreground"
+                  ? "text-foreground bg-[#e0e0e0]"
                   : "text-muted-foreground hover:bg-muted hover:text-foreground"
               } `}
             >
@@ -51,11 +51,11 @@ export function Sidebar() {
 
               <span className="flex-1">{item.name}</span>
 
-              {item.badge && (
+              {/* {item.badge && (
                 <span className="rounded-full bg-blue-600 px-2 py-0.5 text-[11px] text-white">
                   {item.badge}
                 </span>
-              )}
+              )} */}
             </Link>
           );
         })}
