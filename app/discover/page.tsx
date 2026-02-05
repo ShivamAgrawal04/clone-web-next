@@ -1,5 +1,6 @@
 import CampaignCard from "@/components/layout/campaignCard";
 import FilterButton from "@/components/layout/filterbutton";
+import { SparklesIcon } from "@/components/SparklesIcon";
 
 const DOTS = [
   { x: "11.11%", y: "47.42%" },
@@ -23,7 +24,6 @@ const DOTS = [
   { x: "49.10%", y: "76.48%" },
   { x: "50.89%", y: "53.55%" },
 ];
-
 
 export default function DiscoverPage() {
   return (
@@ -67,66 +67,88 @@ export default function DiscoverPage() {
         </a>
       </header>
 
-
-
-
       {/* Hero */}
       <section className="text-center mt-8 px-4 relative">
         {/* <div className="relative flex flex-col items-center gap-4 px-5 py-14 md:px-8 md:py-20 overflow-hidden"> */}
 
-          {/* Radial Glow */}
-          <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 
-        -top-[350px] md:-top-[450px] 
-        w-[100vw] h-[600px] md:w-[1400px] md:h-[800px]">
-            <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(251,191,36,0.15)_0%,rgba(251,191,36,0)_100%)] bg-[radial-gradient(50% 50%, #fbbf2426 0%, #fbbf2400 100%)]" />
-          </div>
+        {/* Radial Glow */}
+        <div
+          className="pointer-events-none absolute left-1/2 -translate-x-1/2 
+        -top-87.5 md:-top-112.5 
+        w-screen h-150 md:w-350 md:h-200 
+        
+        
 
-          {/* Floating Dots */}
-          <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 
-        -top-[180px] md:-top-[240px] 
-        w-[90vw] h-[373px] md:w-[495px] md:h-[461px] 
-        opacity-60 rotate-180">
 
-            <div className="absolute inset-0">
-              {DOTS.map((dot, i) => (
-                <span
-                  key={i}
-                  className="absolute rounded-full bg-[#FBBF24]"
-                  style={{
-                    width: 3.36,
-                    height: 3.36,
-                    left: dot.x,
-                    top: dot.y,
-                  }}
-                />
-              ))}
-            </div>
-          </div>
 
-          {/* CONTENT SLOT */}
-          <div className="relative z-10">
-            {/* put your hero content here */}
-          </div>
-        {/* </div> */}
-        <div className="mx-auto mb-6 h-16 w-16 rounded-2xl bg-orange-500 flex items-center justify-center shadow-lg">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+        "
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(251,191,36,0.15)_0%,rgba(251,191,36,0)_100%)] bg-[radial-gradient(50% 50%, #fbbf2426 0%, #fbbf2400 100%)]" />
         </div>
 
-        <h1 className="text-5xl font-bold text-gray-900 mb-3">Discover Campaigns</h1>
+        {/* Floating Dots */}
+        <div
+          className="pointer-events-none absolute left-1/2 -translate-x-1/2 
+        -top-[180px] md:-top-[240px] 
+        w-[90vw] h-[373px] md:w-[495px] md:h-[461px] 
+        opacity-60 rotate-180"
+        >
+          <div className="absolute inset-0">
+            {DOTS.map((dot, i) => (
+              <span
+                key={i}
+                className="absolute rounded-full bg-[#FBBF24]"
+                style={{
+                  width: 3.36,
+                  height: 3.36,
+                  left: dot.x,
+                  top: dot.y,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* CONTENT SLOT */}
+        <div className="relative z-10">{/* put your hero content here */}</div>
+        {/* </div> */}
+        <div className="mx-auto mb-6 h-12 w-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg">
+          <SparklesIcon />
+        </div>
+
+        <h1 className="text-7xl font-medium text-gray-900 mb-3">
+          Discover Campaigns
+        </h1>
         <p className="text-lg text-gray-600">Get paid for posting</p>
 
         {/* Search */}
         <div className="relative mx-auto mt-8 w-full max-w-2xl">
           <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </div>
           <input
             placeholder="Mr. Beast Clips..."
-            className="w-full rounded-full border border-orange-200 bg-white py-4 pl-12 pr-4 text-base outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300 shadow-sm"
+            className="w-full rounded-full
+  bg-[color-mix(in_oklab,#f87f14_6%,transparent)]
+  border border-orange-200
+  py-4 pl-12 pr-4 text-base
+  outline-none
+  focus:ring-2 focus:ring-orange-300 focus:border-orange-300
+  shadow-sm"
           />
         </div>
 
@@ -158,22 +180,46 @@ export default function DiscoverPage() {
               <span className="text-sm text-gray-600">Platform</span>
               <div className="flex gap-1">
                 <button className="p-1 border-[rgba(251,191,36,0.5)] border bg-[linear-gradient(to right, rgba(251, 191, 36, 0.08), rgba(251, 191, 36, 0.08))] rounded-lg hover:bg-gray-100 transition-colors">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-gray-700">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="text-gray-700"
+                  >
                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                   </svg>
                 </button>
                 <button className="p-1 border-[rgba(251,191,36,0.5)] border bg-[linear-gradient(to right, rgba(251, 191, 36, 0.08), rgba(251, 191, 36, 0.08))] rounded-lg hover:bg-gray-100 transition-colors">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-gray-700">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="text-gray-700"
+                  >
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z" />
                   </svg>
                 </button>
                 <button className="p-1 border-[rgba(251,191,36,0.5)] border bg-[linear-gradient(to right, rgba(251, 191, 36, 0.08), rgba(251, 191, 36, 0.08))] rounded-lg hover:bg-gray-100 transition-colors">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-gray-700">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="text-gray-700"
+                  >
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z" />
                   </svg>
                 </button>
                 <button className="p-1 border-[rgba(251,191,36,0.5)] border bg-[linear-gradient(to right, rgba(251, 191, 36, 0.08), rgba(251, 191, 36, 0.08))] rounded-lg hover:bg-gray-100 transition-colors">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-gray-700">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="text-gray-700"
+                  >
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </button>
@@ -187,108 +233,128 @@ export default function DiscoverPage() {
       <section className="px-4 pt-8 pb-24">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <CampaignCard campaign={{
-              title: "Crown Coins x Terence Crawford",
-              company: "Clipr Clipping",
-              categories: ["CLIPPING", "ENTERTAINMENT"],
-              platforms: ["instagram", "tiktok", "youtube"],
-              paidOut: "$13,359.37",
-              totalBudget: "$21,250",
-              cp: 63,
-              cpm: "$2.00",
-              approval: "61%",
-              views: "6.5M",
-              creators: "1984",
-              image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
-            }} />
-            <CampaignCard campaign={{
-              title: "Eleven Labs Clipping Campaign - [1]",
-              company: "Eleven Labs",
-              categories: ["CLIPPING", "LIFESTYLE"],
-              platforms: ["youtube", "tiktok"],
-              paidOut: "$8,245.12",
-              totalBudget: "$15,000",
-              cp: 55,
-              cpm: "$1.80",
-              approval: "73%",
-              views: "4.2M",
-              creators: "1234",
-              image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
-            }} />
-            <CampaignCard campaign={{
-              title: "Mumford & Sons | Album Promo",
-              company: "Scene Society",
-              categories: ["MUSIC", "ENTERTAINMENT"],
-              platforms: ["instagram", "youtube", "x"],
-              paidOut: "$18,750.00",
-              totalBudget: "$25,000",
-              cp: 75,
-              cpm: "$2.50",
-              approval: "82%",
-              views: "8.1M",
-              creators: "567",
-              image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
-            }} />
-
-            <CampaignCard campaign={{
-              title: "Mumford & Sons | Album Promo",
-              company: "Scene Society",
-              categories: ["MUSIC", "ENTERTAINMENT"],
-              platforms: ["instagram", "youtube", "x"],
-              paidOut: "$18,750.00",
-              totalBudget: "$25,000",
-              cp: 75,
-              cpm: "$2.50",
-              approval: "82%",
-              views: "8.1M",
-              creators: "567",
-              image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
-            }} />
-            <CampaignCard campaign={{
-              title: "Mumford & Sons | Album Promo",
-              company: "Scene Society",
-              categories: ["MUSIC", "ENTERTAINMENT"],
-              platforms: ["instagram", "youtube", "x"],
-              paidOut: "$18,750.00",
-              totalBudget: "$25,000",
-              cp: 75,
-              cpm: "$2.50",
-              approval: "82%",
-              views: "8.1M",
-              creators: "567",
-              image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
-            }} />     <CampaignCard campaign={{
-              title: "Mumford & Sons | Album Promo",
-              company: "Scene Society",
-              categories: ["MUSIC", "ENTERTAINMENT"],
-              platforms: ["instagram", "youtube", "x"],
-              paidOut: "$18,750.00",
-              totalBudget: "$25,000",
-              cp: 75,
-              cpm: "$2.50",
-              approval: "82%",
-              views: "8.1M",
-              creators: "567",
-              image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
-            }} />
-            <CampaignCard campaign={{
-              title: "Mumford & Sons | Album Promo",
-              company: "Scene Society",
-              categories: ["MUSIC", "ENTERTAINMENT"],
-              platforms: ["instagram", "youtube", "x"],
-              paidOut: "$18,750.00",
-              totalBudget: "$25,000",
-              cp: 75,
-              cpm: "$2.50",
-              approval: "82%",
-              views: "8.1M",
-              creators: "567",
-              image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
-            }} />
+            <CampaignCard
+              campaign={{
+                title: "Crown Coins x Terence Crawford",
+                company: "Clipr Clipping",
+                categories: ["CLIPPING", "ENTERTAINMENT"],
+                platforms: ["instagram", "tiktok", "youtube"],
+                paidOut: "$13,359.37",
+                totalBudget: "$21,250",
+                cp: 63,
+                cpm: "$2.00",
+                approval: "61%",
+                views: "6.5M",
+                creators: "1984",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
+              }}
+            />
+            <CampaignCard
+              campaign={{
+                title: "Eleven Labs Clipping Campaign - [1]",
+                company: "Eleven Labs",
+                categories: ["CLIPPING", "LIFESTYLE"],
+                platforms: ["youtube", "tiktok"],
+                paidOut: "$8,245.12",
+                totalBudget: "$15,000",
+                cp: 55,
+                cpm: "$1.80",
+                approval: "73%",
+                views: "4.2M",
+                creators: "1234",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
+              }}
+            />
+            <CampaignCard
+              campaign={{
+                title: "Mumford & Sons | Album Promo",
+                company: "Scene Society",
+                categories: ["MUSIC", "ENTERTAINMENT"],
+                platforms: ["instagram", "youtube", "x"],
+                paidOut: "$18,750.00",
+                totalBudget: "$25,000",
+                cp: 75,
+                cpm: "$2.50",
+                approval: "82%",
+                views: "8.1M",
+                creators: "567",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
+              }}
+            />
+            <CampaignCard
+              campaign={{
+                title: "Mumford & Sons | Album Promo",
+                company: "Scene Society",
+                categories: ["MUSIC", "ENTERTAINMENT"],
+                platforms: ["instagram", "youtube", "x"],
+                paidOut: "$18,750.00",
+                totalBudget: "$25,000",
+                cp: 75,
+                cpm: "$2.50",
+                approval: "82%",
+                views: "8.1M",
+                creators: "567",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
+              }}
+            />
+            <CampaignCard
+              campaign={{
+                title: "Mumford & Sons | Album Promo",
+                company: "Scene Society",
+                categories: ["MUSIC", "ENTERTAINMENT"],
+                platforms: ["instagram", "youtube", "x"],
+                paidOut: "$18,750.00",
+                totalBudget: "$25,000",
+                cp: 75,
+                cpm: "$2.50",
+                approval: "82%",
+                views: "8.1M",
+                creators: "567",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
+              }}
+            />{" "}
+            <CampaignCard
+              campaign={{
+                title: "Mumford & Sons | Album Promo",
+                company: "Scene Society",
+                categories: ["MUSIC", "ENTERTAINMENT"],
+                platforms: ["instagram", "youtube", "x"],
+                paidOut: "$18,750.00",
+                totalBudget: "$25,000",
+                cp: 75,
+                cpm: "$2.50",
+                approval: "82%",
+                views: "8.1M",
+                creators: "567",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
+              }}
+            />
+            <CampaignCard
+              campaign={{
+                title: "Mumford & Sons | Album Promo",
+                company: "Scene Society",
+                categories: ["MUSIC", "ENTERTAINMENT"],
+                platforms: ["instagram", "youtube", "x"],
+                paidOut: "$18,750.00",
+                totalBudget: "$25,000",
+                cp: 75,
+                cpm: "$2.50",
+                approval: "82%",
+                views: "8.1M",
+                creators: "567",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
+              }}
+            />
           </div>
         </div>
       </section>
-
     </main>
   );
 }
