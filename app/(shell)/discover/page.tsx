@@ -1,6 +1,7 @@
-import CampaignCard from "@/components/layout/campaignCard";
-import FilterButton from "@/components/layout/filterbutton";
+import CampaignCard from "@/components/layout/CampaignCard";
+import FilterButton from "@/components/layout/Filterbutton";
 import { SparklesIcon } from "@/components/SparklesIcon";
+import { Topbar } from "@/components/layout/Topbar";
 import Link from "next/link";
 
 const DOTS = [
@@ -29,6 +30,8 @@ const DOTS = [
 export default function DiscoverPage() {
   return (
     <div className="bg-background relative">
+        <Topbar />
+
       {/* Header */}
       <header className="sticky top-0 z-40 flex items-center justify-between px-5 py-4 backdrop-blur-lg bg-transparent">
         {/* Left */}

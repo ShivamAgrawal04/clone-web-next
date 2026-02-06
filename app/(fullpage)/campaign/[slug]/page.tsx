@@ -1,10 +1,9 @@
-import React from "react";
 
 export default function CliprPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen text-foreground bg-full-page-background">
       {/* Header */}
-      <header className="border-b border-border">
+      <header className="border-b border-border bg-background">
         <div className="mx-auto flex max-w-7xl items-center gap-3 px-6 py-4">
           <div className="flex h-8 w-8 items-center justify-center rounded bg-black text-orange-500 font-bold">
             c
@@ -18,10 +17,22 @@ export default function CliprPage() {
         {/* LEFT SIDE */}
         <div className="lg:col-span-2">
           {/* Video / Banner */}
-          <div className="aspect-video w-full rounded-xl bg-black flex items-center justify-center">
-            <span className="text-5xl font-extrabold text-orange-500">
-              clipr
-            </span>
+          <div className="aspect-video w-full rounded-xl bg-background flex items-center justify-center rounded-xl overflow-hidden">
+
+            <video
+              className="h-full w-full object-contain"
+              loop
+              autoPlay
+              controls
+              controlsList="nodownload noplaybackrate"
+              disablePictureInPicture
+              playsInline
+              preload="metadata"
+              poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAPCAYAAAD6Ud/mAAABWElEQVR4Xo2U0bKDIBBD/f9fraKo0EcuIY27KHfah4xTEA/J7nZ6v3ORcs4FSglKTedp0pqeOaf6vsn2z3qOOg7oKNMYdIfoINe9BPJrghB09CBzI4i/kQ7YTfGRlKA73LshpHNEkEGwue/Q/pAO6+YEUhYZAfzGJzrvRnYBiDGWbYO2S1iDsG/A4wL4uPxFJ0HohhEZZCvrupYQTPgNMGGxvk/geVKCK4kYeeELxA4jiE62BliWULVcCiE0+Aj2HwSpfEBWG7mhk1DmeamaLwH6hMGVydxY9BXEOWAhGRtuCxDcAPR6zU0EjkCsmZdqqfo2EFvU6gOrHvTd0Q8g+wfoG2FdUSPU51mjUZ2+OvIgRadmsI4LDSrAvRlGs2bRsbGmftA0ZJohzg/cScpc7c15GjeCn8MbyOJT99nLHFQ/sHcIgL7jvKshSENLWC8fk+amfz5haK4/5fLXi3zMGxIAAAAASUVORK5CYII="
+            >
+              <source src="https://assets-2-prod.whop.com/uploads/user_3250549/video/access_passes/2025-12-15/d9dc7e67-3723-4497-bb68-9fa044ddbe2f.mov#t=0.1" />
+            </video>
+
           </div>
 
           {/* Meta info */}
@@ -130,27 +141,44 @@ export default function CliprPage() {
               <h2 className="text-lg font-semibold">Clipr Campaigns</h2>
 
               <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 font-semibold text-white hover:bg-blue-700">
-                Join for free
+                Get Access
               </button>
 
-              <div className="mt-6 divide-y text-sm">
-                <details className="py-3">
-                  <summary className="cursor-pointer font-medium">
-                    Is this group free?
+
+            </div>
+          </div>
+          <div className="overflow-hidden text-card-foreground">
+            {/* FAQ */}
+            <div className="mt-6 rounded-xl border border-border bg-card text-card-foreground">
+              <div className="divide-y divide-border text-sm">
+                <details className="group px-5 py-4">
+                  <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
+                    <span>Is this group free?</span>
+                    <span className="transition-transform group-open:rotate-180">⌄</span>
                   </summary>
+                  <p className="mt-3 text-muted-foreground">
+                    Yes, joining Clipr is completely free. You can access campaigns,
+                    community discussions, and learning resources at no cost.
+                  </p>
                 </details>
 
-                <details className="py-3">
-                  <summary className="cursor-pointer font-medium">
-                    How often do payouts get sent?
+                <details className="group px-5 py-4">
+                  <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
+                    <span>How often do payouts get sent?</span>
+                    <span className="transition-transform group-open:rotate-180">⌄</span>
                   </summary>
+                  <p className="mt-3 text-muted-foreground">
+                    Payouts are typically processed on a weekly basis, depending on the
+                    campaign and platform requirements.
+                  </p>
                 </details>
               </div>
-
-              <p className="mt-6 text-center text-xs text-muted-foreground">
-                Powered by Whop
-              </p>
             </div>
+
+            <p className="mt-6 text-center text-xs text-muted-foreground">
+              Powered by Whop
+            </p>
+
           </div>
         </aside>
       </main>

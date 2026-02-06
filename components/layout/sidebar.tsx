@@ -1,16 +1,16 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatedIconWrapper } from "./AnimatedIconWrapper";
 
-// Icons Imports
+// Icons
 import { HouseIcon } from "@/components/HouseIcon";
 import { CompassIcon } from "@/components/CompassIcon";
 import { MessageCircleIcon } from "@/components/MessageCircleIcon";
 import { BellIcon } from "@/components/BellIcon";
 import { TrendingUpDownIcon } from "@/components/TrendingUpDownIcon";
 import { UserRoundIcon } from "@/components/UserRoundIcon";
+import { useState } from "react";
 
 const navItems = [
   { name: "Home", href: "/home", icon: HouseIcon },
@@ -21,19 +21,38 @@ const navItems = [
   { name: "Login", href: "/finance", icon: UserRoundIcon },
 ];
 
-export function Sidebar() {
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+export function Sidebar({
+  expanded,
+  setExpanded,
+}: {
+  expanded: boolean;
+  setExpanded: (v: boolean) => void;
+}) {
   const pathname = usePathname();
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   return (
-    <aside className="fixed left-0 top-0 z-40 min-h-screen w-64 border-r bg-side-background px-2 py-6 hidden md:block">
-      <div className="mb-8 text-xl font-semibold px-4">Whop</div>
+    <aside
+      onMouseEnter={() => setExpanded(true)}
+      onMouseLeave={() => {
+        setExpanded(false);
+        setHoveredItem(null);
+      }}
+      className={`
+        fixed left-0 top-0 z-40 min-h-screen border-r bg-side-background
+        transition-[width] duration-300 ease-out
+        ${expanded ? "w-64" : "w-20"}
+      `}
+    >
+      <div className="px-7 py-6 text-xl font-semibold">
+        {expanded ? "Whop" : "W"}
+      </div>
 
-      <nav className="space-y-2">
+      <nav className="space-y-2 px-2">
         {navItems.map((item) => {
           const Icon = item.icon;
-          const isActive = pathname === item.href;
-          const isHovered = hoveredItem === item.name;
+          const active = pathname === item.href;
+          const hovered = hoveredItem === item.name;
 
           return (
             <Link
@@ -41,18 +60,24 @@ export function Sidebar() {
               href={item.href}
               onMouseEnter={() => setHoveredItem(item.name)}
               onMouseLeave={() => setHoveredItem(null)}
-              className={`flex items-center gap-2.5 rounded-xl px-2.5 py-2.5 text-[18px] font-medium transition-all ${
-                isActive
-                  ? "text-foreground bg-muted"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
-              }`}
+              className={`
+                flex items-center gap-3 rounded-xl px-4 py-2.5
+                transition-colors duration-200
+                ${active
+                  ? "bg-muted text-foreground"
+                  : "text-muted-foreground hover:bg-muted hover:text-foreground"}
+              `}
             >
-              {/* Har Icon ko Wrapper mein daal do */}
-              <AnimatedIconWrapper isHovered={isHovered}>
+              {/* 👇 ONLY THIS ICON ANIMATES */}
+              <AnimatedIconWrapper isHovered={hovered}>
                 <Icon className="h-7 w-7 stroke-[1.75]" />
               </AnimatedIconWrapper>
 
-              <span className="flex-1">{item.name}</span>
+              {expanded && (
+                <span className="whitespace-nowrap transition-opacity duration-200">
+                  {item.name}
+                </span>
+              )}
             </Link>
           );
         })}
