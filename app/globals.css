@@ -47,6 +47,7 @@
 }
 
 :root {
+  --hover:#E0E0E0;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --side-background: #f9f9f9;
@@ -59,7 +60,7 @@
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
+  --muted: #E0E0E0;;
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
@@ -84,6 +85,7 @@
 
 .dark {
   --background: oklch(0.145 0 0);
+   --side-background: #000000;
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);

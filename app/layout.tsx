@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import AppShell from "@/components/layout/appShell";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Inter({
   variable: "--font-inter",
@@ -24,12 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       {/* <link rel="icon" href="/favicon.ico" /> */}
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        <AppShell>{children}</AppShell>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
