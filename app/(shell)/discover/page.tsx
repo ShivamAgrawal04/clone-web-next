@@ -28,9 +28,9 @@ const DOTS = [
 
 export default function DiscoverPage() {
   return (
-    <div className="bg-background overflow-hidden">
+    <div className="bg-background relative">
       {/* Header */}
-      <header className="sticky top-0 z-40 flex items-center justify-between px-5 py-4 backdrop-blur-lg  bg-transparent ">
+      <header className="sticky top-0 z-40 flex items-center justify-between px-5 py-4 backdrop-blur-lg bg-transparent">
         {/* Left */}
         <div className="flex items-center gap-3">
           <a
@@ -69,50 +69,49 @@ export default function DiscoverPage() {
       </header>
 
       {/* Hero */}
-      <section className="text-center mt-8 px-4 relative">
-        {/* <div className="relative flex flex-col items-center gap-4 px-5 py-14 md:px-8 md:py-20 overflow-hidden"> */}
+      <section className="text-center mt-8 px-4 relative ">
 
         {/* Radial Glow */}
-        <div
-          className="pointer-events-none absolute left-1/2 -translate-x-1/2 
-        -top-87.5 md:-top-112.5 
-        w-screen h-150 md:w-350 md:h-200 
-        
-        
+<div
+  className="
+    pointer-events-none
+    absolute inset-x-0
+    -top-87.5 md:-top-112.5
+    h-150 md:h-200
+    overflow-hidden
+  "
+>
+  <div
+    className="
+      mx-auto
+      w-[120%] md:w-[900px]
+      h-full
+    "
+  >
+    <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(251,191,36,0.15)_0%,rgba(251,191,36,0)_100%)]" />
+  </div>
+</div>
 
-
-
-        "
-        >
-          <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(251,191,36,0.15)_0%,rgba(251,191,36,0)_100%)] bg-[radial-gradient(50% 50%, #fbbf2426 0%, #fbbf2400 100%)]" />
-        </div>
-
-        {/* Floating Dots */}
-        <div
-          className="pointer-events-none absolute left-1/2 -translate-x-1/2 
-        -top-[180px] md:-top-[240px] 
-        w-[90vw] h-[373px] md:w-[495px] md:h-[461px] 
-        opacity-60 rotate-180"
-        >
-          <div className="absolute inset-0">
-            {DOTS.map((dot, i) => (
+        {/* DOTS BACKGROUND */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[260px]">
+            {Array.from({ length: 40 }).map((_, i) => (
               <span
                 key={i}
-                className="absolute rounded-full bg-[#FBBF24]"
+                className="absolute rounded-full bg-[#FBBF24] opacity-70"
                 style={{
-                  width: 3.36,
-                  height: 3.36,
-                  left: dot.x,
-                  top: dot.y,
+                  width: 3,
+                  height: 3,
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
                 }}
               />
             ))}
           </div>
         </div>
 
+
         {/* CONTENT SLOT */}
-        <div className="relative z-10">{/* put your hero content here */}</div>
-        {/* </div> */}
         <div className="mx-auto mb-6 h-12 w-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg">
           <SparklesIcon />
         </div>
@@ -254,6 +253,7 @@ export default function DiscoverPage() {
                 }}
               />
             </Link>
+            <Link href="/campaign/mumford-and-sons">
             <CampaignCard
               campaign={{
                 title: "Mumford & Sons | Album Promo",
@@ -271,6 +271,9 @@ export default function DiscoverPage() {
                   "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
               }}
             />
+            </Link>
+
+              <Link href="/campaign/mumford-and-sons">
             <CampaignCard
               campaign={{
                 title: "Mumford & Sons | Album Promo",
@@ -288,40 +291,8 @@ export default function DiscoverPage() {
                   "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
               }}
             />
-            <CampaignCard
-              campaign={{
-                title: "Mumford & Sons | Album Promo",
-                company: "Scene Society",
-                categories: ["MUSIC", "ENTERTAINMENT"],
-                platforms: ["instagram", "youtube", "x"],
-                paidOut: "$18,750.00",
-                totalBudget: "$25,000",
-                cp: 75,
-                cpm: "$2.50",
-                approval: "82%",
-                views: "8.1M",
-                creators: "567",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
-              }}
-            />{" "}
-            <CampaignCard
-              campaign={{
-                title: "Mumford & Sons | Album Promo",
-                company: "Scene Society",
-                categories: ["MUSIC", "ENTERTAINMENT"],
-                platforms: ["instagram", "youtube", "x"],
-                paidOut: "$18,750.00",
-                totalBudget: "$25,000",
-                cp: 75,
-                cpm: "$2.50",
-                approval: "82%",
-                views: "8.1M",
-                creators: "567",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
-              }}
-            />
+            </Link>
+            <Link href="/campaign/mumford-and-sons">
             <CampaignCard
               campaign={{
                 title: "Mumford & Sons | Album Promo",
@@ -339,6 +310,45 @@ export default function DiscoverPage() {
                   "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
               }}
             />
+            </Link>
+            <Link href="/campaign/mumford-and-sons">
+            <CampaignCard
+              campaign={{
+                title: "Mumford & Sons | Album Promo",
+                company: "Scene Society",
+                categories: ["MUSIC", "ENTERTAINMENT"],
+                platforms: ["instagram", "youtube", "x"],
+                paidOut: "$18,750.00",
+                totalBudget: "$25,000",
+                cp: 75,
+                cpm: "$2.50",
+                approval: "82%",
+                views: "8.1M",
+                creators: "567",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
+              }}
+            />
+            </Link>
+            <Link href="/campaign/mumford-and-sons">
+            <CampaignCard
+              campaign={{
+                title: "Mumford & Sons | Album Promo",
+                company: "Scene Society",
+                categories: ["MUSIC", "ENTERTAINMENT"],
+                platforms: ["instagram", "youtube", "x"],
+                paidOut: "$18,750.00",
+                totalBudget: "$25,000",
+                cp: 75,
+                cpm: "$2.50",
+                approval: "82%",
+                views: "8.1M",
+                creators: "567",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
+              }}
+            />
+            </Link>
           </div>
         </div>
       </section>

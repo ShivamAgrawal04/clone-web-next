@@ -29,7 +29,7 @@ export function Sidebar() {
     <aside className="fixed left-0 top-0 z-40 min-h-screen w-64 border-r bg-side-background px-2 py-6 hidden md:block">
       <div className="mb-8 text-xl font-semibold px-4">Whop</div>
 
-      <nav className="space-y-1">
+      <nav className="space-y-2">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = pathname === item.href;
@@ -41,7 +41,7 @@ export function Sidebar() {
               href={item.href}
               onMouseEnter={() => setHoveredItem(item.name)}
               onMouseLeave={() => setHoveredItem(null)}
-              className={`flex items-center gap-2.5 rounded-xl px-2.5 py-2 text-[18px] font-medium transition-all ${
+              className={`flex items-center gap-2.5 rounded-xl px-2.5 py-2.5 text-[18px] font-medium transition-all ${
                 isActive
                   ? "text-foreground bg-muted"
                   : "text-muted-foreground hover:bg-muted hover:text-foreground"
