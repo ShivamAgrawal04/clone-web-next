@@ -6,11 +6,25 @@ import { SearchIcon } from "@/components/SearchIcon";
 import { useTheme } from "@/components/theme-provider";
 import { Moon, Sun } from "lucide-react";
 
+import { useEffect, useState } from "react";
+
 export function Topbar() {
   const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <header className="flex h-14 items-center justify-between border-b border-border bg-background px-4" />
+    );
+  }
 
   return (
-    <header className="flex h-14 items-center justify-between border-b border-border bg-background px-4 relative z-4">
+    <header className="flex h-14 items-center justify-between border-b border-border bg-background px-4 relative z-10">
       {/* Left */}
       <div className="flex items-center gap-3">
         <Button

@@ -12,7 +12,8 @@ export function Topbar() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   // 🔑 Prevent hydration mismatch
@@ -24,9 +25,7 @@ export function Topbar() {
 
   return (
     <header className="flex h-14 items-center justify-between border-b border-border bg-background px-4 relative z-10">
-      {/* Left */}
       <div className="flex items-center gap-3">
-        {/* Mobile theme toggle */}
         <Button
           className="sm:hidden"
           variant="ghost"
@@ -41,7 +40,6 @@ export function Topbar() {
           {theme === "dark" ? <SunIcon /> : <Moon />}
         </Button>
 
-        {/* Search (desktop) */}
         <div className="hidden sm:block w-80 relative">
           <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
