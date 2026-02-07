@@ -78,33 +78,38 @@ export default function SidebarJoined() {
   const pathname = usePathname()
 
   return (
-    <aside className="hidden md:block w-64 h-screen bg-background border-r">
+    <aside className="hidden md:block w-72 h-screen bg-background border-r">
       {/* Header image */}
       <div className="border-b">
         <img
           src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/bb/a3/97/predator-ride-in-the.jpg?w=900&h=500&s=1"
           className="w-full"
+          alt="Campaign Banner"
         />
-        <div className="p-3">
+        <div className="p-5">
           <p className="font-semibold text-sm">Rayston Heem Clipping</p>
-          <span className="text-xs text-green-500">● Online</span>
+          <span className="text-xs text-green-500 flex items-center gap-2 mt-1.5">
+            <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+            Online
+          </span>
         </div>
       </div>
 
       {/* Profile */}
-      <div className="px-4 py-4 border-b flex items-center gap-3">
+      <div className="px-5 py-6 border-b flex items-center gap-4">
         <img
           src="https://placehold.co/40"
           className="h-10 w-10 rounded-lg object-cover"
+          alt="Profile"
         />
         <div>
-          <p className="font-semibold text-sm">Rayston Heem Clipping</p>
-          <p className="text-xs text-muted-foreground">JOINED</p>
+          <p className="font-semibold text-[14px] leading-tight">Rayston Heem Clipping</p>
+          <p className="text-[10px] font-bold text-muted-foreground mt-0.5 tracking-wider">JOINED</p>
         </div>
       </div>
 
       {/* Menu */}
-      <div className="px-2 py-3 space-y-2 text-sm">
+      <div className="px-4 py-6 space-y-2 text-[14px]">
         {SIDEBAR_MENU.map((section) =>
           section.items ? (
             <Dropdown
@@ -157,13 +162,13 @@ export function Dropdown({
     <div>
       <button
         onClick={onClick}
-        className="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm transition-colors text-muted-foreground hover:bg-muted"
+        className="flex w-full items-center justify-between rounded-xl px-3 py-3 text-sm transition-colors text-muted-foreground hover:bg-muted"
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <span className="transition-colors text-muted-foreground">
             {icon}
           </span>
-          <span>{title}</span>
+          <span className="font-medium">{title}</span>
         </div>
         <ChevronDown
           size={14}
@@ -172,7 +177,7 @@ export function Dropdown({
       </button>
 
       {open && (
-        <div className="ml-7 mt-1 space-y-1">
+        <div className="ml-8 mt-1 space-y-1">
           {children}
         </div>
       )}
@@ -194,7 +199,7 @@ export function Item({
   return (
     <Link
       href={href}
-      className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors
+      className={`flex items-center gap-4 rounded-xl px-3 py-3 text-[14px] transition-all duration-200
         ${active
           ? 'bg-muted text-foreground'
           : 'text-muted-foreground hover:bg-muted'

@@ -9,7 +9,7 @@ export default function AppShellJoined({
   return (
     <div className="flex h-screen w-full overflow-hidden flex-col md:flex-row">
       {/* Sidebar only on desktop */}
-      <aside className="hidden md:block w-64">
+      <aside className="hidden md:block w-72">
         <SidebarJoined />
       </aside>
 
