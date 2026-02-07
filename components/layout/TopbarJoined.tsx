@@ -8,7 +8,7 @@ import { Moon, Sun } from "lucide-react";
 
 import { useEffect, useState } from "react";
 
-export function Topbar() {
+export function TopbarJoined() {
   const { theme, toggleTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
