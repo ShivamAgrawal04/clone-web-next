@@ -3,20 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-import { BellIcon } from "@/components/BellIcon";
-import { CompassIcon } from "@/components/CompassIcon";
-import { HouseIcon } from "@/components/HouseIcon";
-import { MessageCircleIcon } from "@/components/MessageCircleIcon";
-import { UserRoundIcon } from "@/components/UserRoundIcon";
-
-const items = [
-  { name: "Home", href: "/", icon: HouseIcon },
-  { name: "Discover", href: "/discover", icon: CompassIcon },
-  { name: "Messages", href: "/messages", icon: MessageCircleIcon },
-  { name: "Notifications", href: "/notifications", icon: BellIcon },
-  { name: "Login", href: "/finance", icon: UserRoundIcon },
-];
+import { navItems } from "./Sidebar";
+import { Menu, X } from "lucide-react";
 
 export function MobileSidebar() {
   const [open, setOpen] = useState(false);
@@ -24,28 +12,42 @@ export function MobileSidebar() {
 
   return (
     <>
-      {/* Menu Button */}
-      <button onClick={() => setOpen(true)} className="sm:hidden text-xl">
-        ☰
+      {/* Menu Button - Only visible on Mobile */}
+      <button 
+        onClick={() => setOpen(true)} 
+        className="md:hidden p-2 -ml-2 text-foreground hover:bg-muted/50 rounded-md transition-colors"
+        aria-label="Open Menu"
+      >
+        <Menu size={24} />
       </button>
 
-      {/* Overlay */}
-      {open && (
-        <div
-          onClick={() => setOpen(false)}
-          className="fixed inset-0 z-40 bg-black/40"
-        />
-      )}
+      {/* Overlay - smooth fade in/out */}
+      <div 
+        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-[1px] transition-opacity duration-300 ${
+          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setOpen(false)}
+        aria-hidden="true"
+      />
 
       {/* Drawer */}
       <aside
-        className={`fixed right-0 top-0 z-50 h-full w-64 bg-background p-6 transition-transform
-        ${open ? "translate-x-0" : "translate-x-full"}`}
+        className={`fixed inset-y-0 left-0 z-50 w-[280px] bg-background border-r shadow-2xl transition-transform duration-300 ease-out transform ${
+          open ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
-        <div className="mb-6 text-xl font-semibold">Whop</div>
+        <div className="flex items-center justify-between p-4 border-b">
+          <span className="text-xl font-bold tracking-tight text-foreground ml-2">Whop</span>
+          <button 
+            onClick={() => setOpen(false)}
+            className="rounded-full p-2 hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <X size={20} />
+          </button>
+        </div>
 
-        <nav className="space-y-2">
-          {items.map((item) => {
+        <nav className="flex flex-col gap-1 p-3 overflow-y-auto h-[calc(100%-65px)]">
+          {navItems.map((item) => {
             const Icon = item.icon;
             const active = pathname === item.href;
 
@@ -54,11 +56,14 @@ export function MobileSidebar() {
                 key={item.name}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className={`flex items-center gap-3 rounded-lg px-3 py-2
-                  ${active ? "bg-muted" : "hover:bg-muted"}
+                className={`flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition-all
+                  ${active 
+                    ? "bg-primary/10 text-primary hover:bg-primary/15" 
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  }
                 `}
               >
-                <Icon className="h-5 w-5" />
+                <Icon className={`h-5 w-5 ${active ? "text-primary" : "text-muted-foreground"}`} />
                 <span>{item.name}</span>
               </Link>
             );

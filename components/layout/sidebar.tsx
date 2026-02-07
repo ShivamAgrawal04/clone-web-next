@@ -12,7 +12,7 @@ import { TrendingUpDownIcon } from "@/components/TrendingUpDownIcon";
 import { UserRoundIcon } from "@/components/UserRoundIcon";
 import { useState } from "react";
 
-const navItems = [
+export const navItems = [
   { name: "Home", href: "/home", icon: HouseIcon },
   { name: "Discover", href: "/discover", icon: CompassIcon },
   { name: "Messages", href: "/messages", icon: MessageCircleIcon },
@@ -33,18 +33,22 @@ export function Sidebar({
 
   return (
     <aside
-      onMouseEnter={() => setExpanded(true)}
+      onMouseEnter={() => {
+        if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+          setExpanded(true);
+        }
+      }}
       onMouseLeave={() => {
         setExpanded(false);
         setHoveredItem(null);
       }}
       className={`
-        fixed left-0 top-0 z-40 min-h-screen border-r bg-side-background
+        h-full border-r bg-background
         transition-[width] duration-300 ease-out
         ${expanded ? "w-64" : "w-20"}
       `}
     >
-      <div className="px-7 py-6 text-xl font-semibold">
+      <div className="px-7 py-6 text-xl font-semibold text-foreground">
         {expanded ? "Whop" : "W"}
       </div>
 

@@ -25,37 +25,66 @@ function applyThemeClass(theme: Theme) {
   root.classList.toggle("dark", theme === "dark");
 }
 
+function getStoredTheme(): Theme | null {
+  try {
+    const stored = window.localStorage.getItem("theme");
+    return stored === "light" || stored === "dark" ? stored : null;
+  } catch {
+    return null;
+  }
+}
+
 export function ThemeProvider({
   children,
-  defaultTheme,
 }: {
   children: React.ReactNode;
-  defaultTheme?: Theme;
 }) {
-  const [theme, setThemeState] = React.useState<Theme>(
-    defaultTheme ?? "light"
-  );
-
-  React.useEffect(() => {
-    try {
-      const stored = window.localStorage.getItem("theme");
-      if (stored === "light" || stored === "dark") {
-        setThemeState(stored);
-        applyThemeClass(stored);
-        return;
-      }
-    } catch {
-      // ignore
+  // Get initial theme - check if script already applied it
+  const getInitialTheme = (): Theme => {
+    if (typeof window === "undefined") return "light";
+    
+    // Check if theme was already applied by script
+    const hasDarkClass = document.documentElement.classList.contains('dark');
+    const dataTheme = document.documentElement.getAttribute('data-theme');
+    
+    if (hasDarkClass || dataTheme) {
+      // Script already applied theme, use it
+      return hasDarkClass ? 'dark' : 'light';
     }
+    
+    // Fallback to stored or system theme
+    const stored = getStoredTheme();
+    if (stored) return stored;
+    
+    return getSystemTheme();
+  };
 
-    const system = getSystemTheme();
-    setThemeState(system);
-    applyThemeClass(system);
+  const [theme, setThemeState] = React.useState<Theme>(getInitialTheme);
+
+  // Apply theme immediately on mount (in case script didn't run)
+  React.useEffect(() => {
+    applyThemeClass(theme);
+  }, [theme]);
+
+  // Listen for system theme changes (only if no manual theme set)
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    
+    const handleChange = () => {
+      const stored = getStoredTheme();
+      if (!stored) {
+        // Only change theme if user hasn't manually set one
+        setThemeState(mediaQuery.matches ? "dark" : "light");
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   const setTheme = React.useCallback((nextTheme: Theme) => {
     setThemeState(nextTheme);
-    applyThemeClass(nextTheme);
+    applyThemeClass(nextTheme); // Apply immediately
     try {
       window.localStorage.setItem("theme", nextTheme);
     } catch {
@@ -65,7 +94,7 @@ export function ThemeProvider({
 
   const toggleTheme = React.useCallback(() => {
     setTheme(theme === "dark" ? "light" : "dark");
-  }, [setTheme, theme]);
+  }, [theme, setTheme]);
 
   const value = React.useMemo(
     () => ({ theme, setTheme, toggleTheme }),

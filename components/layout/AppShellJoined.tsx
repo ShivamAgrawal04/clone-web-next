@@ -1,4 +1,5 @@
 import SidebarJoined from "./SidebarJoined";
+import { MobileSidebarJoined } from "./MobileSidebarJoined";
 
 export default function AppShellJoined({
   children,
@@ -6,11 +7,14 @@ export default function AppShellJoined({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen w-full overflow-hidden">
+    <div className="flex h-screen w-full overflow-hidden flex-col md:flex-row">
       {/* Sidebar only on desktop */}
       <aside className="hidden md:block w-64">
         <SidebarJoined />
       </aside>
+
+      {/* Mobile Sidebar */}
+      <MobileSidebarJoined />
 
       {/* Content */}
    <main className="flex-1 min-w-0 flex flex-col bg-background relative">

@@ -1,31 +1,36 @@
 'use client'
 
 import { useState } from 'react'
+import React from 'react'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 import {
   ChevronDown,
   Home,
-  Star,
-  MessageCircle,
   BookOpen,
+  FolderOpen,
+  Users,
+  Trophy,
+  FileText,
 } from 'lucide-react'
 
-type SidebarItemType = {
+export type SidebarItemType = {
   label: string
   href: string
   active?: boolean
 }
 
-type SidebarSectionType = {
+export type SidebarSectionType = {
   key: string
   title: string
   icon: React.ReactNode
-  items?: SidebarItemType[] // 👈 OPTIONAL
-  href?: string             // 👈 for non-dropdown
+  items?: SidebarItemType[] 
+  href?: string             
 }
 
 
 
-const SIDEBAR_MENU: SidebarSectionType[] = [
+export const SIDEBAR_MENU: SidebarSectionType[] = [
   {
     key: 'About',
     title: 'About',
@@ -35,25 +40,25 @@ const SIDEBAR_MENU: SidebarSectionType[] = [
   {
     key: 'Rewards',
     title: 'Rewards',
-    icon: <Star size={16} />,
+    icon: <Trophy size={16} />,
     href: "/joined/rewards"
   },
   {
     key: 'Requirements',
     title: 'Requirements',
-    icon: <Star size={16} />,
+    icon: <FileText size={16} />,
     href: "/joined/requirements"
   },
   {
     key: 'Assets',
     title: 'Assets',
-    icon: <Star size={16} />,
-    href: "/joined/sssets"
+    icon: <FolderOpen size={16} />,
+    href: "/joined/assets"
   },
   {
     key: 'Community',
     title: 'Community',
-    icon: <MessageCircle size={16} />,
+    icon: <Users size={16} />,
     items: [
       { label: 'Chat', href: '/chat' },
       { label: 'Leaderboard', href: '/leaderboard' },
@@ -70,32 +75,31 @@ const SIDEBAR_MENU: SidebarSectionType[] = [
 
 export default function SidebarJoined() {
   const [open, setOpen] = useState<string | null>('Home')
+  const pathname = usePathname()
 
   return (
-    // <aside className="relative h-screen w-64 bg-[#0b0b0b] text-white border-r border-white/10">
-    <aside className="hidden md:block w-64 h-screen bg-[#0b0b0b] text-white border-r border-white/10">
-
+    <aside className="hidden md:block w-64 h-screen bg-background border-r">
       {/* Header image */}
-      <div className="border-b border-white/10">
+      <div className="border-b">
         <img
           src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/bb/a3/97/predator-ride-in-the.jpg?w=900&h=500&s=1"
           className="w-full"
         />
         <div className="p-3">
           <p className="font-semibold text-sm">Rayston Heem Clipping</p>
-          <span className="text-xs text-green-400">● Online</span>
+          <span className="text-xs text-green-500">● Online</span>
         </div>
       </div>
 
       {/* Profile */}
-      <div className="px-4 py-4 border-b border-white/10 flex items-center gap-3">
+      <div className="px-4 py-4 border-b flex items-center gap-3">
         <img
           src="https://placehold.co/40"
           className="h-10 w-10 rounded-lg object-cover"
         />
         <div>
           <p className="font-semibold text-sm">Rayston Heem Clipping</p>
-          <p className="text-xs text-white/60">JOINED</p>
+          <p className="text-xs text-muted-foreground">JOINED</p>
         </div>
       </div>
 
@@ -117,6 +121,7 @@ export default function SidebarJoined() {
                   key={item.label}
                   label={item.label}
                   href={item.href}
+                  active={pathname === item.href}
                 />
               ))}
             </Dropdown>
@@ -126,6 +131,7 @@ export default function SidebarJoined() {
               label={section.title}
               href={section.href!}
               icon={section.icon}
+              active={pathname === section.href}
             />
           )
         )}
@@ -134,7 +140,7 @@ export default function SidebarJoined() {
     </aside>
   )
 }
-function Dropdown({
+export function Dropdown({
   title,
   icon,
   open,
@@ -151,15 +157,17 @@ function Dropdown({
     <div>
       <button
         onClick={onClick}
-        className="flex w-full items-center justify-between rounded-md px-3 py-2 hover:bg-white/5"
+        className="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm transition-colors text-muted-foreground hover:bg-muted"
       >
         <div className="flex items-center gap-3">
-          {icon}
+          <span className="transition-colors text-muted-foreground">
+            {icon}
+          </span>
           <span>{title}</span>
         </div>
         <ChevronDown
           size={14}
-          className={`transition ${open ? 'rotate-180' : ''}`}
+          className={`transition-transform duration-200 ${open ? 'rotate-180' : ''} text-muted-foreground`}
         />
       </button>
 
@@ -172,9 +180,7 @@ function Dropdown({
   )
 }
 
-import Link from 'next/link'
-
-function Item({
+export function Item({
   label,
   href,
   active,
@@ -188,13 +194,32 @@ function Item({
   return (
     <Link
       href={href}
-      className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm
+      className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors
         ${active
-          ? 'bg-white/10 text-white'
-          : 'text-white/70 hover:bg-white/5'
+          ? 'bg-muted text-foreground'
+          : 'text-muted-foreground hover:bg-muted'
         }`}
     >
-      {icon}
+      <span className={`transition-colors ${
+        active ? 'text-foreground' : 'text-muted-foreground'
+      }`}>
+        <span className={`${
+          active ? '' : 'opacity-70 hover:opacity-100'
+        } transition-opacity`}>
+          <span className={
+            active ? 'text-foreground' : 
+              label === 'About' ? 'text-blue-500' :
+              label === 'Rewards' ? 'text-yellow-500' :
+              label === 'Requirements' ? 'text-green-500' :
+              label === 'Assets' ? 'text-purple-500' :
+              label === 'Community' ? 'text-orange-500' :
+              label === 'My Submissions' ? 'text-pink-500' :
+              'text-muted-foreground'
+          }>
+            {icon}
+          </span>
+        </span>
+      </span>
       {label}
     </Link>
   )

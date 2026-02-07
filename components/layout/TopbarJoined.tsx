@@ -2,7 +2,6 @@
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { MobileSidebar } from "./MobileSidebar";
 import { SearchIcon } from "@/components/SearchIcon";
 import { useTheme } from "@/components/theme-provider";
 import { Moon, Sun } from "lucide-react";
@@ -14,7 +13,6 @@ export function Topbar() {
     <header className="flex h-14 items-center justify-between border-b border-border bg-background px-4 relative z-4">
       {/* Left */}
       <div className="flex items-center gap-3">
-        <MobileSidebar />
         <Button
           className="sm:hidden"
           variant="ghost"
