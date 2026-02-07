@@ -7,7 +7,7 @@ import { useTheme } from "@/components/theme-provider";
 import { Moon, SunIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export function Topbar() {
+export function TopBar() {
   const { theme, toggleTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 

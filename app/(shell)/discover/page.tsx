@@ -1,7 +1,7 @@
 import CampaignCard from "@/components/layout/CampaignCard";
-import FilterButton from "@/components/layout/Filterbutton";
+import FilterButton from "@/components/layout/FilterButton";
 import { SparklesIcon } from "@/components/SparklesIcon";
-import { Topbar } from "@/components/layout/Topbar";
+import { TopBar } from "@/components/layout/TopBar";
 import Link from "next/link";
 
 const DOTS = [
@@ -30,7 +30,7 @@ const DOTS = [
 export default function DiscoverPage() {
   return (
     <div className="bg-background relative">
-        <Topbar />
+        <TopBar />
 
       {/* Header */}
       <header className="sticky top-0 z-40 flex items-center justify-between px-5 py-4 backdrop-blur-lg bg-transparent">
@@ -98,15 +98,15 @@ export default function DiscoverPage() {
         {/* DOTS BACKGROUND */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[260px]">
-            {Array.from({ length: 40 }).map((_, i) => (
+            {DOTS.map((dot, i) => (
               <span
                 key={i}
                 className="absolute rounded-full bg-[#FBBF24] opacity-70"
                 style={{
                   width: 3,
                   height: 3,
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
+                  left: dot.x,
+                  top: dot.y,
                 }}
               />
             ))}
