@@ -55,16 +55,14 @@ const submissions: Submission[] = [
 
 export default function MySubmissions() {
     return (
-        <div className="flex flex-col h-full w-full">
+        <div className="w-full">
             <Header />
-            <div className="flex-1 overflow-y-auto">
-                 <div className="pb-20 md:pb-6">
-                    <Tabs />
-                    <Actions />
+            <div className="pb-10 md:pb-6">
+                <Tabs />
+                <Actions />
 
-                    <div className="px-4 md:px-6">
-                        <Table submissions={submissions} ended={isRewardsEnded} />
-                    </div>
+                <div className="px-4 md:px-6">
+                    <Table submissions={submissions} ended={isRewardsEnded} />
                 </div>
             </div>
         </div>

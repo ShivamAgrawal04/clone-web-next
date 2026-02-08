@@ -7,7 +7,7 @@ export default function AppShellJoined({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen w-full overflow-hidden flex-col md:flex-row">
+    <div className="flex  w-full overflow-hidden flex-col md:flex-row">
       {/* Sidebar only on desktop */}
       <aside className="hidden md:block w-72">
         <SidebarJoined />

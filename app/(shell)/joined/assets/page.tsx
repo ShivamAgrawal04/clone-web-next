@@ -33,7 +33,7 @@ const links = [
 
 export default function Assets() {
   return (
-    <div className="h-full w-full overflow-y-auto">
+    <div className="w-full">
       {/* Header */}
       <section className="border-b bg-background">
         <div className="px-6 py-4">

@@ -18,7 +18,7 @@ export default function About() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <div className="h-full w-full overflow-y-auto pb-20 md:pb-0">
+    <div className="w-full">
       {/* Hero Section */}
       <section className="relative h-[45vh] min-h-[320px] w-full bg-gradient-to-br from-primary/20 via-background to-secondary/10 flex items-center justify-center">
         <div className="absolute inset-0 bg-background/70 backdrop-blur-[3px]" />

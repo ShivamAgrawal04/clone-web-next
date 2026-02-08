@@ -11,7 +11,7 @@ import {
 
 export default function ContentRewardsWhopExact() {
   return (
-    <div className="w-full min-h-screen bg-[#0b0b0b] text-white">
+    <div className="w-full min-h-full bg-[#0b0b0b] text-white pb-10">
       {/* HEADER */}
       <div className="h-14 flex items-center gap-3 px-6 border-b border-white/10">
         <ArrowLeft size={16} className="text-white/60" />
@@ -31,7 +31,7 @@ export default function ContentRewardsWhopExact() {
         </div>
 
         {/* BANNER */}
-    <div className="w-[600px] h-66 mx-auto">
+    <div className="w-full lg:w-[600px] h-66 mx-auto">
           <img
           src="https://i.imgur.com/5KJ8QwJ.png"
           alt="banner"
