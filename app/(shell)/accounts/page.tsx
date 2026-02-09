@@ -323,7 +323,7 @@ export default function AccountsPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-bold">Verification code</label>
+                      <label className="text-sm font-bold block mb-3">Verification code</label>
                       <div className="relative">
                         <div className="h-14 flex items-center justify-between px-4 bg-muted/50 border border-border rounded-xl">
                           <span className="font-mono tracking-widest">{currentCode}</span>
