@@ -119,7 +119,7 @@ export default function DiscoverPage() {
           <SparklesIcon />
         </div>
 
-        <h1 className="text-7xl font-medium text-foreground mb-3">
+        <h1 className="text-6xl lg:text-7xl font-medium text-foreground mb-3">
           Discover Campaigns
         </h1>
         <p className="text-lg text-muted-foreground">Get paid for posting</p>

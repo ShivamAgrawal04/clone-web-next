@@ -12,6 +12,7 @@ import {
   Users,
   Trophy,
   FileText,
+  UserRound,
 } from 'lucide-react'
 
 export type SidebarItemType = {
@@ -69,6 +70,12 @@ export const SIDEBAR_MENU: SidebarSectionType[] = [
     title: 'My Submissions',
     icon: <BookOpen size={16} />,
     href: "/joined/my-submissions"
+  },
+  {
+    key: 'Accounts',
+    title: 'Accounts',
+    icon: <UserRound size={16} />,
+    href: "/joined/accounts"
   },
 ]
 
@@ -219,6 +226,7 @@ export function Item({
               label === 'Assets' ? 'text-purple-500' :
               label === 'Community' ? 'text-orange-500' :
               label === 'My Submissions' ? 'text-pink-500' :
+              label === 'Accounts' ? 'text-cyan-500' :
               'text-muted-foreground'
           }>
             {icon}
