@@ -289,17 +289,17 @@ export default function AccountsPage() {
 
                 {step === 'enter-username' && (
                   <div className="space-y-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold capitalize">{selectedPlatform} username</label>
+                    <div className="space-y-3">
+                      <label className="text-md font-semibold capitalize mb-3 block px-2">{selectedPlatform} username</label>
                       <div className="relative">
                         <Input 
                           value={username}
                           onChange={(e) => setUsername(e.target.value)}
-                          placeholder="johndoe"
+                          placeholder="John doe"
                           className="h-14 bg-background border-border rounded-xl px-4 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] placeholder:text-muted-foreground"
                         />
                       </div>
-                      <p className="text-muted-foreground text-xs">
+                      <p className="text-muted-foreground text-xs px-2">
                         Enter your {selectedPlatform} username without the @ symbol
                       </p>
                     </div>
