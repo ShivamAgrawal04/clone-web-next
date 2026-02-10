@@ -11,6 +11,7 @@ import { BellIcon } from "@/components/BellIcon";
 import { TrendingUpDownIcon } from "@/components/TrendingUpDownIcon";
 import { UserRoundIcon } from "@/components/UserRoundIcon";
 import { useState } from "react";
+import { BadgeDollarIcon } from "../BadgeDollarIcon";
 
 export const navItems = [
   { name: "Home", href: "/home", icon: HouseIcon },
@@ -19,6 +20,7 @@ export const navItems = [
   { name: "Accounts", href: "/accounts", icon: UserRoundIcon },
 
   { name: "Notifications", href: "/notifications", icon: BellIcon },
+  { name: "Balance", href: "/balance", icon: BadgeDollarIcon },
   { name: "Create a business", href: "/finance", icon: TrendingUpDownIcon },
   { name: "Login", href: "/finance", icon: UserRoundIcon },
 ];
