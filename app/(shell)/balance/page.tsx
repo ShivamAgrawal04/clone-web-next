@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Rocket, ChevronLeft, ChevronRight } from "lucide-react";
+import { Rocket, ChevronLeft, ChevronRight, GripVertical } from "lucide-react";
 import { motion } from "motion/react";
 
 type TabType = "withdrawals" | "deposits" | "deductions";
@@ -113,52 +113,85 @@ export default function BalancePage() {
           </button>
         </div>
 
-        {/* Table Header */}
-        <div className="bg-card border border-border rounded-t-2xl">
-          <div className="grid grid-cols-6 gap-4 px-6 py-4 text-xs font-semibold text-muted-foreground border-b border-border">
-            <div>Amount</div>
-            <div>Status</div>
-            <div>Sent to</div>
-            <div>Initiated at</div>
-            <div>Estimated arrival</div>
-            <div>Receipt</div>
-          </div>
-
-          {/* Empty State */}
-          {transactions.length === 0 && (
-            <div className="flex flex-col items-center justify-center py-20 px-6">
-              <div className="w-16 h-16 bg-muted/30 rounded-2xl flex items-center justify-center mb-4 border border-border">
-                <Rocket className="text-muted-foreground" size={32} />
-              </div>
-              <h3 className="text-lg font-bold mb-2">
-                No {activeTab} yet
-              </h3>
-              <p className="text-sm text-muted-foreground text-center max-w-sm">
-                When you withdraw money from your Whop account, it will be displayed here.
-              </p>
+        {/* Table Container with Horizontal Scroll */}
+        <div className="bg-card border border-border rounded-t-2xl overflow-x-auto">
+          <div className="min-w-[800px]">
+            {/* Table Header */}
+            <div className={`grid grid-cols-6 gap-4 px-6 py-4 text-xs font-semibold text-muted-foreground border-b border-border`}>
+              {activeTab === "withdrawals" ? (
+                <>
+                  <div>Amount</div>
+                  <div>Status</div>
+                  <div>Sent to</div>
+                  <div>Initiated at</div>
+                  <div>Estimated arrival</div>
+                  <div>Receipt</div>
+                </>
+              ) : (
+                <>
+                  <div className="flex items-center gap-2">Amount</div>
+                  <div className="flex items-center justify-between">
+                    Fee
+                    <GripVertical size={12} className="text-muted-foreground/30" />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    Net amount
+                    <GripVertical size={12} className="text-muted-foreground/30" />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    Status
+                    <GripVertical size={12} className="text-muted-foreground/30" />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    Credit type
+                    <GripVertical size={12} className="text-muted-foreground/30" />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    Release date
+                    <GripVertical size={12} className="text-muted-foreground/30" />
+                  </div>
+                </>
+              )}
             </div>
-          )}
-        </div>
 
-        {/* Pagination */}
-        {transactions.length === 0 && (
-          <div className="bg-card border border-t-0 border-border rounded-b-2xl px-6 py-4 flex items-center justify-between">
-            <button
-              disabled
-              className="px-3 py-1.5 text-sm font-medium text-muted-foreground bg-muted/30 rounded-md cursor-not-allowed opacity-50"
-            >
-              <ChevronLeft size={16} className="inline mr-1" />
-              Previous
-            </button>
-            <button
-              disabled
-              className="px-3 py-1.5 text-sm font-medium text-muted-foreground bg-muted/30 rounded-md cursor-not-allowed opacity-50"
-            >
-              Next
-              <ChevronRight size={16} className="inline ml-1" />
-            </button>
+            {/* Empty State */}
+            {transactions.length === 0 && (
+              <div className="flex flex-col items-center justify-center py-20 px-6">
+                <div className="w-16 h-16 bg-muted/30 rounded-2xl flex items-center justify-center mb-4 border border-border">
+                  <Rocket className="text-muted-foreground" size={32} />
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  No {activeTab} yet
+                </h3>
+                <p className="text-sm text-muted-foreground text-center max-w-sm">
+                  {activeTab === "withdrawals" 
+                    ? "When you withdraw money from your Whop account, it will be displayed here."
+                    : `Your ${activeTab} will appear here.`
+                  }
+                </p>
+              </div>
+            )}
+            {/* Pagination */}
+            {transactions.length === 0 && (
+              <div className="bg-card border-t border-border px-6 py-4 flex items-center justify-between rounded-b-2xl">
+                <button
+                  disabled
+                  className="px-3 py-1.5 text-sm font-medium text-muted-foreground bg-muted/30 rounded-md cursor-not-allowed opacity-50"
+                >
+                  <ChevronLeft size={16} className="inline mr-1" />
+                  Previous
+                </button>
+                <button
+                  disabled
+                  className="px-3 py-1.5 text-sm font-medium text-muted-foreground bg-muted/30 rounded-md cursor-not-allowed opacity-50"
+                >
+                  Next
+                  <ChevronRight size={16} className="inline ml-1" />
+                </button>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
 
       {/* Footer Note */}

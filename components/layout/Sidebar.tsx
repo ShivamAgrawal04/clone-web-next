@@ -10,12 +10,14 @@ import { MessageCircleIcon } from "@/components/MessageCircleIcon";
 import { BellIcon } from "@/components/BellIcon";
 import { TrendingUpDownIcon } from "@/components/TrendingUpDownIcon";
 import { UserRoundIcon } from "@/components/UserRoundIcon";
+import { MegaphoneIcon } from "@/components/MegaphoneIcon";
 import { useState } from "react";
 import { BadgeDollarIcon } from "../BadgeDollarIcon";
 
 export const navItems = [
   { name: "Home", href: "/home", icon: HouseIcon },
   { name: "Discover", href: "/discover", icon: CompassIcon },
+  { name: "Campaign", href: "/campaign", icon: MegaphoneIcon },
   // { name: "Messages", href: "/messages", icon: MessageCircleIcon },
   { name: "Accounts", href: "/accounts", icon: UserRoundIcon },
 
