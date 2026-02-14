@@ -37,7 +37,7 @@ export function MobileSidebar() {
         }`}
       >
         <div className="flex items-center justify-between p-4 border-b">
-          <span className="text-xl font-bold tracking-tight text-foreground ml-2">Whop</span>
+          <span className="text-xl font-bold tracking-tight text-foreground ml-2">BennyBucks</span>
           <button 
             onClick={() => setOpen(false)}
             className="rounded-full p-2 hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"

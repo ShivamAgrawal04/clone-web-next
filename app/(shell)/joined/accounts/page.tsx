@@ -110,7 +110,7 @@ export default function ConnectedAccounts() {
   const [copied, setCopied] = useState(false);
 
   // eslint-disable-next-line react-hooks/purity
-  const generateCode = () => `WHOP-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+  const generateCode = () => `BENNY-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
 
   const handleConnectRequest = (id: string) => {
     setActiveVerification({

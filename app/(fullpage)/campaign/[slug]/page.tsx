@@ -176,7 +176,7 @@ export default function CliprPage() {
             </div>
 
             <p className="mt-6 text-center text-xs text-muted-foreground">
-              Powered by Whop
+              Powered by BennyBucks
             </p>
 
           </div>

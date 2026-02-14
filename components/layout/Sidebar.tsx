@@ -20,6 +20,7 @@ export const navItems = [
   { name: "Campaign", href: "/campaign", icon: MegaphoneIcon },
   // { name: "Messages", href: "/messages", icon: MessageCircleIcon },
   { name: "Accounts", href: "/accounts", icon: UserRoundIcon },
+  { name: "Messages", href: "/messages", icon: MessageCircleIcon },
 
   { name: "Notifications", href: "/notifications", icon: BellIcon },
   { name: "Balance", href: "/balance", icon: BadgeDollarIcon },
@@ -55,7 +56,7 @@ export function Sidebar({
       `}
     >
       <div className="px-7 py-6 text-xl font-semibold text-foreground">
-        {expanded ? "Whop" : "W"}
+        {expanded ? "BennyBucks" : "B"}
       </div>
 
       <nav className="space-y-2 px-2">

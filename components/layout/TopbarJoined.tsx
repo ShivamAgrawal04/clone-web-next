@@ -40,7 +40,7 @@ export function TopbarJoined() {
         </Button>
         <div className="hidden sm:block w-80 relative">
           <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input placeholder="Search Whop" className="pl-10 rounded-full" />
+          <Input placeholder="Search BennyBucks" className="pl-10 rounded-full" />
         </div>
       </div>
 

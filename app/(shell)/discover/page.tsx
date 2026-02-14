@@ -67,7 +67,7 @@ export default function DiscoverPage() {
           target="_blank"
           className="rounded-full bg-muted font-500 px-4 py-2 text-sm font-medium text-foreground hover:bg-muted/80 transition"
         >
-          Install app in your whop
+          Install app in your BennyBucks
         </a>
       </header>
 

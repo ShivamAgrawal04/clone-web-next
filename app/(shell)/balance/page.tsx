@@ -165,7 +165,7 @@ export default function BalancePage() {
                 </h3>
                 <p className="text-sm text-muted-foreground text-center max-w-sm">
                   {activeTab === "withdrawals" 
-                    ? "When you withdraw money from your Whop account, it will be displayed here."
+                    ? "When you withdraw money from your BennyBucks account, it will be displayed here."
                     : `Your ${activeTab} will appear here.`
                   }
                 </p>
@@ -197,7 +197,7 @@ export default function BalancePage() {
       {/* Footer Note */}
       <div className="max-w-6xl mx-auto mt-6">
         <p className="text-xs text-muted-foreground text-center leading-relaxed">
-          *Whop is a technology company, not a bank. Payment services are provided by Whop&apos;s payment partners, including Stripe. Whop Balances are held for you by Cross River Bank (member FDIC) at another partner bank. Whop Balances are not FDIC insured.
+          *BennyBucks is a technology company, not a bank. Payment services are provided by BennyBucks&apos;s payment partners, including Stripe. BennyBucks Balances are held for you by Cross River Bank (member FDIC) at another partner bank. BennyBucks Balances are not FDIC insured.
         </p>
       </div>
     </div>

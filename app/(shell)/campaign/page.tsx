@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Search } from "lucide-react";
 import CampaignCard from "@/components/layout/CampaignCard";
-import { useRouter } from "next/navigation";
+import CampaignDetailsCard from "@/components/layout/CampaignDetailsCard";
 
 // Sample campaign data - you can replace this with API data
 const campaignData = [
@@ -63,9 +63,72 @@ const campaignData = [
   }
 ];
 
+// Sample campaign details data for the new card
+const campaignDetailsData = [
+  {
+    title: "Betstrike [GENERAL - ...]",
+    category: "General",
+    earnings: "$0.00",
+    completionPercentage: 0.05,
+    completedAmount: "$0.00",
+    totalAmount: "$2,000.00",
+    submissions: 1,
+    status: "active" as const,
+    gradientFrom: "#8B5CF6",
+    gradientTo: "#6366F1"
+  },
+  {
+    title: "Crypto Trading Platform [PRO]",
+    category: "Finance",
+    earnings: "$125.50",
+    completionPercentage: 12.5,
+    completedAmount: "$250.00",
+    totalAmount: "$2,000.00",
+    submissions: 3,
+    status: "active" as const,
+    gradientFrom: "#10B981",
+    gradientTo: "#059669"
+  },
+  {
+    title: "Gaming Tournament [ESPORTS]",
+    category: "Gaming",
+    earnings: "$450.00",
+    completionPercentage: 45.0,
+    completedAmount: "$900.00",
+    totalAmount: "$2,000.00",
+    submissions: 8,
+    status: "active" as const,
+    gradientFrom: "#F59E0B",
+    gradientTo: "#D97706"
+  },
+  {
+    title: "Fitness Challenge [HEALTH]",
+    category: "Lifestyle",
+    earnings: "$89.99",
+    completionPercentage: 8.9,
+    completedAmount: "$179.98",
+    totalAmount: "$2,000.00",
+    submissions: 2,
+    status: "active" as const,
+    gradientFrom: "#EC4899",
+    gradientTo: "#DB2777"
+  },
+  {
+    title: "Dubbing AI [GAMING] ...",
+    category: "Gaming",
+    earnings: "$0.00",
+    completionPercentage: 100,
+    completedAmount: "$2,000.00",
+    totalAmount: "$2,000.00",
+    submissions: 5,
+    status: "paid_out" as const,
+    gradientFrom: "#06B6D4",
+    gradientTo: "#0891B2"
+  }
+];
+
 export default function CampaignPage() {
   const [searchQuery, setSearchQuery] = useState("");
-  const router = useRouter();
 
   // Filter campaigns based on search query
   const filteredCampaigns = campaignData.filter(campaign =>
@@ -74,9 +137,11 @@ export default function CampaignPage() {
     campaign.categories.some(cat => cat.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
-  const handleCardClick = () => {
-    router.push("/joined/my-submissions");
-  };
+  // Filter campaign details based on search query
+  const filteredCampaignDetails = campaignDetailsData.filter(campaign =>
+    campaign.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    campaign.category.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen bg-background text-foreground p-6 md:p-10">
@@ -102,26 +167,37 @@ export default function CampaignPage() {
         </div>
       </div>
 
-      {/* Campaigns Grid */}
-      {filteredCampaigns.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCampaigns.map((campaign, index) => (
-            <div key={index} onClick={handleCardClick}>
-              <CampaignCard campaign={campaign} />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="flex flex-col items-center justify-center py-20">
-          <div className="w-16 h-16 bg-muted/30 rounded-2xl flex items-center justify-center mb-4 border border-border">
-            <Search className="text-muted-foreground" size={32} />
-          </div>
-          <h3 className="text-lg font-bold mb-2">No campaigns found</h3>
-          <p className="text-sm text-muted-foreground text-center max-w-sm">
-            Try adjusting your filters
+      {/* My Active Campaigns Section */}
+      <div className="mb-12">
+        <div className="mb-6">
+          <h2 className="text-xl md:text-2xl font-bold tracking-tight mb-1">My Active Campaigns</h2>
+          <p className="text-sm text-muted-foreground">
+            Track your progress and earnings
           </p>
         </div>
-      )}
+
+        {filteredCampaignDetails.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredCampaignDetails.map((campaign, index) => (
+              <div key={index}>
+                <CampaignDetailsCard campaign={campaign} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-12 bg-card border border-border rounded-2xl">
+            <div className="w-16 h-16 bg-muted/30 rounded-2xl flex items-center justify-center mb-4 border border-border">
+              <Search className="text-muted-foreground" size={32} />
+            </div>
+            <h3 className="text-lg font-bold mb-2">No active campaigns found</h3>
+            <p className="text-sm text-muted-foreground text-center max-w-sm">
+              You haven&apos;t joined any campaigns yet
+            </p>
+          </div>
+        )}
+      </div>
+
+
     </div>
   );
 }

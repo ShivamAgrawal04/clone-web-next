@@ -9,7 +9,7 @@ import {
   Info as InfoIcon,
 } from "lucide-react";
 
-export default function ContentRewardsWhopExact() {
+export default function ContentRewardsBennyBucksExact() {
   return (
     <div className="w-full min-h-full bg-[#0b0b0b] text-white pb-10">
       {/* HEADER */}
