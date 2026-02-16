@@ -25,8 +25,8 @@ export type SidebarSectionType = {
   key: string
   title: string
   icon: React.ReactNode
-  items?: SidebarItemType[] 
-  href?: string             
+  items?: SidebarItemType[]
+  href?: string
 }
 
 
@@ -85,7 +85,7 @@ export default function SidebarJoined() {
   const pathname = usePathname()
 
   return (
-    <aside className="hidden md:block w-72 h-screen bg-background border-r">
+    <aside className="hidden md:block w-72 h-screen sticky top-0 bg-background border-r overflow-y-auto">
       {/* Header image */}
       <div className="border-b">
         <img
@@ -212,22 +212,20 @@ export function Item({
           : 'text-muted-foreground hover:bg-muted'
         }`}
     >
-      <span className={`transition-colors ${
-        active ? 'text-foreground' : 'text-muted-foreground'
-      }`}>
-        <span className={`${
-          active ? '' : 'opacity-70 hover:opacity-100'
-        } transition-opacity`}>
+      <span className={`transition-colors ${active ? 'text-foreground' : 'text-muted-foreground'
+        }`}>
+        <span className={`${active ? '' : 'opacity-70 hover:opacity-100'
+          } transition-opacity`}>
           <span className={
-            active ? 'text-foreground' : 
+            active ? 'text-foreground' :
               label === 'About' ? 'text-blue-500' :
-              label === 'Rewards' ? 'text-yellow-500' :
-              label === 'Requirements' ? 'text-green-500' :
-              label === 'Assets' ? 'text-purple-500' :
-              label === 'Community' ? 'text-orange-500' :
-              label === 'My Submissions' ? 'text-pink-500' :
-              label === 'Accounts' ? 'text-cyan-500' :
-              'text-muted-foreground'
+                label === 'Rewards' ? 'text-yellow-500' :
+                  label === 'Requirements' ? 'text-green-500' :
+                    label === 'Assets' ? 'text-purple-500' :
+                      label === 'Community' ? 'text-orange-500' :
+                        label === 'My Submissions' ? 'text-pink-500' :
+                          label === 'Accounts' ? 'text-cyan-500' :
+                            'text-muted-foreground'
           }>
             {icon}
           </span>

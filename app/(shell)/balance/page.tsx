@@ -75,7 +75,7 @@ export default function BalancePage({ isSettingsView = false }: { isSettingsView
   }, []);
 
   return (
-    <div className={`${isSettingsView ? "p-0 min-h-0" : "min-h-screen p-6 md:p-10"} bg-background text-foreground`}>
+    <div className={`${isSettingsView ? "p-4 md:p-8 min-h-0" : "min-h-screen p-6 md:p-10"} bg-background text-foreground`}>
       {/* Header */}
       {!isSettingsView && (
         <div className="mb-8">
@@ -84,7 +84,7 @@ export default function BalancePage({ isSettingsView = false }: { isSettingsView
       )}
 
       {/* Balance Card */}
-      <div className={`${isSettingsView ? "max-w-4xl" : "max-w-2xl"} mx-auto mb-8`}>
+      <div className={`${isSettingsView ? "max-w-2xl" : "max-w-2xl"} mx-auto mb-8`}>
         <div className="bg-card border border-border rounded-2xl p-8 space-y-6">
           {/* Total Balance */}
           <div className="space-y-2">
@@ -111,7 +111,7 @@ export default function BalancePage({ isSettingsView = false }: { isSettingsView
       </div>
 
       {/* Tabs */}
-      <div className="max-w-6xl mx-auto">
+      <div className={`${isSettingsView ? "max-w-4xl" : "max-w-6xl"} mx-auto`}>
         <div className="flex items-center gap-1 border-b border-border mb-6">
           <button
             onClick={() => setActiveTab("withdrawals")}
@@ -250,7 +250,7 @@ export default function BalancePage({ isSettingsView = false }: { isSettingsView
       </div>
 
       {/* Footer Note */}
-      <div className="max-w-6xl mx-auto mt-6">
+      <div className={`${isSettingsView ? "max-w-4xl" : "max-w-6xl"} mx-auto mt-6`}>
         <p className="text-xs text-muted-foreground text-center leading-relaxed">
           *BennyBucks is a technology company, not a bank. Payment services are provided by BennyBucks&apos;s payment partners, including Stripe. BennyBucks Balances are held for you by Cross River Bank (member FDIC) at another partner bank. BennyBucks Balances are not FDIC insured.
         </p>

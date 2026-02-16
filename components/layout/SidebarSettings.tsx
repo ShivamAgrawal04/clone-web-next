@@ -49,7 +49,7 @@ export default function SidebarSettings() {
     const pathname = usePathname()
 
     return (
-        <aside className="hidden md:block w-70 h-screen bg-black border-r border-zinc-900 overflow-y-auto">
+        <aside className="hidden md:block w-70 h-screen sticky top-0 bg-black border-r border-zinc-900 overflow-y-auto transition-all duration-300">
             {/* Header */}
             <div className="px-6 pt-10 pb-6">
                 <h2 className="text-[12px] font-bold text-white/50 uppercase tracking-widest">
