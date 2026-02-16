@@ -8,7 +8,6 @@ import { HouseIcon } from "@/components/HouseIcon";
 import { CompassIcon } from "@/components/CompassIcon";
 import { MessageCircleIcon } from "@/components/MessageCircleIcon";
 import { BellIcon } from "@/components/BellIcon";
-import { TrendingUpDownIcon } from "@/components/TrendingUpDownIcon";
 import { UserRoundIcon } from "@/components/UserRoundIcon";
 import { MegaphoneIcon } from "@/components/MegaphoneIcon";
 import { useState } from "react";
@@ -29,19 +28,22 @@ export const navItems: MenuItem[] = [
   { name: "Messages", href: "/messages", icon: MessageCircleIcon },
   { name: "Notifications", href: "/notifications", icon: BellIcon },
   { name: "Balance", href: "/balance", icon: BadgeDollarIcon },
-  { name: "Create a business", href: "/finance", icon: TrendingUpDownIcon },
+  // { name: "Create a business", href: "/finance", icon: TrendingUpDownIcon },
 ];
 
 export function Sidebar({
   expanded,
   setExpanded,
+  isLoggedIn,
+  setIsLoggedIn,
 }: {
   expanded: boolean;
   setExpanded: (v: boolean) => void;
+  isLoggedIn: boolean;
+  setIsLoggedIn: (v: boolean) => void;
 }) {
   const pathname = usePathname();
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Add Profile or Login based on state
   const authItem: MenuItem = isLoggedIn

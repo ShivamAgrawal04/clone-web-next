@@ -139,9 +139,9 @@ export default function MessagesPage() {
   };
 
   return (
-    <div className="flex h-screen bg-background">
+    <div className="flex h-full bg-background overflow-hidden">
       {/* Left Sidebar - Conversations List */}
-      <div className="w-full md:w-80 lg:w-96 border-r border-border flex flex-col">
+      <div className={`w-full md:w-80 lg:w-96 border-r border-border flex flex-col bg-background z-10 ${selectedConversation ? "hidden md:flex" : "flex"}`}>
         {/* Search Header */}
         <div className="p-4 border-b border-border">
           <div className="flex items-center gap-3 mb-4">
@@ -164,11 +164,10 @@ export default function MessagesPage() {
           <div className="flex gap-4">
             <button
               onClick={() => setActiveTab("unread")}
-              className={`text-sm font-medium pb-2 border-b-2 transition-colors ${
-                activeTab === "unread"
-                  ? "border-[#d4af37] text-foreground"
-                  : "border-transparent text-muted-foreground hover:text-foreground"
-              }`}
+              className={`text-sm font-medium pb-2 border-b-2 transition-colors ${activeTab === "unread"
+                ? "border-[#d4af37] text-foreground"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+                }`}
             >
               Unread {unreadConversations.length > 0 && (
                 <span className="ml-1 text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full">
@@ -178,11 +177,10 @@ export default function MessagesPage() {
             </button>
             <button
               onClick={() => setActiveTab("requests")}
-              className={`text-sm font-medium pb-2 border-b-2 transition-colors ${
-                activeTab === "requests"
-                  ? "border-[#d4af37] text-foreground"
-                  : "border-transparent text-muted-foreground hover:text-foreground"
-              }`}
+              className={`text-sm font-medium pb-2 border-b-2 transition-colors ${activeTab === "requests"
+                ? "border-[#d4af37] text-foreground"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+                }`}
             >
               Requests
             </button>
@@ -231,9 +229,8 @@ export default function MessagesPage() {
               <div
                 key={conv.id}
                 onClick={() => setSelectedConversation(conv)}
-                className={`flex items-start gap-3 p-4 hover:bg-muted/50 cursor-pointer transition-colors border-b border-border/50 ${
-                  selectedConversation?.id === conv.id ? "bg-muted/30" : ""
-                }`}
+                className={`flex items-start gap-3 p-4 hover:bg-muted/50 cursor-pointer transition-colors border-b border-border/50 ${selectedConversation?.id === conv.id ? "bg-muted/30" : ""
+                  }`}
               >
                 <div className="relative flex-shrink-0">
                   <div className="w-12 h-12 rounded-full overflow-hidden bg-muted">
@@ -260,12 +257,18 @@ export default function MessagesPage() {
       </div>
 
       {/* Right Side - Chat Area */}
-      <div className="flex-1 flex flex-col">
+      <div className={`flex-1 flex flex-col bg-background w-full md:relative absolute md:static inset-0 z-20 transition-transform duration-300 ${selectedConversation ? "translate-x-0" : "translate-x-full md:translate-x-0"}`}>
         {selectedConversation ? (
           <>
             {/* Chat Header */}
-            <div className="h-16 border-b border-border flex items-center justify-between px-6">
+            <div className="h-16 border-b border-border flex items-center justify-between px-4 md:px-6 shrink-0 bg-background/80 backdrop-blur-md sticky top-0 z-30">
               <div className="flex items-center gap-3">
+                <button
+                  onClick={() => setSelectedConversation(null)}
+                  className="md:hidden p-2 -ml-2 hover:bg-muted rounded-full transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg>
+                </button>
                 <div className="w-10 h-10 rounded-full overflow-hidden bg-muted">
                   <img src={selectedConversation.user.avatar} alt={selectedConversation.user.name} className="w-full h-full object-cover" />
                 </div>
@@ -280,7 +283,7 @@ export default function MessagesPage() {
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-4">
+            <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 pb-32 md:pb-4 scroll-smooth">
               {selectedConversation.messages.map((message) => (
                 <div key={message.id}>
                   {message.date && (
@@ -291,7 +294,7 @@ export default function MessagesPage() {
                     </div>
                   )}
                   <div className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}>
-                    <div className={`max-w-md ${message.sender === "user" ? "order-2" : "order-1"}`}>
+                    <div className={`max-w-[85%] md:max-w-md ${message.sender === "user" ? "order-2" : "order-1"}`}>
                       {message.sender === "other" && (
                         <div className="flex items-center gap-2 mb-1">
                           <div className="w-6 h-6 rounded-full overflow-hidden bg-muted">
@@ -302,11 +305,10 @@ export default function MessagesPage() {
                         </div>
                       )}
                       <div
-                        className={`px-4 py-2 rounded-2xl ${
-                          message.sender === "user"
-                            ? "bg-blue-600 text-white"
-                            : "bg-muted text-foreground"
-                        }`}
+                        className={`px-4 py-2 rounded-2xl break-words ${message.sender === "user"
+                          ? "bg-blue-600 text-white rounded-tr-none"
+                          : "bg-muted text-foreground rounded-tl-none"
+                          }`}
                       >
                         <p className="text-sm">{message.content}</p>
                       </div>
@@ -322,42 +324,40 @@ export default function MessagesPage() {
             </div>
 
             {/* Message Input */}
-            <div className="border-t border-border p-4">
-              <div className="flex items-end gap-3">
-                <div className="flex-1 bg-muted/50 border border-border rounded-2xl p-3">
+            <div className="fixed bottom-16 left-0 right-0 md:static md:bottom-0 border-t border-border p-3 md:p-4 bg-background z-40">
+              <div className="flex items-center gap-2">
+                <button className="p-2 hover:bg-muted text-muted-foreground hover:text-foreground rounded-full transition-colors">
+                  <ImageIcon size={20} />
+                </button>
+                <div className="flex-1 flex items-center gap-2 bg-muted/50 border border-border rounded-full px-4 py-2">
                   <input
                     type="text"
-                    placeholder={`Message @${selectedConversation.user.name}`}
+                    placeholder="Message..."
                     value={messageInput}
                     onChange={(e) => setMessageInput(e.target.value)}
                     onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
-                    className="w-full bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                    className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none min-w-0"
                   />
-                  <div className="flex items-center gap-2 mt-2">
-                    <button className="p-1.5 hover:bg-muted rounded-lg transition-colors">
-                      <Smile size={18} className="text-muted-foreground" />
-                    </button>
-                    <button className="p-1.5 hover:bg-muted rounded-lg transition-colors">
-                      <ImageIcon size={18} className="text-muted-foreground" />
-                    </button>
-                    <button className="p-1.5 hover:bg-muted rounded-lg transition-colors">
-                      <Paperclip size={18} className="text-muted-foreground" />
-                    </button>
-                  </div>
+                  <button className="p-1 hover:text-foreground text-muted-foreground transition-colors">
+                    <Smile size={20} />
+                  </button>
+                  <button className="p-1 hover:text-foreground text-muted-foreground transition-colors">
+                    <Paperclip size={18} />
+                  </button>
                 </div>
                 <button
                   onClick={handleSendMessage}
                   disabled={!messageInput.trim()}
-                  className="p-3 bg-blue-600 hover:bg-blue-700 disabled:bg-muted disabled:cursor-not-allowed rounded-full transition-colors"
+                  className="p-3 bg-blue-600 hover:bg-blue-700 disabled:bg-muted disabled:cursor-not-allowed rounded-full transition-colors flex-shrink-0 text-white shadow-sm"
                 >
-                  <Send size={20} className="text-white" />
+                  <Send size={18} />
                 </button>
               </div>
             </div>
           </>
         ) : (
           /* No Conversation Selected */
-          <div className="flex-1 flex items-center justify-center">
+          <div className="hidden md:flex flex-1 items-center justify-center">
             <div className="text-center max-w-md p-8">
               <div className="w-24 h-24 bg-muted/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <div className="text-6xl">👀</div>

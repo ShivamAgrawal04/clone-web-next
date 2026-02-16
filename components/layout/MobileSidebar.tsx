@@ -5,10 +5,24 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navItems } from "./Sidebar";
 import { Menu, X } from "lucide-react";
+import { UserRoundIcon } from "@/components/UserRoundIcon";
 
-export function MobileSidebar() {
+export function MobileSidebar({
+  isLoggedIn,
+  setIsLoggedIn,
+}: {
+  isLoggedIn: boolean;
+  setIsLoggedIn: (v: boolean) => void;
+}) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+
+  // Add Profile or Login based on state
+  const authItem = isLoggedIn
+    ? { name: "Profile", href: "/profile", icon: UserRoundIcon }
+    : { name: "Login", href: "#", icon: UserRoundIcon, onClick: () => setIsLoggedIn(true) };
+
+  const currentNavItems = [...navItems, authItem];
 
   return (
     <>
@@ -50,24 +64,47 @@ export function MobileSidebar() {
         </div>
 
         <nav className="flex flex-col gap-1 p-3 overflow-y-auto h-[calc(100%-65px)]">
-          {navItems.map((item) => {
+          {currentNavItems.map((item) => {
             const Icon = item.icon;
             const active = pathname === item.href;
+
+            const content = (
+              <>
+                <Icon className={`h-5 w-5 ${active ? "text-primary" : "text-muted-foreground"}`} />
+                <span>{item.name}</span>
+              </>
+            );
+
+            const className = `flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition-all
+              ${active
+                ? "bg-primary/10 text-primary hover:bg-primary/15"
+                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+              }
+            `;
+
+            if ('onClick' in item && item.onClick) {
+              return (
+                <button
+                  key={item.name}
+                  onClick={() => {
+                    item.onClick?.();
+                    setOpen(false);
+                  }}
+                  className={className}
+                >
+                  {content}
+                </button>
+              );
+            }
 
             return (
               <Link
                 key={item.name}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className={`flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition-all
-                  ${active
-                    ? "bg-primary/10 text-primary hover:bg-primary/15"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                  }
-                `}
+                className={className}
               >
-                <Icon className={`h-5 w-5 ${active ? "text-primary" : "text-muted-foreground"}`} />
-                <span>{item.name}</span>
+                {content}
               </Link>
             );
           })}
