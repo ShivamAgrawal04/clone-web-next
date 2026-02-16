@@ -14,18 +14,22 @@ import { MegaphoneIcon } from "@/components/MegaphoneIcon";
 import { useState } from "react";
 import { BadgeDollarIcon } from "../BadgeDollarIcon";
 
-export const navItems = [
+export interface MenuItem {
+  name: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  onClick?: () => void;
+}
+
+export const navItems: MenuItem[] = [
   { name: "Home", href: "/home", icon: HouseIcon },
   { name: "Discover", href: "/discover", icon: CompassIcon },
   { name: "Campaign", href: "/campaign", icon: MegaphoneIcon },
-  // { name: "Messages", href: "/messages", icon: MessageCircleIcon },
   { name: "Accounts", href: "/accounts", icon: UserRoundIcon },
   { name: "Messages", href: "/messages", icon: MessageCircleIcon },
-
   { name: "Notifications", href: "/notifications", icon: BellIcon },
   { name: "Balance", href: "/balance", icon: BadgeDollarIcon },
   { name: "Create a business", href: "/finance", icon: TrendingUpDownIcon },
-  { name: "Login", href: "/finance", icon: UserRoundIcon },
 ];
 
 export function Sidebar({
@@ -37,6 +41,14 @@ export function Sidebar({
 }) {
   const pathname = usePathname();
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Add Profile or Login based on state
+  const authItem: MenuItem = isLoggedIn
+    ? { name: "Profile", href: "/profile", icon: UserRoundIcon }
+    : { name: "Login", href: "#", icon: UserRoundIcon, onClick: () => setIsLoggedIn(true) };
+
+  const currentNavItems: MenuItem[] = [...navItems, authItem];
 
   return (
     <aside
@@ -60,25 +72,13 @@ export function Sidebar({
       </div>
 
       <nav className="space-y-2 px-2">
-        {navItems.map((item) => {
+        {currentNavItems.map((item) => {
           const Icon = item.icon;
           const active = pathname === item.href;
           const hovered = hoveredItem === item.name;
 
-          return (
-            <Link
-              key={item.name}
-              href={item.href}
-              onMouseEnter={() => setHoveredItem(item.name)}
-              onMouseLeave={() => setHoveredItem(null)}
-              className={`
-                flex items-center gap-3 rounded-xl px-4 py-2.5
-                transition-colors duration-200
-                ${active
-                  ? "bg-muted text-foreground"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"}
-              `}
-            >
+          const content = (
+            <>
               {/* 👇 ONLY THIS ICON ANIMATES */}
               <AnimatedIconWrapper isHovered={hovered}>
                 <Icon className="h-7 w-7 stroke-[1.75]" />
@@ -89,6 +89,40 @@ export function Sidebar({
                   {item.name}
                 </span>
               )}
+            </>
+          );
+
+          const className = `
+            flex w-full items-center gap-3 rounded-xl px-4 py-2.5
+            transition-colors duration-200
+            ${active
+              ? "bg-muted text-foreground"
+              : "text-muted-foreground hover:bg-muted hover:text-foreground"}
+          `;
+
+          if ('onClick' in item && item.onClick) {
+            return (
+              <button
+                key={item.name}
+                onClick={item.onClick}
+                onMouseEnter={() => setHoveredItem(item.name)}
+                onMouseLeave={() => setHoveredItem(null)}
+                className={className}
+              >
+                {content}
+              </button>
+            );
+          }
+
+          return (
+            <Link
+              key={item.name}
+              href={item.href}
+              onMouseEnter={() => setHoveredItem(item.name)}
+              onMouseLeave={() => setHoveredItem(null)}
+              className={className}
+            >
+              {content}
             </Link>
           );
         })}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Rocket, ChevronLeft, ChevronRight, GripVertical } from "lucide-react";
 import { motion } from "motion/react";
 
@@ -16,22 +16,75 @@ type Transaction = {
   receipt?: string;
 };
 
-export default function BalancePage() {
+type ColumnDef = {
+  id: string;
+  label: string;
+};
+
+const defaultDepositColumns: ColumnDef[] = [
+  { id: "amount", label: "Amount" },
+  { id: "fee", label: "Fee" },
+  { id: "net_amount", label: "Net amount" },
+  { id: "status", label: "Status" },
+  { id: "credit_type", label: "Credit type" },
+  { id: "release_date", label: "Release date" },
+];
+
+export default function BalancePage({ isSettingsView = false }: { isSettingsView?: boolean }) {
   const [activeTab, setActiveTab] = useState<TabType>("withdrawals");
   const [transactions] = useState<Transaction[]>([]);
+  const [depositColumns, setDepositColumns] = useState<ColumnDef[]>(defaultDepositColumns);
+  const [draggedColIndex, setDraggedColIndex] = useState<number | null>(null);
+  const [dragOverColIndex, setDragOverColIndex] = useState<number | null>(null);
 
   const totalBalance = 0.00;
   const availableBalance = 0.00;
 
+  const handleDragStart = useCallback((e: React.DragEvent, index: number) => {
+    setDraggedColIndex(index);
+    e.dataTransfer.effectAllowed = "move";
+    // Set a transparent drag image so default ghost doesn't show weirdly
+    const ghost = document.createElement("div");
+    ghost.style.opacity = "0";
+    document.body.appendChild(ghost);
+    e.dataTransfer.setDragImage(ghost, 0, 0);
+    setTimeout(() => document.body.removeChild(ghost), 0);
+  }, []);
+
+  const handleDragOver = useCallback((e: React.DragEvent, index: number) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    setDragOverColIndex(index);
+  }, []);
+
+  const handleDragEnd = useCallback(() => {
+    if (draggedColIndex !== null && dragOverColIndex !== null && draggedColIndex !== dragOverColIndex) {
+      setDepositColumns(prev => {
+        const newCols = [...prev];
+        const [draggedCol] = newCols.splice(draggedColIndex, 1);
+        newCols.splice(dragOverColIndex, 0, draggedCol);
+        return newCols;
+      });
+    }
+    setDraggedColIndex(null);
+    setDragOverColIndex(null);
+  }, [draggedColIndex, dragOverColIndex]);
+
+  const handleDragLeave = useCallback(() => {
+    setDragOverColIndex(null);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background text-foreground p-6 md:p-10">
+    <div className={`${isSettingsView ? "p-0 min-h-0" : "min-h-screen p-6 md:p-10"} bg-background text-foreground`}>
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Balance</h1>
-      </div>
+      {!isSettingsView && (
+        <div className="mb-8">
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Balance</h1>
+        </div>
+      )}
 
       {/* Balance Card */}
-      <div className="max-w-2xl mx-auto mb-8">
+      <div className={`${isSettingsView ? "max-w-4xl" : "max-w-2xl"} mx-auto mb-8`}>
         <div className="bg-card border border-border rounded-2xl p-8 space-y-6">
           {/* Total Balance */}
           <div className="space-y-2">
@@ -62,11 +115,10 @@ export default function BalancePage() {
         <div className="flex items-center gap-1 border-b border-border mb-6">
           <button
             onClick={() => setActiveTab("withdrawals")}
-            className={`relative px-4 py-3 text-sm font-semibold transition-colors ${
-              activeTab === "withdrawals"
-                ? "text-[#d4af37]"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
+            className={`relative px-4 py-3 text-sm font-semibold transition-colors ${activeTab === "withdrawals"
+              ? "text-[#d4af37]"
+              : "text-muted-foreground hover:text-foreground"
+              }`}
           >
             Withdrawals
             {activeTab === "withdrawals" && (
@@ -79,11 +131,10 @@ export default function BalancePage() {
           </button>
           <button
             onClick={() => setActiveTab("deposits")}
-            className={`relative px-4 py-3 text-sm font-semibold transition-colors ${
-              activeTab === "deposits"
-                ? "text-[#d4af37]"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
+            className={`relative px-4 py-3 text-sm font-semibold transition-colors ${activeTab === "deposits"
+              ? "text-[#d4af37]"
+              : "text-muted-foreground hover:text-foreground"
+              }`}
           >
             Deposits
             {activeTab === "deposits" && (
@@ -96,11 +147,10 @@ export default function BalancePage() {
           </button>
           <button
             onClick={() => setActiveTab("deductions")}
-            className={`relative px-4 py-3 text-sm font-semibold transition-colors ${
-              activeTab === "deductions"
-                ? "text-[#d4af37]"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
+            className={`relative px-4 py-3 text-sm font-semibold transition-colors ${activeTab === "deductions"
+              ? "text-[#d4af37]"
+              : "text-muted-foreground hover:text-foreground"
+              }`}
           >
             Deductions
             {activeTab === "deductions" && (
@@ -117,39 +167,44 @@ export default function BalancePage() {
         <div className="bg-card border border-border rounded-t-2xl overflow-x-auto">
           <div className="min-w-[800px]">
             {/* Table Header */}
-            <div className={`grid grid-cols-6 gap-4 px-6 py-4 text-xs font-semibold text-muted-foreground border-b border-border`}>
+            <div className={`grid grid-cols-6 gap-0 px-6 py-4 text-xs font-semibold text-muted-foreground border-b border-border`}>
               {activeTab === "withdrawals" ? (
                 <>
-                  <div>Amount</div>
-                  <div>Status</div>
-                  <div>Sent to</div>
-                  <div>Initiated at</div>
-                  <div>Estimated arrival</div>
-                  <div>Receipt</div>
+                  <div className="px-2">Amount</div>
+                  <div className="px-2">Status</div>
+                  <div className="px-2">Sent to</div>
+                  <div className="px-2">Initiated at</div>
+                  <div className="px-2">Estimated arrival</div>
+                  <div className="px-2">Receipt</div>
                 </>
               ) : (
                 <>
-                  <div className="flex items-center gap-2">Amount</div>
-                  <div className="flex items-center justify-between">
-                    Fee
-                    <GripVertical size={12} className="text-muted-foreground/30" />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    Net amount
-                    <GripVertical size={12} className="text-muted-foreground/30" />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    Status
-                    <GripVertical size={12} className="text-muted-foreground/30" />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    Credit type
-                    <GripVertical size={12} className="text-muted-foreground/30" />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    Release date
-                    <GripVertical size={12} className="text-muted-foreground/30" />
-                  </div>
+                  {depositColumns.map((col, index) => (
+                    <div
+                      key={col.id}
+                      className={`flex items-center justify-between px-2 py-1 rounded-md transition-all duration-200 select-none ${draggedColIndex === index
+                        ? "opacity-40 scale-95"
+                        : ""
+                        } ${dragOverColIndex === index && draggedColIndex !== null && draggedColIndex !== index
+                          ? "bg-[#d4af37]/10 border border-[#d4af37]/30 border-dashed"
+                          : "border border-transparent"
+                        }`}
+                      onDragOver={(e) => handleDragOver(e, index)}
+                      onDragLeave={handleDragLeave}
+                      onDrop={handleDragEnd}
+                    >
+                      <span>{col.label}</span>
+                      <div
+                        draggable
+                        onDragStart={(e) => handleDragStart(e, index)}
+                        onDragEnd={handleDragEnd}
+                        className="cursor-grab active:cursor-grabbing p-1 rounded hover:bg-muted/50 transition-colors"
+                        title="Drag to reorder column"
+                      >
+                        <GripVertical size={12} className="text-muted-foreground/50 hover:text-muted-foreground transition-colors" />
+                      </div>
+                    </div>
+                  ))}
                 </>
               )}
             </div>
@@ -164,7 +219,7 @@ export default function BalancePage() {
                   No {activeTab} yet
                 </h3>
                 <p className="text-sm text-muted-foreground text-center max-w-sm">
-                  {activeTab === "withdrawals" 
+                  {activeTab === "withdrawals"
                     ? "When you withdraw money from your BennyBucks account, it will be displayed here."
                     : `Your ${activeTab} will appear here.`
                   }

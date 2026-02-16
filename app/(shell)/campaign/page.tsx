@@ -2,16 +2,15 @@
 
 import React, { useState } from "react";
 import { Search } from "lucide-react";
-import CampaignCard from "@/components/layout/CampaignCard";
 import CampaignDetailsCard from "@/components/layout/CampaignDetailsCard";
 
-// Sample campaign data - you can replace this with API data
-const campaignData = [
+// Sample campaign details data - discover style + campaign features
+const campaignDetailsData = [
   {
     title: "Crown Coins x Terence Crawford",
     company: "Clipr Clipping",
     categories: ["CLIPPING", "ENTERTAINMENT"],
-    platforms: ["instagram", "tiktok", "youtube"],
+    platforms: ["instagram", "tiktok", "youtube"] as string[],
     paidOut: "$13,359.37",
     totalBudget: "$21,250",
     cp: 63,
@@ -19,13 +18,15 @@ const campaignData = [
     approval: "61%",
     views: "6.5M",
     creators: "1984",
+    submissions: 3,
+    status: "active" as const,
     image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
   },
   {
     title: "Eleven Labs Clipping Campaign - [1]",
     company: "Eleven Labs",
     categories: ["CLIPPING", "LIFESTYLE"],
-    platforms: ["youtube", "tiktok"],
+    platforms: ["youtube", "tiktok"] as string[],
     paidOut: "$8,245.12",
     totalBudget: "$15,000",
     cp: 55,
@@ -33,114 +34,68 @@ const campaignData = [
     approval: "73%",
     views: "4.2M",
     creators: "1234",
+    submissions: 1,
+    status: "active" as const,
     image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
   },
   {
     title: "Mumford & Sons | Album Promo",
     company: "Scene Society",
     categories: ["MUSIC", "ENTERTAINMENT"],
-    platforms: ["instagram", "youtube", "x"],
+    platforms: ["instagram", "youtube", "x"] as string[],
     paidOut: "$18,750.00",
     totalBudget: "$25,000",
     cp: 75,
     cpm: "$2.50",
     approval: "82%",
     views: "8.1M",
-    creators: "567"
+    creators: "567",
+    submissions: 8,
+    status: "active" as const,
+    image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
   },
   {
     title: "Tech Product Launch Campaign",
     company: "TechVision Media",
     categories: ["TECH", "REVIEW"],
-    platforms: ["youtube", "instagram"],
+    platforms: ["youtube", "instagram"] as string[],
     paidOut: "$5,420.00",
     totalBudget: "$12,000",
     cp: 45,
     cpm: "$1.75",
     approval: "68%",
     views: "3.1M",
-    creators: "892"
-  }
-];
-
-// Sample campaign details data for the new card
-const campaignDetailsData = [
-  {
-    title: "Betstrike [GENERAL - ...]",
-    category: "General",
-    earnings: "$0.00",
-    completionPercentage: 0.05,
-    completedAmount: "$0.00",
-    totalAmount: "$2,000.00",
-    submissions: 1,
-    status: "active" as const,
-    gradientFrom: "#8B5CF6",
-    gradientTo: "#6366F1"
-  },
-  {
-    title: "Crypto Trading Platform [PRO]",
-    category: "Finance",
-    earnings: "$125.50",
-    completionPercentage: 12.5,
-    completedAmount: "$250.00",
-    totalAmount: "$2,000.00",
-    submissions: 3,
-    status: "active" as const,
-    gradientFrom: "#10B981",
-    gradientTo: "#059669"
-  },
-  {
-    title: "Gaming Tournament [ESPORTS]",
-    category: "Gaming",
-    earnings: "$450.00",
-    completionPercentage: 45.0,
-    completedAmount: "$900.00",
-    totalAmount: "$2,000.00",
-    submissions: 8,
-    status: "active" as const,
-    gradientFrom: "#F59E0B",
-    gradientTo: "#D97706"
-  },
-  {
-    title: "Fitness Challenge [HEALTH]",
-    category: "Lifestyle",
-    earnings: "$89.99",
-    completionPercentage: 8.9,
-    completedAmount: "$179.98",
-    totalAmount: "$2,000.00",
+    creators: "892",
     submissions: 2,
     status: "active" as const,
-    gradientFrom: "#EC4899",
-    gradientTo: "#DB2777"
+    image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
   },
   {
-    title: "Dubbing AI [GAMING] ...",
-    category: "Gaming",
-    earnings: "$0.00",
-    completionPercentage: 100,
-    completedAmount: "$2,000.00",
-    totalAmount: "$2,000.00",
+    title: "Dubbing AI [GAMING] Campaign",
+    company: "Dubbing AI",
+    categories: ["GAMING", "TECH"],
+    platforms: ["youtube", "tiktok"] as string[],
+    paidOut: "$2,000.00",
+    totalBudget: "$2,000.00",
+    cp: 100,
+    cpm: "$1.50",
+    approval: "90%",
+    views: "1.3M",
+    creators: "456",
     submissions: 5,
     status: "paid_out" as const,
-    gradientFrom: "#06B6D4",
-    gradientTo: "#0891B2"
+    image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
   }
 ];
 
 export default function CampaignPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Filter campaigns based on search query
-  const filteredCampaigns = campaignData.filter(campaign =>
-    campaign.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    campaign.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    campaign.categories.some(cat => cat.toLowerCase().includes(searchQuery.toLowerCase()))
-  );
-
   // Filter campaign details based on search query
   const filteredCampaignDetails = campaignDetailsData.filter(campaign =>
     campaign.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    campaign.category.toLowerCase().includes(searchQuery.toLowerCase())
+    campaign.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    campaign.categories.some(cat => cat.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
   return (
@@ -196,8 +151,6 @@ export default function CampaignPage() {
           </div>
         )}
       </div>
-
-
     </div>
   );
 }
