@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import { Search, Edit, Send, Smile, Image as ImageIcon, Paperclip, MoreVertical } from "lucide-react";
+import { playSound } from "@/lib/sounds";
+
+// ... (rest of imports and interfaces)
 
 interface Message {
   id: string;
@@ -134,6 +137,7 @@ export default function MessagesPage() {
   const handleSendMessage = () => {
     if (messageInput.trim()) {
       // Handle message sending logic here
+      playSound('message'); // Trigger sound for visual/audio feedback
       setMessageInput("");
     }
   };

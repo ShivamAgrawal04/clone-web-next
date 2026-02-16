@@ -1,6 +1,42 @@
-import { Bell, Volume2 } from "lucide-react";
+"use client";
+
+import { Bell, Volume2, Play } from "lucide-react";
+import { useState } from "react";
+import { playSound } from "@/lib/sounds";
 
 export default function NotificationsSettingsPage() {
+    const [popupEnabled, setPopupEnabled] = useState(() => {
+        if (typeof window !== 'undefined') {
+            const saved = localStorage.getItem('popup-notifications-enabled');
+            return saved !== null ? saved === 'true' : true;
+        }
+        return true;
+    });
+
+    const [soundEnabled, setSoundEnabled] = useState(() => {
+        if (typeof window !== 'undefined') {
+            const saved = localStorage.getItem('sound-effects-enabled');
+            return saved !== null ? saved === 'true' : true;
+        }
+        return true;
+    });
+
+    const togglePopup = () => {
+        const newValue = !popupEnabled;
+        setPopupEnabled(newValue);
+        localStorage.setItem('popup-notifications-enabled', String(newValue));
+    };
+
+    const toggleSound = () => {
+        const newValue = !soundEnabled;
+        setSoundEnabled(newValue);
+        localStorage.setItem('sound-effects-enabled', String(newValue));
+    };
+
+    const handleTestSound = (type: 'message' | 'notification') => {
+        playSound(type);
+    };
+
     return (
         <div className="min-h-screen bg-black text-white p-4 md:p-8">
             <div className="max-w-2xl mx-auto">
@@ -21,8 +57,20 @@ export default function NotificationsSettingsPage() {
                                 <p className="text-sm text-zinc-500">Receive pop-up notifications for activity in Whops you&apos;ve joined</p>
                             </div>
                         </div>
-                        <div className="w-12 h-6 bg-blue-600 rounded-full relative cursor-pointer">
-                            <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full" />
+                        <div className="flex items-center gap-4">
+                            <button
+                                onClick={() => handleTestSound('notification')}
+                                className="p-2 bg-zinc-800 hover:bg-zinc-700 rounded-xl text-zinc-400 hover:text-white transition-all"
+                                title="Test notification sound"
+                            >
+                                <Play size={16} fill="currentColor" />
+                            </button>
+                            <div
+                                onClick={togglePopup}
+                                className={`w-12 h-6 rounded-full relative cursor-pointer font-bold transition-all duration-200 ${popupEnabled ? 'bg-blue-600' : 'bg-zinc-800'}`}
+                            >
+                                <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-all duration-200 ${popupEnabled ? 'right-1' : 'left-1'}`} />
+                            </div>
                         </div>
                     </div>
 
@@ -36,8 +84,20 @@ export default function NotificationsSettingsPage() {
                                 <p className="text-sm text-zinc-500">Enhance platform interactions with sound effects.</p>
                             </div>
                         </div>
-                        <div className="w-12 h-6 bg-blue-600 rounded-full relative cursor-pointer">
-                            <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full" />
+                        <div className="flex items-center gap-4">
+                            <button
+                                onClick={() => handleTestSound('message')}
+                                className="p-2 bg-zinc-800 hover:bg-zinc-700 rounded-xl text-zinc-400 hover:text-white transition-all"
+                                title="Test message sound"
+                            >
+                                <Play size={16} fill="currentColor" />
+                            </button>
+                            <div
+                                onClick={toggleSound}
+                                className={`w-12 h-6 rounded-full relative cursor-pointer font-bold transition-all duration-200 ${soundEnabled ? 'bg-blue-600' : 'bg-zinc-800'}`}
+                            >
+                                <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-all duration-200 ${soundEnabled ? 'right-1' : 'left-1'}`} />
+                            </div>
                         </div>
                     </div>
                 </div>

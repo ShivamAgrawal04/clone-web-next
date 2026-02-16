@@ -58,18 +58,20 @@ export default function SidebarSettings() {
             </div>
 
             {/* Menu */}
-            <div className="px-3 space-y-1">
+            <div className="px-2 ml-2 space-y-2">
                 {SETTINGS_MENU.map((item) => {
                     const isActive = pathname === item.href;
                     return (
                         <Link
                             key={item.label}
                             href={item.href}
-                            className={`flex items-center gap-4 rounded-xl px-4 py-3 text-[15px] transition-all duration-200
-                ${isActive
-                                    ? 'bg-zinc-800 text-white font-bold'
-                                    : 'text-zinc-500 hover:text-zinc-300 font-medium'
-                                }`}
+                            className={`
+            flex w-full items-center gap-3 rounded-xl px-4 py-2.5
+            transition-colors duration-200
+            ${isActive
+                                    ? "bg-muted text-foreground"
+                                    : "text-muted-foreground hover:bg-muted hover:text-foreground"}
+          `}
                         >
                             <span className={isActive ? 'text-white' : 'text-zinc-500'}>
                                 {item.icon}
