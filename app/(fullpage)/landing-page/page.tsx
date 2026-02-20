@@ -511,7 +511,7 @@ export default function LandingPage() {
                     </div>
 
                     {/* Section: FAQ */}
-                    <div id="faq" className="scroll-mt-20 mb-10">
+                    {/* <div id="faq" className="scroll-mt-20 mb-10">
                         <h2 className="text-2xl font-extrabold text-white mb-5">FAQ</h2>
                         <div className="space-y-3">
                             {[
@@ -533,7 +533,7 @@ export default function LandingPage() {
                                 </details>
                             ))}
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Author card */}
                     <div className="mt-8 rounded-xl border border-white/10 bg-[#1a1a1a] p-5 flex items-start gap-4">
