@@ -38,7 +38,7 @@ export default function NotificationsSettingsPage() {
     };
 
     return (
-        <div className="min-h-screen bg-black text-white p-4 md:p-8">
+        <div className="min-h-screen bg-black text-text-primary p-4 md:p-8">
             <div className="max-w-2xl mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-center mb-12">
@@ -49,7 +49,7 @@ export default function NotificationsSettingsPage() {
                 <div className="space-y-4">
                     <div className="flex items-center justify-between p-6 bg-zinc-900/40 border border-zinc-800/50 rounded-[28px] hover:bg-zinc-900/60 transition-colors group">
                         <div className="flex items-center gap-5">
-                            <div className="w-12 h-12 rounded-2xl bg-zinc-900 flex items-center justify-center text-zinc-400 group-hover:text-white transition-colors">
+                            <div className="w-12 h-12 rounded-2xl bg-zinc-900 flex items-center justify-center text-zinc-400 group-hover:text-text-primary transition-colors">
                                 <Bell size={22} />
                             </div>
                             <div>
@@ -60,7 +60,7 @@ export default function NotificationsSettingsPage() {
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={() => handleTestSound('notification')}
-                                className="p-2 bg-zinc-800 hover:bg-zinc-700 rounded-xl text-zinc-400 hover:text-white transition-all"
+                                className="p-2 bg-zinc-800 hover:bg-zinc-700 rounded-xl text-zinc-400 hover:text-text-primary transition-all"
                                 title="Test notification sound"
                             >
                                 <Play size={16} fill="currentColor" />
@@ -76,7 +76,7 @@ export default function NotificationsSettingsPage() {
 
                     <div className="flex items-center justify-between p-6 bg-zinc-900/40 border border-zinc-800/50 rounded-[28px] hover:bg-zinc-900/60 transition-colors group">
                         <div className="flex items-center gap-5">
-                            <div className="w-12 h-12 rounded-2xl bg-zinc-900 flex items-center justify-center text-zinc-400 group-hover:text-white transition-colors">
+                            <div className="w-12 h-12 rounded-2xl bg-zinc-900 flex items-center justify-center text-zinc-400 group-hover:text-text-primary transition-colors">
                                 <Volume2 size={22} />
                             </div>
                             <div>
@@ -87,7 +87,7 @@ export default function NotificationsSettingsPage() {
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={() => handleTestSound('message')}
-                                className="p-2 bg-zinc-800 hover:bg-zinc-700 rounded-xl text-zinc-400 hover:text-white transition-all"
+                                className="p-2 bg-zinc-800 hover:bg-zinc-700 rounded-xl text-zinc-400 hover:text-text-primary transition-all"
                                 title="Test message sound"
                             >
                                 <Play size={16} fill="currentColor" />

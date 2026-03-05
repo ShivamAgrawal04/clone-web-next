@@ -105,7 +105,7 @@ export default function About() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="h-16 w-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:scale-110 transition-all group-hover:bg-primary group-hover:text-white"
+                  className="h-16 w-16 rounded-full bg-text-primary/10 backdrop-blur-md flex items-center justify-center hover:scale-110 transition-all group-hover:bg-primary group-hover:text-text-primary"
                 >
                   {isPlaying ? (
                     <Pause size={30} />
@@ -115,7 +115,7 @@ export default function About() {
                 </button>
               </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent flex items-center justify-between text-white/90 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent flex items-center justify-between text-text-primary/90 opacity-0 group-hover:opacity-100 transition-opacity">
                 <span className="text-xs">01:24 / 03:45</span>
                 <div className="flex gap-3">
                   <Volume2 size={18} />
@@ -202,7 +202,7 @@ function FeatureCard({
   return (
     <div className="p-6 rounded-2xl bg-muted/20 hover:bg-muted/40 border border-transparent hover:border-border/50 transition text-center">
       <div
-        className={`h-12 w-12 rounded-xl ${color} text-white flex items-center justify-center mx-auto mb-4`}
+        className={`h-12 w-12 rounded-xl ${color} text-text-primary flex items-center justify-center mx-auto mb-4`}
       >
         {icon}
       </div>

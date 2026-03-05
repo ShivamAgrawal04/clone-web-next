@@ -57,7 +57,7 @@ export function LandingFeatures() {
                             <div className="inline-flex items-center rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-xs font-medium text-zinc-400 uppercase tracking-widest">
                                 {step.tag}
                             </div>
-                            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-white leading-tight">
+                            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-text-primary leading-tight">
                                 {step.title}
                             </h2>
                             <p className="text-zinc-400 text-lg leading-relaxed">

@@ -12,7 +12,7 @@ export function LandingAbout() {
                     <div className="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-400">
                         About Us
                     </div>
-                    <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white leading-tight">
+                    <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-text-primary leading-tight">
                         Empowering <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Creativity</span> & Commerce
                     </h2>
                     <div className="space-y-6 text-zinc-400 text-lg leading-relaxed">
@@ -24,22 +24,22 @@ export function LandingAbout() {
                         </p>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-8 pt-8 border-t border-white/5">
+                    <div className="flex flex-col sm:flex-row gap-8 pt-8 border-t border-page-border">
                         <div className="flex items-center gap-4 group cursor-default">
-                            <div className="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-blue-500 group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300 shadow-xl">
+                            <div className="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-blue-500 group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-text-primary transition-all duration-300 shadow-xl">
                                 <span className="font-bold text-xl">100%</span>
                             </div>
                             <div>
-                                <p className="font-bold text-lg text-white group-hover:text-blue-400 transition-colors">Transparency</p>
+                                <p className="font-bold text-lg text-text-primary group-hover:text-blue-400 transition-colors">Transparency</p>
                                 <p className="text-sm text-zinc-500">No hidden fees, ever.</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-4 group cursor-default">
-                            <div className="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-purple-500 group-hover:scale-110 group-hover:bg-purple-500 group-hover:text-white transition-all duration-300 shadow-xl">
+                            <div className="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-purple-500 group-hover:scale-110 group-hover:bg-purple-500 group-hover:text-text-primary transition-all duration-300 shadow-xl">
                                 <span className="font-bold text-xl">24/7</span>
                             </div>
                             <div>
-                                <p className="font-bold text-lg text-white group-hover:text-purple-400 transition-colors">Support</p>
+                                <p className="font-bold text-lg text-text-primary group-hover:text-purple-400 transition-colors">Support</p>
                                 <p className="text-sm text-zinc-500">We're here to help.</p>
                             </div>
                         </div>
@@ -50,7 +50,7 @@ export function LandingAbout() {
                     {/* 3D-ish Abstract Visual Placeholder */}
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-700 opacity-20 blur-[100px] rounded-full animate-pulse-slow"></div>
 
-                    <div className="relative w-full h-full rounded-[3rem] overflow-hidden border border-white/10 bg-zinc-900/80 backdrop-blur-xl shadow-2xl flex items-center justify-center">
+                    <div className="relative w-full h-full rounded-[3rem] overflow-hidden border border-page-border bg-zinc-900/80 backdrop-blur-xl shadow-2xl flex items-center justify-center">
                         {/* Globe/Network Effect Placeholder */}
                         <div className="absolute inset-0 grid grid-cols-[repeat(20,minmax(0,1fr))] grid-rows-[repeat(20,minmax(0,1fr))] opacity-[0.03]">
                             {Array.from({ length: 400 }).map((_, i) => (
@@ -58,12 +58,12 @@ export function LandingAbout() {
                             ))}
                         </div>
 
-                        <div className="z-10 text-center space-y-6 transform hover:scale-105 transition-transform duration-500 p-8 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-md shadow-2xl skew-y-1">
+                        <div className="z-10 text-center space-y-6 transform hover:scale-105 transition-transform duration-500 p-8 rounded-3xl bg-black/40 border border-page-border backdrop-blur-md shadow-2xl skew-y-1">
                             <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.5)] animate-float">
                                 <span className="text-4xl">🌍</span>
                             </div>
                             <div>
-                                <p className="font-bold text-3xl text-white mb-2">Global Reach</p>
+                                <p className="font-bold text-3xl text-text-primary mb-2">Global Reach</p>
                                 <p className="text-zinc-400 font-medium max-w-[200px] mx-auto">Connecting creators from over 50 countries.</p>
                             </div>
                         </div>

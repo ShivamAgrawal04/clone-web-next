@@ -232,7 +232,7 @@ function EmptyRow({ ended }: { ended: boolean }) {
             Upload your clips to earn rewards.
           </p>
 
-          <button className="inline-flex items-center justify-center rounded-md bg-green-500 px-4 py-2 text-sm font-medium text-white hover:bg-green-600 transition-colors shadow-sm">
+          <button className="inline-flex items-center justify-center rounded-md bg-green-500 px-4 py-2 text-sm font-medium text-text-primary hover:bg-green-600 transition-colors shadow-sm">
             Start submission
           </button>
         </div>

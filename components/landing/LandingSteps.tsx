@@ -41,7 +41,7 @@ export function LandingSteps() {
 
             <div className="container px-4 md:px-6 mx-auto relative z-10">
                 <div className="text-center mb-20 space-y-4">
-                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-white">
+                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-text-primary">
                         How It Works
                     </h2>
                     <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
@@ -61,7 +61,7 @@ export function LandingSteps() {
                                 <div className={`absolute -inset-4 bg-gradient-to-br ${step.color} rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500`}></div>
                                 <div className={`relative w-28 h-28 rounded-3xl bg-zinc-900 border border-zinc-800 shadow-2xl flex items-center justify-center transform group-hover:scale-105 group-hover:-translate-y-2 transition-all duration-300 z-10`}>
                                     <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-10 rounded-3xl`}></div>
-                                    <step.icon className="w-10 h-10 text-white" />
+                                    <step.icon className="w-10 h-10 text-text-primary" />
 
                                     {/* Step Number Badge */}
                                     <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center text-xs font-bold text-zinc-500 shadow-lg">
@@ -71,7 +71,7 @@ export function LandingSteps() {
                             </div>
 
                             <div className="space-y-2 max-w-[260px]">
-                                <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-zinc-400 transition-all duration-300">
+                                <h3 className="text-xl font-bold text-text-primary group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-zinc-400 transition-all duration-300">
                                     {step.title}
                                 </h3>
                                 <p className="text-zinc-400 text-sm leading-relaxed">{step.description}</p>

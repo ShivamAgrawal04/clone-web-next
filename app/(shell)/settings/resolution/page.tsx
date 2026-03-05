@@ -37,7 +37,7 @@ export default function ResolutionCenterPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-black text-white">
+        <div className="min-h-screen bg-black text-text-primary">
             <div className="w-full">
                 {/* Unified Horizontal Scroll Container */}
                 <div className="overflow-x-auto">

@@ -26,46 +26,46 @@ export default function CreatorsPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-[#0f0f0f] text-white selection:bg-[#3b6ff5] selection:text-white">
+        <div className="min-h-screen bg-page-bg text-text-primary selection:bg-blue-600 selection:text-text-primary">
             <BrandHeader />
 
             {/* ── Hero ── */}
             <section className="pt-[180px] pb-24 px-4 sm:px-8 flex flex-col items-center justify-center text-center relative overflow-hidden">
                 {/* Glow Effects */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ccff00]/5 rounded-full blur-[120px] pointer-events-none"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-neon/5 rounded-full blur-[120px] pointer-events-none"></div>
 
                 <div className="relative z-10 w-full max-w-5xl mx-auto">
-                    <div className="inline-block py-1 px-4 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-sm font-bold mb-8 tracking-widest uppercase">
+                    <div className="inline-block py-1 px-4 rounded-full bg-brand-neon/10 border border-brand-neon/30 text-brand-neon text-sm font-bold mb-8 tracking-widest uppercase">
                         Designed for Creators
                     </div>
                     <h1 className="text-5xl md:text-7xl lg:text-[7.5rem] font-extrabold tracking-tight mb-8 leading-[1.05]">
                         Earn a Living<br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] to-[#e5383b]">Doing What You Love.</span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-white/50 leading-relaxed mb-6 font-medium max-w-3xl mx-auto">
+                    <p className="text-xl md:text-2xl text-text-primary/50 leading-relaxed mb-6 font-medium max-w-3xl mx-auto">
                         Whether you are a niche creator, an influencer, or you run an edit page or meme page, you can earn securely and rapidly through BennyBucks.
                     </p>
-                    <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl p-8 max-w-4xl mx-auto mt-12 text-left relative overflow-hidden shadow-2xl">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#e5383b]/10 rounded-full blur-[80px]"></div>
-                        <h3 className="text-[#ccff00] font-bold text-sm tracking-wider uppercase mb-3">Unlimited Earning</h3>
-                        <p className="text-lg md:text-xl font-medium text-white/80 leading-relaxed max-w-3xl relative z-10">
-                            Transform your content into a profitable business by becoming a <span className="text-white font-bold">creator-preneur</span>. Imagine getting paid to do what you love and building a successful online presence at the same time. With our platform, it&apos;s not just a dream — it can be your reality.
+                    <div className="bg-page-surface border border-page-border rounded-2xl p-8 max-w-4xl mx-auto mt-12 text-left relative overflow-hidden shadow-2xl">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red/10 rounded-full blur-[80px]"></div>
+                        <h3 className="text-brand-neon font-bold text-sm tracking-wider uppercase mb-3">Unlimited Earning</h3>
+                        <p className="text-lg md:text-xl font-medium text-text-primary/80 leading-relaxed max-w-3xl relative z-10">
+                            Transform your content into a profitable business by becoming a <span className="text-text-primary font-bold">creator-preneur</span>. Imagine getting paid to do what you love and building a successful online presence at the same time. With our platform, it&apos;s not just a dream — it can be your reality.
                         </p>
                     </div>
                 </div>
             </section>
 
             {/* ── Our Mission Statement ── */}
-            <section className="py-24 bg-[#0a0a0a] border-t border-white/10">
+            <section className="py-24 bg-page-surface-alt border-t border-page-border">
                 <div className="w-full max-w-5xl mx-auto px-4 sm:px-8 text-center">
-                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8 leading-[1.2] text-white/90">
-                        &quot;To turn every passionate creator into a <span className="text-[#ccff00]">creator-preneur</span>, someone who earns, grows, and thrives by doing what they love. We want social influence to be accessible to anyone with creativity and a loyal audience, no matter their background or platform.&quot;
+                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8 leading-[1.2] text-text-primary/90">
+                        &quot;To turn every passionate creator into a <span className="text-brand-neon">creator-preneur</span>, someone who earns, grows, and thrives by doing what they love. We want social influence to be accessible to anyone with creativity and a loyal audience, no matter their background or platform.&quot;
                     </h2>
-                    <div className="w-24 h-1 bg-[#ccff00] mx-auto rounded-full mt-12 mb-8"></div>
+                    <div className="w-24 h-1 bg-brand-neon mx-auto rounded-full mt-12 mb-8"></div>
                 </div>
             </section>
 
             {/* ── 4 Ways to Earn Grid ── */}
-            <section className="py-24 bg-[#0f0f0f] relative">
+            <section className="py-24 bg-page-bg relative">
                 <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-8">
                     <div className="text-center mb-16">
                         <h2 className="text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">4 Ways To Earn <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/30">Through Bennybucks</span></h2>
@@ -73,14 +73,14 @@ export default function CreatorsPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {earningWays.map((way, i) => (
-                            <div key={i} className="bg-[#1a1a1a] border border-white/10 p-8 rounded-[2rem] hover:-translate-y-2 hover:border-[#ccff00]/50 transition-all duration-300 group">
-                                <div className="w-16 h-16 bg-[#0a0a0a] rounded-2xl flex items-center justify-center text-[#e5383b] group-hover:bg-[#ccff00] group-hover:text-black mb-6 transition-colors shadow-lg">
+                            <div key={i} className="bg-page-surface border border-page-border p-8 rounded-[2rem] hover:-translate-y-2 hover:border-brand-neon/50 transition-all duration-300 group">
+                                <div className="w-16 h-16 bg-page-surface-alt rounded-2xl flex items-center justify-center text-brand-red group-hover:bg-brand-neon group-hover:text-black mb-6 transition-colors shadow-lg">
                                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         {way.icon}
                                     </svg>
                                 </div>
                                 <h3 className="text-2xl font-bold mb-4">{way.title}</h3>
-                                <p className="text-white/60 leading-relaxed font-medium">{way.desc}</p>
+                                <p className="text-text-primary/60 leading-relaxed font-medium">{way.desc}</p>
                             </div>
                         ))}
                     </div>
@@ -88,23 +88,23 @@ export default function CreatorsPage() {
             </section>
 
             {/* ── FAQ / Contact CTA ── */}
-            <section className="py-24 bg-[#050505] border-t border-b border-white/10 mt-12 mb-24">
+            <section className="py-24 bg-page-surface-alt border-t border-b border-page-border mt-12 mb-24">
                 <div className="w-full max-w-4xl mx-auto px-4 sm:px-8 text-center flex flex-col items-center">
-                    <div className="w-20 h-20 bg-[#1a1a1a] border border-white/10 rounded-full flex items-center justify-center mb-8 shadow-xl">
+                    <div className="w-20 h-20 bg-page-surface border border-page-border rounded-full flex items-center justify-center mb-8 shadow-xl">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e5383b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                     </div>
                     <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Have Some Doubts?</h2>
-                    <p className="text-xl md:text-2xl text-white/60 mb-8 font-medium max-w-2xl mx-auto">
+                    <p className="text-xl md:text-2xl text-text-primary/60 mb-8 font-medium max-w-2xl mx-auto">
                         Don&apos;t worry! We are here to help. Let us make it simpler for you.
                     </p>
-                    <p className="text-lg text-white/40 mb-12 font-medium max-w-2xl mx-auto">
+                    <p className="text-lg text-text-primary/40 mb-12 font-medium max-w-2xl mx-auto">
                         Check out our FAQ section to find answers to the most common queries, or contact our support team for personalized assistance.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <button className="rounded-full bg-[#ccff00] hover:bg-[#bbe600] text-black text-lg font-bold px-10 py-5 transition-transform hover:scale-105 uppercase tracking-wide">
+                        <button className="rounded-full bg-brand-neon hover:bg-brand-neon-hover text-black text-lg font-bold px-10 py-5 transition-transform hover:scale-105 uppercase tracking-wide">
                             Check FAQ Page
                         </button>
-                        <button className="rounded-full bg-transparent border border-white/20 hover:bg-white/5 text-white flex items-center justify-center gap-2 text-lg font-bold px-10 py-5 transition-colors uppercase tracking-wide">
+                        <button className="rounded-full bg-transparent border border-page-border hover:bg-text-primary/5 text-text-primary flex items-center justify-center gap-2 text-lg font-bold px-10 py-5 transition-colors uppercase tracking-wide">
                             Contact Support
                         </button>
                     </div>

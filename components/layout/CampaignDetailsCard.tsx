@@ -230,7 +230,7 @@ export default function CampaignDetailsCard({ campaign = defaultCampaign }: Camp
                                 setIsModalOpen(true);
                             }}
                             disabled={hasSubmitted}
-                            className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 disabled:from-muted disabled:to-muted disabled:cursor-not-allowed rounded-xl p-3.5 text-base font-bold text-white disabled:text-muted-foreground transition-all duration-300 shadow-lg hover:shadow-xl disabled:shadow-none"
+                            className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 disabled:from-muted disabled:to-muted disabled:cursor-not-allowed rounded-xl p-3.5 text-base font-bold text-text-primary disabled:text-muted-foreground transition-all duration-300 shadow-lg hover:shadow-xl disabled:shadow-none"
                         >
                             {hasSubmitted ? "Submitted" : "Submit"}
                         </button>

@@ -21,7 +21,7 @@ export default function ProfilePage() {
                     <div className="w-full h-32 md:h-48 bg-zinc-900 rounded-2xl relative">
                         <div className="absolute top-4 right-4">
                             <button className="p-2 bg-black/40 hover:bg-black/60 rounded-full transition-colors backdrop-blur-md">
-                                <MoreHorizontal size={20} className="text-white/70" />
+                                <MoreHorizontal size={20} className="text-text-primary/70" />
                             </button>
                         </div>
                     </div>
@@ -112,7 +112,7 @@ export default function ProfilePage() {
                         <div className="text-center space-y-1">
                             <h3 className="font-bold text-lg">No businesses created</h3>
                             <div className="pt-4">
-                                <button className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-bold transition-all shadow-lg shadow-blue-500/20">
+                                <button className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-text-primary rounded-xl text-sm font-bold transition-all shadow-lg shadow-blue-500/20">
                                     Create a business
                                 </button>
                             </div>

@@ -67,11 +67,11 @@ export default function Assets() {
                     "bg-blue-500"
                   }`}>
                     {link.type === "youtube" ? (
-                      <Youtube className="h-6 w-6 text-white" />
+                      <Youtube className="h-6 w-6 text-text-primary" />
                     ) : link.type === "instagram" ? (
-                      <Instagram className="h-6 w-6 text-white" />
+                      <Instagram className="h-6 w-6 text-text-primary" />
                     ) : (
-                      <FolderOpen className="h-6 w-6 text-white" />
+                      <FolderOpen className="h-6 w-6 text-text-primary" />
                     )}
                   </div>
 

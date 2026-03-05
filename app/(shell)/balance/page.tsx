@@ -104,7 +104,7 @@ export default function BalancePage({ isSettingsView = false }: { isSettingsView
           </div>
 
           {/* Verify Identity Button */}
-          <button className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors">
+          <button className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-text-primary font-semibold rounded-lg transition-colors">
             Verify your identity
           </button>
         </div>

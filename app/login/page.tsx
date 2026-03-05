@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 const Logo = () => (
     <div className="flex items-center justify-center mb-6">
-        <svg width="48" height="32" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#e5383b]">
+        <svg width="48" height="32" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-brand-red">
             <path d="M2 2L12 28L24 10L36 28L46 2" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     </div>
@@ -48,7 +48,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen bg-[#050505] flex items-center justify-center p-4 relative overflow-hidden font-sans">
+        <div className="min-h-screen bg-page-surface-alt flex items-center justify-center p-4 relative overflow-hidden font-sans">
             {/* Background Decor */}
             <img
                 src="/login-bg.svg"
@@ -56,12 +56,12 @@ export default function LoginPage() {
                 className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
             />
 
-            <div className="w-full max-w-[420px] bg-[#0f0f0f] border border-white/5 shadow-2xl rounded-[2rem] p-8 md:p-10 relative z-10">
+            <div className="w-full max-w-[420px] bg-page-bg border border-page-border shadow-2xl rounded-[2rem] p-8 md:p-10 relative z-10">
 
                 {step !== "email" && (
                     <button
                         onClick={() => setStep("email")}
-                        className="absolute top-8 left-8 text-white/40 hover:text-white transition-colors"
+                        className="absolute top-8 left-8 text-text-primary/40 hover:text-text-primary transition-colors"
                     >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -72,7 +72,7 @@ export default function LoginPage() {
 
                 <Logo />
 
-                <h1 className="text-2xl font-bold text-center text-white mb-8 tracking-tight">
+                <h1 className="text-2xl font-bold text-center text-text-primary mb-8 tracking-tight">
                     {step === "email" && "Enter your email"}
                     {step === "login" && "Welcome back"}
                     {step === "signup" && "Create your account"}
@@ -83,20 +83,20 @@ export default function LoginPage() {
                     <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
                         <form onSubmit={handleEmailSubmit} className="space-y-4">
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-white/60 pl-1">Email</label>
+                                <label className="text-sm font-medium text-text-primary/60 pl-1">Email</label>
                                 <input
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="johnappleseed@gmail.com"
                                     required
-                                    className="w-full bg-transparent border border-white/20 focus:border-[#ccff00] rounded-xl px-4 py-3 text-white placeholder:text-white/20 outline-none transition-all shadow-inner focus:shadow-[0_0_15px_rgba(204,255,0,0.1)]"
+                                    className="w-full bg-transparent border border-page-border focus:border-brand-neon rounded-xl px-4 py-3 text-text-primary placeholder:text-text-primary/20 outline-none transition-all shadow-inner focus:shadow-[0_0_15px_rgba(204,255,0,0.1)]"
                                 />
                             </div>
                             <button
                                 type="submit"
                                 disabled={isLoading || !email}
-                                className="w-full bg-[#ccff00] hover:bg-[#bbe600] text-black font-bold text-lg rounded-xl py-3 mt-4 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                                className="w-full bg-brand-neon hover:bg-brand-neon-hover text-black font-bold text-lg rounded-xl py-3 mt-4 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                             >
                                 {isLoading ? (
                                     <div className="w-6 h-6 border-2 border-black/20 border-t-black rounded-full animate-spin" />
@@ -105,9 +105,9 @@ export default function LoginPage() {
                         </form>
 
                         <div className="relative flex items-center py-6">
-                            <div className="flex-grow border-t border-white/10"></div>
-                            <span className="flex-shrink-0 mx-4 text-white/30 text-xs font-bold uppercase tracking-wider">OR</span>
-                            <div className="flex-grow border-t border-white/10"></div>
+                            <div className="flex-grow border-t border-page-border"></div>
+                            <span className="flex-shrink-0 mx-4 text-text-primary/30 text-xs font-bold uppercase tracking-wider">OR</span>
+                            <div className="flex-grow border-t border-page-border"></div>
                         </div>
 
                         <button className="w-full bg-white hover:bg-white/90 text-black font-semibold rounded-xl py-3 flex items-center justify-center gap-3 transition-colors">
@@ -126,32 +126,32 @@ export default function LoginPage() {
                 {step === "login" && (
                     <div className="animate-in fade-in slide-in-from-right-4 duration-300">
                         <div className="flex justify-center mb-6">
-                            <div className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm flex items-center gap-2">
-                                <div className="w-2 h-2 rounded-full bg-[#ccff00]"></div>
+                            <div className="px-4 py-2 rounded-full bg-text-primary/5 border border-page-border text-text-primary/80 text-sm flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-brand-neon"></div>
                                 {email}
                             </div>
                         </div>
                         <form onSubmit={handleFinalSubmit} className="space-y-4">
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-white/60 pl-1">Password</label>
+                                <label className="text-sm font-medium text-text-primary/60 pl-1">Password</label>
                                 <input
                                     type="password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Enter your password"
                                     required
-                                    className="w-full bg-transparent border border-white/20 focus:border-[#ccff00] rounded-xl px-4 py-3 text-white placeholder:text-white/20 outline-none transition-all shadow-inner focus:shadow-[0_0_15px_rgba(204,255,0,0.1)]"
+                                    className="w-full bg-transparent border border-page-border focus:border-brand-neon rounded-xl px-4 py-3 text-text-primary placeholder:text-text-primary/20 outline-none transition-all shadow-inner focus:shadow-[0_0_15px_rgba(204,255,0,0.1)]"
                                 />
                             </div>
                             <div className="flex justify-start">
-                                <button type="button" className="text-xs text-[#ccff00] hover:text-[#bbe600] font-medium transition-colors">
+                                <button type="button" className="text-xs text-brand-neon hover:text-[#bbe600] font-medium transition-colors">
                                     Forgot password?
                                 </button>
                             </div>
                             <button
                                 type="submit"
                                 disabled={isLoading || !password}
-                                className="w-full bg-[#ccff00] hover:bg-[#bbe600] text-black font-bold text-lg rounded-xl py-3 mt-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                                className="w-full bg-brand-neon hover:bg-brand-neon-hover text-black font-bold text-lg rounded-xl py-3 mt-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                             >
                                 {isLoading ? (
                                     <div className="w-6 h-6 border-2 border-black/20 border-t-black rounded-full animate-spin" />
@@ -165,38 +165,38 @@ export default function LoginPage() {
                 {step === "signup" && (
                     <div className="animate-in fade-in slide-in-from-right-4 duration-300">
                         <div className="flex justify-center mb-6">
-                            <div className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm flex items-center gap-2">
-                                <div className="w-2 h-2 rounded-full bg-[#e5383b]"></div>
+                            <div className="px-4 py-2 rounded-full bg-text-primary/5 border border-page-border text-text-primary/80 text-sm flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-brand-red"></div>
                                 {email}
                             </div>
                         </div>
                         <form onSubmit={handleFinalSubmit} className="space-y-4">
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-white/60 pl-1">Full Name</label>
+                                <label className="text-sm font-medium text-text-primary/60 pl-1">Full Name</label>
                                 <input
                                     type="text"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     placeholder="John Appleseed"
                                     required
-                                    className="w-full bg-transparent border border-white/20 focus:border-[#ccff00] rounded-xl px-4 py-3 text-white placeholder:text-white/20 outline-none transition-all shadow-inner focus:shadow-[0_0_15px_rgba(204,255,0,0.1)]"
+                                    className="w-full bg-transparent border border-page-border focus:border-brand-neon rounded-xl px-4 py-3 text-text-primary placeholder:text-text-primary/20 outline-none transition-all shadow-inner focus:shadow-[0_0_15px_rgba(204,255,0,0.1)]"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-white/60 pl-1">Choose a Password</label>
+                                <label className="text-sm font-medium text-text-primary/60 pl-1">Choose a Password</label>
                                 <input
                                     type="password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Create a secure password"
                                     required
-                                    className="w-full bg-transparent border border-white/20 focus:border-[#ccff00] rounded-xl px-4 py-3 text-white placeholder:text-white/20 outline-none transition-all shadow-inner focus:shadow-[0_0_15px_rgba(204,255,0,0.1)]"
+                                    className="w-full bg-transparent border border-page-border focus:border-brand-neon rounded-xl px-4 py-3 text-text-primary placeholder:text-text-primary/20 outline-none transition-all shadow-inner focus:shadow-[0_0_15px_rgba(204,255,0,0.1)]"
                                 />
                             </div>
                             <button
                                 type="submit"
                                 disabled={isLoading || !password || !name}
-                                className="w-full bg-[#ccff00] hover:bg-[#bbe600] text-black font-bold text-lg rounded-xl py-3 mt-4 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                                className="w-full bg-brand-neon hover:bg-brand-neon-hover text-black font-bold text-lg rounded-xl py-3 mt-4 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                             >
                                 {isLoading ? (
                                     <div className="w-6 h-6 border-2 border-black/20 border-t-black rounded-full animate-spin" />
@@ -207,9 +207,9 @@ export default function LoginPage() {
                 )}
 
                 <div className="mt-8 text-center">
-                    <p className="text-xs text-white/40 leading-relaxed font-medium">
+                    <p className="text-xs text-text-primary/40 leading-relaxed font-medium">
                         By continuing, you agree to BennyBucks&apos;s <br />
-                        <Link href="#" className="underline hover:text-white transition-colors">Terms of Service</Link> and <Link href="#" className="underline hover:text-white transition-colors">Privacy Policy</Link>.
+                        <Link href="#" className="underline hover:text-text-primary transition-colors">Terms of Service</Link> and <Link href="#" className="underline hover:text-text-primary transition-colors">Privacy Policy</Link>.
                     </p>
                 </div>
             </div>

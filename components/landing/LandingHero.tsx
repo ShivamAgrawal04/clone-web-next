@@ -19,7 +19,7 @@ export function LandingHero() {
                             New: Creator Analytics 2.0
                         </div>
 
-                        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-white">
+                        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-text-primary">
                             The platform for <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">viral campaigns.</span>
                         </h1>
 
@@ -28,12 +28,12 @@ export function LandingHero() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                            <Button size="lg" className="h-14 px-8 text-base bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/20 transition-all hover:scale-105" asChild>
+                            <Button size="lg" className="h-14 px-8 text-base bg-blue-600 hover:bg-blue-500 text-text-primary shadow-lg shadow-blue-600/20 transition-all hover:scale-105" asChild>
                                 <Link href="/campaign/start">
                                     Get Started - It's Free
                                 </Link>
                             </Button>
-                            <Button size="lg" variant="outline" className="h-14 px-8 text-base border-zinc-800 text-zinc-300 hover:bg-zinc-900 hover:text-white transition-all group" asChild>
+                            <Button size="lg" variant="outline" className="h-14 px-8 text-base border-zinc-800 text-zinc-300 hover:bg-zinc-900 hover:text-text-primary transition-all group" asChild>
                                 <Link href="/demo">
                                     <Play className="mr-2 h-4 w-4 fill-current group-hover:text-blue-400 transition-colors" /> View Demo
                                 </Link>
@@ -68,7 +68,7 @@ export function LandingHero() {
                                 <div className="flex justify-between items-center">
                                     <div className="h-8 w-32 bg-zinc-800 rounded animate-pulse"></div>
                                     <div className="h-8 w-8 bg-blue-600 rounded-full flex items-center justify-center">
-                                        <CheckCircle2 className="w-4 h-4 text-white" />
+                                        <CheckCircle2 className="w-4 h-4 text-text-primary" />
                                     </div>
                                 </div>
 
@@ -105,8 +105,8 @@ export function LandingHero() {
 
                             {/* Play Button Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/10 transition-colors cursor-pointer group/play">
-                                <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover/play:scale-110 transition-transform">
-                                    <Play className="w-6 h-6 text-white fill-white ml-1" />
+                                <div className="w-16 h-16 bg-text-primary/10 backdrop-blur-md rounded-full flex items-center justify-center border border-page-border shadow-xl group-hover/play:scale-110 transition-transform">
+                                    <Play className="w-6 h-6 text-text-primary fill-white ml-1" />
                                 </div>
                             </div>
 

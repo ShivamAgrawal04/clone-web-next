@@ -2,7 +2,7 @@ import { Mail, Smartphone, Monitor, CheckCircle2 } from "lucide-react";
 
 export default function SecuritySettingsPage() {
     return (
-        <div className="min-h-screen bg-black text-white p-4 md:p-8">
+        <div className="min-h-screen bg-black text-text-primary p-4 md:p-8">
             <div className="max-w-3xl mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-12">
@@ -50,7 +50,7 @@ export default function SecuritySettingsPage() {
                         <div className="flex items-center justify-between p-5 bg-zinc-900/40 border border-blue-600/50 rounded-2xl ring-1 ring-blue-600/20">
                             <div className="flex items-center gap-4">
                                 <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
-                                    <CheckCircle2 size={12} className="text-white" />
+                                    <CheckCircle2 size={12} className="text-text-primary" />
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-sm">Authenticator App (recommended)</h3>
@@ -71,7 +71,7 @@ export default function SecuritySettingsPage() {
                     </div>
 
                     <div className="flex justify-end">
-                        <button className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-sm font-bold shadow-lg shadow-blue-500/20 transition-all">
+                        <button className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-text-primary rounded-full text-sm font-bold shadow-lg shadow-blue-500/20 transition-all">
                             Enable two-factor authentication
                         </button>
                     </div>

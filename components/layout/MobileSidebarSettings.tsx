@@ -54,11 +54,11 @@ export function MobileSidebarSettings() {
                                 onClick={() => setOpen(false)}
                                 className={`flex items-center gap-4 rounded-xl px-4 py-3 text-[15px] transition-all duration-200
                   ${isActive
-                                        ? 'bg-zinc-800 text-white font-bold'
+                                        ? 'bg-zinc-800 text-text-primary font-bold'
                                         : 'text-zinc-500 hover:text-zinc-300 font-medium'
                                     }`}
                             >
-                                <span className={isActive ? 'text-white' : 'text-zinc-500'}>
+                                <span className={isActive ? 'text-text-primary' : 'text-zinc-500'}>
                                     {item.icon}
                                 </span>
                                 {item.label}

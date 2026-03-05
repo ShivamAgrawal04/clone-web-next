@@ -2,6 +2,8 @@
 
 import BrandHeader from "@/components/BrandHeader";
 import BrandFooter from "@/components/BrandFooter";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function BrandCampaign() {
 
@@ -17,11 +19,11 @@ export default function BrandCampaign() {
   ];
 
   const workItems = [
-    { brand: "Microsoft NYFW", title: "App Preview", image: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=2574&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
-    { brand: "Netflix Puzzled", title: "Game Over", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2564&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
-    { brand: "Klarna", title: "Klarna", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2564&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
-    { brand: "Microsoft Art Basel", title: "Powered", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2564&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" },
-    { brand: "Activision", title: "Activision", image: "https://images.unsplash.com/photo-1621252179027-94459d278660?q=80&w=2564&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" }
+    { brand: "UGC", title: "App Preview", image: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=2574&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
+    { brand: "Clipping", title: "Game Over", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2564&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
+    { brand: "Music", title: "Klarna", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2564&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
+    { brand: "logo", title: "Powered", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2564&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" },
+
   ];
 
   const services = [
@@ -48,13 +50,13 @@ export default function BrandCampaign() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0f0f0f] text-white selection:bg-[#3b6ff5] selection:text-white">
+    <div className="min-h-screen bg-page-bg text-text-primary selection:bg-blue-600 selection:text-text-primary">
       {/* ── Navbar ── */}
       <BrandHeader />
 
       {/* ── Hero ── */}
-      <section className="pt-[110px] pb-12 px-4 sm:px-8 bg-[#0f0f0f] flex flex-col items-center justify-center">
-        <div className="relative w-full mx-auto min-h-[85vh] rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden flex flex-col items-center justify-center border border-white/5 shadow-2xl">
+      <section className="pt-[110px] pb-12 px-4 sm:px-8 bg-page-bg flex flex-col items-center justify-center">
+        <div className="relative w-full mx-auto min-h-[85vh] rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden flex flex-col items-center justify-center border border-page-border shadow-2xl">
           {/* Mesh Gradient Background */}
           <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#A57E6E] via-[#685E65] to-[#233246]">
             {/* Additional glows to make it look like a mesh */}
@@ -65,33 +67,36 @@ export default function BrandCampaign() {
 
           {/* Background super large text */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20 overflow-hidden px-4">
-            <div className="text-[17vw] sm:text-[14vw] lg:text-[11vw] xl:text-[7vw] font-bold leading-[0.8] text-white w-full max-w-[1480px] mx-auto flex flex-col justify-center h-full drop-shadow-lg whitespace-nowrap">
+            <div className="text-[17vw] sm:text-[14vw] lg:text-[11vw] xl:text-[7vw] font-bold leading-[0.8] text-text-primary w-full max-w-[1480px] mx-auto flex flex-col justify-center h-full drop-shadow-lg whitespace-nowrap">
               <div className="text-left md:text-center md:relative md:right-16 lg:right-32 xl:right-48 pr-[5vw] md:pr-0">The</div>
               <div className="text-right md:text-center md:relative lg:right-12 xl:-right-35 pl-[5vw] md:pl-0">Creator</div>
               <div className="text-center md:relative md:left-8 lg:left-12 xl:-left-20">Powered</div>
+              <div className="text-right md:text-center md:relative md:left-12 lg:left-24 xl:left-35 pr-[5vw] md:pr-0">Platform</div>
             </div>
           </div>
 
           {/* Foreground Image */}
-          <div className="relative z-10 mx-auto w-full max-w-[280px] sm:max-w-[320px] aspect-[9.5/16] rounded-[2rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)]  group bg-[#1a1a1a]">
+          <div className="relative z-10 mx-auto w-full max-w-[280px] sm:max-w-[320px] aspect-[9.5/16] rounded-[2rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)]  group bg-page-surface mb-8">
             <img
               src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
               alt="Creator"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute bottom-6 inset-x-0 text-center">
-              <span className="bg-black/40 backdrop-blur-md text-white font-semibold text-xs px-5 py-2.5 rounded-full border border-white/20 shadow-lg">
-                Performance-First Marketing Platform
-              </span>
-            </div>
+          </div>
+
+          <div className="absolute bottom-6 sm:bottom-10 z-30 flex flex-col items-center justify-center w-full">
+            <button className="bg-brand-neon hover:bg-brand-neon-hover text-black font-extrabold text-lg md:text-xl px-10 py-4 md:px-12 md:py-5 rounded-full shadow-[0_0_40px_rgba(204,255,0,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_60px_rgba(204,255,0,0.6)] active:scale-95 flex items-center gap-3">
+              Join as Creator
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </button>
           </div>
         </div>
       </section>
 
       {/* ── Logos ── */}
-      {/* <div className="py-12 border-b border-white/10 bg-[#0f0f0f]">
+      {/* <div className="py-12 border-b border-page-border bg-page-bg">
         <div className="w-full px-4 sm:px-8 flex flex-col lg:flex-row items-center justify-between gap-10">
-          <h2 className="text-xl sm:text-2xl font-bold max-w-sm text-left leading-snug text-white/90">
+          <h2 className="text-xl sm:text-2xl font-bold max-w-sm text-left leading-snug text-text-primary/90">
             The world&apos;s best brands trust Bennybucks for Creator Marketing.
           </h2>
           <div className="flex flex-wrap items-center justify-center lg:justify-end gap-x-10 gap-y-6 flex-1 opacity-60 font-extrabold text-xl sm:text-2xl uppercase tracking-tighter">
@@ -103,20 +108,20 @@ export default function BrandCampaign() {
       </div> */}
 
       {/* ── Stats ── */}
-      {/* <section className="bg-[#0f0f0f]">
+      {/* <section className="bg-page-bg">
         <div className="w-full px-4 sm:px-8 py-24">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-[#1a1a1a] rounded-[2rem] p-12 border border-white/10 hover:border-white/20 transition-colors">
+            <div className="bg-page-surface rounded-[2rem] p-12 border border-page-border hover:border-page-border transition-colors">
               <h3 className="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">50+ Million</h3>
-              <p className="font-semibold text-lg text-white/50 max-w-[200px] leading-snug">Access to 50+ Million Creators Worldwide</p>
+              <p className="font-semibold text-lg text-text-primary/50 max-w-[200px] leading-snug">Access to 50+ Million Creators Worldwide</p>
             </div>
-            <div className="bg-[#1a1a1a] rounded-[2rem] p-12 border border-white/10 hover:border-white/20 transition-colors">
+            <div className="bg-page-surface rounded-[2rem] p-12 border border-page-border hover:border-page-border transition-colors">
               <h3 className="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">14.4+ Billion</h3>
-              <p className="font-semibold text-lg text-white/50 max-w-[200px] leading-snug">Total Aggregated Community Reach</p>
+              <p className="font-semibold text-lg text-text-primary/50 max-w-[200px] leading-snug">Total Aggregated Community Reach</p>
             </div>
-            <div className="bg-[#1a1a1a] rounded-[2rem] p-12 border border-white/10 hover:border-white/20 transition-colors">
+            <div className="bg-page-surface rounded-[2rem] p-12 border border-page-border hover:border-page-border transition-colors">
               <h3 className="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">Partners</h3>
-              <p className="font-semibold text-lg text-white/50 max-w-[200px] leading-snug">with All Major Social Platforms</p>
+              <p className="font-semibold text-lg text-text-primary/50 max-w-[200px] leading-snug">with All Major Social Platforms</p>
             </div>
           </div>
         </div>
@@ -124,10 +129,10 @@ export default function BrandCampaign() {
 
       {/* ── Quote & Feature ── */}
       {/* ── Quote & Feature ── */}
-      <section className="bg-gradient-to-b from-[#0f0f0f] to-[#161616] py-24 border-t border-white/10 flex flex-col items-center">
+      <section className="bg-gradient-to-b from-page-bg to-page-surface py-24 border-t border-page-border flex flex-col items-center">
         <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-8">
           <div className="text-center mb-20 md:mb-28">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-text-primary mb-4">
               “The Best Influencer Marketing Platform”
             </h2>
             <div className="text-4xl md:text-6xl font-black tracking-tighter uppercase">Digiday</div>
@@ -135,7 +140,7 @@ export default function BrandCampaign() {
 
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
             <div className="w-full lg:w-1/2">
-              <div className="w-full aspect-[4/5] sm:aspect-square bg-gradient-to-br from-[#1a1a2e] to-[#16213e] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+              <div className="w-full aspect-[4/5] sm:aspect-square bg-gradient-to-br from-[#1a1a2e] to-[#16213e] rounded-[2rem] overflow-hidden border border-page-border shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
                 <img
                   src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=2574&auto=format&fit=crop"
                   alt="Bennybucks Platform"
@@ -145,53 +150,61 @@ export default function BrandCampaign() {
             </div>
             <div className="w-full lg:w-1/2 text-left mt-8 lg:mt-0 lg:pl-4">
               <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold mb-8 tracking-tight leading-[1.1]">India’s First Open Campaign Access Platform</h2>
-              <p className="text-lg text-white/70 leading-relaxed mb-6 font-medium">
+              <p className="text-lg text-text-primary/70 leading-relaxed mb-6 font-medium">
                 For years, brands in India didn’t have a platform to run UGC, clipping, Music, logo or social content campaigns at scale. BennyBucks changes that.
               </p>
-              <p className="text-lg text-white/70 leading-relaxed mb-10 font-medium">
+              <p className="text-lg text-text-primary/70 leading-relaxed mb-10 font-medium">
                 The biggest challenge used to be verifying content at scale. Our in-house AI model, Whoofy, reviews every piece of content to make sure it matches your campaign requirements. Only content that drives real engagement gets rewarded. This means your marketing budget goes directly to content that actually moves the needle.
               </p>
-              <button className="rounded-full bg-[#ccff00] hover:bg-[#bbe600] text-black text-base font-bold px-10 py-4 transition-transform hover:scale-105 tracking-wide">
-                Learn More
+              <button className="rounded-full bg-brand-neon hover:bg-brand-neon-hover text-black text-base font-bold px-10 py-4 transition-transform hover:scale-105 tracking-wide">
+                <div className="flex items-center gap-2">
+                  Launch Your Campaign <ArrowRight />
+                </div>
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Our Work Carousel ── */}
-      <section className="py-32 bg-[#0f0f0f] border-t border-white/10 overflow-hidden">
-        <div className="w-full px-4 sm:px-8 mb-16">
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tight">Our Work</h2>
+      {/* ── Verticals Carousel ── */}
+      <section className="py-32 bg-page-bg border-t border-page-border overflow-hidden">
+        <div className="w-full px-4 sm:px-8 mb-16 max-w-[1480px] mx-auto">
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-center md:text-left">Verticals</h2>
         </div>
 
-        <div className="flex gap-6 overflow-x-auto px-8 pb-12 pt-4 hide-scrollbar snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          {workItems.map((item, i) => (
-            <div key={i} className="relative flex-shrink-0 w-[280px] sm:w-[340px] aspect-[9/16] rounded-[1.5rem] bg-[#1a1a1a] border border-white/10 overflow-hidden group snap-center cursor-pointer">
-              <video
-                src={item.video}
-                poster={item.image}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-              />
-              <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
-              <div className="absolute bottom-8 inset-x-0 flex justify-center pointer-events-none">
-                <span className="bg-white text-black font-bold text-sm px-6 py-2.5 rounded-full shadow-xl">
-                  {item.brand}
-                </span>
-              </div>
-            </div>
-          ))}
-          {/* spacer for padding at end */}
-          <div className="flex-shrink-0 w-[2px] opacity-0">.</div>
+        <div className="w-full overflow-x-auto hide-scrollbar pb-12 pt-4 snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <div className="flex gap-6 w-max mx-auto px-4 sm:px-8">
+            {workItems.map((item, i) => (
+              <Link
+                href={`/${item.brand.toLowerCase()}`}
+                key={i}
+                className="relative flex-shrink-0 w-[280px] sm:w-[340px] aspect-[9/16] rounded-[1.5rem] bg-page-surface border border-page-border overflow-hidden group snap-center cursor-pointer block"
+              >
+                <video
+                  src={item.video}
+                  poster={item.image}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                />
+                <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+                <div className="absolute bottom-8 inset-x-0 flex justify-center pointer-events-none">
+                  <span className="bg-white text-black font-bold text-sm px-6 py-2.5 rounded-full shadow-xl">
+                    {item.brand}
+                  </span>
+                </div>
+              </Link>
+            ))}
+            {/* spacer for padding at end */}
+            <div className="flex-shrink-0 w-[2px] opacity-0">.</div>
+          </div>
         </div>
       </section>
 
       {/* ── Marquee / Ticker ── */}
-      <section className="  py-4 sm:py-6 overflow-hidden border-t border-b border-white/20 flex items-center">
+      <section className="py-4 sm:py-6 overflow-hidden border-t border-b border-page-border flex items-center">
         <style dangerouslySetInnerHTML={{
           __html: `
             @keyframes marquee-fast {
@@ -200,40 +213,97 @@ export default function BrandCampaign() {
             }
           `
         }} />
-        <div className="flex w-max whitespace-nowrap selection:bg-black selection:text-[#ccff00] text-white" style={{ animation: "marquee-fast 20s linear infinite" }}>
+        <div className="flex w-max whitespace-nowrap selection:bg-black selection:text-brand-neon text-text-primary" style={{ animation: "marquee-fast 20s linear infinite" }}>
           {/* First set of words */}
-          <div className="flex gap-4 sm:gap-8 pr-4 sm:pr-8 text-white font-black text-2xl sm:text-4xl lg:text-5xl uppercase ">
-            <span>BUILT LOUD. BUILT OPEN. BUILT TO WIN.</span> <span className="text-white/30">&bull;</span>
-            <span>BUILT LOUD. BUILT OPEN. BUILT TO WIN.</span> <span className="text-white/30">&bull;</span>
-            <span>BUILT LOUD. BUILT OPEN. BUILT TO WIN.</span> <span className="text-white/30">&bull;</span>
+          <div className="flex gap-4 sm:gap-8 pr-4 sm:pr-8 text-text-primary font-black text-2xl sm:text-4xl lg:text-5xl uppercase ">
+            <span>BUILT LOUD. BUILT OPEN. BUILT TO WIN.</span> <span className="text-text-primary/30">&bull;</span>
+            <span>BUILT LOUD. BUILT OPEN. BUILT TO WIN.</span> <span className="text-text-primary/30">&bull;</span>
+            <span>BUILT LOUD. BUILT OPEN. BUILT TO WIN.</span> <span className="text-text-primary/30">&bull;</span>
           </div>
           {/* Identical duplicate set to seamlessly scroll */}
-          <div className="flex gap-4 sm:gap-8 pr-4 sm:pr-8 text-white font-black text-2xl sm:text-4xl lg:text-5xl uppercase ">
-            <span>BUILT LOUD. BUILT OPEN. BUILT TO WIN.</span> <span className="text-white/30">&bull;</span>
-            <span>BUILT LOUD. BUILT OPEN. BUILT TO WIN.</span> <span className="text-white/30">&bull;</span>
-            <span>BUILT LOUD. BUILT OPEN. BUILT TO WIN.</span> <span className="text-white/30">&bull;</span>
+          <div className="flex gap-4 sm:gap-8 pr-4 sm:pr-8 text-text-primary font-black text-2xl sm:text-4xl lg:text-5xl uppercase ">
+            <span>BUILT LOUD. BUILT OPEN. BUILT TO WIN.</span> <span className="text-text-primary/30">&bull;</span>
+            <span>BUILT LOUD. BUILT OPEN. BUILT TO WIN.</span> <span className="text-text-primary/30">&bull;</span>
+            <span>BUILT LOUD. BUILT OPEN. BUILT TO WIN.</span> <span className="text-text-primary/30">&bull;</span>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* ── Full Service grid ── */}
-      <section className="py-24 bg-[#0f0f0f] relative">
+      < section className="py-24 bg-page-bg relative" >
         <div className="w-full px-4 sm:px-8 max-w-[1480px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((svc, i) => (
-              <div key={i} className="bg-[#1a1a1a] rounded-[2rem] p-10 border border-white/10 hover:border-[#3b6ff5]/50 transition-colors group">
-                <h3 className="text-xl font-bold mb-4 tracking-tight group-hover:text-[#3b6ff5] transition-colors">{svc.title}</h3>
-                <p className="text-white/50 leading-relaxed font-medium">
+              <div key={i} className="bg-page-surface rounded-[2rem] p-10 border border-page-border hover:border-[#3b6ff5]/50 transition-colors group">
+                <h3 className="text-xl font-bold mb-4 tracking-tight group-hover:text-blue-600 transition-colors">{svc.title}</h3>
+                <p className="text-text-primary/50 leading-relaxed font-medium">
                   {svc.desc}
                 </p>
               </div>
             ))}
           </div>
         </div>
+      </section >
+
+
+      <section className="bg-[#EBEFE4] text-black w-full overflow-hidden">
+        <div className="max-w-[1480px] mx-auto px-4 sm:px-8 pt-20 pb-4">
+          {/* Header Text */}
+          <h2 className="text-5xl md:text-[5rem] lg:text-[6.5rem] font-bold text-center tracking-tight mb-20 md:mb-32 mt-12 text-[#111]">
+            Let&apos;s meet up IRL
+          </h2>
+
+          <div className="flex flex-col mb-32 border-t border-black/30">
+            {/* Event 1 */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between py-10 md:py-12 border-b border-black/30 w-full group">
+              <div className="flex flex-col text-lg md:text-xl font-medium tracking-tight text-[#111]">
+                <h3 className="font-extrabold uppercase mb-2 text-xl md:text-2xl tracking-tighter">SOCIAL MEDIA WEEK</h3>
+                <p className="uppercase font-semibold">APRIL 14-16, 2026</p>
+                <p className="font-semibold">New York, NY</p>
+              </div>
+              <div className="mt-8 md:mt-0 flex shrink-0 justify-start md:justify-end">
+                <button className="bg-white text-black font-bold py-3 px-8 rounded-full shadow-md hover:scale-105 transition-transform text-sm md:text-base whitespace-nowrap">
+                  Lets Connect
+                </button>
+              </div>
+            </div>
+
+            {/* Event 2 */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between py-10 md:py-12 border-b border-black/30 w-full group">
+              <div className="flex flex-col text-lg md:text-xl font-medium tracking-tight max-w-sm text-[#111]">
+                <h3 className="font-extrabold uppercase mb-2 text-xl md:text-2xl tracking-tighter">POSSIBLE</h3>
+                <p className="uppercase font-semibold">APRIL 27-29, 2026</p>
+                <p className="font-semibold">Miami, FL</p>
+                <p className="text-sm md:text-base mt-4 leading-snug font-medium pr-4">
+                  Hosted by Bennybucks and <span className="font-bold">Alexis Ohanian (776)</span>, aboard the Bennybucks Yacht, April 27th and 28th of Possible
+                </p>
+              </div>
+
+              {/* Middle Image */}
+              <div className="my-8 md:my-0 flex-1 flex justify-center w-full">
+                <div className="w-full max-w-[280px] md:max-w-[320px] aspect-[4/3] rounded-[2rem] overflow-hidden shrink-0 shadow-xl transition-transform duration-700 group-hover:scale-105">
+                  <img
+                    src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop"
+                    alt="Yacht in Miami"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              <div className="mt-8 md:mt-0 flex shrink-0 justify-start md:justify-end">
+                <button className="bg-white text-black font-bold py-3 px-8 rounded-full shadow-md hover:scale-105 transition-transform text-sm md:text-base whitespace-nowrap">
+                  Lets Connect
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
+
+
       {/* ── Footer / CTA ── */}
-      <BrandFooter />
-    </div>
+      < BrandFooter />
+    </div >
   );
 }

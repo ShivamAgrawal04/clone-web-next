@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight, DollarSign, Send, Users } from "lucide-react";
 
 export function LandingGoals() {
     return (
-        <section className="py-24 bg-gradient-to-br from-zinc-950 to-black text-white relative">
+        <section className="py-24 bg-gradient-to-br from-zinc-950 to-black text-text-primary relative">
             <div className="absolute inset-0 bg-black/60 z-0"></div>
             <div className="container px-4 md:px-6 mx-auto relative z-10">
                 <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-400">
@@ -15,7 +15,7 @@ export function LandingGoals() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
 
                     {/* Brand Card */}
-                    <div className="group relative overflow-hidden rounded-[2rem] border border-white/5 bg-zinc-900 shadow-2xl hover:shadow-[0_0_50px_rgba(59,130,246,0.3)] transition-all duration-300">
+                    <div className="group relative overflow-hidden rounded-[2rem] border border-page-border bg-zinc-900 shadow-2xl hover:shadow-[0_0_50px_rgba(59,130,246,0.3)] transition-all duration-300">
                         {/* Background Image Placeholder */}
                         <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-blue-900/40 via-blue-900/10 to-transparent pointer-events-none" />
                         <div className="absolute -top-32 -left-32 w-64 h-64 bg-blue-500/20 rounded-full blur-[100px] pointer-events-none" />
@@ -24,7 +24,7 @@ export function LandingGoals() {
                                 <div className="inline-flex items-center rounded-lg bg-blue-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-blue-300 border border-blue-500/30">
                                     For Brands
                                 </div>
-                                <h3 className="text-3xl font-bold md:text-4xl text-white">Scale Campaigns</h3>
+                                <h3 className="text-3xl font-bold md:text-4xl text-text-primary">Scale Campaigns</h3>
                                 <p className="text-zinc-400 text-lg max-w-sm leading-relaxed">
                                     Connect with authentic creators who align with your brand values. Scale your reach with verified engagement.
                                 </p>
@@ -59,7 +59,7 @@ export function LandingGoals() {
 
 
                     {/* Creator Card */}
-                    <div className="group relative overflow-hidden rounded-[2rem] border border-white/5 bg-zinc-900 shadow-2xl hover:shadow-[0_0_50px_rgba(168,85,247,0.3)] transition-all duration-300">
+                    <div className="group relative overflow-hidden rounded-[2rem] border border-page-border bg-zinc-900 shadow-2xl hover:shadow-[0_0_50px_rgba(168,85,247,0.3)] transition-all duration-300">
                         <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-purple-900/40 via-purple-900/10 to-transparent pointer-events-none" />
                         <div className="absolute -top-32 -right-32 w-64 h-64 bg-purple-500/20 rounded-full blur-[100px] pointer-events-none" />
 
@@ -68,11 +68,11 @@ export function LandingGoals() {
                                 <div className="inline-flex items-center rounded-lg bg-purple-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-purple-300 border border-purple-500/30">
                                     For Creators
                                 </div>
-                                <h3 className="text-3xl font-bold md:text-4xl text-white">Monetize Content</h3>
+                                <h3 className="text-3xl font-bold md:text-4xl text-text-primary">Monetize Content</h3>
                                 <p className="text-zinc-400 text-lg max-w-sm leading-relaxed">
                                     Monetize your creativity instantly. Get paid for verified views and engagement with transparent pricing.
                                 </p>
-                                <Button size="lg" variant="secondary" className="w-full sm:w-auto bg-black text-white hover:bg-zinc-900 border border-zinc-800 shadow-xl mt-4" asChild>
+                                <Button size="lg" variant="secondary" className="w-full sm:w-auto bg-black text-text-primary hover:bg-zinc-900 border border-zinc-800 shadow-xl mt-4" asChild>
                                     <Link href="/join">Start Earning <ArrowRight className="ml-2 h-4 w-4" /></Link>
                                 </Button>
                             </div>
@@ -85,7 +85,7 @@ export function LandingGoals() {
                                     <div className="flex justify-between items-center mt-2">
                                         <div className="flex flex-col">
                                             <span className="text-xs text-zinc-500">Total Balance</span>
-                                            <span className="text-2xl font-bold text-white">$12,450</span>
+                                            <span className="text-2xl font-bold text-text-primary">$12,450</span>
                                         </div>
                                         <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
                                             <DollarSign className="w-4 h-4" />

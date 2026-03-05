@@ -115,7 +115,7 @@ export default function SubmitContentModal({
           <button
             onClick={handleSubmit}
             disabled={!contentUrl.trim() || isSubmitting}
-            className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 disabled:from-muted disabled:to-muted disabled:cursor-not-allowed text-white rounded-xl font-bold transition-all shadow-lg hover:shadow-xl disabled:shadow-none order-1 sm:order-3"
+            className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 disabled:from-muted disabled:to-muted disabled:cursor-not-allowed text-text-primary rounded-xl font-bold transition-all shadow-lg hover:shadow-xl disabled:shadow-none order-1 sm:order-3"
           >
             {isSubmitting ? "Submitting..." : "Submit"}
           </button>

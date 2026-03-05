@@ -2,7 +2,7 @@
 
 export default function SettingsPage() {
     return (
-        <div className="min-h-screen bg-black text-white p-4 md:p-8">
+        <div className="min-h-screen bg-black text-text-primary p-4 md:p-8">
             <div className="max-w-3xl mx-auto relative">
                 {/* Header Section */}
                 <div className="flex items-center justify-between mb-12">
@@ -21,7 +21,7 @@ export default function SettingsPage() {
                     <div className="absolute -bottom-6 left-8">
                         <div className="w-24 h-24 rounded-full bg-orange-600 border-4 border-black relative overflow-hidden group">
                             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/40 transition-opacity">
-                                <span className="text-[10px] font-bold text-white uppercase tracking-wider">Avatar</span>
+                                <span className="text-[10px] font-bold text-text-primary uppercase tracking-wider">Avatar</span>
                             </div>
                         </div>
                     </div>

@@ -10,8 +10,8 @@ export function LandingFooter() {
             <div className="container px-4 md:px-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 relative z-10">
 
                 <div className="space-y-6">
-                    <Link href="/home" className="flex items-center gap-2 font-bold text-2xl tracking-tight text-white hover:opacity-80 transition-opacity w-fit">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+                    <Link href="/home" className="flex items-center gap-2 font-bold text-2xl tracking-tight text-text-primary hover:opacity-80 transition-opacity w-fit">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-text-primary shadow-[0_0_15px_rgba(37,99,235,0.5)]">
                             <SparklesIcon className="h-5 w-5 fill-current" />
                         </div>
                         Bennybucks
@@ -20,19 +20,19 @@ export function LandingFooter() {
                         The platform empowering creators and brands to build authentic relationships and drive real results.
                     </p>
                     <div className="flex gap-4">
-                        <Link href="#" className="p-2 rounded-full bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all duration-300">
+                        <Link href="#" className="p-2 rounded-full bg-zinc-900 text-zinc-400 hover:text-text-primary hover:bg-zinc-800 transition-all duration-300">
                             <Instagram className="h-5 w-5" />
                             <span className="sr-only">Instagram</span>
                         </Link>
-                        <Link href="#" className="p-2 rounded-full bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all duration-300">
+                        <Link href="#" className="p-2 rounded-full bg-zinc-900 text-zinc-400 hover:text-text-primary hover:bg-zinc-800 transition-all duration-300">
                             <Twitter className="h-5 w-5" />
                             <span className="sr-only">Twitter</span>
                         </Link>
-                        <Link href="#" className="p-2 rounded-full bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all duration-300">
+                        <Link href="#" className="p-2 rounded-full bg-zinc-900 text-zinc-400 hover:text-text-primary hover:bg-zinc-800 transition-all duration-300">
                             <Facebook className="h-5 w-5" />
                             <span className="sr-only">Facebook</span>
                         </Link>
-                        <Link href="#" className="p-2 rounded-full bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all duration-300">
+                        <Link href="#" className="p-2 rounded-full bg-zinc-900 text-zinc-400 hover:text-text-primary hover:bg-zinc-800 transition-all duration-300">
                             <Linkedin className="h-5 w-5" />
                             <span className="sr-only">LinkedIn</span>
                         </Link>

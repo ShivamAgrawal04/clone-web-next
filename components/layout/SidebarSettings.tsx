@@ -52,7 +52,7 @@ export default function SidebarSettings() {
         <aside className="hidden md:block w-70 h-screen sticky top-0 bg-black border-r border-zinc-900 overflow-y-auto transition-all duration-300">
             {/* Header */}
             <div className="px-6 pt-10 pb-6">
-                <h2 className="text-[12px] font-bold text-white/50 uppercase tracking-widest">
+                <h2 className="text-[12px] font-bold text-text-primary/50 uppercase tracking-widest">
                     Account Settings
                 </h2>
             </div>
@@ -73,7 +73,7 @@ export default function SidebarSettings() {
                                     : "text-muted-foreground hover:bg-muted hover:text-foreground"}
           `}
                         >
-                            <span className={isActive ? 'text-white' : 'text-zinc-500'}>
+                            <span className={isActive ? 'text-text-primary' : 'text-zinc-500'}>
                                 {item.icon}
                             </span>
                             {item.label}

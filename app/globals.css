@@ -45,11 +45,21 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   --color-full-page-background: var(--full-page-background);
+  --color-page-bg: var(--page-bg);
+  --color-page-surface: var(--page-surface);
+  --color-page-surface-alt: var(--page-surface-alt);
+  --color-page-border: var(--page-border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-brand-neon: var(--brand-neon);
+  --color-brand-neon-hover: var(--brand-neon-hover);
+  --color-brand-red: var(--brand-red);
 }
 
 :root {
-  --full-page-background: #F9F9F9;
-  --hover:#E0E0E0;
+  --full-page-background: #f9f9f9;
+  --hover: #e0e0e0;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --side-background: #f9f9f9;
@@ -62,7 +72,7 @@
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
-  --muted: #E0E0E0;;
+  --muted: #e0e0e0;
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
@@ -85,12 +95,22 @@
   --sidebar-ring: oklch(0.708 0 0);
   --scrollbar-thumb: rgba(0, 0, 0, 0.25);
   --scrollbar-thumb-hover: rgba(0, 0, 0, 0.45);
+  --page-bg: #f9f9f9;
+  --page-surface: #ffffff;
+  --page-surface-alt: #f0f0f0;
+  --page-border: rgba(0, 0, 0, 0.1);
+  --text-primary: #111111;
+  --text-secondary: rgba(0, 0, 0, 0.7);
+  --text-muted: rgba(0, 0, 0, 0.5);
+  --brand-neon: #9dae00;
+  --brand-neon-hover: #839100;
+  --brand-red: #e5383b;
 }
 
 .dark {
   --full-page-background: #191919;
   --background: oklch(0.145 0 0);
-   --side-background: #000000;
+  --side-background: #000000;
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -121,41 +141,54 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-   --scrollbar-thumb: rgba(255, 255, 255, 0.25);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.25);
   --scrollbar-thumb-hover: rgba(255, 255, 255, 0.45);
+  --page-bg: #0f0f0f;
+  --page-surface: #1a1a1a;
+  --page-surface-alt: #050505;
+  --page-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --brand-neon: #ccff00;
+  --brand-neon-hover: #bbe600;
+  --brand-red: #e5383b;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  
+
   html {
     color-scheme: light;
     transition: color-scheme 0.3s ease;
   }
-  
+
   html.dark {
     color-scheme: dark;
   }
-  
+
   body {
-    @apply  text-foreground;
+    @apply text-foreground;
     font-family: var(--font-inter), system-ui, sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
   }
-  
+
   /* Prevent flash of incorrect theme - hide content briefly */
   html:not(.dark):not(.light) {
     background: oklch(1 0 0);
     color: oklch(0.145 0 0);
   }
-  
+
   html.dark:not(.light) {
     background: oklch(0.145 0 0);
     color: oklch(0.985 0 0);
   }
-  
+
   /* Smooth transitions for theme-related properties only */
   body,
   .bg-background,
@@ -163,10 +196,12 @@
   .bg-muted,
   .border,
   [class*="text-"] {
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease;
   }
 }
-
 
 html,
 body {

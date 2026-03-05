@@ -5,11 +5,11 @@ import { ArrowLeft, Rocket } from "lucide-react";
 
 export function LandingCTA() {
     return (
-        <section className="py-32 bg-gradient-to-br from-blue-700 to-purple-800 text-white relative overflow-hidden">
+        <section className="py-32 bg-gradient-to-br from-blue-700 to-purple-800 text-text-primary relative overflow-hidden">
             {/* Background patterns */}
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-[120px] -mr-32 -mt-32 animate-pulse-slow" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] -ml-32 -mb-32" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-text-primary/10 rounded-full blur-[120px] -mr-32 -mt-32 animate-pulse-slow" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-text-primary/5 rounded-full blur-[100px] -ml-32 -mb-32" />
 
             <div className="container px-4 md:px-6 relative z-10 mx-auto text-center space-y-12">
                 <h2 className="text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl max-w-4xl mx-auto leading-tight drop-shadow-xl">

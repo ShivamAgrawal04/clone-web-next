@@ -32,7 +32,7 @@ export function LandingForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
 
                     <div className="space-y-8">
-                        <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white leading-tight">
+                        <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-text-primary leading-tight">
                             Start Your First Campaign
                         </h2>
                         <p className="text-zinc-400 text-lg leading-relaxed">
@@ -44,7 +44,7 @@ export function LandingForm() {
                                     <Sparkles className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-white text-lg">Curated Creators</h4>
+                                    <h4 className="font-bold text-text-primary text-lg">Curated Creators</h4>
                                     <p className="text-zinc-500 text-sm">We match you with the perfect influencers.</p>
                                 </div>
                             </div>
@@ -53,14 +53,14 @@ export function LandingForm() {
                                     <SendIcon className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-white text-lg">Fast Turnaround</h4>
+                                    <h4 className="font-bold text-text-primary text-lg">Fast Turnaround</h4>
                                     <p className="text-zinc-500 text-sm">Launch your campaign in record time.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="bg-zinc-900/50 backdrop-blur-md border border-white/5 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden group">
+                    <div className="bg-zinc-900/50 backdrop-blur-md border border-page-border rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden group">
                         <div className="absolute -top-32 -right-32 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-blue-500/20 transition-colors duration-500" />
 
                         <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
@@ -76,7 +76,7 @@ export function LandingForm() {
                                         required
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className="h-12 bg-black/50 border-zinc-800 focus:border-blue-500 text-white placeholder:text-zinc-600 rounded-xl"
+                                        className="h-12 bg-black/50 border-zinc-800 focus:border-blue-500 text-text-primary placeholder:text-zinc-600 rounded-xl"
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -91,7 +91,7 @@ export function LandingForm() {
                                         required
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className="h-12 bg-black/50 border-zinc-800 focus:border-blue-500 text-white placeholder:text-zinc-600 rounded-xl"
+                                        className="h-12 bg-black/50 border-zinc-800 focus:border-blue-500 text-text-primary placeholder:text-zinc-600 rounded-xl"
                                     />
                                 </div>
                             </div>
@@ -107,7 +107,7 @@ export function LandingForm() {
                                     required
                                     value={formData.company}
                                     onChange={handleChange}
-                                    className="h-12 bg-black/50 border-zinc-800 focus:border-blue-500 text-white placeholder:text-zinc-600 rounded-xl"
+                                    className="h-12 bg-black/50 border-zinc-800 focus:border-blue-500 text-text-primary placeholder:text-zinc-600 rounded-xl"
                                 />
                             </div>
 
@@ -118,7 +118,7 @@ export function LandingForm() {
                                 <textarea
                                     id="details"
                                     name="details"
-                                    className="flex min-h-[140px] w-full rounded-xl border border-zinc-800 bg-black/50 px-4 py-3 text-base ring-offset-background placeholder:text-zinc-600 focus-visible:outline-none focus:border-blue-500 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-white resize-none"
+                                    className="flex min-h-[140px] w-full rounded-xl border border-zinc-800 bg-black/50 px-4 py-3 text-base ring-offset-background placeholder:text-zinc-600 focus-visible:outline-none focus:border-blue-500 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-text-primary resize-none"
                                     placeholder="Describe what you want to achieve..."
                                     required
                                     value={formData.details}
@@ -126,7 +126,7 @@ export function LandingForm() {
                                 />
                             </div>
 
-                            <Button type="submit" size="lg" className="w-full h-14 text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-lg shadow-blue-500/20 border-0 rounded-xl transition-all hover:scale-[1.02]">
+                            <Button type="submit" size="lg" className="w-full h-14 text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-text-primary shadow-lg shadow-blue-500/20 border-0 rounded-xl transition-all hover:scale-[1.02]">
                                 Submit Request <SendIcon className="ml-2 h-5 w-5" />
                             </Button>
                         </form>

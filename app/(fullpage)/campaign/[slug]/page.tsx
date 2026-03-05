@@ -140,7 +140,7 @@ export default function CliprPage() {
 
               <h2 className="text-lg font-semibold">Clipr Campaigns</h2>
 
-              <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 font-semibold text-white hover:bg-blue-700">
+              <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 font-semibold text-text-primary hover:bg-blue-700">
                 Get Access
               </button>
 

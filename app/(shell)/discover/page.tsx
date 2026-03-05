@@ -115,7 +115,7 @@ export default function DiscoverPage() {
 
 
         {/* CONTENT SLOT */}
-        <div className="mx-auto mb-6 h-12 w-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg">
+        <div className="mx-auto mb-6 h-12 w-12 rounded-2xl bg-orange-500 text-text-primary flex items-center justify-center shadow-lg">
           <SparklesIcon />
         </div>
 

@@ -174,7 +174,7 @@ export default function MessagesPage() {
                 }`}
             >
               Unread {unreadConversations.length > 0 && (
-                <span className="ml-1 text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full">
+                <span className="ml-1 text-xs bg-red-500 text-text-primary px-1.5 py-0.5 rounded-full">
                   {unreadConversations.length}
                 </span>
               )}
@@ -203,7 +203,7 @@ export default function MessagesPage() {
               <p className="text-sm text-muted-foreground mb-6 max-w-xs">
                 You can now direct message anyone on BennyBucks. Give it a try!
               </p>
-              <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-sm font-medium transition-colors">
+              <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-text-primary rounded-full text-sm font-medium transition-colors">
                 Search for a user
               </button>
 
@@ -310,7 +310,7 @@ export default function MessagesPage() {
                       )}
                       <div
                         className={`px-4 py-2 rounded-2xl break-words ${message.sender === "user"
-                          ? "bg-blue-600 text-white rounded-tr-none"
+                          ? "bg-blue-600 text-text-primary rounded-tr-none"
                           : "bg-muted text-foreground rounded-tl-none"
                           }`}
                       >
@@ -352,7 +352,7 @@ export default function MessagesPage() {
                 <button
                   onClick={handleSendMessage}
                   disabled={!messageInput.trim()}
-                  className="p-3 bg-blue-600 hover:bg-blue-700 disabled:bg-muted disabled:cursor-not-allowed rounded-full transition-colors flex-shrink-0 text-white shadow-sm"
+                  className="p-3 bg-blue-600 hover:bg-blue-700 disabled:bg-muted disabled:cursor-not-allowed rounded-full transition-colors flex-shrink-0 text-text-primary shadow-sm"
                 >
                   <Send size={18} />
                 </button>

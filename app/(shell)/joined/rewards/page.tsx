@@ -11,10 +11,10 @@ import {
 
 export default function ContentRewardsBennyBucksExact() {
   return (
-    <div className="w-full min-h-full bg-[#0b0b0b] text-white pb-10">
+    <div className="w-full min-h-full bg-[#0b0b0b] text-text-primary pb-10">
       {/* HEADER */}
-      <div className="h-14 flex items-center gap-3 px-6 border-b border-white/10">
-        <ArrowLeft size={16} className="text-white/60" />
+      <div className="h-14 flex items-center gap-3 px-6 border-b border-page-border">
+        <ArrowLeft size={16} className="text-text-primary/60" />
         <span className="text-sm font-medium">Content Rewards</span>
       </div>
 
@@ -22,10 +22,10 @@ export default function ContentRewardsBennyBucksExact() {
       <div className="px-6 py-6 space-y-6  mx-auto">
         {/* TITLE */}
         <div className="text-center space-y-1">
-          <p className="text-sm text-white/60">
+          <p className="text-sm text-text-primary/60">
             Clip Rayston&apos;s YouTube Videos
           </p>
-          <p className="text-xs text-white/40">
+          <p className="text-xs text-text-primary/40">
             Earn based on performance · Paid per 1K views
           </p>
         </div>
@@ -35,7 +35,7 @@ export default function ContentRewardsBennyBucksExact() {
           <img
           src="https://i.imgur.com/5KJ8QwJ.png"
           alt="banner"
-          className="rounded-2xl h-full object-cover w-full border border-white/10"
+          className="rounded-2xl h-full object-cover w-full border border-page-border"
         />
     </div>
 
@@ -46,16 +46,16 @@ export default function ContentRewardsBennyBucksExact() {
 
         {/* PAID OUT */}
         <div className="space-y-1">
-          <div className="flex justify-between text-xs text-white/60">
+          <div className="flex justify-between text-xs text-text-primary/60">
             <span>PAID OUT</span>
-            <span className="text-white">100%</span>
+            <span className="text-text-primary">100%</span>
           </div>
 
-          <div className="h-2 rounded-full bg-white/10 overflow-hidden">
+          <div className="h-2 rounded-full bg-text-primary/10 overflow-hidden">
             <div className="h-full w-full bg-orange-500" />
           </div>
 
-          <p className="text-xs text-white/50">$950 of $950 paid out</p>
+          <p className="text-xs text-text-primary/50">$950 of $950 paid out</p>
         </div>
 
         {/* 🔥 EARNING HIGHLIGHTS */}
@@ -87,9 +87,9 @@ export default function ContentRewardsBennyBucksExact() {
         </div>
 
         {/* HOW IT WORKS */}
-        <div className="flex gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
+        <div className="flex gap-3 p-4 rounded-xl bg-text-primary/5 border border-page-border">
           <InfoIcon size={16} className="text-blue-400 mt-0.5" />
-          <p className="text-xs text-white/60 leading-relaxed">
+          <p className="text-xs text-text-primary/60 leading-relaxed">
             Create short clips from Rayston&apos;s YouTube videos, post them on
             supported platforms, and earn based on the views your content
             generates.
@@ -111,7 +111,7 @@ export default function ContentRewardsBennyBucksExact() {
 
         {/* ASSETS */}
         <div className="space-y-2">
-          <p className="text-xs font-semibold text-white/60">ASSETS</p>
+          <p className="text-xs font-semibold text-text-primary/60">ASSETS</p>
 
           <Asset
             title="Rayston Heem"
@@ -124,7 +124,7 @@ export default function ContentRewardsBennyBucksExact() {
         </div>
 
         {/* DISCLAIMER */}
-        <p className="text-[11px] text-white/40 leading-relaxed">
+        <p className="text-[11px] text-text-primary/40 leading-relaxed">
           Creators may reject submissions that don&apos;t meet requirements. By
           submitting, you grant full usage rights and agree to the Content Rewards
           Terms.
@@ -132,9 +132,9 @@ export default function ContentRewardsBennyBucksExact() {
 
         {/* FOOTER */}
         <div className="flex items-center justify-between pt-4">
-          <div className="text-sm text-white/60">
+          <div className="text-sm text-text-primary/60">
             Clip Rayston&apos;s YouTube Videos
-            <span className="ml-2 text-white/40">$1.00 / 1K</span>
+            <span className="ml-2 text-text-primary/40">$1.00 / 1K</span>
           </div>
 
           <button className="px-6 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-sm font-semibold">
@@ -158,8 +158,8 @@ function Info({
   blue?: boolean;
 }) {
   return (
-    <div className="px-3 py-2 rounded-lg bg-[#111] border border-white/10">
-      <p className="text-[10px] text-white/40">{title}</p>
+    <div className="px-3 py-2 rounded-lg bg-[#111] border border-page-border">
+      <p className="text-[10px] text-text-primary/40">{title}</p>
       <p className={`text-sm font-semibold ${blue ? "text-blue-400" : ""}`}>
         {value}
       </p>
@@ -177,8 +177,8 @@ function Highlight({
   value: string;
 }) {
   return (
-    <div className="p-4 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10">
-      <div className="flex items-center gap-2 text-white/60 text-xs mb-1">
+    <div className="p-4 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-page-border">
+      <div className="flex items-center gap-2 text-text-primary/60 text-xs mb-1">
         {icon}
         {title}
       </div>
@@ -196,12 +196,12 @@ function Section({
 }) {
   return (
     <div className="space-y-2">
-      <p className="text-xs font-semibold text-white/60">{title}</p>
+      <p className="text-xs font-semibold text-text-primary/60">{title}</p>
       <div className="flex flex-wrap gap-2">
         {children.map((t) => (
           <span
             key={t}
-            className="text-[11px] px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/60"
+            className="text-[11px] px-3 py-1 rounded-full bg-text-primary/5 border border-page-border text-text-primary/60"
           >
             {t}
           </span>
@@ -219,7 +219,7 @@ function Asset({
   subtitle?: string;
 }) {
   return (
-    <div className="flex items-center gap-3 p-3 rounded-lg bg-[#111] border border-white/10">
+    <div className="flex items-center gap-3 p-3 rounded-lg bg-[#111] border border-page-border">
       <div className="h-8 w-8 rounded-full bg-white/20" />
       <div>
         <p className="text-sm">{title}</p>
