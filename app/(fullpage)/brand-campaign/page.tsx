@@ -4,27 +4,35 @@ import BrandHeader from "@/components/BrandHeader";
 import BrandFooter from "@/components/BrandFooter";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+
+const brandLogos = [
+  "Sonos",
+  "Virgin",
+  "Condé Nast",
+  "Chipotle",
+  "Live Nation",
+  "Microsoft",
+  "Alphabet",
+  "American Eagle"
+];
+
+const workItems = [
+  { brand: "UGC", title: "App Preview", image: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=2574&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
+  { brand: "Clipping", title: "Game Over", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2564&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
+  { brand: "Music", title: "Klarna", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2564&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
+  { brand: "logo", title: "Powered", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2564&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" },
+];
 
 export default function BrandCampaign() {
+  const [heroIndex, setHeroIndex] = useState<number | null>(null);
 
-  const brandLogos = [
-    "Sonos",
-    "Virgin",
-    "Condé Nast",
-    "Chipotle",
-    "Live Nation",
-    "Microsoft",
-    "Alphabet",
-    "American Eagle"
-  ];
-
-  const workItems = [
-    { brand: "UGC", title: "App Preview", image: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=2574&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
-    { brand: "Clipping", title: "Game Over", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2564&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
-    { brand: "Music", title: "Klarna", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2564&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
-    { brand: "logo", title: "Powered", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2564&auto=format&fit=crop", video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" },
-
-  ];
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroIndex(Math.floor(Math.random() * workItems.length));
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   const services = [
     {
@@ -57,17 +65,25 @@ export default function BrandCampaign() {
       {/* ── Hero ── */}
       <section className="pt-[110px] pb-12 px-4 sm:px-8 bg-page-bg flex flex-col items-center justify-center">
         <div className="relative w-full mx-auto min-h-[85vh] rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden flex flex-col items-center justify-center border border-page-border shadow-2xl">
-          {/* Mesh Gradient Background */}
-          <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#A57E6E] via-[#685E65] to-[#233246]">
-            {/* Additional glows to make it look like a mesh */}
-            <div className="absolute -top-[20%] -left-[10%] w-[60%] h-[70%] bg-[#B58C7A] rounded-full mix-blend-overlay filter blur-[100px] opacity-70"></div>
-            <div className="absolute -bottom-[20%] -right-[10%] w-[60%] h-[70%] bg-[#1A2536] rounded-full mix-blend-overlay filter blur-[100px] opacity-80"></div>
-            <div className="absolute top-[20%] right-[20%] w-[30%] h-[40%] bg-[#4B434C] rounded-full mix-blend-overlay filter blur-[80px] opacity-50"></div>
+          {/* Background Video with Glassmorphism */}
+          <div className="absolute inset-0 z-0 bg-page-bg overflow-hidden">
+            {heroIndex !== null && (
+              <video
+                src={workItems[heroIndex].video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover opacity-80 scale-110 filter blur-[40px] md:blur-[60px]"
+              />
+            )}
+            <div className="absolute inset-0 bg-black/10 backdrop-blur-3xl mix-blend-overlay"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-black/50"></div>
           </div>
 
           {/* Background super large text */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20 overflow-hidden px-4">
-            <div className="text-[17vw] sm:text-[14vw] lg:text-[11vw] xl:text-[7vw] font-bold leading-[0.8] text-text-primary w-full max-w-[1480px] mx-auto flex flex-col justify-center h-full drop-shadow-lg whitespace-nowrap">
+            <div className="text-[17vw] sm:text-[14vw] lg:text-[11vw] xl:text-[7vw] font-bold leading-[0.8] text-white w-full max-w-[1480px] mx-auto flex flex-col justify-center h-full drop-shadow-lg whitespace-nowrap opacity-90">
               <div className="text-left md:text-center md:relative md:right-16 lg:right-32 xl:right-48 pr-[5vw] md:pr-0">The</div>
               <div className="text-right md:text-center md:relative lg:right-12 xl:-right-35 pl-[5vw] md:pl-0">Creator</div>
               <div className="text-center md:relative md:left-8 lg:left-12 xl:-left-20">Powered</div>
@@ -77,11 +93,15 @@ export default function BrandCampaign() {
 
           {/* Foreground Image */}
           <div className="relative z-10 mx-auto w-full max-w-[280px] sm:max-w-[320px] aspect-[9.5/16] rounded-[2rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)]  group bg-page-surface mb-8">
-            <img
-              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
-              alt="Creator"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
+            {heroIndex !== null ? (
+              <img
+                src={workItems[heroIndex].image}
+                alt={workItems[heroIndex].brand}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            ) : (
+              <div className="w-full h-full bg-page-surface/50 animate-pulse"></div>
+            )}
           </div>
 
           <div className="absolute bottom-6 sm:bottom-10 z-30 flex flex-col items-center justify-center w-full">
