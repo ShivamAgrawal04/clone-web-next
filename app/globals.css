@@ -55,6 +55,7 @@
   --color-brand-neon: var(--brand-neon);
   --color-brand-neon-hover: var(--brand-neon-hover);
   --color-brand-red: var(--brand-red);
+  --color-section-highlight: var(--section-highlight);
 }
 
 :root {
@@ -104,7 +105,8 @@
   --text-muted: rgba(0, 0, 0, 0.5);
   --brand-neon: #9dae00;
   --brand-neon-hover: #839100;
-  --brand-red: #e5383b;
+  --brand-red: #fa4616;
+  --section-highlight: #ebefe4;
 }
 
 .dark {
@@ -152,7 +154,8 @@
   --text-muted: rgba(255, 255, 255, 0.5);
   --brand-neon: #ccff00;
   --brand-neon-hover: #bbe600;
-  --brand-red: #e5383b;
+  --brand-red: #fa4616;
+  --section-highlight: #111410;
 }
 
 @layer base {

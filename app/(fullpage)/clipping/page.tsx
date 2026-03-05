@@ -115,10 +115,10 @@ export default function ClippingPage() {
                     We pioneered this. This is something not a single open platform in India has. Best for Youtubers, Personal Branding, OTT platforms, and Entertainment Marketing.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-                    <button className="rounded-full bg-brand-neon hover:bg-brand-neon-hover text-black text-lg font-bold px-10 py-5 transition-transform hover:scale-105 uppercase tracking-wide">
+                    <button className="rounded-xl bg-[#1754d8] hover:bg-[#1240a6] text-white text-lg font-bold px-10 py-5 transition-transform hover:scale-105 uppercase tracking-wide">
                         Launch Clipping Campaign
                     </button>
-                    <button className="rounded-full bg-transparent border border-page-border hover:bg-text-primary/5 text-text-primary text-lg font-bold px-10 py-5 transition-colors uppercase tracking-wide">
+                    <button className="rounded-full bg-transparent border-2 border-text-primary/30 hover:border-text-primary/60 hover:bg-text-primary/5 text-text-primary text-lg font-bold px-10 py-5 transition-colors uppercase tracking-wide">
                         Learn More
                     </button>
                 </div>
@@ -168,64 +168,69 @@ export default function ClippingPage() {
             </section> */}
 
             {/* ── Case Study / Showcase Section ── */}
-            <section className="bg-[#EBEFE4] text-black w-full overflow-hidden py-24">
+            <section className="bg-section-highlight text-text-primary w-full overflow-hidden py-24">
                 <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16">
 
                     {/* Header: Logo and Title */}
                     <div className="mb-16">
                         <div className="flex flex-wrap items-center gap-4 mb-4">
-                            <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center text-white shrink-0">
+                            <div className="w-12 h-12 bg-text-primary rounded-lg flex items-center justify-center text-page-surface shrink-0">
                                 <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
                                     <path d="M4 6l4 12 6-8 6 8 4-12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </div>
-                            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-[#111]">Clipping Content</h2>
+                            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-text-primary">Clipping Content</h2>
                         </div>
-                        <h3 className="text-xl md:text-2xl font-bold text-[#111]/80">Bennybucks Powers Clipping Content</h3>
+                        <h3 className="text-xl md:text-2xl font-bold text-text-primary/80">Bennybucks Powers Clipping Content</h3>
                     </div>
 
                     {/* Challenge & Solution */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-20 text-[#111]">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-20 text-text-primary">
                         <div>
                             <h4 className="text-2xl font-bold mb-4 tracking-tight">Challenge</h4>
-                            <p className="text-lg leading-relaxed font-medium text-[#111]/80">
+                            <p className="text-lg leading-relaxed font-medium text-text-primary/80">
                                 Brands struggle to produce authentic content at scale. High production costs, agency bottlenecks, and long turnaround times make it difficult to maintain an active social presence that resonates with everyday consumers and drives ad performance.
                             </p>
                         </div>
                         <div>
                             <h4 className="text-2xl font-bold mb-4 tracking-tight">Solution</h4>
-                            <p className="text-lg leading-relaxed font-medium text-[#111]/80">
+                            <p className="text-lg leading-relaxed font-medium text-text-primary/80">
                                 Bennybucks partnered with top brands to spotlight how authentic clipping powers modern marketing. We curated a mix of voices: micro-influencers, product superfans, and everyday consumers, who used their phones to show how your product fuels their daily lives. From raw reviews to aesthetic unboxings, our creators turn ideas into impact.
                             </p>
                         </div>
                     </div>
                 </div>
 
-                {/* White Container for Videos (Full Screen Edge-to-Edge) */}
+                {/* Container for Videos (Full Screen Edge-to-Edge) */}
                 <div className="w-full px-0 sm:px-4">
-                    <div className="bg-white rounded-[2rem] p-4 sm:p-8 md:p-12 lg:py-16 shadow-sm border border-black/5 overflow-hidden w-full">
+                    <div className="bg-page-surface rounded-[2rem] p-4 sm:p-8 md:p-12 lg:py-16 border border-page-border overflow-hidden w-full">
                         <div className="w-full overflow-x-auto hide-scrollbar snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                             <div className="flex gap-4 sm:gap-6 w-max px-4">
                                 {/* Video Cards */}
                                 {[
-                                    "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-                                    "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-                                    "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-                                    "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-                                    "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
-                                ].map((videoUrl, i) => (
-                                    <div key={i} className="relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[9/16] rounded-2xl md:rounded-[1.5rem] overflow-hidden group snap-center cursor-pointer shadow-md bg-gray-100">
+                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", brand: "Clipping Showcase 1" },
+                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", brand: "Clipping Showcase 2" },
+                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4", brand: "Clipping Showcase 3" },
+                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4", brand: "Clipping Showcase 4" },
+                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4", brand: "Clipping Showcase 5" }
+                                ].map((item, i) => (
+                                    <div key={i} className="relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[9/16] rounded-2xl md:rounded-[1.5rem] overflow-hidden group snap-center cursor-pointer shadow-md bg-page-bg">
                                         <video
-                                            src={videoUrl}
+                                            src={item.video}
                                             autoPlay
                                             loop
                                             muted
                                             playsInline
                                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                                         />
-                                        <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                                        <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
                                         <div className="absolute top-4 left-4 right-4 flex justify-between items-center text-white z-10 opacity-0 group-hover:opacity-100 transition-opacity">
                                             <span className="bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold border border-white/20">#BennyPartner</span>
+                                        </div>
+                                        <div className="absolute bottom-8 inset-x-0 flex justify-center pointer-events-none">
+                                            <span className="bg-white text-black font-bold text-sm px-6 py-2.5 rounded-full shadow-xl">
+                                                {item.brand}
+                                            </span>
                                         </div>
                                     </div>
                                 ))}

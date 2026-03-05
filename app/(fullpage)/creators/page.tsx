@@ -101,10 +101,10 @@ export default function CreatorsPage() {
                         Check out our FAQ section to find answers to the most common queries, or contact our support team for personalized assistance.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <button className="rounded-full bg-brand-neon hover:bg-brand-neon-hover text-black text-lg font-bold px-10 py-5 transition-transform hover:scale-105 uppercase tracking-wide">
+                        <button className="rounded-xl bg-[#1754d8] hover:bg-[#1240a6] text-white text-lg font-bold px-10 py-5 transition-transform hover:scale-105 uppercase tracking-wide">
                             Check FAQ Page
                         </button>
-                        <button className="rounded-full bg-transparent border border-page-border hover:bg-text-primary/5 text-text-primary flex items-center justify-center gap-2 text-lg font-bold px-10 py-5 transition-colors uppercase tracking-wide">
+                        <button className="rounded-full bg-transparent border-2 border-text-primary/30 hover:border-text-primary/60 hover:bg-text-primary/5 text-text-primary flex items-center justify-center gap-2 text-lg font-bold px-10 py-5 transition-colors uppercase tracking-wide">
                             Contact Support
                         </button>
                     </div>

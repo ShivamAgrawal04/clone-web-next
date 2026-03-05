@@ -63,8 +63,8 @@ export default function BrandCampaign() {
       <BrandHeader />
 
       {/* ── Hero ── */}
-      <section className="pt-[110px] pb-12 px-4 sm:px-8 bg-page-bg flex flex-col items-center justify-center">
-        <div className="relative w-full mx-auto min-h-[85vh] rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden flex flex-col items-center justify-center border border-page-border shadow-2xl">
+      <section className="pt-[100px] pb-12 px-4 sm:px-8 bg-page-bg flex flex-col items-center justify-center">
+        <div className="relative w-full mx-auto min-h-[80vh] rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden flex flex-col items-center justify-center border border-page-border shadow-2xl">
           {/* Background Video with Glassmorphism */}
           <div className="absolute inset-0 z-0 bg-page-bg overflow-hidden">
             {heroIndex !== null && (
@@ -81,18 +81,8 @@ export default function BrandCampaign() {
             <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-black/50"></div>
           </div>
 
-          {/* Background super large text */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20 overflow-hidden px-4">
-            <div className="text-[17vw] sm:text-[14vw] lg:text-[11vw] xl:text-[7vw] font-bold leading-[0.8] text-white w-full max-w-[1480px] mx-auto flex flex-col justify-center h-full drop-shadow-lg whitespace-nowrap opacity-90">
-              <div className="text-left md:text-center md:relative md:right-16 lg:right-32 xl:right-48 pr-[5vw] md:pr-0">The</div>
-              <div className="text-right md:text-center md:relative lg:right-12 xl:-right-35 pl-[5vw] md:pl-0">Creator</div>
-              <div className="text-center md:relative md:left-8 lg:left-12 xl:-left-20">Powered</div>
-              <div className="text-right md:text-center md:relative md:left-12 lg:left-24 xl:left-35 pr-[5vw] md:pr-0">Platform</div>
-            </div>
-          </div>
-
           {/* Foreground Image */}
-          <div className="relative z-10 mx-auto w-full max-w-[280px] sm:max-w-[320px] aspect-[9.5/16] rounded-[2rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)]  group bg-page-surface mb-8">
+          <div className="relative z-10 mx-auto w-full max-w-[280px] sm:max-w-[320px] md:max-w-[340px] lg:max-w-[380px] aspect-[9.5/16] rounded-[2.5rem] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.8)] group bg-page-surface mb-8">
             {heroIndex !== null ? (
               <img
                 src={workItems[heroIndex].image}
@@ -104,8 +94,18 @@ export default function BrandCampaign() {
             )}
           </div>
 
-          <div className="absolute bottom-6 sm:bottom-10 z-30 flex flex-col items-center justify-center w-full">
-            <button className="bg-brand-neon hover:bg-brand-neon-hover text-black font-extrabold text-lg md:text-xl px-10 py-4 md:px-12 md:py-5 rounded-full shadow-[0_0_40px_rgba(204,255,0,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_60px_rgba(204,255,0,0.6)] active:scale-95 flex items-center gap-3">
+          {/* Foreground super large text (On top of card) */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20 overflow-hidden px-4">
+            <div className="text-[15vw] sm:text-[13vw] md:text-[11vw] lg:text-[8.5vw] xl:text-[6.5vw] 2xl:text-[5.5vw] font-black tracking-tighter leading-[0.9] text-white/90 w-full max-w-[1480px] mx-auto flex flex-col justify-center h-full drop-shadow-[0_10px_30px_rgba(0,0,0,0.6)] whitespace-nowrap mix-blend-overlay">
+              <div className="text-center relative -translate-x-[20px] sm:-translate-x-[40px] md:-translate-x-[60px] lg:-translate-x-[90px] xl:-translate-x-[120px] 2xl:-translate-x-[140px] mb-1">THE</div>
+              <div className="text-center relative translate-x-[20px] sm:translate-x-[40px] md:translate-x-[60px] lg:translate-x-[90px] xl:translate-x-[120px] 2xl:translate-x-[140px] mb-1">CREATOR</div>
+              <div className="text-center relative -translate-x-[20px] sm:-translate-x-[40px] md:-translate-x-[60px] lg:-translate-x-[90px] xl:-translate-x-[120px] 2xl:-translate-x-[140px] mb-1">POWERED</div>
+              <div className="text-center relative translate-x-[20px] sm:translate-x-[40px] md:translate-x-[60px] lg:translate-x-[90px] xl:translate-x-[120px] 2xl:translate-x-[140px]">PLATFORM</div>
+            </div>
+          </div>
+
+          <div className="absolute bottom-10 sm:bottom-10 md:bottom-[38px] z-30 flex flex-col items-center justify-center w-full">
+            <button className="bg-[#1754d8] hover:bg-[#1240a6] text-white font-extrabold text-lg md:text-xl px-10 py-4 md:px-12 md:py-5 rounded-xl shadow-[0_0_40px_rgba(23,84,216,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_60px_rgba(23,84,216,0.6)] active:scale-95 flex items-center gap-3">
               Join as Creator
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
             </button>
@@ -151,24 +151,24 @@ export default function BrandCampaign() {
       {/* ── Quote & Feature ── */}
       <section className="bg-gradient-to-b from-page-bg to-page-surface py-24 border-t border-page-border flex flex-col items-center">
         <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-8">
-          <div className="text-center mb-20 md:mb-28">
+          {/* <div className="text-center mb-20 md:mb-28">
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-text-primary mb-4">
               “The Best Influencer Marketing Platform”
             </h2>
             <div className="text-4xl md:text-6xl font-black tracking-tighter uppercase">Digiday</div>
-          </div>
+          </div> */}
 
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             <div className="w-full lg:w-1/2">
-              <div className="w-full aspect-[4/5] sm:aspect-square bg-gradient-to-br from-[#1a1a2e] to-[#16213e] rounded-[2rem] overflow-hidden border border-page-border shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+              <div className="w-full h-[450px] sm:h-[550px] lg:h-[700px] bg-gradient-to-br from-[#1a1a2e] to-[#16213e] rounded-[2rem] md:rounded-[2rem] overflow-hidden border border-page-border shadow-2xl">
                 <img
                   src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=2574&auto=format&fit=crop"
                   alt="Bennybucks Platform"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
             </div>
-            <div className="w-full lg:w-1/2 text-left mt-8 lg:mt-0 lg:pl-4">
+            <div className="w-full lg:w-1/2 text-left mt-8 lg:mt-0 lg:pl-8">
               <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold mb-8 tracking-tight leading-[1.1]">India’s First Open Campaign Access Platform</h2>
               <p className="text-lg text-text-primary/70 leading-relaxed mb-6 font-medium">
                 For years, brands in India didn’t have a platform to run UGC, clipping, Music, logo or social content campaigns at scale. BennyBucks changes that.
@@ -176,7 +176,7 @@ export default function BrandCampaign() {
               <p className="text-lg text-text-primary/70 leading-relaxed mb-10 font-medium">
                 The biggest challenge used to be verifying content at scale. Our in-house AI model, Whoofy, reviews every piece of content to make sure it matches your campaign requirements. Only content that drives real engagement gets rewarded. This means your marketing budget goes directly to content that actually moves the needle.
               </p>
-              <button className="rounded-full bg-brand-neon hover:bg-brand-neon-hover text-black text-base font-bold px-10 py-4 transition-transform hover:scale-105 tracking-wide">
+              <button className="rounded-xl bg-[#1754d8] hover:bg-[#1240a6] text-white text-base font-bold px-10 py-4 transition-transform hover:scale-105 tracking-wide">
                 <div className="flex items-center gap-2">
                   Launch Your Campaign <ArrowRight />
                 </div>
@@ -266,15 +266,13 @@ export default function BrandCampaign() {
       </section >
 
 
-      <section className="bg-[#EBEFE4] text-black w-full overflow-hidden">
+      {/* <section className="bg-[#EBEFE4] text-black w-full overflow-hidden">
         <div className="max-w-[1480px] mx-auto px-4 sm:px-8 pt-20 pb-4">
-          {/* Header Text */}
           <h2 className="text-5xl md:text-[5rem] lg:text-[6.5rem] font-bold text-center tracking-tight mb-20 md:mb-32 mt-12 text-[#111]">
             Let&apos;s meet up IRL
           </h2>
 
           <div className="flex flex-col mb-32 border-t border-black/30">
-            {/* Event 1 */}
             <div className="flex flex-col md:flex-row md:items-center justify-between py-10 md:py-12 border-b border-black/30 w-full group">
               <div className="flex flex-col text-lg md:text-xl font-medium tracking-tight text-[#111]">
                 <h3 className="font-extrabold uppercase mb-2 text-xl md:text-2xl tracking-tighter">SOCIAL MEDIA WEEK</h3>
@@ -288,7 +286,6 @@ export default function BrandCampaign() {
               </div>
             </div>
 
-            {/* Event 2 */}
             <div className="flex flex-col md:flex-row md:items-center justify-between py-10 md:py-12 border-b border-black/30 w-full group">
               <div className="flex flex-col text-lg md:text-xl font-medium tracking-tight max-w-sm text-[#111]">
                 <h3 className="font-extrabold uppercase mb-2 text-xl md:text-2xl tracking-tighter">POSSIBLE</h3>
@@ -299,7 +296,6 @@ export default function BrandCampaign() {
                 </p>
               </div>
 
-              {/* Middle Image */}
               <div className="my-8 md:my-0 flex-1 flex justify-center w-full">
                 <div className="w-full max-w-[280px] md:max-w-[320px] aspect-[4/3] rounded-[2rem] overflow-hidden shrink-0 shadow-xl transition-transform duration-700 group-hover:scale-105">
                   <img
@@ -318,7 +314,7 @@ export default function BrandCampaign() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
 
 

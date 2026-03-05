@@ -40,7 +40,7 @@ export default function BrandHeader() {
                     <div className="hidden lg:flex items-center gap-8">
                         {/* Verticals Dropdown */}
                         <div className="relative group">
-                            <button className="flex items-center gap-1.5 text-text-primary/60 hover:text-text-primary transition-colors uppercase tracking-wider text-xs border-b-2 border-transparent">
+                            <button className="flex items-center gap-1.5 text-text-primary/60 hover:text-text-primary transition-colors uppercase tracking-wider text-sm font-bold border-b-2 border-transparent">
                                 Verticals
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                             </button>
@@ -55,16 +55,16 @@ export default function BrandHeader() {
                             </div>
                         </div>
 
-                        <Link href="/creators" className="text-text-primary/60 hover:text-text-primary uppercase tracking-wider text-xs transition-colors">Creator</Link>
-                        <Link href="/brand-campaign" className="text-text-primary/60 hover:text-text-primary uppercase tracking-wider text-xs transition-colors">Brands</Link>
+                        <Link href="/creators" className="text-text-primary/60 hover:text-text-primary uppercase tracking-wider text-sm font-bold transition-colors">Creator</Link>
+                        <Link href="/brand-campaign" className="text-text-primary/60 hover:text-text-primary uppercase tracking-wider text-sm font-bold transition-colors">Brands</Link>
                     </div>
 
                     {/* Actions */}
                     <div className="flex items-center gap-3 lg:ml-6">
-                        <button className="hidden md:block rounded-xl bg-transparent border border-page-border hover:bg-text-primary/5 text-text-primary text-xs font-bold px-5 py-2.5 transition-colors uppercase tracking-wider">
+                        <button className="hidden md:block rounded-md bg-text-primary hover:bg-text-primary/90 text-page-surface text-sm font-bold px-5 py-2.5 transition-all shadow-md hover:shadow-lg uppercase tracking-wider border border-transparent">
                             Join as creator
                         </button>
-                        <button className="rounded-xl bg-brand-neon hover:bg-brand-neon-hover text-black text-[10px] sm:text-xs font-bold px-4 sm:px-6 py-2 sm:py-2.5 transition-colors uppercase tracking-wider">
+                        <button className="rounded-md bg-[#1754d8] hover:bg-[#1240a6] text-white text-xs sm:text-sm font-bold px-4 sm:px-6 py-2 sm:py-2.5 transition-colors uppercase tracking-wider">
                             Launch <span className="hidden sm:inline">your campaign</span>
                         </button>
 
@@ -103,7 +103,7 @@ export default function BrandHeader() {
 
                         <div className="h-[1px] bg-text-primary/10 w-full" />
 
-                        <button className="w-full rounded-xl bg-transparent border border-page-border hover:bg-text-primary/5 text-text-primary text-sm font-bold px-5 py-3.5 transition-colors uppercase tracking-wider">
+                        <button className="w-full rounded-xl bg-text-primary hover:bg-text-primary/90 text-page-surface text-sm font-bold px-5 py-3.5 transition-all shadow-md border border-transparent uppercase tracking-wider">
                             Join as creator
                         </button>
                     </div>
