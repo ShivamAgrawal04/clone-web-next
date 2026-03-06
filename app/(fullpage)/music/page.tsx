@@ -211,23 +211,23 @@ export default function MusicPage() {
                                 {/* Video Cards */}
                                 {[
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/cinematic-music-visualizer.mp4",
+                                        video: "https://videos.pexels.com/video-files/4434242/4434242-hd_1080_1920_24fps.mp4",
                                         brand: "Cinematic Music Visualizer"
                                     },
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/beat-sync-music-edit.mp4",
+                                        video: "https://videos.pexels.com/video-files/2795405/2795405-hd_1080_1920_25fps.mp4",
                                         brand: "Beat Sync Music Edit"
                                     },
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/lofi-music-loop.mp4",
+                                        video: "https://videos.pexels.com/video-files/3209828/3209828-sd_640_360_25fps.mp4",
                                         brand: "Lofi Music Loop Video"
                                     },
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/background-music-edit.mp4",
+                                        video: "https://videos.pexels.com/video-files/3188991/3188991-sd_640_360_25fps.mp4",
                                         brand: "Background Music Edit"
                                     },
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/epic-music-promo.mp4",
+                                        video: "https://videos.pexels.com/video-files/853925/853925-sd_640_360_25fps.mp4",
                                         brand: "Epic Music Promo Video"
                                     },
                                 ].map((item, i) => (

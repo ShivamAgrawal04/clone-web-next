@@ -241,23 +241,23 @@ export default function LogoPage() {
                                 {/* Video Cards */}
                                 {[
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/minimal-logo-reveal.mp4",
+                                        video: "https://videos.pexels.com/video-files/3209828/3209828-sd_640_360_25fps.mp4",
                                         brand: "Minimal Logo Reveal"
                                     },
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/3d-logo-animation.mp4",
+                                        video: "https://videos.pexels.com/video-files/4434242/4434242-hd_1080_1920_24fps.mp4",
                                         brand: "3D Logo Animation"
                                     },
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/cinematic-brand-logo-intro.mp4",
+                                        video: "https://videos.pexels.com/video-files/853925/853925-sd_640_360_25fps.mp4",
                                         brand: "Cinematic Brand Logo Intro"
                                     },
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/neon-logo-reveal.mp4",
+                                        video: "https://videos.pexels.com/video-files/2795405/2795405-hd_1080_1920_25fps.mp4",
                                         brand: "Neon Logo Reveal"
                                     },
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/modern-logo-outro.mp4",
+                                        video: "https://videos.pexels.com/video-files/3188991/3188991-sd_640_360_25fps.mp4",
                                         brand: "Modern Logo Outro Animation"
                                     }
                                 ].map((item, i) => (

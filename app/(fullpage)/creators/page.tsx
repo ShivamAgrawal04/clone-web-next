@@ -102,6 +102,118 @@ export default function CreatorsPage() {
                 </div>
             </section>
 
+            {/* Testimonials Section */}
+            <section className="py-16 relative overflow-hidden bg-page-bg border-y border-page-border">
+                {/* Visual Navigation Button */}
+                <div className="absolute right-4 sm:right-12 top-1/2 -translate-y-1/2 z-10 hidden lg:flex items-center justify-center w-12 h-12 rounded-full bg-black text-white hover:scale-110 transition-transform cursor-pointer shadow-[0_0_30px_rgba(0,0,0,0.3)] border border-white/10 group">
+                    <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+                </div>
+
+                <div className="flex gap-8 md:gap-12 overflow-x-auto snap-x snap-mandatory px-6 sm:px-12 pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-full items-center">
+
+                    {/* Slide 1 */}
+                    <div className="flex-none w-[90vw] md:w-[85vw] lg:w-[65vw] snap-center flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                        <div className="w-full md:w-[280px] lg:w-[320px] aspect-[4/5] md:aspect-[9/16] rounded-3xl overflow-hidden relative shadow-xl flex-shrink-0 group">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Arian" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40"></div>
+                            <div className="absolute top-6 left-6 text-white text-sm font-medium space-y-1">
+                                <p className="drop-shadow-md">Zip-Up Short Blouson</p>
+                                <p className="drop-shadow-md opacity-80">Bleached Pants</p>
+                            </div>
+                            <div className="absolute bottom-6 right-6">
+                                <svg className="w-6 h-6 text-white filter drop-shadow-md" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 1.25.29V9.45a6.38 6.38 0 0 0-1.25-.12 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.33 6.37 6.37 0 0 0 4.39-1.78 6.32 6.32 0 0 0 1.95-4.57V8.71a8.21 8.21 0 0 0 3.77 1.57V6.69z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div className="w-full md:w-3/5 lg:w-[500px] text-left">
+                            <p className="text-2xl sm:text-3xl md:text-3xl lg:text-[2.25rem] font-black leading-[1.2] tracking-tight mb-6">
+                                Working with BennyBucks has been amazing. The support and professionalism have been excellent.
+                            </p>
+                            <p className="text-lg md:text-xl font-bold flex flex-col sm:flex-row sm:gap-2">
+                                <span>- Arian Ballate.</span>
+                                <span className="text-text-primary/70">Managed by Ellery</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Slide 2 */}
+                    <div className="flex-none w-[90vw] md:w-[85vw] lg:w-[75vw] snap-center flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:pl-12">
+                        <div className="w-full md:w-[280px] lg:w-[320px] aspect-[4/5] md:aspect-[9/16] rounded-3xl overflow-hidden relative shadow-xl flex-shrink-0 group">
+                            <img src="https://images.unsplash.com/photo-1516100882582-96c3a05fe590?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Calli" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50"></div>
+
+                            <div className="absolute bottom-6 right-6 flex items-center gap-2">
+                                <span className="text-white font-semibold text-xs drop-shadow-md">@calli_nguyen</span>
+                                <svg className="w-6 h-6 text-white filter drop-shadow-md border border-white rounded-full p-1" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 1.25.29V9.45a6.38 6.38 0 0 0-1.25-.12 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.33 6.37 6.37 0 0 0 4.39-1.78 6.32 6.32 0 0 0 1.95-4.57V8.71a8.21 8.21 0 0 0 3.77 1.57V6.69z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div className="w-full md:w-3/5 lg:w-[600px] text-left pr-0 lg:pr-8">
+                            <p className="text-[1.5rem] sm:text-2xl md:text-3xl lg:text-[2.25rem] font-black leading-[1.2] tracking-tight mb-6">
+                                My talent manager is genuinely my answered prayer, as she makes me feel so seen & understood as an AAPI creator in the industry. BennyBucks has changed my life as a creator & I couldn&apos;t be more grateful.
+                            </p>
+                            <p className="text-lg md:text-xl font-bold flex flex-col sm:flex-row sm:gap-2">
+                                <span>- Calli Nguyen,</span>
+                                <span className="text-text-primary/70">Managed by Ellery</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Slide 3 */}
+                    <div className="flex-none w-[90vw] md:w-[85vw] lg:w-[75vw] snap-center flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:pl-12">
+                        <div className="w-full md:w-[280px] lg:w-[320px] aspect-[4/5] md:aspect-[9/16] rounded-3xl overflow-hidden relative shadow-xl flex-shrink-0 group">
+                            <img src="https://images.unsplash.com/photo-1593697972646-2f3488714eb8?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Marcus" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50"></div>
+
+                            <div className="absolute bottom-6 right-6 flex items-center gap-2">
+                                <span className="text-white font-semibold text-xs drop-shadow-md">@marcus_clips</span>
+                                <svg className="w-6 h-6 text-white filter drop-shadow-md border border-white rounded-full p-1" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 1.25.29V9.45a6.38 6.38 0 0 0-1.25-.12 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.33 6.37 6.37 0 0 0 4.39-1.78 6.32 6.32 0 0 0 1.95-4.57V8.71a8.21 8.21 0 0 0 3.77 1.57V6.69z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div className="w-full md:w-3/5 lg:w-[600px] text-left pr-0 lg:pr-8">
+                            <p className="text-[1.5rem] sm:text-2xl md:text-3xl lg:text-[2.25rem] font-black leading-[1.2] tracking-tight mb-6">
+                                Since I started clipping and adding my own flavor through BennyBucks, my income has skyrocketed. It&apos;s the perfect side-hustle that turned into a full-time gig.
+                            </p>
+                            <p className="text-lg md:text-xl font-bold flex flex-col sm:flex-row sm:gap-2">
+                                <span>- Marcus T.,</span>
+                                <span className="text-text-primary/70">Meme Page Admin</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Slide 4 */}
+                    <div className="flex-none w-[90vw] md:w-[85vw] lg:w-[75vw] snap-center flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:pl-12">
+                        <div className="w-full md:w-[280px] lg:w-[320px] aspect-[4/5] md:aspect-[9/16] rounded-3xl overflow-hidden relative shadow-xl flex-shrink-0 group">
+                            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Sarah" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50"></div>
+
+                            <div className="absolute bottom-6 right-6 flex items-center gap-2">
+                                <span className="text-white font-semibold text-xs drop-shadow-md">@sarah_jenkins_music</span>
+                                <svg className="w-6 h-6 text-white filter drop-shadow-md border border-white rounded-full p-1" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 1.25.29V9.45a6.38 6.38 0 0 0-1.25-.12 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.33 6.37 6.37 0 0 0 4.39-1.78 6.32 6.32 0 0 0 1.95-4.57V8.71a8.21 8.21 0 0 0 3.77 1.57V6.69z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div className="w-full md:w-3/5 lg:w-[600px] text-left pr-0 lg:pr-8">
+                            <p className="text-[1.5rem] sm:text-2xl md:text-3xl lg:text-[2.25rem] font-black leading-[1.2] tracking-tight mb-6">
+                                Syncing my short videos with the right music trends on BennyBucks has been incredible. The platform makes it so easy to get paid for what I was already doing.
+                            </p>
+                            <p className="text-lg md:text-xl font-bold flex flex-col sm:flex-row sm:gap-2">
+                                <span>- Sarah Jenkins,</span>
+                                <span className="text-text-primary/70">Content Creator</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Add spacer to allow proper scrolling on the right */}
+                    <div className="flex-none w-[10vw] snap-center"></div>
+                </div>
+            </section>
+
             {/* 3) 4 Ways to Earn */}
             <section className="py-32 px-6 sm:px-12 bg-section-highlight border-y border-page-border overflow-hidden">
                 <div className="max-w-[1600px] mx-auto">
