@@ -210,11 +210,26 @@ export default function MusicPage() {
                             <div className="flex gap-4 sm:gap-6 w-max px-4">
                                 {/* Video Cards */}
                                 {[
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", brand: "Music Showcase 1" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", brand: "Music Showcase 2" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4", brand: "Music Showcase 3" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4", brand: "Music Showcase 4" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4", brand: "Music Showcase 5" }
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/cinematic-music-visualizer.mp4",
+                                        brand: "Cinematic Music Visualizer"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/beat-sync-music-edit.mp4",
+                                        brand: "Beat Sync Music Edit"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/lofi-music-loop.mp4",
+                                        brand: "Lofi Music Loop Video"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/background-music-edit.mp4",
+                                        brand: "Background Music Edit"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/epic-music-promo.mp4",
+                                        brand: "Epic Music Promo Video"
+                                    },
                                 ].map((item, i) => (
                                     <div key={i} className="relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[9/16] rounded-2xl md:rounded-[1.5rem] overflow-hidden group snap-center cursor-pointer shadow-md bg-page-bg">
                                         <video

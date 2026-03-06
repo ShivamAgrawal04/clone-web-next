@@ -208,11 +208,26 @@ export default function ClippingPage() {
                             <div className="flex gap-4 sm:gap-6 w-max px-4">
                                 {/* Video Cards */}
                                 {[
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", brand: "Clipping Showcase 1" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", brand: "Clipping Showcase 2" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4", brand: "Clipping Showcase 3" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4", brand: "Clipping Showcase 4" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4", brand: "Clipping Showcase 5" }
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/podcast-viral-clipping.mp4",
+                                        brand: "Podcast Viral Clip"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/motivational-speech-clipping.mp4",
+                                        brand: "Motivational Speech Clip"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/business-mindset-clipping.mp4",
+                                        brand: "Entrepreneur Mindset Clip"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/educational-knowledge-clipping.mp4",
+                                        brand: "Educational Knowledge Clip"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/trending-social-clipping.mp4",
+                                        brand: "Trending Social Media Clip"
+                                    },
                                 ].map((item, i) => (
                                     <div key={i} className="relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[9/16] rounded-2xl md:rounded-[1.5rem] overflow-hidden group snap-center cursor-pointer shadow-md bg-page-bg">
                                         <video

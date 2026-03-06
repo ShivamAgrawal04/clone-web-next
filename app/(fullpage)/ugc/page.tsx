@@ -205,11 +205,27 @@ export default function UGCPage() {
                             <div className="flex gap-4 sm:gap-6 w-max px-4">
                                 {/* Video Cards */}
                                 {[
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", brand: "UGC Showcase 1" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", brand: "UGC Showcase 2" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4", brand: "UGC Showcase 3" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4", brand: "UGC Showcase 4" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4", brand: "UGC Showcase 5" }
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/ugc-product-review.mp4",
+                                        brand: "UGC Product Review Ad"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/ugc-unboxing-experience.mp4",
+                                        brand: "UGC Unboxing Experience"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/ugc-lifestyle-demo.mp4",
+                                        brand: "UGC Lifestyle Product Demo"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/ugc-customer-testimonial.mp4",
+                                        brand: "UGC Customer Testimonial"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/ugc-problem-solution-ad.mp4",
+                                        brand: "UGC Problem Solution Ad"
+                                    },
+
                                 ].map((item, i) => (
                                     <div key={i} className="relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[9/16] rounded-2xl md:rounded-[1.5rem] overflow-hidden group snap-center cursor-pointer shadow-md bg-page-bg">
                                         <video

@@ -240,11 +240,26 @@ export default function LogoPage() {
                             <div className="flex gap-4 sm:gap-6 w-max px-4">
                                 {/* Video Cards */}
                                 {[
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", brand: "Logo Showcase 1" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", brand: "Logo Showcase 2" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4", brand: "Logo Showcase 3" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4", brand: "Logo Showcase 4" },
-                                    { video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4", brand: "Logo Showcase 5" }
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/minimal-logo-reveal.mp4",
+                                        brand: "Minimal Logo Reveal"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/3d-logo-animation.mp4",
+                                        brand: "3D Logo Animation"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/cinematic-brand-logo-intro.mp4",
+                                        brand: "Cinematic Brand Logo Intro"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/neon-logo-reveal.mp4",
+                                        brand: "Neon Logo Reveal"
+                                    },
+                                    {
+                                        video: "https://samplelib.com/lib/preview/mp4/modern-logo-outro.mp4",
+                                        brand: "Modern Logo Outro Animation"
+                                    }
                                 ].map((item, i) => (
                                     <div key={i} className="relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[9/16] rounded-2xl md:rounded-[1.5rem] overflow-hidden group snap-center cursor-pointer shadow-md bg-page-bg">
                                         <video
