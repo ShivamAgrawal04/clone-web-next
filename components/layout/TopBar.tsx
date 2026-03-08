@@ -6,6 +6,7 @@ import { SearchIcon } from "@/components/SearchIcon";
 import { useTheme } from "@/components/theme-provider";
 import { Moon, SunIcon } from "lucide-react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export function TopBar() {
   const { theme, toggleTheme } = useTheme();
@@ -65,7 +66,7 @@ export function TopBar() {
         </Button>
 
         <Button variant="ghost">API</Button>
-        <Button variant="ghost">Sign in</Button>
+        <Link href="/login">Sign in</Link>
         <Button className="rounded-full">
           Create a business
         </Button>
