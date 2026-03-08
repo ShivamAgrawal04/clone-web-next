@@ -107,7 +107,65 @@ The application is structured using the **Next.js App Router** (`app/` directory
 
 ---
 
-## 5. 🔍 Core Features Deep Dive
+## 5. �️ Application Routing Guide
+
+This application heavily utilizes Next.js Route Groups layout functionalities to serve specific User Interfaces based on the context of the page.
+
+### 🏠 Global Layout Entry
+
+- `/` -> Redirects immediately to `/home`. Managed by `app/page.tsx`.
+
+### 🗂️ Route Group: `(shell)`
+
+The `(shell)` route group wraps its interior routes in the main application shell containing the sidebar on desktop, and the bottom navigation bar on mobile. These are the primary authenticated dashboard interfaces.
+
+| Route            | Description                                                                                        |
+| ---------------- | -------------------------------------------------------------------------------------------------- |
+| `/home`          | The main dashboard landing page. An overview of the creator’s current status.                      |
+| `/discover`      | A marketplace/hub where creators can discover new brand campaigns to join, with filtering options. |
+| `/campaign`      | Details related to discovering specific campaigns (often dynamic or overview interfaces).          |
+| `/profile`       | User profile management, displaying personal creator stats, past earnings, and portfolio items.    |
+| `/settings`      | General account settings, preferences, and security options.                                       |
+| `/messages`      | In-app messaging interface for creators and brands to communicate.                                 |
+| `/notifications` | Activity feed, alerts on payouts, campaign status changes, and new verifications.                  |
+| `/accounts`      | Global view of linked social accounts (Instagram, TikTok, YouTube, etc.).                          |
+| `/balance`       | Financial hub tracking cumulative earnings and available payout balances.                          |
+
+#### 📂 Nested Route Group: `(shell)/joined`
+
+A sequestered sub-layout inside `(shell)` for users who have actively joined a specific campaign. It replaces the main sidebar with a context-aware "Campaign Navigation Sidebar" (`SidebarJoined.tsx`).
+
+| Sub-Route                | Description                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------------- |
+| `/joined/about`          | Brief summary and core requirements of the specific campaign.                               |
+| `/joined/requirements`   | Detailed timeline, content requirements, and specific deliverables needed from the creator. |
+| `/joined/assets`         | File hub where creators download brand assets, mood boards, or shared drive links.          |
+| `/joined/my-submissions` | Where creators submit their drafts, videos, or posts for brand review natively.             |
+| `/joined/rewards`        | Tracks the specific financial payout and CPMs for the active campaign using progress bars.  |
+| `/joined/accounts`       | Campaign-specific multi-step social verification flow (deep-scan simulation UI).            |
+
+### 🖼️ Route Group: `(fullpage)`
+
+The `(fullpage)` route group hides standard app navigation (no sidebar or bottom nav) to render immersive, full-page experiences such as marketing pages or dedicated flows.
+
+| Route             | Description                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------- |
+| `/landing-page`   | The primary public-facing landing page of the platform.                                     |
+| `/creators`       | Public marketing/informational page targeting creators ("Leading Home for Creator Talent"). |
+| `/brand-campaign` | Public or isolated view for a specific brand campaign showcase.                             |
+| `/campaign`       | A full-page variant for campaign overviews depending on the campaign type.                  |
+| `/clipping`       | An isolated full-page tool/flow related to clipping content or streams.                     |
+| `/logo`           | Contains promotional or branding video flows highlighting platform partners.                |
+| `/music`          | A specialized marketing or showcase page focusing on music campaigns.                       |
+| `/ugc`            | Specialized flow/showcase focusing on User-Generated Content specific layouts.              |
+
+### 🔐 Authentication Entry
+
+- `/login` | Entry flow handling Email, OTP, and multi-step onboarding (Name, DOB, Profile Picture, Password).
+
+---
+
+## 6. �🔍 Core Features Deep Dive
 
 ### A. The "Joined Campaign" Experience (`/joined`)
 
@@ -133,7 +191,7 @@ _Developer Note for Handover: This system currently simulates the API logic on t
 
 ---
 
-## 6. 🎨 Styling and UI Considerations
+## 7. 🎨 Styling and UI Considerations
 
 - **Global Theming**: Integrated via `next-themes` and `ThemeProvider` in `app/layout.tsx`. Supports light, dark, and system modes natively.
 - **Glassmorphism**: Leverages heavy `backdrop-blur`, semi-transparent `bg-background/80`, and discrete `border` utilities from Tailwind.
@@ -141,7 +199,7 @@ _Developer Note for Handover: This system currently simulates the API logic on t
 
 ---
 
-## 7. 🚀 Deployment Guide
+## 8. 🚀 Deployment Guide
 
 This project is natively optimized for **Vercel**, but can be deployed to any Node.js compatible hosting environment.
 
@@ -161,7 +219,7 @@ Run `npm run build` and follow the Next.js custom server setup if utilizing a co
 
 ---
 
-## 8. 📝 Roadmap & Known Tasks for Incoming Devs
+## 9. 📝 Roadmap & Known Tasks for Incoming Devs
 
 If you are picking up this project, address the following immediate areas:
 
