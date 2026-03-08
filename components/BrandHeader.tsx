@@ -61,9 +61,9 @@ export default function BrandHeader() {
 
                     {/* Actions */}
                     <div className="flex items-center gap-3 lg:ml-6">
-                        <button className="hidden md:block rounded-md bg-text-primary hover:bg-text-primary/90 text-page-surface text-sm font-bold px-5 py-2.5 transition-all shadow-md hover:shadow-lg uppercase tracking-wider border border-transparent">
+                        <Link href="/login" className="hidden md:block rounded-md bg-text-primary hover:bg-text-primary/90 text-page-surface text-sm font-bold px-5 py-2.5 transition-all shadow-md hover:shadow-lg uppercase tracking-wider border border-transparent">
                             Join as creator
-                        </button>
+                        </Link>
                         <button className="rounded-md bg-[#1754d8] hover:bg-[#1240a6] text-white text-xs sm:text-sm font-bold px-4 sm:px-6 py-2 sm:py-2.5 transition-colors uppercase tracking-wider">
                             Launch <span className="hidden sm:inline">your campaign</span>
                         </button>
@@ -103,9 +103,9 @@ export default function BrandHeader() {
 
                         <div className="h-[1px] bg-text-primary/10 w-full" />
 
-                        <button className="w-full rounded-xl bg-text-primary hover:bg-text-primary/90 text-page-surface text-sm font-bold px-5 py-3.5 transition-all shadow-md border border-transparent uppercase tracking-wider">
+                        <Link href="/login" className="w-full rounded-xl bg-text-primary hover:bg-text-primary/90 text-page-surface text-sm font-bold px-5 py-3.5 transition-all shadow-md border border-transparent uppercase tracking-wider">
                             Join as creator
-                        </button>
+                        </Link>
                     </div>
                 )}
             </div>

@@ -206,26 +206,25 @@ export default function UGCPage() {
                                 {/* Video Cards */}
                                 {[
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/ugc-product-review.mp4",
+                                        video: "https://videos.pexels.com/video-files/6538392/6538392-sd_640_360_25fps.mp4",
                                         brand: "UGC Product Review Ad"
                                     },
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/ugc-unboxing-experience.mp4",
+                                        video: "https://videos.pexels.com/video-files/15392661/15392661-sd_640_360_24fps.mp4",
                                         brand: "UGC Unboxing Experience"
                                     },
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/ugc-lifestyle-demo.mp4",
+                                        video: "https://videos.pexels.com/video-files/2759477/2759477-sd_640_360_30fps.mp4",
                                         brand: "UGC Lifestyle Product Demo"
                                     },
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/ugc-customer-testimonial.mp4",
+                                        video: "https://videos.pexels.com/video-files/3129595/3129595-sd_640_360_30fps.mp4",
                                         brand: "UGC Customer Testimonial"
                                     },
                                     {
-                                        video: "https://samplelib.com/lib/preview/mp4/ugc-problem-solution-ad.mp4",
+                                        video: "https://videos.pexels.com/video-files/853923/853923-sd_640_360_25fps.mp4",
                                         brand: "UGC Problem Solution Ad"
                                     },
-
                                 ].map((item, i) => (
                                     <div key={i} className="relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[9/16] rounded-2xl md:rounded-[1.5rem] overflow-hidden group snap-center cursor-pointer shadow-md bg-page-bg">
                                         <video

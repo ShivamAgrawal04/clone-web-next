@@ -105,10 +105,10 @@ export default function BrandCampaign() {
           </div>
 
           <div className="absolute bottom-10 sm:bottom-10 md:bottom-[38px] z-30 flex flex-col items-center justify-center w-full">
-            <button className="bg-[#1754d8] hover:bg-[#1240a6] text-white font-extrabold text-lg md:text-xl px-10 py-4 md:px-12 md:py-5 rounded-xl shadow-[0_0_40px_rgba(23,84,216,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_60px_rgba(23,84,216,0.6)] active:scale-95 flex items-center gap-3">
+            <Link href="/login" className="bg-[#1754d8] hover:bg-[#1240a6] text-white font-extrabold text-lg md:text-xl px-10 py-4 md:px-12 md:py-5 rounded-xl shadow-[0_0_40px_rgba(23,84,216,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_60px_rgba(23,84,216,0.6)] active:scale-95 flex items-center gap-3">
               Join as Creator
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-            </button>
+            </Link>
           </div>
         </div>
       </section>
