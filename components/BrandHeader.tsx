@@ -17,6 +17,12 @@ export default function BrandHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const navButtonClass =
+    "flex items-center gap-1.5 text-text-brand-header hover:text-text-primary transition-colors capitalize tracking-wider text-[1rem] font-medium border-b-2 border-transparent leading-6 hover:bg-text-brand-header-hover px-4 py-3 rounded-md";
+
+  const dropdownButtonClass =
+    "block px-4 py-3 text-[1rem] text-text-brand-header hover:text-text-primary rounded-md transition-colors capitalize tracking-wider leading-6 hover:bg-text-brand-header-hover";
+
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-page-surface-alt backdrop-blur-md border-b border-page-border">
       <div className="h-[3px] bg-page-surface">
@@ -25,7 +31,7 @@ export default function BrandHeader() {
           style={{ width: `${progress}%` }}
         />
       </div>
-      <div className="w-full flex items-center justify-between px-4 sm:px-8 py-4">
+      <div className="w-full flex items-center justify-between px-4 sm:px-8 py-2">
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-3">
             <svg width="34" height="34" viewBox="0 0 28 28" fill="none">
@@ -48,7 +54,7 @@ export default function BrandHeader() {
           <div className="hidden lg:flex items-center ">
             {/* Verticals Dropdown */}
             <div className="relative group">
-              <button className="flex items-center gap-1.5 text-text-brand-header hover:text-text-primary transition-colors Capitalize tracking-wider text-[1rem] font-medium border-b-2 border-transparent leading-6 hover:bg-text-brand-header-hover px-4 py-3 rounded-md">
+              <button className={navButtonClass}>
                 Verticals
                 <svg
                   width="12"
@@ -67,43 +73,25 @@ export default function BrandHeader() {
               <div className="absolute top-full left-0 w-full h-4"></div>
 
               <div className="absolute top-[calc(100%+8px)] -left-4 w-48 bg-page-surface border border-page-border rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl z-50 p-2 flex flex-col gap-1">
-                <Link
-                  href="/ugc"
-                  className="px-3 py-2 text-[0.9rem] text-text-primary/60 hover:text-text-primary  rounded-lg transition-colors Capitalize tracking-wider leading-6 hover:bg-text-brand-header-hover"
-                >
+                <Link href="/ugc" className={dropdownButtonClass}>
                   UGC
                 </Link>
-                <Link
-                  href="/clipping"
-                  className="px-3 py-2 text-[0.9rem] text-text-primary/60 hover:text-text-primary hover:bg-text-brand-header-hover rounded-lg transition-colors Capitalize tracking-wider leading-6"
-                >
+                <Link href="/clipping" className={dropdownButtonClass}>
                   Clipping
                 </Link>
-                <Link
-                  href="/music"
-                  className="px-3 py-2 text-[0.9rem] text-text-primary/60 hover:text-text-primary hover:bg-text-brand-header-hover rounded-lg transition-colors Capitalize tracking-wider leading-6"
-                >
+                <Link href="/music" className={dropdownButtonClass}>
                   Music
                 </Link>
-                <Link
-                  href="/logo"
-                  className="px-3 py-2 text-[0.9rem] text-text-primary/60 hover:text-text-primary hover:bg-text-brand-header-hover rounded-lg transition-colors Capitalize tracking-wider leading-6"
-                >
+                <Link href="/logo" className={dropdownButtonClass}>
                   Logo
                 </Link>
               </div>
             </div>
 
-            <Link
-              href="/creators"
-              className="text-text-brand-header hover:text-text-primary Capitalize tracking-wider text-[1rem] font-medium transition-colors leading-6 hover:bg-[#ffffff12] px-4 py-3 rounded-md"
-            >
+            <Link href="/creators" className={navButtonClass}>
               Creator
             </Link>
-            <Link
-              href="/brand-campaign"
-              className="text-text-brand-header hover:text-text-primary Capitalize tracking-wider text-[1rem] font-medium transition-colors leading-6 hover:bg-[#ffffff12] px-4 py-3 rounded-md"
-            >
+            <Link href="/brand-campaign" className={navButtonClass}>
               Brands
             </Link>
           </div>
@@ -112,13 +100,21 @@ export default function BrandHeader() {
           <div className="flex items-center gap-3 lg:ml-6">
             <Link
               href="/login"
-              className="hidden md:block rounded-md bg-text-primary hover:bg-text-primary/90 text-page-surface text-[1rem] font-medium px-5 py-2.5 transition-all shadow-md hover:shadow-lg Capitalize tracking-wider border border-transparent leading-6"
+              className="hidden md:block rounded-md bg-text-primary hover:bg-text-primary/90 text-page-surface text-[1rem] font-medium px-5 py-2 transition-all shadow-md hover:shadow-lg Capitalize tracking-wider border border-transparent leading-6"
             >
               Join As Creator
             </Link>
-            <button className="rounded-md bg-[#1754d8] hover:bg-[#1240a6] text-white text-[1rem] font-medium px-4 sm:px-6 py-2 sm:py-2.5 transition-colors Capitalize tracking-wider leading-6">
+
+            <Link
+              href="/login"
+              className="hidden md:block rounded-md  bg-[#1754d8] hover:bg-[#1240a6] text-[1rem] font-medium px-4 py-2 transition-all shadow-md hover:shadow-lg Capitalize tracking-wider border border-transparent leading-6"
+            >
+              Launch Your Campaign
+            </Link>
+
+            {/* <button className="rounded-md bg-[#1754d8] hover:bg-[#1240a6] text-white text-[1rem] font-medium px-4 sm:px-6 py-2.5 transition-colors Capitalize tracking-wider leading-6">
               Launch <span className="hidden sm:inline">Your Campaign</span>
-            </button>
+            </button> */}
 
             {/* Mobile Menu Toggle */}
             <button

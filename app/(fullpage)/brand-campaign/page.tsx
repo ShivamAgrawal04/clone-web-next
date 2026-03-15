@@ -130,10 +130,10 @@ export default function BrandCampaign() {
           creators produce authentic content that drives real engagement.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-          <button className="rounded-xl bg-[#1754d8] hover:bg-[#1240a6] text-white text-[1.3rem] font-medium px-10 py-5 transition-transform hover:scale-105  tracking-wide">
+          <button className="rounded-xl bg-[#1754d8] hover:bg-[#1240a6] text-white text-[1.3rem] font-medium px-6 py-4 transition-transform hover:scale-105  tracking-wide">
             Join As Creator
           </button>
-          <button className="rounded-full bg-transparent border-2 border-text-primary/30 hover:border-text-primary/60 hover:bg-text-primary/5 text-text-primary flex items-center justify-center gap-3 text-[1.3rem] font-medium px-10 py-5 transition-colors  tracking-wide">
+          <button className="rounded-full bg-transparent border-2 border-text-primary/30 hover:border-text-primary/60 hover:bg-text-primary/5 text-text-primary flex items-center justify-center gap-3 text-[1.3rem] font-medium px-6 py-4 transition-colors  tracking-wide">
             Launch Your Campaign
           </button>
         </div>
@@ -224,7 +224,7 @@ export default function BrandCampaign() {
       {/* ── Quote & Feature ── */}
       {/* ── Quote & Feature ── */}
       <section className="bg-gradient-to-b from-page-bg to-page-surface py-24 border-t border-page-border flex flex-col items-center">
-        <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-8">
+        <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-8">
           {/* <div className="text-center mb-20 md:mb-28">
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-text-primary mb-4">
               “The Best Influencer Marketing Platform”
@@ -242,15 +242,17 @@ export default function BrandCampaign() {
                 />
               </div>
             </div>
-            <div className="w-full lg:w-1/2 text-left mt-8 lg:mt-0 lg:pl-8">
+            <div className="w-full lg:w-1/2 text-left mt-8 lg:mt-0">
               <h2
-                className={`${acidGroteskFont.className} text-4xl sm:text-5xl lg:text-[3rem] font-medium mb-8 -tracking-[.055625em] leading-[1.1]
+                className={`${acidGroteskFont.className} text-4xl sm:text-5xl lg:text-[4.3rem] font-medium mb-8 -tracking-[.055625em] leading-[1.1]
                 
                  
                 `}
               >
                 India’s Most <span className="text-[#dbf505]">Intelligent</span>{" "}
-                Creator Marketing Platform
+                <br />
+                Creator Marketing <br />
+                Platform
               </h2>
               <p className="text-lg text-text-primary/70 leading-relaxed mb-6 font-medium">
                 BennyBucks is reinventing how brands work with creators. Launch
@@ -262,7 +264,7 @@ export default function BrandCampaign() {
                 ensuring every rupee you spend drives authentic reach,
                 measurable engagement, and real results.
               </p>
-              <button className="rounded-xl bg-[#dbf505] hover:bg-[#E6FA3A] text-black text-[1.3rem] font-medium px-10 py-4 transition-transform hover:scale-105 tracking-wide">
+              <button className="rounded-xl bg-[#dbf505] hover:bg-[#E6FA3A] text-black text-[1.3rem] font-medium px-6 py-4 transition-transform hover:scale-105 tracking-wide">
                 <div className="flex items-center gap-2">
                   Launch Your Campaign
                 </div>
@@ -274,9 +276,14 @@ export default function BrandCampaign() {
 
       {/* ── Verticals Carousel ── */}
       <section className="py-32 bg-page-bg border-t border-page-border overflow-hidden">
-        <div className="w-full px-4 sm:px-8 mb-16 max-w-[1480px] mx-auto">
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-center md:text-left">
-            Verticals
+        <div className="w-full px-4 sm:px-8 mb-4 max-w-[1480px] mx-auto">
+          <h2
+            className={`${acidGroteskFont.className}  text-center md:text-left
+            text-4xl sm:text-5xl lg:text-[3rem] font-medium mb-8 -tracking-[.055625em] leading-[1.1]
+            
+            `}
+          >
+            Powering the incredible across four verticals
           </h2>
         </div>
 

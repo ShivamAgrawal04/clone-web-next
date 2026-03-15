@@ -52,6 +52,8 @@
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
+  --color-text-brand-header: var(--text-brand-header);
+  --color-text-brand-header-hover: var(--text-brand-header-hover);
   --color-brand-neon: var(--brand-neon);
   --color-brand-neon-hover: var(--brand-neon-hover);
   --color-brand-red: var(--brand-red);
