@@ -107,6 +107,8 @@
   --brand-neon-hover: #839100;
   --brand-red: #fa4616;
   --section-highlight: #ebefe4;
+  --text-brand-header: #eeeeee;
+  --text-brand-header-hover: #ffffff12;
 }
 
 .dark {
@@ -147,7 +149,7 @@
   --scrollbar-thumb-hover: rgba(255, 255, 255, 0.45);
   --page-bg: #0f0f0f;
   --page-surface: #1a1a1a;
-  --page-surface-alt: #050505;
+  --page-surface-alt: #1c1c1c;
   --page-border: rgba(255, 255, 255, 0.1);
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.7);
@@ -156,6 +158,8 @@
   --brand-neon-hover: #bbe600;
   --brand-red: #fa4616;
   --section-highlight: #111410;
+  --text-brand-header: #eeeeee;
+  --text-brand-header-hover: #ffffff12;
 }
 
 @layer base {
@@ -213,6 +217,7 @@ body {
 
 /* ===== Custom Minimal Scrollbar ===== */
 @media (min-width: 640px) {
+
   /* Firefox */
   * {
     scrollbar-width: thin;
@@ -243,6 +248,7 @@ body {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
