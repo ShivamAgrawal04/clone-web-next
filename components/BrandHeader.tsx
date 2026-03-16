@@ -43,7 +43,7 @@ export default function BrandHeader() {
                 strokeLinejoin="round"
               />
             </svg>
-            <span className="text-xl font-bold text-text-primary/90 tracking-tight">
+            <span className="text-2xl font-bold text-text-primary/90 tracking-tight">
               bennybucks
             </span>
           </Link>
