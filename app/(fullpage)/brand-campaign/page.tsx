@@ -4,7 +4,7 @@ import BrandHeader from "@/components/BrandHeader";
 import BrandFooter from "@/components/BrandFooter";
 import Link from "next/link";
 import localFont from "next/font/local";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const acidGroteskFont = localFont({
   src: [
@@ -76,6 +76,77 @@ const workItems = [
       "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
   },
 ];
+
+interface WorkItem {
+  href: string;
+  brand: string;
+  video: string;
+  image: string;
+}
+
+interface VerticalsSectionProps {
+  workItems: WorkItem[];
+}
+
+function VerticalsSection({ workItems }: VerticalsSectionProps) {
+  const carouselRef = useRef(null);
+
+  return (
+    <section className="overflow-hidden border-t border-page-border bg-page-bg py-24">
+      <div className="mx-auto w-full max-w-[1480px] px-4 sm:px-8">        
+        <div className="max-w-3xl">
+          <h2
+            className={`${acidGroteskFont.className} text-center text-4xl font-medium leading-[1.1] -tracking-[0.055625em] sm:text-5xl md:text-left lg:text-[4.3rem]`}
+          >
+            Our Verticals
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-text-primary/65 md:mx-0 md:text-left md:text-lg">
+            Explore performance-first formats built for modern creator-led
+            campaigns, from UGC and clipping to music and logo-led content.
+          </p>
+        </div>        
+
+        <div
+          ref={carouselRef}
+          className="mt-10 overflow-x-auto pb-4 snap-x snap-mandatory"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          <div className="flex w-max gap-5 sm:gap-6">
+            {workItems.map((item) => (
+              <div key={item.href} className="snap-start shrink-0">
+                <Link
+                  href={item.href}
+                  className="group relative block w-[260px] overflow-hidden rounded-[1.75rem] border border-page-border bg-page-surface aspect-[9/16] sm:w-[300px] lg:w-[318px]"
+                  aria-label={`${item.brand} vertical`}
+                >
+                  <video
+                    src={item.video}
+                    poster={item.image}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="absolute inset-0 h-full w-full object-cover opacity-85 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+
+                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 text-white">
+                    <h3
+                      className={`${acidGroteskFont.className} mt-2 text-3xl font-medium leading-none sm:text-[2.1rem]`}
+                    >
+                      {item.brand}
+                    </h3>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>        
+      </div>
+    </section>
+  );
+}
 
 export default function BrandCampaign() {
   const [heroIndex, setHeroIndex] = useState<number | null>(null);
@@ -762,8 +833,7 @@ export default function BrandCampaign() {
       <BrandHeader />
 
       {/* ── Hero ── */}
-
-      <section className="pt-[180px] pb-24 px-4 sm:px-8 flex flex-col items-center justify-center text-center">
+      {/* <section className="pt-[180px] pb-24 px-4 sm:px-8 flex flex-col items-center justify-center text-center">
         <div className="inline-block py-1 px-4 rounded-full bg-brand-neon/10 border border-brand-neon/30 text-brand-neon text-sm font-bold mb-8 tracking-widest uppercase">
           Let Your Brand Show Its Mark
         </div>
@@ -786,7 +856,7 @@ export default function BrandCampaign() {
             Launch Your Campaign
           </button>
         </div>
-      </section>
+      </section> */}
 
       {/* ── Hero ── */}
       {/* <section className="pt-[100px] pb-12 px-4 sm:px-8 bg-page-bg flex flex-col items-center justify-center">
@@ -871,7 +941,6 @@ export default function BrandCampaign() {
       </section> */}
 
       {/* ── Quote & Feature ── */}
-      {/* ── Quote & Feature ── */}
       <section className="bg-gradient-to-b from-page-bg to-page-surface py-24 border-t border-page-border flex flex-col items-center">
         <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-8">
           {/* <div className="text-center mb-20 md:mb-28">
@@ -924,7 +993,7 @@ export default function BrandCampaign() {
       </section>
 
       {/* ── Verticals Carousel ── */}
-      <section className="overflow-hidden border-t border-page-border bg-page-bg py-24">
+      {/* <section className="overflow-hidden border-t border-page-border bg-page-bg py-24">
         <div className="mx-auto w-full max-w-[1480px] px-4 sm:px-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
@@ -977,7 +1046,9 @@ export default function BrandCampaign() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+      <VerticalsSection workItems={workItems} />
+
 
       {/* ── Marquee / Ticker ── */}
       <section className="py-4 sm:py-6 overflow-hidden border-page-border flex items-center">
@@ -1030,23 +1101,29 @@ export default function BrandCampaign() {
 
       {/* ── Full Service grid ── */}
       <section className="relative overflow-hidden bg-[#121212] py-24 text-white">
-        <div className="relative w-full px-4 sm:px-8 max-w-[1480px] mx-auto">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="relative mx-auto w-full max-w-[1480px] px-4 sm:px-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((svc, i) => (
               <div
                 key={i}
-                className="group aspect-square rounded-[1.4rem] border border-white/6 bg-[#1f1f1f] p-5 shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-transform duration-300 hover:-translate-y-1"
+                // Removed aspect-square, added flex layout and h-full to keep grid rows even
+                className="group flex h-full flex-col rounded-[1.4rem] border border-white/10 bg-[#1f1f1f] p-5 shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-transform duration-300 hover:-translate-y-1"
               >
-                {renderServiceArtwork(svc.art)}
-                <h3
-                  className="mb-3 mt-5 text-xl font-semibold text-white  leading-[1.4]
-                "
-                >
-                  {svc.title}
-                </h3>
-                <p className=" text-[1rem] text-text-primary/70 leading-normal mb-10 font-normal -tracking-[.01125em]">
-                  {svc.desc}
-                </p>
+                {/* Render the artwork at the top */}
+                <div className="relative w-full overflow-hidden rounded-xl">
+                  {renderServiceArtwork(svc.art)}
+                </div>
+
+                {/* Text Container */}
+                <div className="mt-6 flex flex-col flex-grow">
+                  <h3 className="mb-2 text-xl font-semibold leading-snug text-white">
+                    {svc.title}
+                  </h3>
+                  {/* Removed mb-10 and adjusted line-height for better readability */}
+                  <p className="text-base font-normal leading-relaxed tracking-tight text-white/70">
+                    {svc.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
