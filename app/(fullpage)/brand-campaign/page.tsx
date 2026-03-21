@@ -121,7 +121,7 @@ export default function BrandCampaign() {
   ];
 
   const serviceArtworkPanel =
-    "relative h-40 overflow-hidden rounded-[1.25rem] border border-white/10 bg-[#343434] shadow-[0_14px_30px_rgba(0,0,0,0.24)]";
+    "relative h-full min-h-[8rem] overflow-hidden rounded-[1.25rem] border border-white/10 bg-[#343434] shadow-[0_14px_30px_rgba(0,0,0,0.24)]";
   const serviceArtworkHighlight =
     "absolute inset-x-0 top-0 h-11 bg-linear-to-b from-white/10 to-transparent";
 
@@ -129,10 +129,10 @@ export default function BrandCampaign() {
     switch (art) {
       case "performance":
         return (
-          <div className={serviceArtworkPanel}>
+          <div className={`${serviceArtworkPanel} flex flex-col p-3`}>
             <div className={serviceArtworkHighlight} />
 
-            <div className="absolute left-4 right-4 top-3.5 flex items-center justify-between">
+            <div className="flex shrink-0 items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/12 bg-white/6">
                   <div className="ml-0.5 h-0 w-0 border-y-[5px] border-l-8 border-y-transparent border-l-white/85" />
@@ -152,11 +152,13 @@ export default function BrandCampaign() {
               </div>
             </div>
 
-            <svg
-              className="absolute inset-x-4 top-[2.9rem] h-[3.9rem] w-[calc(100%-2rem)]"
-              viewBox="0 0 260 62"
-              fill="none"
-            >
+            <div className="flex-1 min-h-0 flex items-center py-2">
+              <svg
+                className="h-full w-full min-h-[4rem]"
+                viewBox="0 0 260 62"
+                fill="none"
+                preserveAspectRatio="xMidYMid meet"
+              >
               <path
                 d="M0 50H260"
                 stroke="rgba(255,255,255,0.07)"
@@ -206,8 +208,9 @@ export default function BrandCampaign() {
               <circle cx="183" cy="22" r="3.2" fill="#dbf505" />
               <circle cx="218" cy="10" r="4" fill="#dbf505" />
             </svg>
+            </div>
 
-            <div className="absolute inset-x-4 bottom-4">
+            <div className="shrink-0">
               <div className="mb-2 flex items-center justify-between text-[0.6rem] font-medium tracking-[0.17em] text-white/44">
                 <span>PERFORMANCE PAYOUT</span>
                 <span>82%</span>
@@ -225,11 +228,11 @@ export default function BrandCampaign() {
         );
       case "verified":
         return (
-          <div className={serviceArtworkPanel}>
+          <div className={`${serviceArtworkPanel} flex items-center justify-center p-3`}>
             <div className={serviceArtworkHighlight} />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(219,245,5,0.1),rgba(255,255,255,0.01)_38%,rgba(0,0,0,0)_66%)]" />
 
-            <div className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#dbf505]/35 bg-black/12 shadow-[0_0_0_10px_rgba(219,245,5,0.04),0_0_24px_rgba(219,245,5,0.12)]">
+            <div className="absolute left-1/2 top-1/2 h-[28%] w-[28%] min-w-16 min-h-16 max-w-24 max-h-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#dbf505]/35 bg-black/12 shadow-[0_0_0_10px_rgba(219,245,5,0.04),0_0_24px_rgba(219,245,5,0.12)]">
               <div className="absolute inset-3 rounded-full border border-white/12" />
               <svg
                 className="absolute inset-0 m-auto h-9 w-9 text-[#dbf505]"
@@ -301,10 +304,10 @@ export default function BrandCampaign() {
         );
       case "dashboard":
         return (
-          <div className={serviceArtworkPanel}>
-            <div className="absolute inset-x-3.5 top-3.5 h-[4.9rem] overflow-hidden rounded-[1.15rem] border border-white/10 bg-[#3b3f48] shadow-[0_12px_24px_rgba(0,0,0,0.18)]">
+          <div className={`${serviceArtworkPanel} flex flex-col gap-2 p-3`}>
+            <div className="flex-1 min-h-0 overflow-hidden rounded-[1.15rem] border border-white/10 bg-[#3b3f48] shadow-[0_12px_24px_rgba(0,0,0,0.18)] relative p-3">
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,rgba(255,255,255,0.01)_100%)]" />
-              <div className="absolute left-4 top-3">
+              <div className="absolute left-3 top-2">
                 <div className="text-[0.72rem] font-medium text-white/72">
                   Campaigns
                 </div>
@@ -460,7 +463,8 @@ export default function BrandCampaign() {
               </svg>
             </div>
 
-            <div className="absolute bottom-3.5 left-3.5 h-15 w-[47%] rounded-[1.05rem] border border-white/10 bg-[#3b3f48] px-3 py-2 shadow-[0_12px_24px_rgba(0,0,0,0.18)]">
+            <div className="grid grid-cols-2 gap-2 shrink-0">
+            <div className="h-14 min-h-[3.5rem] rounded-[1.05rem] border border-white/10 bg-[#3b3f48] px-3 py-2 shadow-[0_12px_24px_rgba(0,0,0,0.18)]">
               <div className="flex items-start justify-between">
                 <div className="space-y-1 text-[0.72rem] text-white/82">
                   <div className="flex items-center gap-2">
@@ -488,7 +492,7 @@ export default function BrandCampaign() {
               </div>
             </div>
 
-            <div className="absolute bottom-3.5 right-3.5 h-15 w-[47%] overflow-hidden rounded-[1.05rem] border border-white/10 bg-[#3b3f48] px-3 py-2 shadow-[0_12px_24px_rgba(0,0,0,0.18)]">
+            <div className="h-14 min-h-[3.5rem] overflow-hidden rounded-[1.05rem] border border-white/10 bg-[#3b3f48] px-3 py-2 shadow-[0_12px_24px_rgba(0,0,0,0.18)] relative">
               <div className="absolute inset-x-3 top-2 bottom-7 rounded-[0.8rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,rgba(255,255,255,0)_100%)]" />
               <div className="absolute left-1/2 top-[1.05rem] z-10 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-xl border border-white/18 bg-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]">
                 <div className="ml-0.5 h-0 w-0 border-y-[6px] border-l-10 border-y-transparent border-l-white/90" />
@@ -520,6 +524,7 @@ export default function BrandCampaign() {
                   <span className="font-semibold text-white">4.5K</span>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         );
@@ -636,10 +641,10 @@ export default function BrandCampaign() {
         );
       case "creators":
         return (
-          <div className={serviceArtworkPanel}>
+          <div className={`${serviceArtworkPanel} flex flex-row items-stretch gap-2 p-3`}>
             <div className={serviceArtworkHighlight} />
 
-            <div className="absolute left-4 top-6 w-[4.7rem] rounded-[1.1rem] border border-white/10 bg-[#3b3f48] px-2.5 py-3 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+            <div className="absolute left-3 top-4 w-[4.5rem] rounded-[1rem] border border-white/10 bg-[#3b3f48] px-2.5 py-2.5 shadow-[0_10px_22px_rgba(0,0,0,0.18)] shrink-0">
               <div className="mx-auto h-10 w-10 rounded-full border border-[#79aef0]/35 bg-[linear-gradient(180deg,#7fb3ef,#4c6f98)]">
                 <div className="absolute left-1/2 top-[0.95rem] h-3 w-3 -translate-x-1/2 rounded-full bg-[#272d37]" />
                 <div className="absolute left-1/2 top-[1.85rem] h-4 w-6 -translate-x-1/2 rounded-t-full bg-[#272d37]" />
@@ -654,7 +659,7 @@ export default function BrandCampaign() {
               <div className="mt-2 h-[3px] w-10 rounded-full bg-white/10" />
             </div>
 
-            <div className="absolute right-4 top-6 w-[4.7rem] rounded-[1.1rem] border border-white/10 bg-[#3b3f48] px-2.5 py-3 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+            <div className="absolute right-3 top-4 w-[4.5rem] rounded-[1rem] border border-white/10 bg-[#3b3f48] px-2.5 py-2.5 shadow-[0_10px_22px_rgba(0,0,0,0.18)] shrink-0">
               <div className="mx-auto h-10 w-10 rounded-full border border-[#f0b37d]/35 bg-[linear-gradient(180deg,#f0c090,#81655b)]">
                 <div className="absolute left-1/2 top-[0.95rem] h-3 w-3 -translate-x-1/2 rounded-full bg-[#322824]" />
                 <div className="absolute left-1/2 top-[1.85rem] h-4 w-6 -translate-x-1/2 rounded-t-full bg-[#322824]" />
@@ -669,7 +674,7 @@ export default function BrandCampaign() {
               <div className="mt-2 h-[3px] w-10 rounded-full bg-white/10" />
             </div>
 
-            <div className="absolute left-1/2 top-1.5 z-10 w-[6.85rem] -translate-x-1/2 rounded-[1.2rem] border border-[#8dd6ff]/50 bg-[linear-gradient(180deg,rgba(110,195,255,0.14),rgba(255,255,255,0.02))] px-3 py-3 shadow-[0_18px_32px_rgba(0,0,0,0.28),0_0_24px_rgba(110,195,255,0.12)]">
+            <div className="absolute left-1/2 top-1/2 z-10 w-[min(7rem,45%)] -translate-x-1/2 -translate-y-1/2 rounded-[1.2rem] border border-[#8dd6ff]/50 bg-[linear-gradient(180deg,rgba(110,195,255,0.14),rgba(255,255,255,0.02))] px-3 py-3 shadow-[0_18px_32px_rgba(0,0,0,0.28),0_0_24px_rgba(110,195,255,0.12)]">
               <div className="absolute inset-x-0 top-0 h-10 rounded-t-[1.2rem] bg-linear-to-b from-white/12 to-transparent" />
 
               <div className="relative mx-auto h-14 w-14 rounded-full border border-[#8fe4ff]/40 bg-[radial-gradient(circle_at_50%_30%,#74f0cb,#52b697_62%,#2b4f52_100%)] shadow-[0_0_20px_rgba(116,240,203,0.18)]">
@@ -717,9 +722,10 @@ export default function BrandCampaign() {
         );
       case "community":
         return (
-          <div className={serviceArtworkPanel}>
+          <div className={`${serviceArtworkPanel} flex flex-col p-3`}>
             <div className={serviceArtworkHighlight} />
-            <div className="absolute left-4 top-4 w-34 rounded-[1.25rem] bg-[#3b3f48] p-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+            <div className="flex-1 min-h-0 flex flex-col sm:flex-row gap-3">
+            <div className="flex-1 min-h-[6rem] rounded-[1.25rem] bg-[#3b3f48] p-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)] flex flex-col items-center justify-center">
               <div className="relative mx-auto h-20 w-24">
                 <div className="absolute left-1/2 top-0 h-8 w-8 -translate-x-1/2 rounded-full border-2 border-white/85" />
                 <div className="absolute left-0 top-4 h-7 w-7 rounded-full border-2 border-white/65" />
@@ -728,10 +734,10 @@ export default function BrandCampaign() {
                 <div className="absolute left-1 top-10 h-8 w-10 rounded-t-full border-2 border-b-0 border-white/65" />
                 <div className="absolute right-1 top-10 h-8 w-10 rounded-t-full border-2 border-b-0 border-white/65" />
               </div>
-              <div className="mt-2 h-2.5 w-full rounded-full bg-white/14" />
+              <div className="mt-2 h-2.5 w-full max-w-[8rem] rounded-full bg-white/14" />
             </div>
 
-            <div className="absolute right-4 top-4 w-36 rounded-[1.25rem] bg-[#3b3f48] px-4 py-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+            <div className="flex-1 min-h-[6rem] rounded-[1.25rem] bg-[#3b3f48] px-4 py-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)] relative">
               <div className="mb-3 flex items-center justify-between">
                 <div className="h-2.5 w-14 rounded-full bg-white/20" />
                 <div className="h-3 w-3 rounded-full bg-[#dbf505]" />
@@ -743,11 +749,14 @@ export default function BrandCampaign() {
               </div>
               <div className="absolute -bottom-2 right-6 h-5 w-5 rotate-45 rounded-sm bg-[#3b3f48]" />
             </div>
+            </div>
 
-            <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-white/8 px-3 py-2">
+            <div className="shrink-0 flex justify-center">
+            <div className="flex items-center gap-2 rounded-full bg-white/8 px-3 py-2">
               <div className="h-2.5 w-2.5 rounded-full bg-[#ff5a2a]" />
               <div className="h-2.5 w-2.5 rounded-full bg-white/35" />
               <div className="h-2.5 w-2.5 rounded-full bg-[#dbf505]" />
+            </div>
             </div>
           </div>
         );
@@ -1035,18 +1044,21 @@ export default function BrandCampaign() {
             {services.map((svc, i) => (
               <div
                 key={i}
-                className="group aspect-square rounded-[1.4rem] border border-white/6 bg-[#1f1f1f] p-5 shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-transform duration-300 hover:-translate-y-1"
+                className="group flex flex-col min-h-[420px] rounded-[1.4rem] border border-white/6 bg-[#1f1f1f] p-4 shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-transform duration-300 hover:-translate-y-1"
               >
-                {renderServiceArtwork(svc.art)}
-                <h3
-                  className="mb-3 mt-5 text-xl font-semibold text-white  leading-[1.4]
-                "
-                >
-                  {svc.title}
-                </h3>
-                <p className=" text-[1rem] text-text-primary/70 leading-normal mb-10 font-normal -tracking-[.01125em]">
-                  {svc.desc}
-                </p>
+                <div className="flex-1 min-h-0 flex flex-col">
+                  {renderServiceArtwork(svc.art)}
+                </div>
+                <div className="mt-auto pt-4 shrink-0">
+                  <h3
+                    className="mb-2 text-xl font-semibold text-white leading-[1.4]"
+                  >
+                    {svc.title}
+                  </h3>
+                  <p className="text-[1rem] text-text-primary/70 leading-normal font-normal -tracking-[.01125em]">
+                    {svc.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
