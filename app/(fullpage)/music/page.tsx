@@ -1,11 +1,48 @@
 import BrandHeader from "@/components/BrandHeader";
 import BrandFooter from "@/components/BrandFooter";
+import { acidGroteskFont } from "@/lib/fonts";
+import VideoCarousel from "@/components/Videocarousel";
+
 
 const CheckIcon = () => (
     <svg className="text-brand-neon flex-shrink-0 mt-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="20 6 9 17 4 12"></polyline>
     </svg>
 );
+
+const features = [
+    {
+        title: "Zeigarnik Effect",
+        desc: "A catchy hook creates curiosity. Listeners hear just enough to get interested and search for the full song. BennyBucks uses this psychology to increase engagement and streams.",
+        icon: <><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></>
+    },
+    {
+        title: "Organic Virality",
+        desc: "Every reel created by creators acts as a mini-promotion. Your song spreads naturally across social feeds, reaching audiences you would not reach through paid ads alone.",
+        icon: <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+    },
+    {
+        title: "Trend Creation",
+        desc: "Short-form content creates trends. Hundreds of creators make unique videos using your song, including dance challenges, lip-syncs, cinematic edits, and storytelling skits, increasing the chances of your track going viral.",
+        icon: <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+    },
+    {
+        title: "Smart Analytics Dashboard",
+        desc: "Track all your clips and their performance in one simple dashboard so you can monitor results and take action quickly.",
+        icon: <><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></>
+    },
+    {
+        title: "AI-Verified Engagement",
+        desc: "Every view and interaction is automatically verified to ensure the engagement is real and authentic.",
+        icon: <><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></>
+    },
+    {
+        title: "Performance-Based Payment",
+        desc: "Pay only for real views and engagement. If the content does not perform, you spend nothing.",
+        icon: <><path d="M6 3h12"></path><path d="M6 8h12"></path><path d="m6 13 8.5 8"></path><path d="M6 13h3"></path><path d="M9 13c6.667 0 6.667-10 0-10"></path></>
+    }
+];
+
 
 export default function MusicPage() {
 
@@ -104,27 +141,6 @@ export default function MusicPage() {
         <div className="min-h-screen bg-page-bg text-text-primary selection:bg-blue-600 selection:text-text-primary">
             <BrandHeader />
 
-            {/* ── Hero ── */}
-            <section className="pt-[180px] pb-32 px-4 sm:px-8 flex flex-col items-center justify-center text-center">
-                <div className="inline-block py-1 px-4 rounded-full bg-brand-neon/10 border border-brand-neon/30 text-brand-neon text-sm font-bold mb-8 tracking-widest uppercase">
-                    Best for Independent Artists & Music Labels
-                </div>
-                <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-extrabold tracking-tight mb-8 leading-[1.05]">
-                    Make Your Music.<br /> <span className="text-brand-red">Go Viral on Reels.</span>
-                </h1>
-                <p className="text-xl md:text-2xl text-text-primary/60 max-w-3xl mx-auto leading-relaxed mb-12 font-medium">
-                    Whether you&apos;re an independent artist dropping a new single or a major music label launching a campaign, we turn your audio tracks into viral social trends effortlessly.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-                    <button className="rounded-xl bg-[#1754d8] hover:bg-[#1240a6] text-white text-lg font-bold px-10 py-5 transition-transform hover:scale-105 uppercase tracking-wide">
-                        Launch Music Campaign
-                    </button>
-                    <button className="rounded-full bg-transparent border-2 border-text-primary/30 hover:border-text-primary/60 hover:bg-text-primary/5 text-text-primary text-lg font-bold px-10 py-5 transition-colors uppercase tracking-wide">
-                        View Analytics
-                    </button>
-                </div>
-            </section>
-
             {/* ── Timeline Section (How it works) ── */}
             {/* <section className="py-24 bg-page-surface-alt border-t border-page-border relative overflow-hidden">
                 <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-8 relative z-10">
@@ -176,28 +192,24 @@ export default function MusicPage() {
                     {/* Header: Logo and Title */}
                     <div className="mb-16">
                         <div className="flex flex-wrap items-center gap-4 mb-4">
-                            <div className="w-12 h-12 bg-text-primary rounded-lg flex items-center justify-center text-page-surface shrink-0">
-                                <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
-                                    <path d="M4 6l4 12 6-8 6 8 4-12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </div>
-                            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-text-primary">Music Content</h2>
+                            <h2 className={`${acidGroteskFont.className} text-4xl sm:text-5xl lg:text-[4.3rem] font-medium -tracking-[.055625em] leading-[1.1]`}>Music Content</h2>
                         </div>
-                        <h3 className="text-xl md:text-2xl font-bold text-text-primary/80">Bennybucks Powers Music Content</h3>
+                        <h3 className="text-[20px] pt-4 font-medium text-text-primary/80">What is Music Promotion?
+                            Music promotion helps artists and labels spread their songs through creator content. Creators use the music in reels, short videos, and creative content that helps the song reach new audiences organically.</h3>
                     </div>
 
                     {/* Challenge & Solution */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-20 text-text-primary">
                         <div>
-                            <h4 className="text-2xl font-bold mb-4 tracking-tight">Challenge</h4>
-                            <p className="text-lg leading-relaxed font-medium text-text-primary/80">
-                                Brands struggle to produce authentic content at scale. High production costs, agency bottlenecks, and long turnaround times make it difficult to maintain an active social presence that resonates with everyday consumers and drives ad performance.
+                            <h4 className="text-[24px] font-bold mb-4 tracking-tight">Problem</h4>
+                            <p className="text-[20px] leading-relaxed font-medium text-text-primary/80">
+                                Many songs fail to reach a wide audience because traditional promotion is expensive and limited. Artists often struggle to make their music trend or reach the right listeners.
                             </p>
                         </div>
                         <div>
-                            <h4 className="text-2xl font-bold mb-4 tracking-tight">Solution</h4>
-                            <p className="text-lg leading-relaxed font-medium text-text-primary/80">
-                                Bennybucks partnered with top brands to spotlight how authentic music powers modern marketing. We curated a mix of voices: micro-influencers, product superfans, and everyday consumers, who used their phones to show how your product fuels their daily lives. From raw reviews to aesthetic unboxings, our creators turn ideas into impact.
+                            <h4 className="text-[24px] font-bold mb-4 tracking-tight">Solution with BennyBucks</h4>
+                            <p className="text-[20px] leading-relaxed font-medium text-text-primary/80">
+                                With BennyBucks, artists can launch campaigns where multiple creators use their song in content. This creates viral potential as many creators promote the same music in different styles, helping the song gain traction and reach a much larger audience.
                             </p>
                         </div>
                     </div>
@@ -206,53 +218,34 @@ export default function MusicPage() {
                 {/* Container for Videos (Full Screen Edge-to-Edge) */}
                 <div className="w-full px-0 sm:px-4">
                     <div className="bg-page-surface rounded-[2rem] p-4 sm:p-8 md:p-12 lg:py-16 border border-page-border overflow-hidden w-full">
-                        <div className="w-full overflow-x-auto hide-scrollbar snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                            <div className="flex gap-4 sm:gap-6 w-max px-4">
-                                {/* Video Cards */}
-                                {[
-                                    {
-                                        video: "https://videos.pexels.com/video-files/4434242/4434242-hd_1080_1920_24fps.mp4",
-                                        brand: "Cinematic Music Visualizer"
-                                    },
-                                    {
-                                        video: "https://videos.pexels.com/video-files/2795405/2795405-hd_1080_1920_25fps.mp4",
-                                        brand: "Beat Sync Music Edit"
-                                    },
-                                    {
-                                        video: "https://videos.pexels.com/video-files/3209828/3209828-sd_640_360_25fps.mp4",
-                                        brand: "Lofi Music Loop Video"
-                                    },
-                                    {
-                                        video: "https://videos.pexels.com/video-files/3188991/3188991-sd_640_360_25fps.mp4",
-                                        brand: "Background Music Edit"
-                                    },
-                                    {
-                                        video: "https://videos.pexels.com/video-files/853925/853925-sd_640_360_25fps.mp4",
-                                        brand: "Epic Music Promo Video"
-                                    },
-                                ].map((item, i) => (
-                                    <div key={i} className="relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[9/16] rounded-2xl md:rounded-[1.5rem] overflow-hidden group snap-center cursor-pointer shadow-md bg-page-bg">
-                                        <video
-                                            src={item.video}
-                                            autoPlay
-                                            loop
-                                            muted
-                                            playsInline
-                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                                        />
-                                        <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
-                                        <div className="absolute top-4 left-4 right-4 flex justify-between items-center text-white z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <span className="bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold border border-white/20">#BennyPartner</span>
-                                        </div>
-                                        <div className="absolute bottom-8 inset-x-0 flex justify-center pointer-events-none">
-                                            <span className="bg-white text-black font-bold text-sm px-6 py-2.5 rounded-full shadow-xl">
-                                                {item.brand}
-                                            </span>
-                                        </div>
-                                    </div>
-                                ))}
+                        <VideoCarousel items={[
+                            { video: "https://videos.pexels.com/video-files/4434242/4434242-hd_1080_1920_24fps.mp4", label: "Independent artist" },
+                            { video: "https://videos.pexels.com/video-files/2795405/2795405-hd_1080_1920_25fps.mp4", label: "Music labels" },
+                        ]} />
+                    </div>
+                </div>
+            </section>
+
+            {/* ── Features Grid ── */}
+            <section className="py-24 bg-page-surface-alt border-t border-page-border">
+                <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-8">
+                    <div className="text-center mb-16">
+                        <h2 className={`${acidGroteskFont.className} -tracking-[.055625em] leading-[1.1] text-4xl md:text-5xl font-medium mb-6`}>How BennyBucks Helps Your Brand</h2>
+                        <p className="text-lg text-text-primary/50 max-w-2xl mx-auto font-medium">Deploy your branding without turning your marketing into a skippable ad.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {features.map((feature, i) => (
+                            <div key={i} className="bg-page-surface border border-page-border p-8 rounded-[2rem] hover:border-white/30 transition-colors group">
+                                <div className="w-14 h-14 bg-text-primary/5 rounded-2xl flex items-center justify-center text-brand-red mb-6 group-hover:bg-brand-red group-hover:text-text-primary transition-colors">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        {feature.icon}
+                                    </svg>
+                                </div>
+                                <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+                                <p className="text-text-primary/60 leading-relaxed font-medium text-sm md:text-base">{feature.desc}</p>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>

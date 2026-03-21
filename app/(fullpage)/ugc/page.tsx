@@ -1,11 +1,46 @@
 import BrandHeader from "@/components/BrandHeader";
 import BrandFooter from "@/components/BrandFooter";
+import { acidGroteskFont } from "@/lib/fonts";
+import VideoCarousel from "@/components/Videocarousel";
 
 const CheckIcon = () => (
     <svg className="text-brand-neon flex-shrink-0 mt-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="20 6 9 17 4 12"></polyline>
     </svg>
 );
+
+const features = [
+    {
+        title: "Authentic Engagement",
+        desc: "UGC lets creators share their own take on your brand, product, or content, fostering trust and meaningful audience interactions.",
+        icon: <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+    },
+    {
+        title: "Creative Diversity",
+        desc: "An open platform allows creators to bring diverse styles, perspectives, and formats, enriching your content ecosystem.",
+        icon: <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+    },
+    {
+        title: "Organic Reach",
+        desc: "UGC spreads naturally across the platform, increasing visibility and connecting with audiences authentically.",
+        icon: <><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></>
+    },
+    {
+        title: "Smart Analytics Dashboard",
+        desc: "Track all your clips and their performance in one simple dashboard so you can monitor results and take action quickly.",
+        icon: <><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></>
+    },
+    {
+        title: "AI-Verified Engagement",
+        desc: "Every view and interaction is automatically verified to ensure the engagement is real and authentic.",
+        icon: <><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></>
+    },
+    {
+        title: "Performance-Based Payment",
+        desc: "Pay only for real views and engagement. If the content does not perform, you spend nothing.",
+        icon: <><path d="M6 3h12"></path><path d="M6 8h12"></path><path d="m6 13 8.5 8"></path><path d="M6 13h3"></path><path d="M9 13c6.667 0 6.667-10 0-10"></path></>
+    }
+];
 
 export default function UGCPage() {
 
@@ -98,28 +133,6 @@ export default function UGCPage() {
     return (
         <div className="min-h-screen bg-page-bg text-text-primary selection:bg-blue-600 selection:text-text-primary">
             <BrandHeader />
-
-            {/* ── Hero ── */}
-            <section className="pt-[180px] pb-32 px-4 sm:px-8 flex flex-col items-center justify-center text-center">
-                <div className="inline-block py-1 px-4 rounded-full bg-brand-neon/10 border border-brand-neon/30 text-brand-neon text-sm font-bold mb-8 tracking-widest uppercase">
-                    Bennybucks UGC
-                </div>
-                <h1 className="text-5xl md:text-7xl lg:text-[6.5rem] font-extrabold tracking-tight mb-8 leading-[1.05]">
-                    Authentic Content.<br /> <span className="text-brand-red">That Actually Converts.</span>
-                </h1>
-                <p className="text-xl md:text-2xl text-text-primary/60 max-w-3xl mx-auto leading-relaxed mb-12 font-medium">
-                    Scale your brand with high-performing User Generated Content created by everyday creators. Authentic, relatable, and designed to drive real measurable engagement.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-                    <button className="rounded-xl bg-[#1754d8] hover:bg-[#1240a6] text-white text-lg font-bold px-10 py-5 transition-transform hover:scale-105 uppercase tracking-wide">
-                        Launch UGC Campaign
-                    </button>
-                    <button className="rounded-full bg-transparent border-2 border-text-primary/30 hover:border-text-primary/60 hover:bg-text-primary/5 text-text-primary text-lg font-bold px-10 py-5 transition-colors uppercase tracking-wide">
-                        View Examples
-                    </button>
-                </div>
-            </section>
-
             {/* ── Timeline Section (How it works) ── */}
             {/* <section className="py-24 bg-page-surface-alt border-t border-page-border relative overflow-hidden">
                 <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-8 relative z-10">
@@ -169,30 +182,27 @@ export default function UGCPage() {
                 <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16">
 
                     {/* Header: Logo and Title */}
-                    <div className="mb-16">
+                    <div className="mb-10">
                         <div className="flex flex-wrap items-center gap-4 mb-4">
-                            <div className="w-12 h-12 bg-text-primary rounded-lg flex items-center justify-center text-page-surface shrink-0">
-                                <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
-                                    <path d="M4 6l4 12 6-8 6 8 4-12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </div>
-                            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-text-primary">User Generated Content</h2>
+                            
+                            <h2 className={`${acidGroteskFont.className} text-4xl sm:text-5xl lg:text-[4.3rem] font-medium -tracking-[.055625em] leading-[1.1]`}>User Generated Content</h2>
                         </div>
-                        <h3 className="text-xl md:text-2xl font-bold text-text-primary/80">Bennybucks Powers UGC Content</h3>
+                        <h3 className="text-[20px] pt-4 font-medium text-text-primary/80">UGC is content created by real creators, This can include reviews, tutorials, or product experiences that feel natural and authentic to the audience.</h3>
                     </div>
 
                     {/* Challenge & Solution */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-20 text-text-primary">
                         <div>
-                            <h4 className="text-2xl font-bold mb-4 tracking-tight">Challenge</h4>
-                            <p className="text-lg leading-relaxed font-medium text-text-primary/80">
-                                Brands struggle to produce authentic content at scale. High production costs, agency bottlenecks, and long turnaround times make it difficult to maintain an active social presence that resonates with everyday consumers and drives ad performance.
+                            <h4 className="text-[24px] font-bold mb-4 tracking-tight">Problem</h4>
+                            <p className="text-[20px] leading-relaxed font-medium text-text-primary/80">
+                                Brands usually collaborate with a few creator and pay a large amount upfront. However, there is no guarantee of how the brand will be represented in the content or whether the video will perform well. Despite this uncertainty, the payment must be made in advance.
                             </p>
                         </div>
                         <div>
-                            <h4 className="text-2xl font-bold mb-4 tracking-tight">Solution</h4>
-                            <p className="text-lg leading-relaxed font-medium text-text-primary/80">
-                                Bennybucks partnered with top brands to spotlight how authentic UGC powers modern marketing. We curated a mix of voices: micro-influencers, product superfans, and everyday consumers, who used their phones to show how your product fuels their daily lives. From raw reviews to aesthetic unboxings, our creators turn ideas into impact.
+                            <h4 className="text-[24px] font-bold mb-4 tracking-tight">Solution with BennyBucks</h4>
+                            <p className="text-[20px] leading-relaxed font-medium text-text-primary/80">
+                                With BennyBucks, brands can post a campaign along with their guidelines and requirements. Multiple creators participate and create authentic content for the brand. Instead of relying on one creator, brands receive multiple pieces of content and build a community around their product.
+                                Most importantly, brands do not pay upfront. Payment is based on engagement and performance. The content performs first, and then the brand pays according to the results generated.
                             </p>
                         </div>
                     </div>
@@ -201,53 +211,38 @@ export default function UGCPage() {
                 {/* Container for Videos (Full Screen Edge-to-Edge) */}
                 <div className="w-full px-0 sm:px-4">
                     <div className="bg-page-surface rounded-[2rem] p-4 sm:p-8 md:p-12 lg:py-16 border border-page-border overflow-hidden w-full">
-                        <div className="w-full overflow-x-auto hide-scrollbar snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                            <div className="flex gap-4 sm:gap-6 w-max px-4">
-                                {/* Video Cards */}
-                                {[
-                                    {
-                                        video: "https://videos.pexels.com/video-files/6538392/6538392-sd_640_360_25fps.mp4",
-                                        brand: "UGC Product Review Ad"
-                                    },
-                                    {
-                                        video: "https://videos.pexels.com/video-files/15392661/15392661-sd_640_360_24fps.mp4",
-                                        brand: "UGC Unboxing Experience"
-                                    },
-                                    {
-                                        video: "https://videos.pexels.com/video-files/2759477/2759477-sd_640_360_30fps.mp4",
-                                        brand: "UGC Lifestyle Product Demo"
-                                    },
-                                    {
-                                        video: "https://videos.pexels.com/video-files/3129595/3129595-sd_640_360_30fps.mp4",
-                                        brand: "UGC Customer Testimonial"
-                                    },
-                                    {
-                                        video: "https://videos.pexels.com/video-files/853923/853923-sd_640_360_25fps.mp4",
-                                        brand: "UGC Problem Solution Ad"
-                                    },
-                                ].map((item, i) => (
-                                    <div key={i} className="relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[9/16] rounded-2xl md:rounded-[1.5rem] overflow-hidden group snap-center cursor-pointer shadow-md bg-page-bg">
-                                        <video
-                                            src={item.video}
-                                            autoPlay
-                                            loop
-                                            muted
-                                            playsInline
-                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                                        />
-                                        <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
-                                        <div className="absolute top-4 left-4 right-4 flex justify-between items-center text-white z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <span className="bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold border border-white/20">#BennyPartner</span>
-                                        </div>
-                                        <div className="absolute bottom-8 inset-x-0 flex justify-center pointer-events-none">
-                                            <span className="bg-white text-black font-bold text-sm px-6 py-2.5 rounded-full shadow-xl">
-                                                {item.brand}
-                                            </span>
-                                        </div>
-                                    </div>
-                                ))}
+                        <VideoCarousel items={[
+                            { video: "https://videos.pexels.com/video-files/6538392/6538392-sd_640_360_25fps.mp4", label: "Product reviews" },
+                            { video: "https://videos.pexels.com/video-files/15392661/15392661-sd_640_360_24fps.mp4", label: "Unboxing videos" },
+                            { video: "https://videos.pexels.com/video-files/2759477/2759477-sd_640_360_30fps.mp4", label: "Before-and-after transformations" },
+                            { video: "https://videos.pexels.com/video-files/3129595/3129595-sd_640_360_30fps.mp4", label: "Tutorials and how-to guides" },
+                            { video: "https://videos.pexels.com/video-files/853923/853923-sd_640_360_25fps.mp4", label: "Social awareness campaigns" },
+                            { video: "https://videos.pexels.com/video-files/853923/853923-sd_640_360_25fps.mp4", label: "Lifestyle-based brand storytelling" },
+                        ]} />
+                    </div>
+                </div>
+            </section>
+
+            {/* ── Features Grid ── */}
+            <section className="py-24 bg-page-surface-alt border-t border-page-border">
+                <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-8">
+                    <div className="text-center mb-16">
+                        <h2 className={`${acidGroteskFont.className} -tracking-[.055625em] leading-[1.1] text-4xl md:text-5xl font-medium mb-6`}>How BennyBucks Helps Your Brand</h2>
+                        <p className="text-lg text-text-primary/50 max-w-2xl mx-auto font-medium">Deploy your branding without turning your marketing into a skippable ad.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {features.map((feature, i) => (
+                            <div key={i} className="bg-page-surface border border-page-border p-8 rounded-[2rem] hover:border-white/30 transition-colors group">
+                                <div className="w-14 h-14 bg-text-primary/5 rounded-2xl flex items-center justify-center text-brand-red mb-6 group-hover:bg-brand-red group-hover:text-text-primary transition-colors">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        {feature.icon}
+                                    </svg>
+                                </div>
+                                <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+                                <p className="text-text-primary/60 leading-relaxed font-medium text-sm md:text-base">{feature.desc}</p>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
