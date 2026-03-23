@@ -183,19 +183,19 @@ export default function CreatorsPage() {
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="px-4 sm:px-8">
               <h2
-                className={`${acidGroteskFont.className} text-center text-4xl font-medium leading-[1.1] -tracking-[0.055625em] sm:text-5xl md:text-left lg:text-[4.3rem] mb-10`}
+                className={`${acidGroteskFont.className} text-center text-4xl font-medium leading-[1.1] -tracking-[0.055625em] sm:text-5xl md:text-left lg:text-[4.3rem]`}
               >
                 4 Ways to Earn through{" "}
                 <span className="text-[#dbf505]">BennyBucks</span>
               </h2>
-              {/* <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-text-primary/65 md:mx-0 md:text-left md:text-lg">
-                Explore performance-first formats built for modern creator-led
-                campaigns, from UGC and clipping to music and logo-led content.
-              </p> */}
+              <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-text-primary/65 md:mx-0 md:text-left md:text-lg">
+                Whether you are a niche creator, an influencer, or run an edit
+                page or meme page, you can earn through BennyBucks.
+              </p>
             </div>
           </div>
 
-          <div className="flex gap-8 md:gap-12 overflow-x-auto snap-x snap-mandatory px-6 sm:px-12 pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-full items-center">
+          <div className="mt-10 flex gap-8 md:gap-12 overflow-x-auto snap-x snap-mandatory px-6 sm:px-12 pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-full items-center">
             {/* Slide 1 */}
             <div className="flex-none w-[90vw] md:w-[60vw] lg:w-[52vw] snap-center flex flex-col md:flex-row items-center gap-8 md:gap-12">
               <div className="w-full md:w-[280px] lg:w-[320px] aspect-[4/5] md:aspect-[9/16] rounded-3xl overflow-hidden relative shadow-xl flex-shrink-0 group">
