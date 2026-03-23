@@ -171,26 +171,41 @@ export default function BrandCampaign() {
   ];
 
   const serviceArtworkPanel =
-    "relative h-full min-h-[8rem] overflow-hidden rounded-[1.25rem] border border-white/10 bg-[#343434] shadow-[0_14px_30px_rgba(0,0,0,0.24)]";
+    "relative h-40 overflow-hidden rounded-[1.25rem] border border-white/10 bg-[#343434] shadow-[0_14px_30px_rgba(0,0,0,0.24)]";
   const serviceArtworkHighlight =
     "absolute inset-x-0 top-0 h-11 bg-linear-to-b from-white/10 to-transparent";
 
   const renderServiceArtwork = (art: string) => {
     switch (art) {
-      case "performance":
-        return (
-          <div className={`${serviceArtworkPanel} flex flex-col p-3`}>
-            <div className={serviceArtworkHighlight} />
+      // ─── performance ────────────────────────────────────────────────────────────
+    case "performance":
+      return (
+        <div className={serviceArtworkPanel}>
+          <div className={serviceArtworkHighlight} />
 
-            <div className="flex shrink-0 items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/12 bg-white/6">
-                  <div className="ml-0.5 h-0 w-0 border-y-[5px] border-l-8 border-y-transparent border-l-white/85" />
-                </div>
-                <div className="rounded-full border border-white/10 bg-white/4 px-2.5 py-1 text-[0.6rem] font-semibold tracking-[0.18em] text-white/60">
-                  LIVE
-                </div>
+          {/* Left Card: Views (Eye) */}
+          <div className="absolute left-4 top-4 w-32 rounded-[1.25rem] bg-[#1f1f1f] p-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+            {/* Eye shape */}
+            <div className="relative mx-auto flex h-12 w-20 items-center justify-center">
+              <div className="absolute inset-0 rounded-full border-2 border-[#FA4616]/70" style={{ borderRadius: "50%" }} />
+              {/* Eyelid mask — top & bottom arcs via clip */}
+              <div className="absolute inset-0 overflow-hidden rounded-full">
+                <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#FA4616]/70" />
               </div>
+              {/* Iris */}
+              <div className="relative h-6 w-6 rounded-full border-2 border-[#FA4616]/80 bg-[#FA4616]/10 flex items-center justify-center">
+                {/* Pupil */}
+                <div className="h-2.5 w-2.5 rounded-full bg-[#FA4616]" />
+              </div>
+            </div>
+            <div className="mt-3 h-2 w-full rounded-full bg-white/14" />
+            <p className="mt-2 text-center text-[9px] font-semibold tracking-[0.15em] text-[#FA4616]/70">VIEWS</p>
+          </div>
+
+          {/* Centre proportional symbol */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl font-bold text-white/25 select-none">
+            ∝
+          </div>
 
           {/* Right Card: Payments (Bag) */}
           <div className="absolute right-4 top-4 w-32 rounded-[1.25rem] bg-[#1f1f1f] p-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
@@ -204,68 +219,44 @@ export default function BrandCampaign() {
             <p className="mt-2 text-center text-[9px] font-semibold tracking-[0.15em] text-[#DBF505]/70">PAYMENTS</p>
           </div>
 
-            <div className="flex-1 min-h-0 flex items-center py-2">
-              <svg
-                className="h-full w-full min-h-[4rem]"
-                viewBox="0 0 260 62"
-                fill="none"
-                preserveAspectRatio="xMidYMid meet"
-              >
-              <path
-                d="M0 50H260"
-                stroke="rgba(255,255,255,0.07)"
-                strokeWidth="1.2"
-              />
-              <path
-                d="M0 31H260"
-                stroke="rgba(255,255,255,0.05)"
-                strokeWidth="1.2"
-              />
-              <path
-                d="M0 12H260"
-                stroke="rgba(255,255,255,0.04)"
-                strokeWidth="1.2"
-              />
-              <path
-                d="M8 48 L43 42 L78 44 L111 34 L145 37 L183 22 L218 10"
-                stroke="rgba(255,255,255,0.25)"
-                strokeWidth="2.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M8 48 L43 42 L78 44 L111 34 L145 37 L183 22 L218 10"
-                stroke="#dbf505"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M218 10 L244 6"
-                stroke="#dbf505"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-              />
-              <path
-                d="M236 1 H244 V9"
-                stroke="#dbf505"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <circle cx="43" cy="42" r="3.2" fill="rgba(255,255,255,0.78)" />
-              <circle cx="78" cy="44" r="3.2" fill="rgba(255,255,255,0.78)" />
-              <circle cx="111" cy="34" r="3.2" fill="rgba(255,255,255,0.78)" />
-              <circle cx="145" cy="37" r="3.2" fill="rgba(255,255,255,0.78)" />
-              <circle cx="183" cy="22" r="3.2" fill="#dbf505" />
-              <circle cx="218" cy="10" r="4" fill="#dbf505" />
-            </svg>
-            </div>
+          {/* Bottom Floating Indicators */}
+          <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-white/8 px-3 py-2">
+            <div className="h-2.5 w-2.5 rounded-full bg-[#FA4616]" />
+            <div className="h-2.5 w-2.5 rounded-full bg-white/35" />
+            <div className="h-2.5 w-2.5 rounded-full bg-[#DBF505]" />
+          </div>
+        </div>
+      );
 
-            <div className="shrink-0">
-              <div className="mb-2 flex items-center justify-between text-[0.6rem] font-medium tracking-[0.17em] text-white/44">
-                <span>PERFORMANCE PAYOUT</span>
-                <span>82%</span>
+
+    // ─── verified ────────────────────────────────────────────────────────────────
+    case "verified":
+      return (
+        <div className={serviceArtworkPanel}>
+          <div className={serviceArtworkHighlight} />
+
+          {/* Main Chip Card */}
+          <div className="absolute left-1/2 top-4 w-36 -translate-x-1/2 rounded-[1.25rem] bg-[#1f1f1f] p-5 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+            {/* Octagon-approximation using border-radius tricks */}
+            <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-[#DBF505]/60 bg-[#DBF505]/06">
+              <span className="text-xl font-bold tracking-tight text-[#DBF505]">AI</span>
+              {/* Corner node dots */}
+              <div className="absolute -left-1 -top-1 h-2 w-2 rounded-full bg-[#FA4616]/70" />
+              <div className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-[#FA4616]/70" />
+              <div className="absolute -bottom-1 -left-1 h-2 w-2 rounded-full bg-[#DBF505]/70" />
+              <div className="absolute -bottom-1 -right-1 h-2 w-2 rounded-full bg-[#DBF505]/70" />
+            </div>
+            <div className="mt-4 h-2 w-full rounded-full bg-white/14" />
+            <div className="mt-2 h-2 w-3/4 mx-auto rounded-full bg-white/8" />
+          </div>
+
+          {/* Bottom Card: Circuit terminal rows */}
+          <div className="absolute bottom-10 left-1/2 w-44 -translate-x-1/2 rounded-[1.25rem] bg-[#1f1f1f] px-4 py-3 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+            <div className="flex items-center justify-between">
+              <div className="flex gap-1.5">
+                <div className="h-2 w-2 rounded-full bg-[#FA4616]/70" />
+                <div className="h-2 w-2 rounded-full bg-white/25" />
+                <div className="h-2 w-2 rounded-full bg-[#DBF505]/70" />
               </div>
               {/* Live badge */}
               <div className="flex items-center gap-1 rounded-full bg-[#DBF505]/12 px-2 py-0.5">
@@ -275,67 +266,6 @@ export default function BrandCampaign() {
             </div>
             <div className="mt-2.5 h-2 w-full rounded-full bg-white/10" />
           </div>
-        );
-      case "verified":
-        return (
-          <div className={`${serviceArtworkPanel} flex items-center justify-center p-3`}>
-            <div className={serviceArtworkHighlight} />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(219,245,5,0.1),rgba(255,255,255,0.01)_38%,rgba(0,0,0,0)_66%)]" />
-
-            <div className="absolute left-1/2 top-1/2 h-[28%] w-[28%] min-w-16 min-h-16 max-w-24 max-h-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#dbf505]/35 bg-black/12 shadow-[0_0_0_10px_rgba(219,245,5,0.04),0_0_24px_rgba(219,245,5,0.12)]">
-              <div className="absolute inset-3 rounded-full border border-white/12" />
-              <svg
-                className="absolute inset-0 m-auto h-9 w-9 text-[#dbf505]"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12.5 10 17l9-9" />
-              </svg>
-            </div>
-
-            <div className="absolute left-4 top-4 flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2">
-              <svg
-                className="h-4 w-4 text-white/55"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path d="M10 17.3c-.2 0-.4-.1-.5-.2C5.1 13.3 2 10.5 2 6.9A3.9 3.9 0 0 1 5.9 3c1.6 0 2.9.7 4.1 2 1.2-1.3 2.5-2 4.1-2A3.9 3.9 0 0 1 18 6.9c0 3.6-3.1 6.4-7.5 10.2-.1.1-.3.2-.5.2Z" />
-              </svg>
-              <span className="text-[0.82rem] font-semibold text-white/86">
-                12.5K
-              </span>
-            </div>
-
-            <div className="absolute right-4 top-4 flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2">
-              <svg
-                className="h-4 w-4 text-white/55"
-                viewBox="0 0 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.7"
-              >
-                <circle cx="10" cy="10" r="6" />
-                <path d="M10 6v4l2.5 2.5" strokeLinecap="round" />
-              </svg>
-              <span className="text-[0.82rem] font-semibold text-white/86">
-                3.2K
-              </span>
-            </div>
-
-            <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2">
-              <div className="flex h-4 w-4 items-center justify-center text-white/55">
-                <svg viewBox="0 0 20 20" className="h-4 w-4 fill-current">
-                  <path d="M10 4c4.2 0 7.7 3 9 6-1.3 3-4.8 6-9 6s-7.7-3-9-6c1.3-3 4.8-6 9-6Zm0 2.5A3.5 3.5 0 1 0 10 13a3.5 3.5 0 0 0 0-7Z" />
-                </svg>
-              </div>
-              <span className="text-[0.82rem] font-semibold text-white/86">
-                85K
-              </span>
-            </div>
 
           {/* Bottom Floating Indicators */}
           <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-white/8 px-3 py-2">
@@ -365,284 +295,36 @@ export default function BrandCampaign() {
               </span>
             ))}
           </div>
-        );
-      case "dashboard":
-        return (
-          <div className={`${serviceArtworkPanel} flex flex-col gap-2 p-3`}>
-            <div className="flex-1 min-h-0 overflow-hidden rounded-[1.15rem] border border-white/10 bg-[#3b3f48] shadow-[0_12px_24px_rgba(0,0,0,0.18)] relative p-3">
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,rgba(255,255,255,0.01)_100%)]" />
-              <div className="absolute left-3 top-2">
-                <div className="text-[0.72rem] font-medium text-white/72">
-                  Campaigns
-                </div>
-                <div className="mt-0.5 text-[1.65rem] font-semibold leading-none text-white">
-                  12
-                </div>
-              </div>
-
-              <svg
-                className="absolute inset-0 h-full w-full"
-                viewBox="0 0 320 92"
+ 
+          {/* SVG line chart */}
+          <div className="relative flex-1">
+            {/* Horizontal grid lines */}
+            <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 180 88">
+              {[0, 29, 58, 87].map((y) => (
+                <line key={y} x1="0" y1={y} x2="180" y2={y} stroke="white" strokeOpacity="0.06" strokeWidth="1" />
+              ))}
+            </svg>
+ 
+            {/* Lines */}
+            <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 180 88">
+              <defs>
+                <filter id="glow-lime">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+                <filter id="glow-orange">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
+ 
+              {/* Lime line — high performer */}
+              <polyline
+                points="0,70 36,52 72,60 108,38 144,44 180,8"
                 fill="none"
-              >
-                <path
-                  d="M78 63 H300"
-                  stroke="rgba(255,255,255,0.07)"
-                  strokeWidth="1.5"
-                />
-                <path
-                  d="M78 43 H300"
-                  stroke="rgba(255,255,255,0.05)"
-                  strokeWidth="1.5"
-                />
-                <path
-                  d="M78 23 H300"
-                  stroke="rgba(255,255,255,0.04)"
-                  strokeWidth="1.5"
-                />
-
-                <rect
-                  x="88"
-                  y="57"
-                  width="12"
-                  height="14"
-                  rx="3"
-                  fill="rgba(255,255,255,0.16)"
-                />
-                <rect
-                  x="106"
-                  y="50"
-                  width="12"
-                  height="21"
-                  rx="3"
-                  fill="rgba(255,255,255,0.16)"
-                />
-                <rect
-                  x="124"
-                  y="53"
-                  width="12"
-                  height="18"
-                  rx="3"
-                  fill="rgba(255,255,255,0.16)"
-                />
-                <rect
-                  x="142"
-                  y="42"
-                  width="12"
-                  height="29"
-                  rx="3"
-                  fill="rgba(255,255,255,0.16)"
-                />
-                <rect
-                  x="160"
-                  y="56"
-                  width="12"
-                  height="15"
-                  rx="3"
-                  fill="rgba(255,255,255,0.16)"
-                />
-                <rect
-                  x="178"
-                  y="59"
-                  width="12"
-                  height="12"
-                  rx="3"
-                  fill="rgba(255,255,255,0.16)"
-                />
-                <rect
-                  x="196"
-                  y="55"
-                  width="12"
-                  height="16"
-                  rx="3"
-                  fill="rgba(255,255,255,0.16)"
-                />
-                <rect
-                  x="214"
-                  y="49"
-                  width="12"
-                  height="22"
-                  rx="3"
-                  fill="rgba(255,255,255,0.16)"
-                />
-                <rect
-                  x="232"
-                  y="54"
-                  width="12"
-                  height="17"
-                  rx="3"
-                  fill="rgba(255,255,255,0.16)"
-                />
-                <rect
-                  x="250"
-                  y="45"
-                  width="12"
-                  height="26"
-                  rx="3"
-                  fill="rgba(255,255,255,0.16)"
-                />
-                <rect
-                  x="268"
-                  y="34"
-                  width="12"
-                  height="37"
-                  rx="3"
-                  fill="rgba(255,255,255,0.16)"
-                />
-                <rect
-                  x="286"
-                  y="24"
-                  width="12"
-                  height="47"
-                  rx="3"
-                  fill="rgba(255,255,255,0.16)"
-                />
-
-                <path
-                  d="M86 56 L116 40 L150 52 L184 37 L216 45 L246 31 L275 12 L298 18"
-                  stroke="rgba(255,255,255,0.22)"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M86 56 L116 40 L150 52 L184 37 L216 45 L246 31 L275 12 L298 18"
-                  stroke="#dbf505"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-
-                <circle cx="116" cy="40" r="3.5" fill="rgba(255,255,255,0.7)" />
-                <circle cx="150" cy="52" r="3.5" fill="rgba(255,255,255,0.7)" />
-                <circle cx="216" cy="45" r="3.5" fill="rgba(255,255,255,0.7)" />
-                <circle cx="275" cy="12" r="4" fill="#dbf505" />
-                <path
-                  d="M293 8 H303 V18"
-                  stroke="#dbf505"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-
-            <div className="grid grid-cols-2 gap-2 shrink-0">
-            <div className="h-14 min-h-[3.5rem] rounded-[1.05rem] border border-white/10 bg-[#3b3f48] px-3 py-2 shadow-[0_12px_24px_rgba(0,0,0,0.18)]">
-              <div className="flex items-start justify-between">
-                <div className="space-y-1 text-[0.72rem] text-white/82">
-                  <div className="flex items-center gap-2">
-                    <span className="text-white/74">Clicks</span>
-                    <span className="text-[1.1rem] font-semibold leading-none text-white">
-                      8.4K
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-white/74">Conversions</span>
-                    <span className="text-[1.1rem] font-semibold leading-none text-white">
-                      1.2K
-                    </span>
-                  </div>
-                </div>
-
-                <div className="mt-0.5 flex items-end gap-1.5">
-                  <div className="h-8 w-3 rounded-sm bg-linear-to-t from-white/18 to-white/30" />
-                  <div className="h-11 w-3 rounded-sm bg-linear-to-t from-white/18 to-white/30" />
-                  <div className="h-13 w-3 rounded-sm bg-linear-to-t from-[#9aae18] to-[#dbf505]" />
-                </div>
-              </div>
-              <div className="mt-1.5 h-[3px] rounded-full bg-white/10">
-                <div className="h-full w-[82%] rounded-full bg-white/35" />
-              </div>
-            </div>
-
-            <div className="h-14 min-h-[3.5rem] overflow-hidden rounded-[1.05rem] border border-white/10 bg-[#3b3f48] px-3 py-2 shadow-[0_12px_24px_rgba(0,0,0,0.18)] relative">
-              <div className="absolute inset-x-3 top-2 bottom-7 rounded-[0.8rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,rgba(255,255,255,0)_100%)]" />
-              <div className="absolute left-1/2 top-[1.05rem] z-10 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-xl border border-white/18 bg-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]">
-                <div className="ml-0.5 h-0 w-0 border-y-[6px] border-l-10 border-y-transparent border-l-white/90" />
-              </div>
-
-              <svg
-                className="absolute inset-x-3 top-2 h-8"
-                viewBox="0 0 120 32"
-                fill="none"
-              >
-                <path
-                  d="M5 24 L20 22 L34 25 L48 19 L61 22 L76 12 L88 16 L102 7 L115 10"
-                  stroke="#dbf505"
-                  strokeWidth="2.3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-
-              <div className="absolute inset-x-3 bottom-2.5 flex items-center justify-between text-[0.72rem] text-white/86">
-                <div className="flex items-baseline gap-1">
-                  <span className="text-[1.15rem] font-semibold leading-none text-white">
-                    82K
-                  </span>
-                  <span className="text-white/68">Views</span>
-                </div>
-                <div className="flex items-center gap-1 text-white/82">
-                  <span className="text-[#dbf505]">❤</span>
-                  <span className="font-semibold text-white">4.5K</span>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-        );
-      case "audience":
-        return (
-          <div className={serviceArtworkPanel}>
-            <div className={serviceArtworkHighlight} />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.04),rgba(255,255,255,0.01)_40%,rgba(0,0,0,0)_70%)]" />
-
-            <svg
-              className="absolute inset-0 h-full w-full"
-              viewBox="0 0 320 170"
-              fill="none"
-            >
-              <path
-                d="M60 48 L156 26 L252 46"
-                stroke="rgba(255,255,255,0.2)"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <path
-                d="M60 48 L156 96 L252 46"
-                stroke="rgba(255,255,255,0.16)"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <path
-                d="M156 26 L156 96"
-                stroke="rgba(255,255,255,0.14)"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <path
-                d="M60 48 L92 116"
-                stroke="rgba(110,190,255,0.24)"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <path
-                d="M156 96 L92 116"
-                stroke="rgba(255,255,255,0.16)"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <path
-                d="M156 96 L228 116"
-                stroke="rgba(255,255,255,0.16)"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <path
-                d="M252 46 L228 116"
-                stroke="rgba(255,145,80,0.24)"
-                strokeWidth="2"
+                stroke="#DBF505"
+                strokeWidth="2.5"
+                strokeLinejoin="round"
                 strokeLinecap="round"
               />
               {/* Lime endpoint dot */}
@@ -706,44 +388,27 @@ export default function BrandCampaign() {
             <div className="mt-2 h-9 w-full rounded-t-full border-2 border-b-0 border-white/40" />
             <div className="mt-3 h-2 w-full rounded-full bg-white/14" />
           </div>
-        );
-      case "creators":
-        return (
-          <div className={`${serviceArtworkPanel} flex flex-row items-stretch gap-2 p-3`}>
-            <div className={serviceArtworkHighlight} />
 
-            <div className="absolute left-3 top-4 w-[4.5rem] rounded-[1rem] border border-white/10 bg-[#3b3f48] px-2.5 py-2.5 shadow-[0_10px_22px_rgba(0,0,0,0.18)] shrink-0">
-              <div className="mx-auto h-10 w-10 rounded-full border border-[#79aef0]/35 bg-[linear-gradient(180deg,#7fb3ef,#4c6f98)]">
-                <div className="absolute left-1/2 top-[0.95rem] h-3 w-3 -translate-x-1/2 rounded-full bg-[#272d37]" />
-                <div className="absolute left-1/2 top-[1.85rem] h-4 w-6 -translate-x-1/2 rounded-t-full bg-[#272d37]" />
-              </div>
-              <div className="mt-3 flex items-center gap-1.5 text-[0.8rem] font-semibold text-white/84">
-                <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 fill-white/70">
-                  <path d="M10 17.3c-.2 0-.4-.1-.5-.2C5.1 13.3 2 10.5 2 6.9A3.9 3.9 0 0 1 5.9 3c1.6 0 2.9.7 4.1 2 1.2-1.3 2.5-2 4.1-2A3.9 3.9 0 0 1 18 6.9c0 3.6-3.1 6.4-7.5 10.2-.1.1-.3.2-.5.2Z" />
-                </svg>
-                22k
-              </div>
-              <div className="mt-3 h-[3px] rounded-full bg-white/16" />
-              <div className="mt-2 h-[3px] w-10 rounded-full bg-white/10" />
-            </div>
+          {/* Centre Person (highlighted target) */}
+          <div className="absolute left-1/2 top-2 w-28 -translate-x-1/2 rounded-[1.25rem] bg-[#1f1f1f] p-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)] ring-2 ring-[#FA4616]/50">
+            <div className="mx-auto h-11 w-11 rounded-full border-[2.5px] border-[#FA4616]" />
+            <div className="mt-2 h-10 w-full rounded-t-full border-[2.5px] border-b-0 border-[#DBF505]" />
+            <div className="mt-3 h-2 w-full rounded-full bg-white/20" />
+          </div>
 
-            <div className="absolute right-3 top-4 w-[4.5rem] rounded-[1rem] border border-white/10 bg-[#3b3f48] px-2.5 py-2.5 shadow-[0_10px_22px_rgba(0,0,0,0.18)] shrink-0">
-              <div className="mx-auto h-10 w-10 rounded-full border border-[#f0b37d]/35 bg-[linear-gradient(180deg,#f0c090,#81655b)]">
-                <div className="absolute left-1/2 top-[0.95rem] h-3 w-3 -translate-x-1/2 rounded-full bg-[#322824]" />
-                <div className="absolute left-1/2 top-[1.85rem] h-4 w-6 -translate-x-1/2 rounded-t-full bg-[#322824]" />
-              </div>
-              <div className="mt-3 flex items-center gap-1.5 text-[0.8rem] font-semibold text-white/84">
-                <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 fill-white/70">
-                  <path d="M10 17.3c-.2 0-.4-.1-.5-.2C5.1 13.3 2 10.5 2 6.9A3.9 3.9 0 0 1 5.9 3c1.6 0 2.9.7 4.1 2 1.2-1.3 2.5-2 4.1-2A3.9 3.9 0 0 1 18 6.9c0 3.6-3.1 6.4-7.5 10.2-.1.1-.3.2-.5.2Z" />
-                </svg>
-                31k
-              </div>
-              <div className="mt-3 h-[3px] rounded-full bg-white/16" />
-              <div className="mt-2 h-[3px] w-10 rounded-full bg-white/10" />
-            </div>
+          {/* Targeting bracket — top-left corner */}
+          {/* <div className="absolute left-[calc(50%-52px)] top-2 h-4 w-4 border-l-2 border-t-2 border-[#DBF505]/70 rounded-tl" /> */}
+          {/* Targeting bracket — top-right corner */}
+          {/* <div className="absolute left-[calc(50%+36px)] top-2 h-4 w-4 border-r-2 border-t-2 border-[#DBF505]/70 rounded-tr" /> */}
 
-            <div className="absolute left-1/2 top-1/2 z-10 w-[min(7rem,45%)] -translate-x-1/2 -translate-y-1/2 rounded-[1.2rem] border border-[#8dd6ff]/50 bg-[linear-gradient(180deg,rgba(110,195,255,0.14),rgba(255,255,255,0.02))] px-3 py-3 shadow-[0_18px_32px_rgba(0,0,0,0.28),0_0_24px_rgba(110,195,255,0.12)]">
-              <div className="absolute inset-x-0 top-0 h-10 rounded-t-[1.2rem] bg-linear-to-b from-white/12 to-transparent" />
+          {/* Bottom Floating Indicators */}
+          {/* <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-white/8 px-3 py-2">
+            <div className="h-2.5 w-2.5 rounded-full bg-[#FA4616]" />
+            <div className="h-2.5 w-2.5 rounded-full bg-white/35" />
+            <div className="h-2.5 w-2.5 rounded-full bg-[#DBF505]" />
+          </div> */}
+        </div>
+      );
 
 
     // ─── creators ────────────────────────────────────────────────────────────────
@@ -833,10 +498,11 @@ export default function BrandCampaign() {
       // );
       case "community":
         return (
-          <div className={`${serviceArtworkPanel} flex flex-col p-3`}>
+          <div className={serviceArtworkPanel}>
             <div className={serviceArtworkHighlight} />
-            <div className="flex-1 min-h-0 flex flex-col sm:flex-row gap-3">
-            <div className="flex-1 min-h-[6rem] rounded-[1.25rem] bg-[#3b3f48] p-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)] flex flex-col items-center justify-center">
+            
+            {/* Left Card: Group Avatar */}
+            <div className="absolute left-4 top-4 w-34 rounded-[1.25rem] bg-[#1f1f1f] p-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
               <div className="relative mx-auto h-20 w-24">
                 <div className="absolute left-1/2 top-0 h-8 w-8 -translate-x-1/2 rounded-full border-2 border-white/85" />
                 <div className="absolute left-0 top-4 h-7 w-7 rounded-full border-2 border-white/65" />
@@ -845,10 +511,11 @@ export default function BrandCampaign() {
                 <div className="absolute left-1 top-10 h-8 w-10 rounded-t-full border-2 border-b-0 border-white/65" />
                 <div className="absolute right-1 top-10 h-8 w-10 rounded-t-full border-2 border-b-0 border-white/65" />
               </div>
-              <div className="mt-2 h-2.5 w-full max-w-[8rem] rounded-full bg-white/14" />
+              <div className="mt-2 h-2.5 w-full rounded-full bg-white/14" />
             </div>
 
-            <div className="flex-1 min-h-[6rem] rounded-[1.25rem] bg-[#3b3f48] px-4 py-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)] relative">
+            {/* Right Card: Chat Bubble */}
+            <div className="absolute right-4 top-4 w-36 rounded-[1.25rem] bg-[#1f1f1f] px-4 py-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
               <div className="mb-3 flex items-center justify-between">
                 <div className="h-2.5 w-14 rounded-full bg-white/20" />
                 {/* Brand Lime Dot */}
@@ -861,15 +528,14 @@ export default function BrandCampaign() {
               </div>
               <div className="absolute -bottom-2 right-6 h-5 w-5 rotate-45 rounded-sm bg-[#2a2d35]" />
             </div>
-            </div>
 
-            <div className="shrink-0 flex justify-center">
-            <div className="flex items-center gap-2 rounded-full bg-white/8 px-3 py-2">
-              <div className="h-2.5 w-2.5 rounded-full bg-[#ff5a2a]" />
+            {/* Bottom Floating Indicators */}
+            <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-white/8 px-3 py-2">
+              {/* Brand Orange */}
+              <div className="h-2.5 w-2.5 rounded-full bg-[#FA4616]" />
               <div className="h-2.5 w-2.5 rounded-full bg-white/35" />
               {/* Brand Lime */}
               <div className="h-2.5 w-2.5 rounded-full bg-[#DBF505]" />
-            </div>
             </div>
           </div>
         );
@@ -1154,18 +820,21 @@ export default function BrandCampaign() {
             {services.map((svc, i) => (
               <div
                 key={i}
-                className="group flex flex-col min-h-[420px] rounded-[1.4rem] border border-white/6 bg-[#1f1f1f] p-4 shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-transform duration-300 hover:-translate-y-1"
+                // Removed aspect-square, added flex layout and h-full to keep grid rows even
+                className="group flex h-full flex-col rounded-[1.4rem] border border-white/10 bg-[#1f1f1f] p-5 shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-transform duration-300 hover:-translate-y-1"
               >
-                <div className="flex-1 min-h-0 flex flex-col">
+                {/* Render the artwork at the top */}
+                <div className="relative w-full overflow-hidden rounded-xl">
                   {renderServiceArtwork(svc.art)}
                 </div>
-                <div className="mt-auto pt-4 shrink-0">
-                  <h3
-                    className="mb-2 text-xl font-semibold text-white leading-[1.4]"
-                  >
+
+                {/* Text Container */}
+                <div className="mt-6 flex flex-col flex-grow">
+                  <h3 className="mb-2 text-xl font-semibold leading-snug text-white">
                     {svc.title}
                   </h3>
-                  <p className="text-[1rem] text-text-primary/70 leading-normal font-normal -tracking-[.01125em]">
+                  {/* Removed mb-10 and adjusted line-height for better readability */}
+                  <p className="text-base font-normal leading-relaxed tracking-tight text-white/70">
                     {svc.desc}
                   </p>
                 </div>
