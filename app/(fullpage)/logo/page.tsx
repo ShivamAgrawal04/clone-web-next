@@ -1,5 +1,7 @@
 import BrandHeader from "@/components/BrandHeader";
 import BrandFooter from "@/components/BrandFooter";
+import { acidGroteskFont } from "@/lib/fonts";
+import VideoCarousel from "@/components/Videocarousel";
 
 const CheckIcon = () => (
     <svg className="text-brand-neon flex-shrink-0 mt-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -11,34 +13,34 @@ export default function LogoPage() {
 
     const features = [
         {
-            title: "Non-Conscious Familiarity",
-            desc: "The Mere-Exposure Effect proves that repeated, subtle viewing of your logo builds a positive association and sense of trust, all without the audience even realizing it.",
-            icon: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            title: "Stop Getting Skipped",
+            desc: "Traditional ads get ignored in seconds, but creators deliver content people actually choose to watch. Blend your branding with engaging, creator-driven content.",
+            icon: <><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" /><circle cx="12" cy="12" r="3" /></>
         },
         {
-            title: "Subliminal Brand Recall",
-            desc: "Through Implicit Memory, your logo is processed at a non-conscious level. This ensures that even if viewers don't remember seeing the logo, their future brand choices are positively influenced.",
-            icon: <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-        },
-        {
-            title: "Viral Social Validation",
-            desc: "The principle of Social Proof shows that people trust a brand endorsed by others. When creators use your logo, it acts as a powerful, authentic form of peer validation.",
-            icon: <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
-        },
-        {
-            title: "Reach Niche Audiences",
-            desc: "Target specific creator communities to get your brand in front of the exact right people, amplifying your context.",
-            icon: <circle cx="12" cy="12" r="10" />
-        },
-        {
-            title: "Build Curiosity & Stop Getting Skipped",
-            desc: "Brands spend crores on ads that get skipped in 3 seconds. By blending your branding into creative content people choose to watch, viewers are encouraged to learn more.",
-            icon: <path d="M2 12h4l3-9 5 18 3-9h5" />
+            title: "Build Non-Conscious Brand Recall",
+            desc: "Repeated subtle exposure builds trust and positive brand association, ensuring viewers are more likely to remember and choose your brand in the future.",
+            icon: <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
         },
         {
             title: "Boost SEO",
-            desc: "Creator mentions and brand-specific hashtags dramatically improve your online presence, making it easier for people to find your brand via search engines.",
-            icon: <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            desc: "Creator mentions and brand-specific hashtags increase your online visibility, making it easier for people to discover your brand.",
+            icon: <><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></>
+        },
+        {
+            title: "Smart Analytics Dashboard",
+            desc: "Monitor all clips and their performance in one centralized dashboard to take quick, informed action.",
+            icon: <><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></>
+        },
+        {
+            title: "AI-Verified Engagement",
+            desc: "Every view and interaction is automatically checked to guarantee real, authentic engagement.",
+            icon: <><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></>
+        },
+        {
+            title: "Performance-Based Payment",
+            desc: "Pay only for content that performs. If it doesn’t generate engagement, you spend nothing.",
+            icon: <><path d="M6 3h12"></path><path d="M6 8h12"></path><path d="m6 13 8.5 8"></path><path d="M6 13h3"></path><path d="M9 13c6.667 0 6.667-10 0-10"></path></>
         }
     ];
 
@@ -131,30 +133,6 @@ export default function LogoPage() {
         <div className="min-h-screen bg-page-bg text-text-primary selection:bg-blue-600 selection:text-text-primary">
             <BrandHeader />
 
-            {/* ── Hero ── */}
-            <section className="pt-[180px] pb-24 px-4 sm:px-8 flex flex-col items-center justify-center text-center">
-                <div className="inline-block py-1 px-4 rounded-full bg-brand-neon/10 border border-brand-neon/30 text-brand-neon text-sm font-bold mb-8 tracking-widest uppercase">
-                    Let Your Brand Show Its Mark
-                </div>
-                <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-extrabold tracking-tight mb-8 leading-[1.05]">
-                    Build Trust Natively.<br /> <span className="text-brand-red">Watch Your Brand Grow.</span>
-                </h1>
-                <p className="text-xl md:text-2xl text-text-primary/60 max-w-3xl mx-auto leading-relaxed mb-12 font-medium">
-                    LogoDrop gets your brand seen by millions. When creators use your logo, you build trust and connect with a fresh, excited audience.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-                    <button className="rounded-xl bg-[#1754d8] hover:bg-[#1240a6] text-white text-lg font-bold px-10 py-5 transition-transform hover:scale-105 uppercase tracking-wide">
-                        Start Your LogoDrop Campaign
-                    </button>
-                    <button className="rounded-full bg-transparent border-2 border-text-primary/30 hover:border-text-primary/60 hover:bg-text-primary/5 text-text-primary flex items-center justify-center gap-3 text-lg font-bold px-10 py-5 transition-colors uppercase tracking-wide">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
-                        Watch 60s Explainer
-                    </button>
-                </div>
-            </section>
-
-
-
             {/* ── Timeline Section (How it works) ── */}
             {/* <section className="py-24 bg-page-surface-alt border-t border-page-border relative overflow-hidden">
                 <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-8 relative z-10">
@@ -206,28 +184,24 @@ export default function LogoPage() {
                     {/* Header: Logo and Title */}
                     <div className="mb-16">
                         <div className="flex flex-wrap items-center gap-4 mb-4">
-                            <div className="w-12 h-12 bg-text-primary rounded-lg flex items-center justify-center text-page-surface shrink-0">
-                                <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
-                                    <path d="M4 6l4 12 6-8 6 8 4-12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </div>
-                            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-text-primary">Logo Content</h2>
+                            <h2 className={`${acidGroteskFont.className} text-4xl sm:text-5xl lg:text-[4.3rem] font-medium -tracking-[.055625em] leading-[1.1]`}>Logo Content</h2>
                         </div>
-                        <h3 className="text-xl md:text-2xl font-bold text-text-primary/80">Bennybucks Powers Logo Content</h3>
+                        <h3 className="text-[20px] pt-4 font-medium text-text-primary/80">What is Logo Promotion?
+                            Logo promotion focuses on increasing brand visibility by integrating the brand’s logo naturally within creator content.</h3>
                     </div>
 
                     {/* Challenge & Solution */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-20 text-text-primary">
                         <div>
-                            <h4 className="text-2xl font-bold mb-4 tracking-tight">Challenge</h4>
-                            <p className="text-lg leading-relaxed font-medium text-text-primary/80">
-                                Brands struggle to produce authentic content at scale. High production costs, agency bottlenecks, and long turnaround times make it difficult to maintain an active social presence that resonates with everyday consumers and drives ad performance.
+                            <h4 className="text-[24px] font-bold mb-4 tracking-tight">Problem</h4>
+                            <p className="text-[20px] leading-relaxed font-medium text-text-primary/80">
+                                Brands invest heavily in advertisements, but their visual identity often gets lost or does not receive enough exposure in everyday content.
                             </p>
                         </div>
                         <div>
-                            <h4 className="text-2xl font-bold mb-4 tracking-tight">Solution</h4>
-                            <p className="text-lg leading-relaxed font-medium text-text-primary/80">
-                                Bennybucks partnered with top brands to spotlight how authentic logo integration powers modern marketing. We curated a mix of voices: micro-influencers, product superfans, and everyday consumers, who used their phones to show how your product fuels their daily lives. From raw reviews to aesthetic unboxings, our creators turn ideas into impact.
+                            <h4 className="text-[24px] font-bold mb-4 tracking-tight">Solution with BennyBucks</h4>
+                            <p className="text-[20px] leading-relaxed font-medium text-text-primary/80">
+                                With BennyBucks, creators integrate the brand’s logo creatively into their content. When multiple creators showcase the logo across different styles of content, it strengthens brand recognition and helps audiences remember the brand more easily.
                             </p>
                         </div>
                     </div>
@@ -236,53 +210,13 @@ export default function LogoPage() {
                 {/* Container for Videos (Full Screen Edge-to-Edge) */}
                 <div className="w-full px-0 sm:px-4">
                     <div className="bg-page-surface rounded-[2rem] p-4 sm:p-8 md:p-12 lg:py-16 border border-page-border overflow-hidden w-full">
-                        <div className="w-full overflow-x-auto hide-scrollbar snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                            <div className="flex gap-4 sm:gap-6 w-max px-4">
-                                {/* Video Cards */}
-                                {[
-                                    {
-                                        video: "https://videos.pexels.com/video-files/3209828/3209828-sd_640_360_25fps.mp4",
-                                        brand: "Minimal Logo Reveal"
-                                    },
-                                    {
-                                        video: "https://videos.pexels.com/video-files/4434242/4434242-hd_1080_1920_24fps.mp4",
-                                        brand: "3D Logo Animation"
-                                    },
-                                    {
-                                        video: "https://videos.pexels.com/video-files/853925/853925-sd_640_360_25fps.mp4",
-                                        brand: "Cinematic Brand Logo Intro"
-                                    },
-                                    {
-                                        video: "https://videos.pexels.com/video-files/2795405/2795405-hd_1080_1920_25fps.mp4",
-                                        brand: "Neon Logo Reveal"
-                                    },
-                                    {
-                                        video: "https://videos.pexels.com/video-files/3188991/3188991-sd_640_360_25fps.mp4",
-                                        brand: "Modern Logo Outro Animation"
-                                    }
-                                ].map((item, i) => (
-                                    <div key={i} className="relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[9/16] rounded-2xl md:rounded-[1.5rem] overflow-hidden group snap-center cursor-pointer shadow-md bg-page-bg">
-                                        <video
-                                            src={item.video}
-                                            autoPlay
-                                            loop
-                                            muted
-                                            playsInline
-                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                                        />
-                                        <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
-                                        <div className="absolute top-4 left-4 right-4 flex justify-between items-center text-white z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <span className="bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold border border-white/20">#BennyPartner</span>
-                                        </div>
-                                        <div className="absolute bottom-8 inset-x-0 flex justify-center pointer-events-none">
-                                            <span className="bg-white text-black font-bold text-sm px-6 py-2.5 rounded-full shadow-xl">
-                                                {item.brand}
-                                            </span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        <VideoCarousel items={[
+                            { video: "https://videos.pexels.com/video-files/3209828/3209828-sd_640_360_25fps.mp4", label: "Minimal Logo Reveal" },
+                            { video: "https://videos.pexels.com/video-files/4434242/4434242-hd_1080_1920_24fps.mp4", label: "3D Logo Animation" },
+                            { video: "https://videos.pexels.com/video-files/853925/853925-sd_640_360_25fps.mp4", label: "Cinematic Brand Logo Intro" },
+                            { video: "https://videos.pexels.com/video-files/2795405/2795405-hd_1080_1920_25fps.mp4", label: "Neon Logo Reveal" },
+                            { video: "https://videos.pexels.com/video-files/3188991/3188991-sd_640_360_25fps.mp4", label: "Modern Logo Outro Animation" }
+                        ]} />
                     </div>
                 </div>
             </section>
@@ -291,7 +225,7 @@ export default function LogoPage() {
             <section className="py-24 bg-page-surface-alt border-t border-page-border">
                 <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-8">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">How LogoDrop Helps Your Brand</h2>
+                        <h2 className={`${acidGroteskFont.className} -tracking-[.055625em] leading-[1.1] text-4xl md:text-5xl font-medium mb-6`}>How BennyBucks Helps Your Brand</h2>
                         <p className="text-lg text-text-primary/50 max-w-2xl mx-auto font-medium">Deploy your branding without turning your marketing into a skippable ad.</p>
                     </div>
 

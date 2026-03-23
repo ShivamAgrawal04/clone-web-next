@@ -3,29 +3,8 @@
 import BrandHeader from "@/components/BrandHeader";
 import BrandFooter from "@/components/BrandFooter";
 import Link from "next/link";
-import localFont from "next/font/local";
-import { useState, useEffect } from "react";
-
-const acidGroteskFont = localFont({
-  src: [
-    {
-      path: "../../../public/fonts/FFF_AcidGrotesk_Regular-s.ec71d0d5.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/FFF_AcidGrotesk_Medium-s.a3f6ca65.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/FFF_AcidGrotesk_Bold-s.49a3bd75.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  display: "swap",
-});
+import { useState, useEffect, useRef } from "react";
+import { acidGroteskFont } from "@/lib/fonts";
 
 const brandLogos = [
   "Sonos",
@@ -76,6 +55,77 @@ const workItems = [
       "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
   },
 ];
+
+interface WorkItem {
+  href: string;
+  brand: string;
+  video: string;
+  image: string;
+}
+
+interface VerticalsSectionProps {
+  workItems: WorkItem[];
+}
+
+function VerticalsSection({ workItems }: VerticalsSectionProps) {
+  const carouselRef = useRef(null);
+
+  return (
+    <section className="overflow-hidden border-t border-page-border bg-page-bg py-24">
+      <div className="mx-auto w-full max-w-[1480px] px-4 sm:px-8">        
+        <div className="max-w-3xl">
+          <h2
+            className={`${acidGroteskFont.className} text-center text-4xl font-medium leading-[1.1] -tracking-[0.055625em] sm:text-5xl md:text-left lg:text-[4.3rem]`}
+          >
+            Our Verticals
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-text-primary/65 md:mx-0 md:text-left md:text-lg">
+            Explore performance-first formats built for modern creator-led
+            campaigns, from UGC and clipping to music and logo-led content.
+          </p>
+        </div>        
+
+        <div
+          ref={carouselRef}
+          className="mt-10 overflow-x-auto pb-4 snap-x snap-mandatory"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          <div className="flex w-max gap-5 sm:gap-6">
+            {workItems.map((item) => (
+              <div key={item.href} className="snap-start shrink-0">
+                <Link
+                  href={item.href}
+                  className="group relative block w-[260px] overflow-hidden rounded-[1.75rem] border border-page-border bg-page-surface aspect-[9/16] sm:w-[300px] lg:w-[318px]"
+                  aria-label={`${item.brand} vertical`}
+                >
+                  <video
+                    src={item.video}
+                    poster={item.image}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="absolute inset-0 h-full w-full object-cover opacity-85 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+
+                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 text-white">
+                    <h3
+                      className={`${acidGroteskFont.className} mt-2 text-3xl font-medium leading-none sm:text-[2.1rem]`}
+                    >
+                      {item.brand}
+                    </h3>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>        
+      </div>
+    </section>
+  );
+}
 
 export default function BrandCampaign() {
   const [heroIndex, setHeroIndex] = useState<number | null>(null);
@@ -142,15 +192,17 @@ export default function BrandCampaign() {
                 </div>
               </div>
 
-              <div className="text-right">
-                <div className="text-[0.58rem] font-medium tracking-[0.18em] text-white/42">
-                  ROI
-                </div>
-                <div className="mt-0.5 text-sm font-semibold text-[#dbf505]">
-                  +24%
-                </div>
-              </div>
+          {/* Right Card: Payments (Bag) */}
+          <div className="absolute right-4 top-4 w-32 rounded-[1.25rem] bg-[#1f1f1f] p-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+            {/* Bag body */}
+            <div className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#DBF505]/70 bg-[#DBF505]/07">
+              <span className="text-xl font-bold leading-none text-[#DBF505]">₹</span>
+              {/* Bag knot — small pill above circle */}
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 h-2.5 w-5 rounded-full border-2 border-[#DBF505]/60 bg-[#1f1f1f]" />
             </div>
+            <div className="mt-3 h-2 w-full rounded-full bg-white/14" />
+            <p className="mt-2 text-center text-[9px] font-semibold tracking-[0.15em] text-[#DBF505]/70">PAYMENTS</p>
+          </div>
 
             <div className="flex-1 min-h-0 flex items-center py-2">
               <svg
@@ -215,15 +267,13 @@ export default function BrandCampaign() {
                 <span>PERFORMANCE PAYOUT</span>
                 <span>82%</span>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="h-[3px] flex-1 rounded-full bg-white/10">
-                  <div className="h-full w-[82%] rounded-full bg-[#dbf505]" />
-                </div>
-                <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/10 bg-white/5">
-                  <div className="h-2.5 w-2.5 rounded-[3px] border border-white/45" />
-                </div>
+              {/* Live badge */}
+              <div className="flex items-center gap-1 rounded-full bg-[#DBF505]/12 px-2 py-0.5">
+                <div className="h-1.5 w-1.5 rounded-full bg-[#DBF505]" />
+                <span className="text-[8px] font-semibold tracking-widest text-[#DBF505]/80">LIVE</span>
               </div>
             </div>
+            <div className="mt-2.5 h-2 w-full rounded-full bg-white/10" />
           </div>
         );
       case "verified":
@@ -287,19 +337,33 @@ export default function BrandCampaign() {
               </span>
             </div>
 
-            <div className="absolute bottom-4 right-4 flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2">
-              <div className="flex h-4 w-4 items-center justify-center text-white/55">
-                <svg viewBox="0 0 20 20" className="h-4 w-4 fill-current">
-                  <path d="M3 4.5A2.5 2.5 0 0 1 5.5 2h9A2.5 2.5 0 0 1 17 4.5v5A2.5 2.5 0 0 1 14.5 12H10l-3.5 3v-3h-1A2.5 2.5 0 0 1 3 9.5v-5Z" />
-                </svg>
-              </div>
-              <span className="text-[0.82rem] font-semibold text-white/86">
-                1.2K
-              </span>
-            </div>
+          {/* Bottom Floating Indicators */}
+          <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-white/8 px-3 py-2">
+            <div className="h-2.5 w-2.5 rounded-full bg-[#FA4616]" />
+            <div className="h-2.5 w-2.5 rounded-full bg-white/35" />
+            <div className="h-2.5 w-2.5 rounded-full bg-[#DBF505]" />
+          </div>
+        </div>
+      );
 
-            <div className="absolute inset-x-13 top-1/2 h-px -translate-y-1/2 bg-linear-to-r from-transparent via-white/12 to-transparent" />
-            <div className="absolute left-1/2 inset-y-8 w-px -translate-x-1/2 bg-linear-to-b from-transparent via-white/12 to-transparent" />
+
+    // ─── dashboard ───────────────────────────────────────────────────────────────
+    case "dashboard":
+      return (
+        <div className={serviceArtworkPanel}>
+      <div className={serviceArtworkHighlight} />
+ 
+      {/* Chart card */}
+      <div className="absolute left-4 right-4 top-4 rounded-[1.25rem] bg-[#252525] p-4 shadow-[0_10px_22px_rgba(0,0,0,0.28)]">
+        {/* Y-axis labels + chart area */}
+        <div className="flex gap-2">
+          {/* Y-axis */}
+          <div className="flex flex-col justify-between pb-1 text-right" style={{ height: 88 }}>
+            {["₹10k", "₹5k", "₹2.5k", "₹1k"].map((label) => (
+              <span key={label} className="text-[8px] font-medium leading-none text-white/35">
+                {label}
+              </span>
+            ))}
           </div>
         );
       case "dashboard":
@@ -581,62 +645,66 @@ export default function BrandCampaign() {
                 strokeWidth="2"
                 strokeLinecap="round"
               />
-              <path
-                d="M92 116 L228 116"
-                stroke="rgba(255,255,255,0.14)"
-                strokeWidth="2"
+              {/* Lime endpoint dot */}
+              <circle cx="180" cy="8" r="5" fill="#DBF505"  />
+              <circle cx="180" cy="8" r="3" fill="#1a1a1a" />
+              <circle cx="180" cy="8" r="1.5" fill="#DBF505" />
+ 
+              {/* Orange line — lower performer */}
+              <polyline
+                points="0,68 36,44 72,30 108,54 144,62 180,50"
+                fill="none"
+                stroke="#FA4616"
+                strokeWidth="2.5"
+                strokeLinejoin="round"
                 strokeLinecap="round"
               />
-
-              <circle cx="108" cy="60" r="4" fill="#6aaeff" fillOpacity="0.8" />
-              <circle cx="132" cy="44" r="3.5" fill="rgba(255,255,255,0.42)" />
-              <circle cx="184" cy="48" r="3.5" fill="rgba(255,255,255,0.42)" />
-              <circle cx="212" cy="70" r="4" fill="#ff9550" fillOpacity="0.8" />
-              <circle cx="120" cy="98" r="3.5" fill="rgba(255,255,255,0.34)" />
-              <circle cx="196" cy="98" r="3.5" fill="rgba(255,255,255,0.34)" />
-              <circle cx="74" cy="92" r="4" fill="rgba(255,255,255,0.3)" />
-              <circle cx="244" cy="92" r="4" fill="rgba(255,255,255,0.3)" />
+              {/* Orange endpoint dot */}
+              <circle cx="180" cy="50" r="5" fill="#FA4616" />
+              <circle cx="180" cy="50" r="3" fill="#1a1a1a" />
+              <circle cx="180" cy="50" r="1.5" fill="#FA4616" />
             </svg>
-
-            <div className="absolute left-5 top-5 h-11 w-11 rounded-full border border-[#6aaeff]/35 bg-[linear-gradient(180deg,#7fb9ff,#5477a9)] shadow-[0_0_18px_rgba(106,174,255,0.14)]">
-              <div className="absolute left-1/2 top-2.5 h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-[#1f2430]" />
-              <div className="absolute left-1/2 top-6.5 h-4.5 w-6.5 -translate-x-1/2 rounded-t-full bg-[#1f2430]" />
+          </div>
+        </div>
+ 
+        {/* Bottom label row */}
+        <div className="mt-3 flex items-center justify-between">
+          <div className="h-2 w-16 rounded-full bg-white/10" />
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
+              <div className="h-1.5 w-4 rounded-full bg-[#DBF505]/70" />
+              <div className="h-1.5 w-8 rounded-full bg-white/15" />
             </div>
-
-            <div className="absolute left-1/2 top-3 h-12 w-12 -translate-x-1/2 rounded-full border border-[#7ec7ff]/40 bg-[linear-gradient(180deg,#93d4ff,#4f8fbc)] shadow-[0_0_18px_rgba(126,199,255,0.16)]">
-              <div className="absolute left-1/2 top-3 h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-[#20252f]" />
-              <div className="absolute left-1/2 top-7 h-4.5 w-7 -translate-x-1/2 rounded-t-full bg-[#20252f]" />
+            <div className="flex items-center gap-1">
+              <div className="h-1.5 w-4 rounded-full bg-[#FA4616]/70" />
+              <div className="h-1.5 w-8 rounded-full bg-white/15" />
             </div>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+      );
 
-            <div className="absolute left-1/2 top-[4.45rem] h-12 w-12 -translate-x-1/2 rounded-full border border-[#ff9550]/35 bg-[linear-gradient(180deg,#ffb07a,#cf6c3f)] shadow-[0_0_18px_rgba(255,149,80,0.14)]">
-              <div className="absolute left-1/2 top-3 h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-[#271d1a]" />
-              <div className="absolute left-1/2 top-7 h-4.5 w-7 -translate-x-1/2 rounded-t-full bg-[#271d1a]" />
-            </div>
 
-            <div className="absolute right-5 top-5 h-11 w-11 rounded-full border border-[#ffb056]/38 bg-[linear-gradient(180deg,#ffc16e,#b8792d)] shadow-[0_0_18px_rgba(255,176,86,0.14)]">
-              <div className="absolute left-1/2 top-2.5 h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-[#2b2020]" />
-              <div className="absolute left-1/2 top-6.5 h-4.5 w-6.5 -translate-x-1/2 rounded-t-full bg-[#2b2020]" />
-            </div>
+    // ─── audience ────────────────────────────────────────────────────────────────
+    case "audience":
+      return (
+        <div className={serviceArtworkPanel}>
+          <div className={serviceArtworkHighlight} />
 
-            <div className="absolute bottom-4 left-[3.05rem] flex h-14 w-14 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,#48556b,#212735)] shadow-[0_12px_24px_rgba(0,0,0,0.22)]">
-              <div className="relative h-7 w-7">
-                <div className="absolute left-1 top-0 h-3 w-3 rounded-full bg-white/78" />
-                <div className="absolute right-1 top-0 h-3 w-3 rounded-full bg-white/55" />
-                <div className="absolute left-1/2 top-4 h-3.5 w-4 -translate-x-1/2 rounded-t-full bg-[#7ec7ff]" />
-                <div className="absolute left-0 bottom-0 h-3.5 w-4 rounded-t-full bg-white/55" />
-                <div className="absolute right-0 bottom-0 h-3.5 w-4 rounded-t-full bg-white/78" />
-              </div>
-            </div>
+          {/* Left Person (faded) */}
+          <div className="absolute left-4 top-4 w-24 rounded-[1.25rem] bg-[#1f1f1f] p-4 opacity-40 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+            <div className="mx-auto h-9 w-9 rounded-full border-2 border-white/40" />
+            <div className="mt-2 h-9 w-full rounded-t-full border-2 border-b-0 border-white/40" />
+            <div className="mt-3 h-2 w-full rounded-full bg-white/14" />
+          </div>
 
-            <div className="absolute bottom-4 right-[3.05rem] flex h-14 w-14 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,#545b67,#242833)] shadow-[0_12px_24px_rgba(0,0,0,0.22)]">
-              <div className="relative h-7 w-7">
-                <div className="absolute left-1 top-0 h-3 w-3 rounded-full bg-white/78" />
-                <div className="absolute right-1 top-0 h-3 w-3 rounded-full bg-white/78" />
-                <div className="absolute left-1/2 top-4 h-3.5 w-4 -translate-x-1/2 rounded-t-full bg-white/78" />
-                <div className="absolute left-0 bottom-0 h-3.5 w-4 rounded-t-full bg-white/55" />
-                <div className="absolute right-0 bottom-0 h-3.5 w-4 rounded-t-full bg-white/55" />
-              </div>
-            </div>
+          {/* Right Person (faded) */}
+          <div className="absolute right-4 top-4 w-24 rounded-[1.25rem] bg-[#1f1f1f] p-4 opacity-40 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+            <div className="mx-auto h-9 w-9 rounded-full border-2 border-white/40" />
+            <div className="mt-2 h-9 w-full rounded-t-full border-2 border-b-0 border-white/40" />
+            <div className="mt-3 h-2 w-full rounded-full bg-white/14" />
           </div>
         );
       case "creators":
@@ -677,49 +745,92 @@ export default function BrandCampaign() {
             <div className="absolute left-1/2 top-1/2 z-10 w-[min(7rem,45%)] -translate-x-1/2 -translate-y-1/2 rounded-[1.2rem] border border-[#8dd6ff]/50 bg-[linear-gradient(180deg,rgba(110,195,255,0.14),rgba(255,255,255,0.02))] px-3 py-3 shadow-[0_18px_32px_rgba(0,0,0,0.28),0_0_24px_rgba(110,195,255,0.12)]">
               <div className="absolute inset-x-0 top-0 h-10 rounded-t-[1.2rem] bg-linear-to-b from-white/12 to-transparent" />
 
-              <div className="relative mx-auto h-14 w-14 rounded-full border border-[#8fe4ff]/40 bg-[radial-gradient(circle_at_50%_30%,#74f0cb,#52b697_62%,#2b4f52_100%)] shadow-[0_0_20px_rgba(116,240,203,0.18)]">
-                <div className="absolute left-1/2 top-3.5 h-4 w-4 -translate-x-1/2 rounded-full bg-[#1f2b2d]" />
-                <div className="absolute left-1/2 top-8 h-5 w-7 -translate-x-1/2 rounded-t-full bg-[#1f2b2d]" />
-              </div>
 
-              <div className="absolute right-3 top-[4.35rem] flex h-7 w-7 items-center justify-center rounded-full border border-[#dbf505]/40 bg-[#dbf505] shadow-[0_0_14px_rgba(219,245,5,0.28)]">
-                <svg
-                  className="h-3.5 w-3.5 text-[#1f2612]"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M4.5 10.5 8.5 14l7-8" />
-                </svg>
-              </div>
+    // ─── creators ────────────────────────────────────────────────────────────────
+    case "creators":
+      return (
+        <div className={serviceArtworkPanel}>
+          <div className={serviceArtworkHighlight} />
 
-              <div className="mt-3 flex items-center gap-1.5 text-sm font-semibold text-white">
-                <svg viewBox="0 0 20 20" className="h-4 w-4 fill-white/75">
-                  <path d="M10 17.3c-.2 0-.4-.1-.5-.2C5.1 13.3 2 10.5 2 6.9A3.9 3.9 0 0 1 5.9 3c1.6 0 2.9.7 4.1 2 1.2-1.3 2.5-2 4.1-2A3.9 3.9 0 0 1 18 6.9c0 3.6-3.1 6.4-7.5 10.2-.1.1-.3.2-.5.2Z" />
-                </svg>
-                120K
-              </div>
-
-              <div className="mt-1.5 flex items-center gap-2 text-white/92">
-                <div className="h-0 w-0 border-y-[5px] border-l-8 border-y-transparent border-l-white/92" />
-                <span className="text-[1.35rem] font-semibold leading-none">
-                  Alex
-                </span>
-              </div>
-
-              <div className="mt-2 border-t border-white/10 pt-2 text-[0.72rem] leading-tight text-white/74">
-                <div>120K Followers</div>
-                <div>
-                  Engagement:{" "}
-                  <span className="font-semibold text-[#dbf505]">8.9%</span>
-                </div>
-              </div>
-            </div>
+          {/* Left Person (faded) */}
+          <div className="absolute left-4 top-4 w-24 rounded-[1.25rem] bg-[#1f1f1f] p-4 opacity-40 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+            <div className="mx-auto h-9 w-9 rounded-full border-2 border-white/40" />
+            <div className="mt-2 h-9 w-full rounded-t-full border-2 border-b-0 border-white/40" />
+            <div className="mt-3 h-2 w-full rounded-full bg-white/14" />
           </div>
-        );
+
+          {/* Right Person (faded) */}
+          <div className="absolute right-4 top-4 w-24 rounded-[1.25rem] bg-[#1f1f1f] p-4 opacity-40 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+            <div className="mx-auto h-9 w-9 rounded-full border-2 border-white/40" />
+            <div className="mt-2 h-9 w-full rounded-t-full border-2 border-b-0 border-white/40" />
+            <div className="mt-3 h-2 w-full rounded-full bg-white/14" />
+          </div>
+
+          {/* Centre Person (highlighted target) */}
+          <div className="absolute left-1/2 top-2 w-28 -translate-x-1/2 rounded-[1.25rem] bg-[#1f1f1f] p-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)] ring-2 ring-[#FA4616]/50">
+            <div className="mx-auto h-11 w-11 rounded-full border-[2.5px] border-[#FA4616]" />
+            <div className="mt-2 h-10 w-full rounded-t-full border-[2.5px] border-b-0 border-[#DBF505]" />
+            <div className="mt-3 h-2 w-full rounded-full bg-white/20" />
+          </div>
+
+          {/* Targeting bracket — top-left corner */}
+          {/* <div className="absolute left-[calc(50%-52px)] top-2 h-4 w-4 border-l-2 border-t-2 border-[#DBF505]/70 rounded-tl" /> */}
+          {/* Targeting bracket — top-right corner */}
+          {/* <div className="absolute left-[calc(50%+36px)] top-2 h-4 w-4 border-r-2 border-t-2 border-[#DBF505]/70 rounded-tr" /> */}
+
+          {/* Bottom Floating Indicators */}
+          {/* <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-white/8 px-3 py-2">
+            <div className="h-2.5 w-2.5 rounded-full bg-[#FA4616]" />
+            <div className="h-2.5 w-2.5 rounded-full bg-white/35" />
+            <div className="h-2.5 w-2.5 rounded-full bg-[#DBF505]" />
+          </div> */}
+        </div>
+      );
+      // return (
+      //   <div className={serviceArtworkPanel}>
+      //     <div className={serviceArtworkHighlight} />
+
+      //     {/* Platform card (roster of avatars) */}
+      //     <div className="absolute left-4 right-4 top-4 rounded-[1.25rem] bg-[#1f1f1f] p-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+      //       {/* Header row */}
+      //       <div className="mb-3 flex items-center justify-between">
+      //         <div className="h-2.5 w-16 rounded-full bg-white/20" />
+      //         <div className="h-2.5 w-8 rounded-full bg-white/10" />
+      //       </div>
+
+      //       {/* Avatar rows — 4 unselected creators */}
+      //       {[0.18, 0.12, 0.10, 0.08].map((opacity, i) => (
+      //         <div key={i} className="mb-2 flex items-center gap-3">
+      //           <div className="h-7 w-7 flex-shrink-0 rounded-full border-2 border-white/20" style={{ opacity }} />
+      //           <div className="flex flex-1 flex-col gap-1.5" style={{ opacity }}>
+      //             <div className="h-2 w-3/4 rounded-full bg-white/20" />
+      //             <div className="h-2 w-1/2 rounded-full bg-white/12" />
+      //           </div>
+      //           <div className="h-5 w-8 flex-shrink-0 rounded-full bg-white/10" style={{ opacity }} />
+      //         </div>
+      //       ))}
+      //     </div>
+
+      //     {/* Selected creator badge — lifted out at the bottom of the panel */}
+      //     <div className="absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-2xl bg-[#1f1f1f] px-4 py-3 shadow-[0_10px_22px_rgba(0,0,0,0.18)]">
+      //       {/* Glowing avatar */}
+      //       <div className="relative h-8 w-8 flex-shrink-0 rounded-full border-2 border-[#FA4616] shadow-[0_0_8px_rgba(250,70,22,0.5)]" />
+      //       <div>
+      //         <div className="h-2.5 w-20 rounded-full bg-white/25" />
+      //         <div className="mt-1.5 h-2 w-14 rounded-full bg-white/14" />
+      //       </div>
+      //       {/* Selected lime dot */}
+      //       <div className="ml-1 h-3 w-3 flex-shrink-0 rounded-full bg-[#DBF505] shadow-[0_0_6px_rgba(219,245,5,0.6)]" />
+      //     </div>
+
+      //     {/* Bottom Floating Indicators */}
+      //     <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-white/8 px-3 py-2">
+      //       <div className="h-2.5 w-2.5 rounded-full bg-[#FA4616]" />
+      //       <div className="h-2.5 w-2.5 rounded-full bg-white/35" />
+      //       <div className="h-2.5 w-2.5 rounded-full bg-[#DBF505]" />
+      //     </div>
+      //   </div>
+      // );
       case "community":
         return (
           <div className={`${serviceArtworkPanel} flex flex-col p-3`}>
@@ -740,14 +851,15 @@ export default function BrandCampaign() {
             <div className="flex-1 min-h-[6rem] rounded-[1.25rem] bg-[#3b3f48] px-4 py-4 shadow-[0_10px_22px_rgba(0,0,0,0.18)] relative">
               <div className="mb-3 flex items-center justify-between">
                 <div className="h-2.5 w-14 rounded-full bg-white/20" />
-                <div className="h-3 w-3 rounded-full bg-[#dbf505]" />
+                {/* Brand Lime Dot */}
+                <div className="h-3 w-3 rounded-full bg-[#DBF505]" />
               </div>
               <div className="space-y-2">
                 <div className="h-2.5 w-20 rounded-full bg-white/18" />
                 <div className="h-2.5 w-16 rounded-full bg-white/12" />
                 <div className="h-2.5 w-12 rounded-full bg-white/10" />
               </div>
-              <div className="absolute -bottom-2 right-6 h-5 w-5 rotate-45 rounded-sm bg-[#3b3f48]" />
+              <div className="absolute -bottom-2 right-6 h-5 w-5 rotate-45 rounded-sm bg-[#2a2d35]" />
             </div>
             </div>
 
@@ -755,7 +867,8 @@ export default function BrandCampaign() {
             <div className="flex items-center gap-2 rounded-full bg-white/8 px-3 py-2">
               <div className="h-2.5 w-2.5 rounded-full bg-[#ff5a2a]" />
               <div className="h-2.5 w-2.5 rounded-full bg-white/35" />
-              <div className="h-2.5 w-2.5 rounded-full bg-[#dbf505]" />
+              {/* Brand Lime */}
+              <div className="h-2.5 w-2.5 rounded-full bg-[#DBF505]" />
             </div>
             </div>
           </div>
@@ -771,8 +884,7 @@ export default function BrandCampaign() {
       <BrandHeader />
 
       {/* ── Hero ── */}
-
-      <section className="pt-[180px] pb-24 px-4 sm:px-8 flex flex-col items-center justify-center text-center">
+      {/* <section className="pt-[180px] pb-24 px-4 sm:px-8 flex flex-col items-center justify-center text-center">
         <div className="inline-block py-1 px-4 rounded-full bg-brand-neon/10 border border-brand-neon/30 text-brand-neon text-sm font-bold mb-8 tracking-widest uppercase">
           Let Your Brand Show Its Mark
         </div>
@@ -795,7 +907,7 @@ export default function BrandCampaign() {
             Launch Your Campaign
           </button>
         </div>
-      </section>
+      </section> */}
 
       {/* ── Hero ── */}
       {/* <section className="pt-[100px] pb-12 px-4 sm:px-8 bg-page-bg flex flex-col items-center justify-center">
@@ -880,7 +992,6 @@ export default function BrandCampaign() {
       </section> */}
 
       {/* ── Quote & Feature ── */}
-      {/* ── Quote & Feature ── */}
       <section className="bg-gradient-to-b from-page-bg to-page-surface py-24 border-t border-page-border flex flex-col items-center">
         <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-8">
           {/* <div className="text-center mb-20 md:mb-28">
@@ -902,10 +1013,7 @@ export default function BrandCampaign() {
             </div>
             <div className="w-full lg:w-1/2 text-left mt-8 lg:mt-0">
               <h2
-                className={`${acidGroteskFont.className} text-4xl sm:text-5xl lg:text-[4.3rem] font-medium mb-8 -tracking-[.055625em] leading-[1.1]
-                
-                 
-                `}
+                className={`${acidGroteskFont.className} text-4xl sm:text-5xl lg:text-[4.3rem] font-medium mb-8 -tracking-[.055625em] leading-[1.1]`}
               >
                 India’s Most <span className="text-[#dbf505]">Intelligent</span>{" "}
                 <br />
@@ -933,7 +1041,7 @@ export default function BrandCampaign() {
       </section>
 
       {/* ── Verticals Carousel ── */}
-      <section className="overflow-hidden border-t border-page-border bg-page-bg py-24">
+      {/* <section className="overflow-hidden border-t border-page-border bg-page-bg py-24">
         <div className="mx-auto w-full max-w-[1480px] px-4 sm:px-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
@@ -986,7 +1094,9 @@ export default function BrandCampaign() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+      <VerticalsSection workItems={workItems} />
+
 
       {/* ── Marquee / Ticker ── */}
       <section className="py-4 sm:py-6 overflow-hidden border-page-border flex items-center">
@@ -1039,8 +1149,8 @@ export default function BrandCampaign() {
 
       {/* ── Full Service grid ── */}
       <section className="relative overflow-hidden bg-[#121212] py-24 text-white">
-        <div className="relative w-full px-4 sm:px-8 max-w-[1480px] mx-auto">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="relative mx-auto w-full max-w-[1480px] px-4 sm:px-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((svc, i) => (
               <div
                 key={i}

@@ -1,11 +1,46 @@
 import BrandHeader from "@/components/BrandHeader";
 import BrandFooter from "@/components/BrandFooter";
+import { acidGroteskFont } from "@/lib/fonts";
+import VideoCarousel from "@/components/Videocarousel";
 
 const CheckIcon = () => (
     <svg className="text-brand-neon flex-shrink-0 mt-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="20 6 9 17 4 12"></polyline>
     </svg>
 );
+
+const features = [
+    {
+        title: "Content Awareness",
+        desc: "Your long videos are transformed into short clips by creators, putting your channel, movie, or series in front of millions of potential viewers.",
+        icon: <><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></>
+    },
+    {
+        title: "Engaging Highlights",
+        desc: "clips features the best moments, funniest scenes, or key insights, paired with unique edits and matched audio to instantly connect with your audience.",
+        icon: <><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></>
+    },
+    {
+        title: "Organic Reach",
+        desc: "Your content spreads naturally across the platform, boosting virality and reaching new audiences without forced promotion.",
+        icon: <><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></>
+    },
+    {
+        title: "Smart Analytics Dashboard",
+        desc: "Track all your clips and their performance in one simple dashboard so you can monitor results and take action quickly.",
+        icon: <><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></>
+    },
+    {
+        title: "AI-Verified Engagement",
+        desc: "Every view and interaction is automatically verified to ensure the engagement is real and authentic.",
+        icon: <><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></>
+    },
+    {
+        title: "Performance-Based Payment",
+        desc: "Pay only for real views and engagement. If the content does not perform, you spend nothing.",
+        icon: <><path d="M6 3h12"></path><path d="M6 8h12"></path><path d="m6 13 8.5 8"></path><path d="M6 13h3"></path><path d="M9 13c6.667 0 6.667-10 0-10"></path></>
+    }
+];
 
 export default function ClippingPage() {
 
@@ -103,27 +138,6 @@ export default function ClippingPage() {
         <div className="min-h-screen bg-page-bg text-text-primary selection:bg-blue-600 selection:text-text-primary">
             <BrandHeader />
 
-            {/* ── Hero ── */}
-            <section className="pt-[180px] pb-32 px-4 sm:px-8 flex flex-col items-center justify-center text-center">
-                <div className="inline-block py-1 px-4 rounded-full bg-brand-neon/10 border border-brand-neon/30 text-brand-neon text-sm font-bold mb-8 tracking-widest uppercase">
-                    India&apos;s Only Clipping Platform
-                </div>
-                <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight mb-8 leading-[1.05]">
-                    Pioneering Open Platform For<br /> <span className="text-brand-red">Youtubers & Brands.</span>
-                </h1>
-                <p className="text-xl md:text-2xl text-text-primary/60 max-w-4xl mx-auto leading-relaxed mb-12 font-medium">
-                    We pioneered this. This is something not a single open platform in India has. Best for Youtubers, Personal Branding, OTT platforms, and Entertainment Marketing.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-                    <button className="rounded-xl bg-[#1754d8] hover:bg-[#1240a6] text-white text-lg font-bold px-10 py-5 transition-transform hover:scale-105 uppercase tracking-wide">
-                        Launch Clipping Campaign
-                    </button>
-                    <button className="rounded-full bg-transparent border-2 border-text-primary/30 hover:border-text-primary/60 hover:bg-text-primary/5 text-text-primary text-lg font-bold px-10 py-5 transition-colors uppercase tracking-wide">
-                        Learn More
-                    </button>
-                </div>
-            </section>
-
             {/* ── Timeline Section (How it works) ── */}
             {/* <section className="py-24 bg-page-surface-alt border-t border-page-border relative overflow-hidden">
                 <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-8 relative z-10">
@@ -179,23 +193,23 @@ export default function ClippingPage() {
                                     <path d="M4 6l4 12 6-8 6 8 4-12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </div>
-                            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-text-primary">Clipping Content</h2>
+                            <h2 className={`${acidGroteskFont.className} text-4xl sm:text-5xl lg:text-[4.3rem] font-medium -tracking-[.055625em] leading-[1.1]`}>Clipping Content</h2>
                         </div>
-                        <h3 className="text-xl md:text-2xl font-bold text-text-primary/80">Bennybucks Powers Clipping Content</h3>
+                        <h3 className="text-[20px] pt-4 font-medium text-text-primary/80">Clipping is the process of creating short-form content by cutting and repurposing moments from longer videos such as YouTube videos, movie trailers, web series, or TV shows.</h3>
                     </div>
 
                     {/* Challenge & Solution */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-20 text-text-primary">
                         <div>
-                            <h4 className="text-2xl font-bold mb-4 tracking-tight">Challenge</h4>
-                            <p className="text-lg leading-relaxed font-medium text-text-primary/80">
-                                Brands struggle to produce authentic content at scale. High production costs, agency bottlenecks, and long turnaround times make it difficult to maintain an active social presence that resonates with everyday consumers and drives ad performance.
+                            <h4 className="text-[24px] font-bold mb-4 tracking-tight">Problem</h4>
+                            <p className="text-[20px] leading-relaxed font-medium text-text-primary/80">
+                                Long-form content often contains valuable moments, but many of these moments remain hidden and never reach the audience they deserve.
                             </p>
                         </div>
                         <div>
-                            <h4 className="text-2xl font-bold mb-4 tracking-tight">Solution</h4>
-                            <p className="text-lg leading-relaxed font-medium text-text-primary/80">
-                                Bennybucks partnered with top brands to spotlight how authentic clipping powers modern marketing. We curated a mix of voices: micro-influencers, product superfans, and everyday consumers, who used their phones to show how your product fuels their daily lives. From raw reviews to aesthetic unboxings, our creators turn ideas into impact.
+                            <h4 className="text-[24px] font-bold mb-4 tracking-tight">Solution with BennyBucks</h4>
+                            <p className="text-[20px] leading-relaxed font-medium text-text-primary/80">
+                                With BennyBucks, a large network of creators (clippers) identifies the most engaging moments in your videos and turns them into short viral clips that bring millions of viewers back to your original content.
                             </p>
                         </div>
                     </div>
@@ -204,53 +218,36 @@ export default function ClippingPage() {
                 {/* Container for Videos (Full Screen Edge-to-Edge) */}
                 <div className="w-full px-0 sm:px-4">
                     <div className="bg-page-surface rounded-[2rem] p-4 sm:p-8 md:p-12 lg:py-16 border border-page-border overflow-hidden w-full">
-                        <div className="w-full overflow-x-auto hide-scrollbar snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                            <div className="flex gap-4 sm:gap-6 w-max px-4">
-                                {/* Video Cards */}
-                                {[
-                                    {
-                                        video: "https://samplelib.com/lib/preview/mp4/podcast-viral-clipping.mp4",
-                                        brand: "Podcast Viral Clip"
-                                    },
-                                    {
-                                        video: "https://samplelib.com/lib/preview/mp4/motivational-speech-clipping.mp4",
-                                        brand: "Motivational Speech Clip"
-                                    },
-                                    {
-                                        video: "https://samplelib.com/lib/preview/mp4/business-mindset-clipping.mp4",
-                                        brand: "Entrepreneur Mindset Clip"
-                                    },
-                                    {
-                                        video: "https://samplelib.com/lib/preview/mp4/educational-knowledge-clipping.mp4",
-                                        brand: "Educational Knowledge Clip"
-                                    },
-                                    {
-                                        video: "https://samplelib.com/lib/preview/mp4/trending-social-clipping.mp4",
-                                        brand: "Trending Social Media Clip"
-                                    },
-                                ].map((item, i) => (
-                                    <div key={i} className="relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[9/16] rounded-2xl md:rounded-[1.5rem] overflow-hidden group snap-center cursor-pointer shadow-md bg-page-bg">
-                                        <video
-                                            src={item.video}
-                                            autoPlay
-                                            loop
-                                            muted
-                                            playsInline
-                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                                        />
-                                        <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
-                                        <div className="absolute top-4 left-4 right-4 flex justify-between items-center text-white z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <span className="bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold border border-white/20">#BennyPartner</span>
-                                        </div>
-                                        <div className="absolute bottom-8 inset-x-0 flex justify-center pointer-events-none">
-                                            <span className="bg-white text-black font-bold text-sm px-6 py-2.5 rounded-full shadow-xl">
-                                                {item.brand}
-                                            </span>
-                                        </div>
-                                    </div>
-                                ))}
+                        <VideoCarousel items={[
+                            { video: "https://samplelib.com/lib/preview/mp4/podcast-viral-clipping.mp4", label: "Youtubers" },
+                            { video: "https://samplelib.com/lib/preview/mp4/motivational-speech-clipping.mp4", label: "Personal branding" },
+                            { video: "https://samplelib.com/lib/preview/mp4/business-mindset-clipping.mp4", label: "OTT platforms" },
+                            { video: "https://samplelib.com/lib/preview/mp4/educational-knowledge-clipping.mp4", label: "Entertainment marketing" },
+                        ]} />
+                    </div>
+                </div>
+            </section>
+
+            {/* ── Features Grid ── */}
+            <section className="py-24 bg-page-surface-alt border-t border-page-border">
+                <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-8">
+                    <div className="text-center mb-16">
+                        <h2 className={`${acidGroteskFont.className} -tracking-[.055625em] leading-[1.1] text-4xl md:text-5xl font-medium mb-6`}>How BennyBucks Helps Your Brand</h2>
+                        <p className="text-lg text-text-primary/50 max-w-2xl mx-auto font-medium">Deploy your branding without turning your marketing into a skippable ad.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {features.map((feature, i) => (
+                            <div key={i} className="bg-page-surface border border-page-border p-8 rounded-[2rem] hover:border-white/30 transition-colors group">
+                                <div className="w-14 h-14 bg-text-primary/5 rounded-2xl flex items-center justify-center text-brand-red mb-6 group-hover:bg-brand-red group-hover:text-text-primary transition-colors">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        {feature.icon}
+                                    </svg>
+                                </div>
+                                <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+                                <p className="text-text-primary/60 leading-relaxed font-medium text-sm md:text-base">{feature.desc}</p>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
