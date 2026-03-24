@@ -13,6 +13,7 @@ import {
   Trophy,
   FileText,
   UserRound,
+  MessageCircleCode,
 } from 'lucide-react'
 
 export type SidebarItemType = {
@@ -44,39 +45,30 @@ export const SIDEBAR_MENU: SidebarSectionType[] = [
     icon: <Trophy size={16} />,
     href: "/joined/rewards"
   },
+  // {
+  //   key: 'Community',
+  //   title: 'Community',
+  //   icon: <Users size={16} />,
+  //   items: [
+  //     { label: 'Chat', href: '/chat' },
+  //     { label: 'Leaderboard', href: '/leaderboard' },
+  //   ],
+  // },
+
   {
-    key: 'Requirements',
-    title: 'Requirements',
-    icon: <FileText size={16} />,
-    href: "/joined/requirements"
+    key: 'Chat',
+    title: 'Chat',
+    icon: <MessageCircleCode size={16} />,
+    href: "/joined/chat"
   },
-  {
-    key: 'Assets',
-    title: 'Assets',
-    icon: <FolderOpen size={16} />,
-    href: "/joined/assets"
-  },
-  {
-    key: 'Community',
-    title: 'Community',
-    icon: <Users size={16} />,
-    items: [
-      { label: 'Chat', href: '/chat' },
-      { label: 'Leaderboard', href: '/leaderboard' },
-    ],
-  },
+
   {
     key: 'My Submissions',
     title: 'My Submissions',
     icon: <BookOpen size={16} />,
     href: "/joined/my-submissions"
   },
-  {
-    key: 'Accounts',
-    title: 'Accounts',
-    icon: <UserRound size={16} />,
-    href: "/joined/accounts"
-  },
+
 ]
 
 
@@ -206,7 +198,7 @@ export function Item({
   return (
     <Link
       href={href}
-      className={`flex items-center gap-4 rounded-xl px-3 py-3 text-[14px] transition-all duration-200
+      className={`flex items-center gap-4 rounded-xl px-3 py-3 text-[16px] transition-all duration-200
         ${active
           ? 'bg-muted text-foreground'
           : 'text-muted-foreground hover:bg-muted'
@@ -220,12 +212,11 @@ export function Item({
             active ? 'text-foreground' :
               label === 'About' ? 'text-blue-500' :
                 label === 'Rewards' ? 'text-yellow-500' :
-                  label === 'Requirements' ? 'text-green-500' :
-                    label === 'Assets' ? 'text-purple-500' :
-                      label === 'Community' ? 'text-orange-500' :
-                        label === 'My Submissions' ? 'text-pink-500' :
-                          label === 'Accounts' ? 'text-cyan-500' :
-                            'text-muted-foreground'
+                  // label === 'Community' ? 'text-orange-500' :
+                  label === 'My Submissions' ? 'text-pink-500' :
+                    label === 'Chat' ? 'text-green-500' :
+                      label === 'Accounts' ? 'text-cyan-500' :
+                        'text-muted-foreground'
           }>
             {icon}
           </span>

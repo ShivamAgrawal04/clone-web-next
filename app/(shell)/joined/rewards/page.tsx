@@ -3,145 +3,158 @@
 
 import {
   ArrowLeft,
-  DollarSign,
-  TrendingUp,
-  Users,
   Info as InfoIcon,
+  Instagram,
+  Youtube,
 } from "lucide-react";
 
 export default function ContentRewardsBennyBucksExact() {
+  // Mock configuration demonstrating how dynamic data will bind real currency prefixes/rates.
+  // In production, sync this variable with the backend API response config directly.
+  const currencySymbol = "₹";
+
+  // Additional mock parameters representing future dynamic layout data:
+  const campaignData = {
+    title: "Trader Mayne Clips Q4 2025",
+    paidOutAmount: "22,562.65",
+    totalAmount: "27,475.96",
+    percentagePaidOut: "82%",
+    rewardRate: "1.00 / 1K"
+  };
+
   return (
-    <div className="w-full min-h-full bg-[#0b0b0b] text-text-primary pb-10">
+    <div className="w-full min-h-full flex flex-col relative bg-white dark:bg-[#0b0b0b] text-text-primary transition-colors">
       {/* HEADER */}
-      <div className="h-14 flex items-center gap-3 px-6 border-b border-page-border">
-        <ArrowLeft size={16} className="text-text-primary/60" />
-        <span className="text-sm font-medium">Content Rewards</span>
+      <div className="h-14 flex items-center gap-3 px-6 border-b border-gray-100 dark:border-white/10 shrink-0">
+
+        <span className="text-[14px] font-semibold text-[#111] dark:text-[#f3f3f3]">Content Rewards</span>
       </div>
 
       {/* CONTENT */}
-      <div className="px-6 py-6 space-y-6  mx-auto">
-        {/* TITLE */}
-        <div className="text-center space-y-1">
-          <p className="text-sm text-text-primary/60">
-            Clip Rayston&apos;s YouTube Videos
-          </p>
-          <p className="text-xs text-text-primary/40">
-            Earn based on performance · Paid per 1K views
-          </p>
-        </div>
+      <div className="flex-1 w-full mx-auto px-6 py-8 space-y-10 pb-10">
 
-        {/* BANNER */}
-    <div className="w-full lg:w-[600px] h-66 mx-auto">
-          <img
-          src="https://i.imgur.com/5KJ8QwJ.png"
-          alt="banner"
-          className="rounded-2xl h-full object-cover w-full border border-page-border"
-        />
-    </div>
+        {/* TOP SECTION: BANNER AND NOTICE */}
+        <div className="space-y-6">
 
-        {/* SUBMISSIONS */}
-        <div className="border border-blue-500/40 rounded-lg py-2 text-center text-sm text-blue-400">
-          My submissions (2)
+          {/* SUBMISSIONS */}
+          <div className="flex items-center gap-3 rounded-[12px] py-3.5 px-5 text-[13px] font-[600] text-[#b57b2a] bg-[#fcf4ce] dark:text-[#efb822] dark:bg-[#2c2104]">
+            <InfoIcon size={18} strokeWidth={2.5} className="shrink-0" />
+            <span>Only views after you submit count towards payout. Submit as soon as you post to get paid for all of your views.</span>
+          </div>
         </div>
 
         {/* PAID OUT */}
-        <div className="space-y-1">
-          <div className="flex justify-between text-xs text-text-primary/60">
-            <span>PAID OUT</span>
-            <span className="text-text-primary">100%</span>
+        <div className="space-y-1.5">
+          <p className="text-[16px] font-[500] text-gray-400 uppercase mb-1.5">PAID OUT</p>
+          <div className="flex justify-between items-end pb-1.5">
+            <span className="text-[14.5px] font-[700] text-[#111] dark:text-[#f3f3f3]">
+              {currencySymbol}{campaignData.paidOutAmount} of {currencySymbol}{campaignData.totalAmount} paid out
+            </span>
+            <span className="text-[14.5px] font-[700] text-[#111] dark:text-[#f3f3f3]">
+              {campaignData.percentagePaidOut}
+            </span>
           </div>
 
-          <div className="h-2 rounded-full bg-text-primary/10 overflow-hidden">
-            <div className="h-full w-full bg-orange-500" />
+          <div className="h-2 rounded-full bg-[#f4f4f5] dark:bg-white/10 overflow-hidden">
+            <div className="h-full w-[82%] bg-[#fb8c00] rounded-full" />
           </div>
-
-          <p className="text-xs text-text-primary/50">$950 of $950 paid out</p>
         </div>
 
-        {/* 🔥 EARNING HIGHLIGHTS */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <Highlight
-            icon={<DollarSign size={16} />}
-            title="Max per Post"
-            value="$60"
-          />
-          <Highlight
-            icon={<Users size={16} />}
-            title="Max per Creator"
-            value="$500"
-          />
-          <Highlight
-            icon={<TrendingUp size={16} />}
-            title="Example"
-            value="10K views = $10"
-          />
-        </div>
-
-        {/* INFO ROW */}
-        <div className="flex flex-wrap gap-2">
-          <Info title="REWARD" value="$1.00 / 1K" blue />
+        {/* GLOBAL INFO */}
+        <div className="flex flex-wrap items-end gap-x-12 gap-y-7">
+          {/* <Info title="REWARD" value={`${currencySymbol}${campaignData.rewardRate}`} blue /> */}
           <Info title="TYPE" value="Clipping" />
-          <Info title="MIN PAYOUT" value="$2.00" />
+          {/* <Info title="MINIMUM PAYOUT" value={`${currencySymbol}1.00`} /> */}
+          {/* <Info title="MAXIMUM PAYOUT" value={`${currencySymbol}500.00`} /> */}
           <Info title="CATEGORY" value="Personal brand" />
-          <Info title="PLATFORMS" value="Instagram · TikTok · YouTube" />
         </div>
 
-        {/* HOW IT WORKS */}
-        <div className="flex gap-3 p-4 rounded-xl bg-text-primary/5 border border-page-border">
-          <InfoIcon size={16} className="text-blue-400 mt-0.5" />
-          <p className="text-xs text-text-primary/60 leading-relaxed">
-            Create short clips from Rayston&apos;s YouTube videos, post them on
-            supported platforms, and earn based on the views your content
-            generates.
-          </p>
+        {/* PLATFORM PAYOUT STATS */}
+        <div className="space-y-4 pt-2">
+          <p className="text-[16px] font-medium text-gray-400 uppercase">PAYOUT</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <PlatformCard
+              platform="Instagram"
+              icon={<Instagram className="w-[22px] h-[22px] text-[#e1306c] drop-shadow-sm" strokeWidth={2} />}
+              stats={{
+                maxPerPost: `${currencySymbol}500.00`,
+                minPerPost: `${currencySymbol}1.00`,
+                cpm: `${currencySymbol}10000`,
+                submissionLimit: "3",
+                maxPerCreator: `${currencySymbol}2,000.00`
+              }}
+            />
+            <PlatformCard
+              platform="YouTube"
+              icon={<Youtube className="w-[24px] h-[24px] text-[#ff0000] drop-shadow-sm" strokeWidth={2} />}
+              stats={{
+                maxPerPost: `${currencySymbol}1,000.00`,
+                minPerPost: `${currencySymbol}5.00`,
+                cpm: `${currencySymbol}10000`,
+                submissionLimit: "1",
+                maxPerCreator: `${currencySymbol}5,000.00`
+              }}
+            />
+          </div>
         </div>
 
         {/* REQUIREMENTS */}
-        <Section title="REQUIREMENTS">
-          {[
-            "Must watch the course",
-            "Tag Rayston in caption and bio",
-            "Put Rayston's YouTube channel link in bio",
-            "Only high-quality edits accepted",
-            "Target tier 1 audience only",
-            "No botting or fake engagement",
-            "You may use any clips from his YouTube videos",
-          ]}
-        </Section>
-
-        {/* ASSETS */}
-        <div className="space-y-2">
-          <p className="text-xs font-semibold text-text-primary/60">ASSETS</p>
-
-          <Asset
-            title="Rayston Heem"
-            subtitle="youtube.com/@raystonheem"
-          />
-
-          <Asset
-            title="I Tried Building a $1,000,000 Dropshipping Store in 7 Days.mp4"
-          />
+        <div className="space-y-3 pt-2">
+          <p className="text-[16px] font-medium text-gray-400 uppercase ">REQUIREMENTS</p>
+          <div className="flex flex-col gap-3">
+            {[
+              "Video must feature Mayne",
+              "Must tag @tradermayne",
+              "Video must have added elements (captions, graphics, etc)",
+              "Must follow @tradermayne on Instagram, TikTok, and YouTube (send DM to confirm)",
+              "ENGAGEMENT MUST BE ORGANIC (bots or purchases views will result in a ban)",
+              "No reposting other Whop users content",
+              "Audience must be primarily US/UK based",
+              "Disclaimer: We reserve the right to reject videos from accounts that don't meet our standards.",
+            ].map((t, i) => (
+              <div key={i} className="flex items-center gap-4 px-5 py-4 rounded-xl bg-[#fafafa] dark:bg-[#111] border border-gray-100 dark:border-white/10 text-[#111] dark:text-[#f3f3f3]">
+                <span className="flex items-center justify-center text-[12.5px] font-extrabold shrink-0">
+                  {i + 1}.
+                </span>
+                <span className="text-[14px] font-semibold">{t}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* DISCLAIMER */}
-        <p className="text-[11px] text-text-primary/40 leading-relaxed">
-          Creators may reject submissions that don&apos;t meet requirements. By
-          submitting, you grant full usage rights and agree to the Content Rewards
-          Terms.
-        </p>
+        {/* ASSETS */}
+        <div className="space-y-3 pt-2">
+          <p className="text-[16px] font-medium text-gray-400 uppercase">ASSETS</p>
 
-        {/* FOOTER */}
-        <div className="flex items-center justify-between pt-4">
-          <div className="text-sm text-text-primary/60">
-            Clip Rayston&apos;s YouTube Videos
-            <span className="ml-2 text-text-primary/40">$1.00 / 1K</span>
+          <div className="flex items-center gap-4 p-3 rounded-[12px] border border-gray-200 dark:border-white/10 bg-white dark:bg-[#111] cursor-pointer hover:border-gray-300 dark:hover:border-white/20 transition-all">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/d/da/Google_Drive_logo.png"
+              className="w-10 h-10 object-contain drop-shadow-sm"
+              alt="Google Drive"
+            />
+            <div className="flex flex-col min-w-0 pr-4">
+              <p className="text-[14px] font-[600] text-[#3b5bdb] truncate mb-0.5">drive.google.com</p>
+              <p className="text-[12.5px] font-[500] text-gray-500 truncate">https://drive.google.com/drive/folders/1rfHtZbR-_Ex2FGVLos_eFanBmmXjuhPY?usp=sharing</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* FOOTER (STICKY BOTTOM) */}
+      <div className="sticky bottom-0 w-full bg-white/95 dark:bg-[#0b0b0b]/95 backdrop-blur-md border-t border-gray-100 dark:border-white/10 shrink-0 z-20">
+        <div className="mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col w-full sm:w-auto text-center sm:text-left">
+            <span className="text-[15.5px] font-[800] text-[#111] dark:text-[#f3f3f3]">{campaignData.title}</span>
+            <span className="text-[12.5px] font-[600] text-gray-400 mt-0.5">{currencySymbol}{campaignData.rewardRate}</span>
           </div>
 
-          <button className="px-6 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-sm font-semibold">
+          <button className="w-full sm:w-auto px-12 py-2.5 rounded-[10px] bg-[#3b5bdb] hover:bg-[#324fc2] text-white text-[14.5px] font-[700] transition-colors focus:ring-4 focus:ring-blue-500/20 active:scale-[0.98]">
             Submit
           </button>
         </div>
       </div>
+
     </div>
   );
 }
@@ -158,75 +171,45 @@ function Info({
   blue?: boolean;
 }) {
   return (
-    <div className="px-3 py-2 rounded-lg bg-[#111] border border-page-border">
-      <p className="text-[10px] text-text-primary/40">{title}</p>
-      <p className={`text-sm font-semibold ${blue ? "text-blue-400" : ""}`}>
+    <div className="flex flex-col gap-1.5">
+      <p className="text-[16px] font-medium text-gray-400 uppercase">{title}</p>
+      <div className={`px-2.5 py-1 w-fit rounded-[8px] text-[13.5px] font-[600] ${blue ? "bg-[#3b5bdb] text-white" : "bg-[#f4f4f5] dark:bg-white/5 text-[#222] dark:text-[#eee]"}`}>
         {value}
-      </p>
+      </div>
     </div>
   );
 }
 
-function Highlight({
-  icon,
-  title,
-  value,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  value: string;
-}) {
+function PlatformCard({ platform, icon, stats }: { platform: string, icon: React.ReactNode, stats: { maxPerPost: string, minPerPost: string, cpm: string, submissionLimit: string, maxPerCreator: string } }) {
   return (
-    <div className="p-4 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-page-border">
-      <div className="flex items-center gap-2 text-text-primary/60 text-xs mb-1">
+    <div className="border border-gray-100 dark:border-white/10 rounded-[16px] p-5 bg-[#fafafa] dark:bg-[#111] flex flex-col overflow-hidden relative">
+      <div className="flex items-center gap-3 mb-6 relative z-10">
         {icon}
-        {title}
+        <span className="text-[15px] font-[700] text-[#111] dark:text-[#f3f3f3]">{platform}</span>
       </div>
-      <p className="text-lg font-bold">{value}</p>
-    </div>
-  );
-}
 
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: string[];
-}) {
-  return (
-    <div className="space-y-2">
-      <p className="text-xs font-semibold text-text-primary/60">{title}</p>
-      <div className="flex flex-wrap gap-2">
-        {children.map((t) => (
-          <span
-            key={t}
-            className="text-[11px] px-3 py-1 rounded-full bg-text-primary/5 border border-page-border text-text-primary/60"
-          >
-            {t}
-          </span>
-        ))}
+      <div className="grid grid-cols-2 gap-y-5 gap-x-4 relative z-10">
+        <PlatformStat title="CPM" value={stats.cpm} highlight />
+        <PlatformStat title="Max Submission per acc" value={stats.submissionLimit} />
+        <PlatformStat title="MIN PAYOUT (POST)" value={stats.minPerPost} />
+        <PlatformStat title="MAX PAYOUT (POST)" value={stats.maxPerPost} />
+        <PlatformStat title="MAX (CREATOR)" value={stats.maxPerCreator} />
       </div>
     </div>
   );
 }
 
-function Asset({
-  title,
-  subtitle,
-}: {
-  title: string;
-  subtitle?: string;
-}) {
+function PlatformStat({ title, value, highlight }: { title: string, value: string, highlight?: boolean }) {
   return (
-    <div className="flex items-center gap-3 p-3 rounded-lg bg-[#111] border border-page-border">
-      <div className="h-8 w-8 rounded-full bg-white/20" />
-      <div>
-        <p className="text-sm">{title}</p>
-        {subtitle && (
-          <p className="text-xs text-blue-400">{subtitle}</p>
-        )}
-      </div>
+    <div className="flex flex-col gap-1 align-top">
+      <span className="text-[16px] font-medium text-gray-400 leading-relaxed uppercase pr-2">{title}</span>
+      {highlight ? (
+        <span className="w-fit px-2.5 py-0.5 mt-0.5 rounded-[6px] text-[13px] font-[700] bg-[#3b5bdb] text-white shadow-sm">
+          {value}
+        </span>
+      ) : (
+        <span className="text-[14px] mt-0.5 font-bold text-[#111] dark:text-[#f3f3f3]">{value}</span>
+      )}
     </div>
   );
 }

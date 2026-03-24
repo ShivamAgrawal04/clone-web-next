@@ -1,3 +1,6 @@
+import { Calendar, Users, Instagram, Youtube } from "lucide-react";
+import Image from "next/image";
+
 interface CampaignCardProps {
   campaign?: {
     title: string;
@@ -12,194 +15,158 @@ interface CampaignCardProps {
     views: string;
     creators: string;
     image?: string;
+    dateRange?: string;
   };
 }
 
 const campaignData = [
   {
-    title: "Crown Coins x Terence Crawford",
-    company: "Clipr Clipping",
-    categories: ["CLIPPING", "ENTERTAINMENT"],
-    platforms: ["instagram", "tiktok", "youtube"],
-    paidOut: "$13,359.37",
-    totalBudget: "$21,250",
-    cp: 63,
-    cpm: "$2.00",
-    approval: "61%",
-    views: "6.5M",
-    creators: "1984",
-    image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
-  },
-  {
-    title: "Eleven Labs Clipping Campaign - [1]",
-    company: "Eleven Labs",
-    categories: ["CLIPPING", "LIFESTYLE"],
-    platforms: ["youtube", "tiktok"],
-    paidOut: "$8,245.12",
-    totalBudget: "$15,000",
-    cp: 55,
-    cpm: "$1.80",
-    approval: "73%",
-    views: "4.2M",
-    creators: "1234",
-    image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"
-  },
-  {
-    title: "Mumford & Sons | Album Promo",
-    company: "Scene Society",
-    categories: ["MUSIC", "ENTERTAINMENT"],
-    platforms: ["instagram", "youtube", "x"],
-    paidOut: "$18,750.00",
-    totalBudget: "$25,000",
-    cp: 75,
-    cpm: "$2.50",
-    approval: "82%",
-    views: "8.1M",
-    creators: "567"
+    title: "Cadbury Dairy Milk",
+    company: "Cadbury",
+    categories: ["UGC", "Product"],
+    platforms: ["instagram", "youtube"],
+    paidOut: "₹87,000",
+    totalBudget: "₹1,00,000",
+    cp: 87,
+    cpm: "₹3,000",
+    approval: "90%",
+    views: "10M",
+    creators: "+30",
+    image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
+    dateRange: "01 Mar 2026 — 31 Mar 2026"
   }
 ];
 
+const getCategoryStyle = (cat: string) => {
+  const normalized = cat.toUpperCase();
+  if (normalized === "UGC") return "bg-[#0EA5E9] text-white";
+  if (normalized === "MUSIC") return "bg-[#DB2777] text-white";
+  if (normalized === "CLIPPING") return "bg-[#6D28D9] text-white";
+  if (normalized === "LOGO") return "bg-[#059669] text-white";
+  return "bg-page-surface-alt text-text-primary outline outline-1 outline-page-border/50";
+};
+
+const PlatformIcon = ({ platform }: { platform: string }) => {
+  if (platform === 'instagram') {
+    return (
+      <div className="w-6 h-6 rounded-full bg-page-surface-alt border border-page-border/50 flex items-center justify-center text-[#e1306c]">
+        <Instagram className="w-3.5 h-3.5" strokeWidth={2.5} />
+      </div>
+    );
+  }
+  if (platform === 'youtube') {
+    return (
+      <div className="w-6 h-6 rounded-full bg-page-surface-alt border border-page-border/50 flex items-center justify-center text-[#ff0000]">
+        <Youtube className="w-3.5 h-3.5" strokeWidth={2.5} />
+      </div>
+    );
+  }
+
+  return null;
+};
+
 export default function CampaignCard({ campaign = campaignData[0] }: CampaignCardProps) {
   return (
-    <div className="bg-card border border-border rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
-      <div className="p-5 flex flex-col gap-6 h-full">
-        {/* Header Section */}
-        <div className="flex flex-col gap-3">
-          <div className="flex items-start justify-between w-full">
-            <div className="relative w-20 h-14 rounded-lg overflow-hidden bg-muted flex-shrink-0">
-              <img
-                alt={campaign.title}
-                loading="lazy"
-                decoding="async"
-                className="object-cover w-full h-full"
-                src={campaign.image || "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"}
-              />
+    <div className="group relative flex flex-col bg-page-surface border border-page-border rounded-[20px] overflow-hidden transition-all duration-300 ease-out 
+    
+   shadow-lg transition-all hover:shadow-xl
+    ">
+      {/* Top Image Section */}
+      <div className="relative w-full h-[220px] bg-page-surface-alt overflow-hidden">
+        {/* Inner shadow overlay for 3D depth */}
+        <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <Image
+          alt={campaign.title}
+          fill
+          unoptimized
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+          src={campaign.image || "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png"}
+        />
+
+        {/* Badges */}
+        <div className="absolute top-4 left-4 flex gap-2 z-10">
+          {campaign.categories.map((category, index) => (
+            <div
+              key={index}
+              className={`px-3 py-1 rounded-full text-[12px] font-semibold tracking-wide capitalize ${getCategoryStyle(category)} shadow-sm`}
+            >
+              {category.toLowerCase() === 'ugc' ? 'UGC' : category.charAt(0).toUpperCase() + category.slice(1).toLowerCase()}
             </div>
-            <div className="flex flex-col gap-2 items-end justify-end flex-1">
-              <div className="flex gap-1 items-center justify-end flex-wrap">
-                {campaign.categories.map((category, index) => (
-                  <div key={index} className="inline-flex items-center justify-center px-2 py-1 rounded-full border border-border bg-muted">
-                    <span className="font-medium text-xs text-foreground whitespace-nowrap">
-                      {category}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <span className="text-xs text-muted-foreground whitespace-nowrap">
-                34 days ago
-              </span>
-            </div>
-          </div>
-          
-          <div className="flex flex-col gap-2">
-            <h3 className="text-sm font-semibold text-foreground leading-tight line-clamp-2">
+          ))}
+        </div>
+
+        {/* Date Container */}
+        <div className="absolute right-4 bottom-4 flex items-center gap-1 rounded-full bg-white/80 px-2.5 py-1 text-[11px] text-[#737B8C] backdrop-blur-sm">
+          <Calendar className="w-3 h-3 stroke-[2.5]" />
+          <span className=" font-medium tracking-wide">{campaign.dateRange || "01 Mar 2026 — 31 Mar 2026"}</span>
+        </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="p-5 flex flex-col gap-6 bg-page-surface">
+
+        {/* Header */}
+        <div className="flex justify-between items-start gap-4">
+          <div className="flex flex-col gap-0.5 min-w-0">
+            <h3 className="text-[18px] font-bold text-text-primary leading-tight truncate">
               {campaign.title}
             </h3>
-            <div className="flex gap-2 items-center min-w-0">
-              <span className="text-xs font-medium text-foreground truncate">
-                {campaign.company}
-              </span>
-              <div className="flex gap-1.5 items-center">
-                {campaign.platforms.map((platform, index) => (
-                  <div key={index} className="relative w-4 h-4 flex-shrink-0">
-                    {platform === 'instagram' && (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-muted-foreground">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
-                      </svg>
-                    )}
-                    {platform === 'tiktok' && (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-muted-foreground">
-                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
-                      </svg>
-                    )}
-                    {platform === 'youtube' && (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-muted-foreground">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                      </svg>
-                    )}
-                    {platform === 'x' && (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-muted-foreground">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                      </svg>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Payment Section */}
-        <div className="flex flex-col gap-4">
-          <div className="flex items-end justify-between w-full">
-            <div className="flex flex-col justify-center gap-1">
-              <span className="text-xs font-medium text-muted-foreground">
-                Paid Out
-              </span>
-              <p className="text-base font-semibold text-foreground whitespace-nowrap">
-                {campaign.paidOut}{" "}
-                <span className="text-xs text-muted-foreground">
-                  / {campaign.totalBudget}
-                </span>
-              </p>
-            </div>
-            <div className="flex flex-col justify-center text-right gap-1">
-              <span className="text-xs font-medium text-muted-foreground">
-                CPM
-              </span>
-              <p className="text-base font-semibold text-foreground whitespace-nowrap">
-                {campaign.cpm}{" "}
-                <span className="text-xs text-muted-foreground">
-                  / 1k views
-                </span>
-              </p>
-            </div>
-          </div>
-          
-          {/* Progress Bar */}
-          <div className="relative w-full h-1 bg-muted rounded-full overflow-hidden">
-            <div
-              className="absolute left-0 top-0 h-full bg-orange-500 rounded-full transition-all duration-300"
-              style={{
-                width: `${campaign.cp}%`,
-              }}
-            ></div>
-          </div>
-        </div>
-        {/* Stats Section */}
-        <div className="flex items-start justify-between w-full pt-2 border-t border-border">
-          <div className="flex flex-col gap-1 items-start flex-1">
-            <div className="cursor-help">
-              <span className="text-xs font-medium text-muted-foreground">
-                Approval
-              </span>
-            </div>
-            <span className="text-xs font-semibold text-green-600">
-              {campaign.approval}
+            <span className="text-sm font-medium text-text-secondary">
+              {campaign.company}
             </span>
           </div>
-          <div className="flex flex-col gap-1 items-start justify-center flex-1">
-            <div className="cursor-help">
-              <span className="text-xs font-medium text-muted-foreground">
-                Views
-              </span>
-            </div>
-            <div className="flex items-center gap-1">
-              <span className="text-xs font-semibold text-foreground whitespace-nowrap">
-                {campaign.views}
-              </span>
-            </div>
+
+          <div className="flex gap-1.5 flex-shrink-0">
+            {campaign.platforms.map((platform, idx) => (
+              <PlatformIcon key={idx} platform={platform} />
+            ))}
           </div>
-          <div className="flex flex-col gap-1 items-start flex-1">
-            <div className="cursor-help">
-              <span className="text-xs font-medium text-muted-foreground">
-                Creators
-              </span>
-            </div>
-            <span className="text-xs font-semibold text-foreground">
+        </div>
+
+        {/* Stats Table */}
+        <div className="flex flex-col gap-3.5 w-full">
+          <div className="flex justify-between items-center w-full">
+            <span className="text-sm text-text-secondary font-medium">
+              Creators
+            </span>
+            <span className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
+              <Users className="w-4 h-4 text-text-muted" strokeWidth={2.5} />
               {campaign.creators}
             </span>
           </div>
+
+          <div className="flex justify-between items-center w-full">
+            <span className="text-sm text-text-secondary font-medium">Budget</span>
+            <span className="text-sm font-semibold text-foreground text-green-600 ">&#8377;{campaign.totalBudget}</span>
+          </div>
+
+          <div className="flex flex-col gap-2.5 w-full">
+            <div className="flex justify-between items-center w-full">
+              <span className="text-sm text-text-secondary font-medium">Budget Used</span>
+              <span className="text-sm font-semibold text-foreground">{campaign.cp}%</span>
+            </div>
+            {/* Progress Bar */}
+            <div className="
+            
+            relative w-full h-1 bg-muted rounded-full overflow-hidden
+            ">
+              {/* w-full h-2.5 bg-page-surface-alt border border-page-border/30 */}
+              <div
+                className="
+                absolute left-0 top-0 h-full bg-orange-500 rounded-full transition-all duration-300 
+                "
+                style={{ width: `${campaign.cp}%` }}
+              />
+            </div>
+          </div>
         </div>
+
+      </div>
+
+      {/* Rate Footer */}
+      <div className="mt-auto border-t border-page-border bg-page-surface p-4.5 py-4 flex flex-col items-center justify-center gap-1">
+        <span className="text-[13px] text-text-muted font-medium">Rate per 1M Views</span>
+        <span className="text-[20px] font-semibold text-foreground text-green-600">&#8377;{campaign.cpm}</span>
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
 import BrandHeader from "@/components/BrandHeader";
 import BrandFooter from "@/components/BrandFooter";
 import localFont from "next/font/local";
+import CreatorsSlider from "@/components/CreatorsSlider";
+
 
 const acidGroteskFont = localFont({
   src: [
@@ -166,7 +168,7 @@ export default function CreatorsPage() {
       <section className="py-16 relative overflow-hidden bg-page-bg border-y border-page-border">
         {/* Visual Navigation Button */}
         <div className="mx-auto w-full ">
-          <div className="absolute right-4 sm:right-12 top-1/2 -translate-y-1/2 z-10 hidden lg:flex items-center justify-center w-12 h-12 rounded-full bg-black text-white hover:scale-110 transition-transform cursor-pointer shadow-[0_0_30px_rgba(0,0,0,0.3)] border border-white/10 group">
+          {/* <div className="absolute right-4 sm:right-12 top-1/2 -translate-y-1/2 z-10 hidden lg:flex items-center justify-center w-12 h-12 rounded-full bg-black text-white hover:scale-110 transition-transform cursor-pointer shadow-[0_0_30px_rgba(0,0,0,0.3)] border border-white/10 group">
             <svg
               className="w-6 h-6 transform group-hover:translate-x-1 transition-transform"
               viewBox="0 0 24 24"
@@ -178,7 +180,7 @@ export default function CreatorsPage() {
             >
               <path d="M9 18l6-6-6-6" />
             </svg>
-          </div>
+          </div> */}
 
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="px-4 sm:px-8">
@@ -195,138 +197,10 @@ export default function CreatorsPage() {
             </div>
           </div>
 
-          <div className="mt-10 flex gap-8 md:gap-12 overflow-x-auto snap-x snap-mandatory px-6 sm:px-12 pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-full items-center">
-            {/* Slide 1 */}
-            <div className="flex-none w-[90vw] md:w-[60vw] lg:w-[52vw] snap-center flex flex-col md:flex-row items-center gap-8 md:gap-12">
-              <div className="w-full md:w-[280px] lg:w-[320px] aspect-[4/5] md:aspect-[9/16] rounded-3xl overflow-hidden relative shadow-xl flex-shrink-0 group">
-                <video
-                  src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-                  poster="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=2574&auto=format&fit=crop"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="absolute inset-0 h-full w-full object-cover opacity-85 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40"></div>
-                {/* <div className="absolute top-6 left-6 text-white text-sm font-medium space-y-1">
-                  <p className="drop-shadow-md">Zip-Up Short Blouson</p>
-                  <p className="drop-shadow-md opacity-80">Bleached Pants</p>
-                </div> */}
-              </div>
-              <div className="w-full md:w-3/5 lg:w-[400px] text-left">
-                <h2
-                  className={`${acidGroteskFont.className} text-4xl sm:text-5xl lg:text-[4.3rem] font-medium mb-2 -tracking-[.055625em] leading-[1.1]
-                
-                 
-                `}
-                >
-                  UGC
-                </h2>
-                <p className="text-lg text-text-primary/70 leading-relaxed font-medium">
-                  Create authentic content in your own voice and get paid for
-                  every view and engagement.
-                </p>
-              </div>
-            </div>
-
-            {/* Slide 2 */}
-            <div className="flex-none w-[90vw] md:w-[60vw] lg:w-[52vw] snap-center flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:pl-12">
-              <div className="w-full md:w-[280px] lg:w-[320px] aspect-[4/5] md:aspect-[9/16] rounded-3xl overflow-hidden relative shadow-xl flex-shrink-0 group">
-                <video
-                  src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-                  poster="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=2574&auto=format&fit=crop"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="absolute inset-0 h-full w-full object-cover opacity-85 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50"></div>
-              </div>
-              <div className="w-full md:w-3/5 lg:w-[400px] text-left pr-0 lg:pr-8">
-                <h2
-                  className={`${acidGroteskFont.className} text-4xl sm:text-5xl lg:text-[4.3rem] font-medium mb-2 -tracking-[.055625em] leading-[1.1]
-                
-                 
-                `}
-                >
-                  Clipping
-                </h2>
-                <p className="text-lg text-text-primary/70 leading-relaxed font-medium">
-                  Clip long-form content into highlights and moments, and earn
-                  every time someone watches.
-                </p>
-              </div>
-            </div>
-
-            {/* Slide 3 */}
-            <div className="flex-none w-[90vw] md:w-[60vw] lg:w-[52vw] snap-center flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:pl-12">
-              <div className="w-full md:w-[280px] lg:w-[320px] aspect-[4/5] md:aspect-[9/16] rounded-3xl overflow-hidden relative shadow-xl flex-shrink-0 group">
-                <video
-                  src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-                  poster="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=2574&auto=format&fit=crop"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="absolute inset-0 h-full w-full object-cover opacity-85 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50"></div>
-              </div>
-              <div className="w-full md:w-3/5 lg:w-[400px] text-left pr-0 lg:pr-8">
-                <h2
-                  className={`${acidGroteskFont.className} text-4xl sm:text-5xl lg:text-[4.3rem] font-medium mb-2 -tracking-[.055625em] leading-[1.1]
-                
-                 
-                `}
-                >
-                  Music
-                </h2>
-                <p className="text-lg text-text-primary/70 leading-relaxed font-medium">
-                  Feature songs in your content. Help tracks go viral and get
-                  paid for shaping trends.
-                </p>
-              </div>
-            </div>
-
-            {/* Slide 4 */}
-            <div className="flex-none w-[90vw] md:w-[60vw] lg:w-[52vw] snap-center flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:pl-12">
-              <div className="w-full md:w-[280px] lg:w-[320px] aspect-[4/5] md:aspect-[9/16] rounded-3xl overflow-hidden relative shadow-xl flex-shrink-0 group">
-                <video
-                  src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-                  poster="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=2574&auto=format&fit=crop"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="absolute inset-0 h-full w-full object-cover opacity-85 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50"></div>
-              </div>
-              <div className="w-full md:w-3/5 lg:w-[400px] text-left pr-0 lg:pr-8">
-                <h2
-                  className={`${acidGroteskFont.className} text-4xl sm:text-5xl lg:text-[4.3rem] font-medium mb-2 -tracking-[.055625em] leading-[1.1]
-                
-                 
-                `}
-                >
-                  Logo
-                </h2>
-                <p className="text-lg text-text-primary/70 leading-relaxed font-medium">
-                  Integrate brand logo into content your way and earn for every
-                  impression.
-                </p>
-              </div>
-            </div>
-
-            {/* Add spacer to allow proper scrolling on the right */}
-            <div className="flex-none w-[10vw] snap-center"></div>
+          <div className="mt-4">
+            <CreatorsSlider fontClassName={acidGroteskFont.className} />
           </div>
+
         </div>
       </section>
 

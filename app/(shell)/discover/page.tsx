@@ -1,8 +1,12 @@
+"use client";
+
+import { useState, useMemo } from "react";
 import CampaignCard from "@/components/layout/CampaignCard";
-import FilterButton from "@/components/layout/FilterButton";
+import DropdownFilter from "@/components/layout/DropdownFilter";
 import { SparklesIcon } from "@/components/SparklesIcon";
 import { TopBar } from "@/components/layout/TopBar";
 import Link from "next/link";
+import { Youtube, Instagram, Twitter, LucideYoutube } from "lucide-react";
 
 const DOTS = [
   { x: "11.11%", y: "47.42%" },
@@ -27,10 +31,144 @@ const DOTS = [
   { x: "50.89%", y: "53.55%" },
 ];
 
+const MOCK_CAMPAIGNS = [
+  {
+    id: 1,
+    title: "Eleven Labs Clipping Campaign - [1]",
+    company: "Eleven Labs",
+    categories: ["CLIPPING"],
+    platforms: ["youtube"],
+    paidOut: "8,245.12",
+    totalBudget: "15,000",
+    cp: 55,
+    cpm: "1.80",
+    approval: "73%",
+    views: "4.2M",
+    creators: "1234",
+    image: "/campaign-swiggy.jpg",
+  },
+  {
+    id: 2,
+    title: "Mumford & Sons | Album Promo",
+    company: "Scene Society",
+    categories: ["MUSIC"],
+    platforms: ["instagram", "youtube"],
+    paidOut: "18,750.00",
+    totalBudget: "25,000",
+    cp: 75,
+    cpm: "2.50",
+    approval: "82%",
+    views: "8.1M",
+    creators: "567",
+    image: "/campaign-zomato.jpg",
+  },
+  {
+    id: 3,
+    title: "Cadbury Dairy Milk",
+    company: "Cadbury",
+    categories: ["UGC"],
+    platforms: ["instagram", "youtube"],
+    paidOut: "8,000.00",
+    totalBudget: "100,000",
+    cp: 8,
+    cpm: "3.00",
+    approval: "90%",
+    views: "10M",
+    creators: "30",
+    image: "/campaign-cadbury.jpg",
+  },
+  {
+    id: 4,
+    title: "Spotify Wrapped Clips",
+    company: "Spotify",
+    categories: ["Logo"],
+    platforms: ["youtube"],
+    paidOut: "225,000.00",
+    totalBudget: "500,000",
+    cp: 45,
+    cpm: "5.00",
+    approval: "99%",
+    views: "20M",
+    creators: "120",
+    image: "/campaign-swiggy.jpg",
+  },
+  {
+    id: 5,
+    title: "Nike India Campaign",
+    company: "Nike",
+    categories: ["UGC"],
+    platforms: ["instagram"],
+    paidOut: "15,500.00",
+    totalBudget: "25,000",
+    cp: 62,
+    cpm: "4.50",
+    approval: "95%",
+    views: "15M",
+    creators: "55",
+    image: "/campaign-nike.jpg",
+  },
+
+];
+
 export default function DiscoverPage() {
+  const [categoryFilter, setCategoryFilter] = useState("All");
+  const [sortFilter, setSortFilter] = useState("Newest");
+  const [platformFilters, setPlatformFilters] = useState<string[]>(["youtube", "instagram"]);
+
+  const togglePlatform = (platform: string) => {
+    setPlatformFilters(prev =>
+      prev.includes(platform) ? prev.filter(p => p !== platform) : [...prev, platform]
+    );
+  };
+
+  const processedCampaigns = useMemo(() => {
+    let results = [...MOCK_CAMPAIGNS];
+
+    // Filter by category
+    if (categoryFilter !== "All") {
+      results = results.filter((c) =>
+        c.categories.some(cat => cat.toUpperCase() === categoryFilter.toUpperCase())
+      );
+    }
+
+    // Filter by platform
+    if (platformFilters.length === 0) {
+      return [];
+    }
+
+    results = results.filter((c) =>
+      c.platforms.some(p => platformFilters.includes(p.toLowerCase()))
+    );
+
+    // Parse helper
+    const parseCurrency = (str: string) => parseFloat(str.replace(/[^0-9.]/g, '')) || 0;
+
+    // Sort by type
+    if (sortFilter === "Highest Budget") {
+      results.sort((a, b) => parseCurrency(b.totalBudget) - parseCurrency(a.totalBudget));
+    } else if (sortFilter === "Highest Available Budget") {
+      results.sort((a, b) => {
+        const availA = parseCurrency(a.totalBudget) - parseCurrency(a.paidOut);
+        const availB = parseCurrency(b.totalBudget) - parseCurrency(b.paidOut);
+        return availB - availA;
+      });
+    } else if (sortFilter === "Highest CPM") {
+      results.sort((a, b) => parseCurrency(b.cpm) - parseCurrency(a.cpm));
+    } else if (sortFilter === "Most Paid Out") {
+      results.sort((a, b) => parseCurrency(b.paidOut) - parseCurrency(a.paidOut));
+    } else if (sortFilter === "Most Creators") {
+      results.sort((a, b) => parseInt(b.creators) - parseInt(a.creators));
+    } else if (sortFilter === "Newest") {
+      // Assuming mock data is generally chronologically added or reversed
+      results.sort((a, b) => b.id - a.id);
+    }
+
+    return results;
+  }, [categoryFilter, sortFilter, platformFilters]);
+
   return (
-    <div className="bg-background relative">
-        <TopBar />
+    <div className="bg-background relative min-h-screen">
+      <TopBar />
 
       {/* Header */}
       <header className="sticky top-0 z-40 flex items-center justify-between px-5 py-4 backdrop-blur-lg bg-transparent">
@@ -73,27 +211,14 @@ export default function DiscoverPage() {
 
       {/* Hero */}
       <section className="text-center mt-8 px-4 relative ">
-
         {/* Radial Glow */}
-<div
-  className="
-    pointer-events-none
-    absolute inset-x-0
-    -top-87.5 md:-top-112.5
-    h-150 md:h-200
-    overflow-hidden
-  "
->
-  <div
-    className="
-      mx-auto
-      w-[120%] md:w-[900px]
-      h-full
-    "
-  >
-    <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(251,191,36,0.15)_0%,rgba(251,191,36,0)_100%)]" />
-  </div>
-</div>
+        <div
+          className="pointer-events-none absolute inset-x-0 -top-87.5 md:-top-112.5 h-150 md:h-200 overflow-hidden"
+        >
+          <div className="mx-auto w-[120%] md:w-[900px] h-full">
+            <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(251,191,36,0.15)_0%,rgba(251,191,36,0)_100%)]" />
+          </div>
+        </div>
 
         {/* DOTS BACKGROUND */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -112,7 +237,6 @@ export default function DiscoverPage() {
             ))}
           </div>
         </div>
-
 
         {/* CONTENT SLOT */}
         <div className="mx-auto mb-6 h-12 w-12 rounded-2xl bg-orange-500 text-text-primary flex items-center justify-center shadow-lg">
@@ -145,20 +269,13 @@ export default function DiscoverPage() {
           </div>
           <input
             placeholder="Mr. Beast Clips..."
-            className="w-full rounded-full
-  bg-[color-mix(in_oklab,#f87f14_6%,transparent)]
-  border border-orange-200
-  py-4 pl-12 pr-4 text-base
-  text-foreground placeholder:text-muted-foreground
-  outline-none
-  focus:ring-2 focus:ring-orange-300 focus:border-orange-300
-  shadow-sm"
+            className="w-full rounded-full bg-[color-mix(in_oklab,#f87f14_6%,transparent)] border border-orange-200 py-4 pl-12 pr-4 text-base text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300 shadow-sm"
           />
         </div>
 
         <div className="flex items-center justify-center gap-2 mt-4">
           <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-          <p className="text-sm text-muted-foreground">215 campaigns live</p>
+          <p className="text-sm text-muted-foreground">{processedCampaigns.length} campaigns live</p>
         </div>
       </section>
 
@@ -167,65 +284,32 @@ export default function DiscoverPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div className="flex flex-wrap items-center gap-3">
-              <label className="flex items-center gap-2 text-sm text-foreground">
-                <span>Only show verified</span>
-                <div className="relative">
-                  <input type="checkbox" className="sr-only peer" />
-                  <div className="w-11 h-6 bg-muted peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-background after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-500"></div>
-                </div>
-              </label>
-
-              <FilterButton label="All Categories" />
-              <FilterButton label="All Types" />
-              <FilterButton label="Featured" />
+              <DropdownFilter
+                options={["All", "UGC", "Music", "Clipping", "Logo"]}
+                value={categoryFilter}
+                onChange={setCategoryFilter}
+              />
+              <DropdownFilter
+                options={["Newest", "Highest Budget", "Highest Available Budget", "Highest CPM", "Most Paid Out", "Most Creators"]}
+                value={sortFilter}
+                onChange={setSortFilter}
+              />
             </div>
 
             <div className="flex items-center gap-3">
               <span className="text-sm text-muted-foreground">Platform</span>
-              <div className="flex gap-1">
-                <button className="p-1 border-[rgba(251,191,36,0.5)] border bg-[linear-gradient(to right, rgba(251, 191, 36, 0.08), rgba(251, 191, 36, 0.08))] rounded-lg hover:bg-muted transition-colors">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="text-foreground"
-                  >
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                  </svg>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => togglePlatform('youtube')}
+                  className={`p-1 border-orange-300 border rounded-lg transition-all ${Math.abs(platformFilters.length) && platformFilters.includes('youtube') ? 'bg-orange-500/10 text-foreground scale-105 shadow-sm' : 'bg-[linear-gradient(to right, rgba(251, 191, 36, 0.08), rgba(251, 191, 36, 0.08))] hover:bg-muted text-muted-foreground'}`}
+                >
+                  <LucideYoutube className="w-[18px] h-[18px]" strokeWidth={2} />
                 </button>
-                <button className="p-1 border-[rgba(251,191,36,0.5)] border bg-[linear-gradient(to right, rgba(251, 191, 36, 0.08), rgba(251, 191, 36, 0.08))] rounded-lg hover:bg-muted transition-colors">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="text-foreground"
-                  >
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z" />
-                  </svg>
-                </button>
-                <button className="p-1 border-[rgba(251,191,36,0.5)] border bg-[linear-gradient(to right, rgba(251, 191, 36, 0.08), rgba(251, 191, 36, 0.08))] rounded-lg hover:bg-muted transition-colors">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="text-foreground"
-                  >
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z" />
-                  </svg>
-                </button>
-                <button className="p-1 border-[rgba(251,191,36,0.5)] border bg-[linear-gradient(to right, rgba(251, 191, 36, 0.08), rgba(251, 191, 36, 0.08))] rounded-lg hover:bg-muted transition-colors">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="text-foreground"
-                  >
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
+                <button
+                  onClick={() => togglePlatform('instagram')}
+                  className={`p-1 border-orange-300 border rounded-lg transition-all ${platformFilters.includes('instagram') ? 'bg-orange-500/10 text-foreground scale-105 shadow-sm' : 'bg-[linear-gradient(to right, rgba(251, 191, 36, 0.08), rgba(251, 191, 36, 0.08))] hover:bg-muted text-muted-foreground'}`}
+                >
+                  <Instagram className="w-[18px] h-[18px]" strokeWidth={2} />
                 </button>
               </div>
             </div>
@@ -236,123 +320,22 @@ export default function DiscoverPage() {
       {/* Cards */}
       <section className="px-4 pt-8 pb-24">
         <div className="max-w-7xl mx-auto">
-          <div className="grid  grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6">
-            <Link href="/campaign/mumford-and-sons">
-              <CampaignCard
-                campaign={{
-                  title: "Eleven Labs Clipping Campaign - [1]",
-                  company: "Eleven Labs",
-                  categories: ["CLIPPING", "LIFESTYLE"],
-                  platforms: ["youtube", "tiktok"],
-                  paidOut: "$8,245.12",
-                  totalBudget: "$15,000",
-                  cp: 55,
-                  cpm: "$1.80",
-                  approval: "73%",
-                  views: "4.2M",
-                  creators: "1234",
-                  image:
-                    "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
-                }}
-              />
-            </Link>
-            <Link href="/campaign/mumford-and-sons">
-            <CampaignCard
-              campaign={{
-                title: "Mumford & Sons | Album Promo",
-                company: "Scene Society",
-                categories: ["MUSIC", "ENTERTAINMENT"],
-                platforms: ["instagram", "youtube", "x"],
-                paidOut: "$18,750.00",
-                totalBudget: "$25,000",
-                cp: 75,
-                cpm: "$2.50",
-                approval: "82%",
-                views: "8.1M",
-                creators: "567",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
-              }}
-            />
-            </Link>
-
-              <Link href="/campaign/mumford-and-sons">
-            <CampaignCard
-              campaign={{
-                title: "Mumford & Sons | Album Promo",
-                company: "Scene Society",
-                categories: ["MUSIC", "ENTERTAINMENT"],
-                platforms: ["instagram", "youtube", "x"],
-                paidOut: "$18,750.00",
-                totalBudget: "$25,000",
-                cp: 75,
-                cpm: "$2.50",
-                approval: "82%",
-                views: "8.1M",
-                creators: "567",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
-              }}
-            />
-            </Link>
-            <Link href="/campaign/mumford-and-sons">
-            <CampaignCard
-              campaign={{
-                title: "Mumford & Sons | Album Promo",
-                company: "Scene Society",
-                categories: ["MUSIC", "ENTERTAINMENT"],
-                platforms: ["instagram", "youtube", "x"],
-                paidOut: "$18,750.00",
-                totalBudget: "$25,000",
-                cp: 75,
-                cpm: "$2.50",
-                approval: "82%",
-                views: "8.1M",
-                creators: "567",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
-              }}
-            />
-            </Link>
-            <Link href="/campaign/mumford-and-sons">
-            <CampaignCard
-              campaign={{
-                title: "Mumford & Sons | Album Promo",
-                company: "Scene Society",
-                categories: ["MUSIC", "ENTERTAINMENT"],
-                platforms: ["instagram", "youtube", "x"],
-                paidOut: "$18,750.00",
-                totalBudget: "$25,000",
-                cp: 75,
-                cpm: "$2.50",
-                approval: "82%",
-                views: "8.1M",
-                creators: "567",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
-              }}
-            />
-            </Link>
-            <Link href="/campaign/mumford-and-sons">
-            <CampaignCard
-              campaign={{
-                title: "Mumford & Sons | Album Promo",
-                company: "Scene Society",
-                categories: ["MUSIC", "ENTERTAINMENT"],
-                platforms: ["instagram", "youtube", "x"],
-                paidOut: "$18,750.00",
-                totalBudget: "$25,000",
-                cp: 75,
-                cpm: "$2.50",
-                approval: "82%",
-                views: "8.1M",
-                creators: "567",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
-              }}
-            />
-            </Link>
-          </div>
+          {processedCampaigns.length > 0 ? (
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6">
+              {processedCampaigns.map((campaignData) => (
+                <Link key={campaignData.id} href="joined/rewards">
+                  {/* href="/campaign/mumford-and-sons" */}
+                  <CampaignCard campaign={campaignData} />
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="w-full py-16 text-center text-muted-foreground">
+              {platformFilters.length === 0
+                ? "No platform selected. Please select a platform to view campaigns."
+                : "No campaigns found matching your filters."}
+            </div>
+          )}
         </div>
       </section>
     </div>
