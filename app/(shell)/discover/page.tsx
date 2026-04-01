@@ -168,7 +168,7 @@ export default function DiscoverPage() {
 
   return (
     <div className="bg-background relative min-h-screen">
-      <TopBar />
+
 
       {/* Header */}
       <header className="sticky top-0 z-40 flex items-center justify-between px-5 py-4 backdrop-blur-lg bg-transparent">

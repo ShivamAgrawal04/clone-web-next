@@ -4,7 +4,7 @@ import React, { useState, useCallback } from "react";
 import { Rocket, ChevronLeft, ChevronRight, GripVertical } from "lucide-react";
 import { motion } from "motion/react";
 
-type TabType = "withdrawals" | "deposits" | "deductions";
+type TabType = "withdrawals" | "deposits";
 
 type Transaction = {
   id: string;
@@ -14,6 +14,8 @@ type Transaction = {
   initiatedAt: string;
   estimatedArrival: string;
   receipt?: string;
+  fee?: number;
+  netAmount?: number;
 };
 
 type ColumnDef = {
@@ -25,17 +27,38 @@ const defaultDepositColumns: ColumnDef[] = [
   { id: "amount", label: "Amount" },
   { id: "fee", label: "Fee" },
   { id: "net_amount", label: "Net amount" },
-  { id: "status", label: "Status" },
-  { id: "credit_type", label: "Credit type" },
-  { id: "release_date", label: "Release date" },
+  { id: "initiated_at", label: "Initiated at" },
 ];
 
 export default function BalancePage({ isSettingsView = false }: { isSettingsView?: boolean }) {
-  const [activeTab, setActiveTab] = useState<TabType>("withdrawals");
-  const [transactions] = useState<Transaction[]>([]);
+  const [activeTab, setActiveTab] = useState<TabType>("deposits");
+  
+  const [depositsData] = useState<Transaction[]>([
+    { id: "d1", amount: 15400.00, fee: 400.00, netAmount: 15000.00, initiatedAt: "Apr 01, 2026", status: "completed", estimatedArrival: "Apr 03, 2026", sentTo: "" },
+    { id: "d2", amount: 3500.00, fee: 100.00, netAmount: 3400.00, initiatedAt: "Mar 25, 2026", status: "completed", estimatedArrival: "Mar 27, 2026", sentTo: "" },
+    { id: "d3", amount: 8900.00, fee: 250.00, netAmount: 8650.00, initiatedAt: "Mar 10, 2026", status: "completed", estimatedArrival: "Mar 12, 2026", sentTo: "" }
+  ]);
+
+  const [withdrawalsData] = useState<Transaction[]>([
+    { id: "w1", amount: 12000.00, status: "pending", initiatedAt: "Apr 02, 2026", estimatedArrival: "Apr 05, 2026", sentTo: "Bank •••• 1234" },
+    { id: "w2", amount: 4500.00, status: "completed", initiatedAt: "Mar 15, 2026", estimatedArrival: "Mar 17, 2026", sentTo: "Bank •••• 9876" }
+  ]);
+
+  const transactions = activeTab === "deposits" ? depositsData : withdrawalsData;
   const [depositColumns, setDepositColumns] = useState<ColumnDef[]>(defaultDepositColumns);
   const [draggedColIndex, setDraggedColIndex] = useState<number | null>(null);
   const [dragOverColIndex, setDragOverColIndex] = useState<number | null>(null);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  // Reset to page 1 whenever active tab changes
+  React.useEffect(() => {
+      setCurrentPage(1);
+  }, [activeTab]);
+
+  const totalPages = Math.ceil(transactions.length / itemsPerPage) || 1;
+  const paginatedTransactions = transactions.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   const totalBalance = 0.00;
   const availableBalance = 0.00;
@@ -86,25 +109,25 @@ export default function BalancePage({ isSettingsView = false }: { isSettingsView
       {/* Balance Card */}
       <div className={`${isSettingsView ? "max-w-2xl" : "max-w-2xl"} mx-auto mb-8`}>
         <div className="bg-card border border-border rounded-2xl p-8 space-y-6">
-          {/* Total Balance */}
+          {/* Available Balance */}
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <h2 className="text-sm font-medium text-muted-foreground">Total balance</h2>
+              <h2 className="text-sm font-medium text-muted-foreground">Available balance</h2>
               <div className="w-4 h-4 rounded-full bg-muted flex items-center justify-center">
                 <span className="text-[10px] text-muted-foreground">?</span>
               </div>
             </div>
-            <div className="text-4xl font-bold">${totalBalance.toFixed(2)}</div>
+            <div className="text-4xl font-bold">&#8377;{totalBalance.toFixed(2)}</div>
           </div>
 
-          {/* Available Balance */}
+          {/* Estimated payout */}
           <div className="flex items-center justify-between py-4 border-t border-border">
-            <span className="text-sm text-muted-foreground">Available balance</span>
-            <span className="text-sm font-semibold">${availableBalance.toFixed(2)}</span>
+            <span className="text-sm text-muted-foreground">Estimated payout</span>
+            <span className="text-sm font-semibold">&#8377;{availableBalance.toFixed(2)}</span>
           </div>
 
           {/* Verify Identity Button */}
-          <button className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-text-primary font-semibold rounded-lg transition-colors">
+          <button className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors">
             Verify your identity
           </button>
         </div>
@@ -113,22 +136,7 @@ export default function BalancePage({ isSettingsView = false }: { isSettingsView
       {/* Tabs */}
       <div className={`${isSettingsView ? "max-w-4xl" : "max-w-6xl"} mx-auto`}>
         <div className="flex items-center gap-1 border-b border-border mb-6">
-          <button
-            onClick={() => setActiveTab("withdrawals")}
-            className={`relative px-4 py-3 text-sm font-semibold transition-colors ${activeTab === "withdrawals"
-              ? "text-[#d4af37]"
-              : "text-muted-foreground hover:text-foreground"
-              }`}
-          >
-            Withdrawals
-            {activeTab === "withdrawals" && (
-              <motion.div
-                layoutId="activeTab"
-                className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#d4af37]"
-                transition={{ type: "spring", stiffness: 500, damping: 30 }}
-              />
-            )}
-          </button>
+
           <button
             onClick={() => setActiveTab("deposits")}
             className={`relative px-4 py-3 text-sm font-semibold transition-colors ${activeTab === "deposits"
@@ -146,14 +154,14 @@ export default function BalancePage({ isSettingsView = false }: { isSettingsView
             )}
           </button>
           <button
-            onClick={() => setActiveTab("deductions")}
-            className={`relative px-4 py-3 text-sm font-semibold transition-colors ${activeTab === "deductions"
+            onClick={() => setActiveTab("withdrawals")}
+            className={`relative px-4 py-3 text-sm font-semibold transition-colors ${activeTab === "withdrawals"
               ? "text-[#d4af37]"
               : "text-muted-foreground hover:text-foreground"
               }`}
           >
-            Deductions
-            {activeTab === "deductions" && (
+            Withdrawals
+            {activeTab === "withdrawals" && (
               <motion.div
                 layoutId="activeTab"
                 className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#d4af37]"
@@ -161,21 +169,19 @@ export default function BalancePage({ isSettingsView = false }: { isSettingsView
               />
             )}
           </button>
+
         </div>
 
         {/* Table Container with Horizontal Scroll */}
         <div className="bg-card border border-border rounded-t-2xl overflow-x-auto">
           <div className="min-w-[800px]">
             {/* Table Header */}
-            <div className={`grid grid-cols-6 gap-0 px-6 py-4 text-xs font-semibold text-muted-foreground border-b border-border`}>
+            <div className={`grid ${activeTab === 'withdrawals' ? 'grid-cols-3' : 'grid-cols-4'} gap-0 px-6 py-4 text-xs font-semibold text-muted-foreground border-b border-border`}>
               {activeTab === "withdrawals" ? (
                 <>
                   <div className="px-2">Amount</div>
-                  <div className="px-2">Status</div>
                   <div className="px-2">Sent to</div>
                   <div className="px-2">Initiated at</div>
-                  <div className="px-2">Estimated arrival</div>
-                  <div className="px-2">Receipt</div>
                 </>
               ) : (
                 <>
@@ -209,6 +215,33 @@ export default function BalancePage({ isSettingsView = false }: { isSettingsView
               )}
             </div>
 
+            {/* Table Rows Content */}
+            {paginatedTransactions.length > 0 && (
+              <div className="divide-y divide-border">
+                {paginatedTransactions.map((txn) => (
+                  <div key={txn.id} className={`grid ${activeTab === 'withdrawals' ? 'grid-cols-3' : 'grid-cols-4'} gap-0 px-6 py-4 text-sm hover:bg-muted/10 transition-colors`}>
+                    {activeTab === "withdrawals" ? (
+                      <>
+                        <div className="px-2 font-bold">&#8377;{txn.amount.toFixed(2)}</div>
+                        <div className="px-2 text-muted-foreground font-medium">{txn.sentTo}</div>
+                        <div className="px-2 text-muted-foreground">{txn.initiatedAt}</div>
+                      </>
+                    ) : (
+                      <>
+                        {depositColumns.map(col => {
+                          if (col.id === 'amount') return <div key={col.id} className="px-2 font-bold">&#8377;{txn.amount.toFixed(2)}</div>;
+                          if (col.id === 'fee') return <div key={col.id} className="px-2 text-muted-foreground font-medium">-&#8377;{txn.fee?.toFixed(2) || '0.00'}</div>;
+                          if (col.id === 'net_amount') return <div key={col.id} className="px-2 text-emerald-600 dark:text-emerald-500 font-bold">&#8377;{txn.netAmount?.toFixed(2) || '0.00'}</div>;
+                          if (col.id === 'initiated_at') return <div key={col.id} className="px-2 text-muted-foreground">{txn.initiatedAt}</div>;
+                          return null;
+                        })}
+                      </>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
             {/* Empty State */}
             {transactions.length === 0 && (
               <div className="flex flex-col items-center justify-center py-20 px-6">
@@ -226,19 +259,33 @@ export default function BalancePage({ isSettingsView = false }: { isSettingsView
                 </p>
               </div>
             )}
+
             {/* Pagination */}
-            {transactions.length === 0 && (
+            {transactions.length > 0 && (
               <div className="bg-card border-t border-border px-6 py-4 flex items-center justify-between rounded-b-2xl">
                 <button
-                  disabled
-                  className="px-3 py-1.5 text-sm font-medium text-muted-foreground bg-muted/30 rounded-md cursor-not-allowed opacity-50"
+                  disabled={currentPage <= 1}
+                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                  className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors flex items-center ${
+                    currentPage <= 1 
+                      ? "text-muted-foreground bg-muted/30 cursor-not-allowed opacity-50" 
+                      : "text-foreground hover:bg-muted bg-muted/50 border border-border"
+                  }`}
                 >
                   <ChevronLeft size={16} className="inline mr-1" />
                   Previous
                 </button>
+                <div className="text-sm font-medium text-muted-foreground">
+                    Page {currentPage} of {totalPages}
+                </div>
                 <button
-                  disabled
-                  className="px-3 py-1.5 text-sm font-medium text-muted-foreground bg-muted/30 rounded-md cursor-not-allowed opacity-50"
+                  disabled={currentPage >= totalPages}
+                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                  className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors flex items-center ${
+                    currentPage >= totalPages
+                      ? "text-muted-foreground bg-muted/30 cursor-not-allowed opacity-50 border border-transparent"
+                      : "text-foreground hover:bg-muted bg-muted/50 border border-border"
+                  }`}
                 >
                   Next
                   <ChevronRight size={16} className="inline ml-1" />

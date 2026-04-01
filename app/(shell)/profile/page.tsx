@@ -18,17 +18,17 @@ export default function ProfilePage() {
             <div className="max-w-4xl mx-auto py-6 md:py-10 px-4 md:px-6">
                 {/* Banner & Header */}
                 <div className="relative mb-16 md:mb-20">
-                    <div className="w-full h-32 md:h-48 bg-zinc-900 rounded-2xl relative">
+                    <div className="w-full h-32 md:h-48 bg-muted rounded-2xl relative border border-border">
                         <div className="absolute top-4 right-4">
-                            <button className="p-2 bg-black/40 hover:bg-black/60 rounded-full transition-colors backdrop-blur-md">
-                                <MoreHorizontal size={20} className="text-text-primary/70" />
+                            <button className="p-2 bg-background/40 hover:bg-background/60 rounded-full transition-colors backdrop-blur-md">
+                                <MoreHorizontal size={20} className="text-foreground/70" />
                             </button>
                         </div>
                     </div>
 
                     <div className="absolute -bottom-12 md:-bottom-16 left-4 md:left-8 flex items-end gap-6">
                         <div className="relative">
-                            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-background overflow-hidden bg-zinc-800 flex items-center justify-center shadow-xl">
+                            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-background overflow-hidden bg-muted flex items-center justify-center shadow-xl">
                                 <Image
                                     src="https://raw.githubusercontent.com/shivag04/assets/main/avatar.png"
                                     alt="Avatar"
@@ -76,11 +76,11 @@ export default function ProfilePage() {
                     <div className="flex flex-wrap gap-3 pt-4">
                         <Link
                             href="/settings"
-                            className="flex-1 sm:flex-none text-center px-6 md:px-8 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-foreground rounded-xl text-sm font-bold transition-all"
+                            className="flex-1 sm:flex-none text-center px-6 md:px-8 py-2.5 bg-muted hover:bg-muted/80 text-foreground border border-border rounded-xl text-sm font-bold transition-all"
                         >
                             Edit profile
                         </Link>
-                        <button className="flex-1 sm:flex-none px-6 md:px-8 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-foreground rounded-xl text-sm font-bold transition-all">
+                        <button className="flex-1 sm:flex-none px-6 md:px-8 py-2.5 bg-muted hover:bg-muted/80 text-foreground border border-border rounded-xl text-sm font-bold transition-all">
                             Manage orders
                         </button>
                     </div>
@@ -106,13 +106,13 @@ export default function ProfilePage() {
 
                     {/* Tab Content */}
                     <div className="py-16 md:py-24 flex flex-col items-center justify-center space-y-4">
-                        <div className="p-4 bg-zinc-800/50 rounded-2xl flex items-center justify-center mb-2">
+                        <div className="p-4 bg-muted/50 rounded-2xl flex items-center justify-center mb-2">
                             <Rocket size={24} className="md:w-7 md:h-7 text-muted-foreground/50" />
                         </div>
                         <div className="text-center space-y-1">
                             <h3 className="font-bold text-lg">No businesses created</h3>
                             <div className="pt-4">
-                                <button className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-text-primary rounded-xl text-sm font-bold transition-all shadow-lg shadow-blue-500/20">
+                                <button className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-bold transition-all shadow-lg shadow-blue-500/20">
                                     Create a business
                                 </button>
                             </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Shield, Eye, Lock } from "lucide-react";
+import { Shield } from "lucide-react";
 
 export default function PrivacySettingsPage() {
     return (
@@ -14,7 +14,7 @@ export default function PrivacySettingsPage() {
 
                 <div className="max-w-2xl">
                     <div className="py-20 flex flex-col items-center justify-center text-center space-y-4 animate-in fade-in duration-300">
-                        <div className="p-4 bg-zinc-900 rounded-3xl">
+                        <div className="p-4 bg-muted rounded-3xl">
                             <Shield size={32} className="text-muted-foreground/30" />
                         </div>
                         <div>

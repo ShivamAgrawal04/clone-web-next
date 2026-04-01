@@ -49,16 +49,16 @@ export default function SidebarSettings() {
     const pathname = usePathname()
 
     return (
-        <aside className="hidden md:block w-70 h-screen sticky top-0 bg-black border-r border-zinc-900 overflow-y-auto transition-all duration-300">
+        <aside className="hidden md:block w-70 h-screen sticky top-0 bg-background border-r border-border overflow-y-auto transition-all duration-300">
             {/* Header */}
             <div className="px-6 pt-10 pb-6">
-                <h2 className="text-[12px] font-bold text-text-primary/50 uppercase tracking-widest">
+                <h2 className="text-[12px] font-bold text-muted-foreground/60 uppercase tracking-widest">
                     Account Settings
                 </h2>
             </div>
 
             {/* Menu */}
-            <div className="px-2 ml-2 space-y-2">
+            <div className="px-2 ml-2 space-y-1">
                 {SETTINGS_MENU.map((item) => {
                     const isActive = pathname === item.href;
                     return (
@@ -67,13 +67,13 @@ export default function SidebarSettings() {
                             href={item.href}
                             className={`
             flex w-full items-center gap-3 rounded-xl px-4 py-2.5
-            transition-colors duration-200
+            transition-colors duration-200 font-medium
             ${isActive
                                     ? "bg-muted text-foreground"
                                     : "text-muted-foreground hover:bg-muted hover:text-foreground"}
           `}
                         >
-                            <span className={isActive ? 'text-text-primary' : 'text-zinc-500'}>
+                            <span className={isActive ? 'text-primary' : 'text-muted-foreground/70'}>
                                 {item.icon}
                             </span>
                             {item.label}

@@ -29,7 +29,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
       </head>
-      <body className="antialiased bg-background text-foreground">
+      <body className="antialiased bg-background text-foreground" cz-shortcut-listen="true">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

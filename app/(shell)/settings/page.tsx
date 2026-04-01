@@ -2,14 +2,14 @@
 
 export default function SettingsPage() {
     return (
-        <div className="min-h-screen bg-black text-text-primary p-4 md:p-8">
+        <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
             <div className="max-w-3xl mx-auto relative">
                 {/* Header Section */}
                 <div className="flex items-center justify-between mb-12">
                     <div className="flex-1" /> {/* Spacer */}
                     <h1 className="text-2xl font-bold text-center flex-1">Edit profile</h1>
                     <div className="flex-1 flex justify-end">
-                        <button className="px-5 py-2 bg-zinc-800 text-zinc-500 rounded-xl font-bold text-sm cursor-not-allowed">
+                        <button className="px-5 py-2 bg-muted text-muted-foreground rounded-xl font-bold text-sm cursor-not-allowed border border-border">
                             Save changes
                         </button>
                     </div>
@@ -17,11 +17,11 @@ export default function SettingsPage() {
 
                 {/* Profile Media Section */}
                 <div className="relative mb-12">
-                    <div className="w-full h-48 bg-zinc-900 rounded-3xl" />
+                    <div className="w-full h-48 bg-muted rounded-3xl border border-border" />
                     <div className="absolute -bottom-6 left-8">
-                        <div className="w-24 h-24 rounded-full bg-orange-600 border-4 border-black relative overflow-hidden group">
-                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/40 transition-opacity">
-                                <span className="text-[10px] font-bold text-text-primary uppercase tracking-wider">Avatar</span>
+                        <div className="w-24 h-24 rounded-full bg-orange-600 border-4 border-background relative overflow-hidden group shadow-lg">
+                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-background/40 transition-opacity">
+                                <span className="text-[10px] font-bold text-foreground uppercase tracking-wider">Avatar</span>
                             </div>
                         </div>
                     </div>
@@ -31,37 +31,37 @@ export default function SettingsPage() {
                 <div className="space-y-8 mt-12">
                     <div className="space-y-2">
                         <div className="flex justify-between items-end px-1">
-                            <label className="text-[13px] font-bold text-zinc-500 uppercase tracking-wider">Name</label>
-                            <span className="text-[10px] text-zinc-600">4/100</span>
+                            <label className="text-[13px] font-bold text-muted-foreground uppercase tracking-wider">Name</label>
+                            <span className="text-[10px] text-muted-foreground/60">4/100</span>
                         </div>
                         <input
                             type="text"
                             defaultValue="shiv"
-                            className="w-full bg-zinc-900/50 border border-zinc-800 rounded-2xl px-5 py-4 focus:outline-none focus:ring-1 focus:ring-zinc-700 transition-all font-medium"
+                            className="w-full bg-muted/30 border border-border rounded-2xl px-5 py-4 focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all font-medium text-foreground"
                         />
                     </div>
 
                     <div className="space-y-2">
                         <div className="flex justify-between items-end px-1">
-                            <label className="text-[13px] font-bold text-zinc-500 uppercase tracking-wider">Username</label>
-                            <span className="text-[10px] text-zinc-600">8/42</span>
+                            <label className="text-[13px] font-bold text-muted-foreground uppercase tracking-wider">Username</label>
+                            <span className="text-[10px] text-muted-foreground/60">8/42</span>
                         </div>
                         <input
                             type="text"
                             defaultValue="shivag04"
-                            className="w-full bg-zinc-900/50 border border-zinc-800 rounded-2xl px-5 py-4 focus:outline-none focus:ring-1 focus:ring-zinc-700 transition-all font-medium"
+                            className="w-full bg-muted/30 border border-border rounded-2xl px-5 py-4 focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all font-medium text-foreground"
                         />
                     </div>
 
                     <div className="space-y-2">
                         <div className="flex justify-between items-end px-1">
-                            <label className="text-[13px] font-bold text-zinc-500 uppercase tracking-wider">Bio</label>
-                            <span className="text-[10px] text-zinc-600">0/200</span>
+                            <label className="text-[13px] font-bold text-muted-foreground uppercase tracking-wider">Bio</label>
+                            <span className="text-[10px] text-muted-foreground/60">0/200</span>
                         </div>
                         <textarea
                             rows={4}
                             placeholder="No bio"
-                            className="w-full bg-zinc-900/50 border border-zinc-800 rounded-2xl px-5 py-4 focus:outline-none focus:ring-1 focus:ring-zinc-700 transition-all font-medium resize-none"
+                            className="w-full bg-muted/30 border border-border rounded-2xl px-5 py-4 focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all font-medium resize-none text-foreground"
                         />
                     </div>
                 </div>
@@ -80,11 +80,11 @@ export default function SettingsPage() {
                         ].map((item, i) => (
                             <div key={i} className="flex items-center justify-between">
                                 <div className="flex items-center gap-3">
-                                    <div className="p-2 bg-zinc-900 rounded-lg text-zinc-400">
+                                    <div className="p-2 bg-muted rounded-lg text-muted-foreground">
                                         {/* Placeholder for Lucide icons */}
-                                        <span className="text-sm">{item.icon}</span>
+                                        <span className="text-sm font-bold">{item.icon}</span>
                                     </div>
-                                    <span className="font-bold">{item.label}</span>
+                                    <span className="font-bold text-foreground">{item.label}</span>
                                 </div>
                                 <div className="w-10 h-5 bg-blue-600 rounded-full relative">
                                     <div className="absolute right-1 top-1 w-3 h-3 bg-white rounded-full" />
@@ -100,9 +100,9 @@ export default function SettingsPage() {
                     <p className="text-sm text-zinc-500 mb-8">Connect your other accounts to let people know where to find you.</p>
 
                     <div className="flex items-center gap-3">
-                        <span className="text-sm font-bold text-zinc-400">Add:</span>
+                        <span className="text-sm font-bold text-muted-foreground">Add:</span>
                         {[1, 2, 3, 4, 5, 6, 7].map((i) => (
-                            <div key={i} className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 cursor-pointer hover:bg-zinc-800 transition-colors" />
+                            <div key={i} className="w-8 h-8 rounded-full bg-muted border border-border cursor-pointer hover:bg-muted/80 transition-colors" />
                         ))}
                     </div>
                 </div>
