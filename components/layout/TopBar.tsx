@@ -51,16 +51,21 @@ export function TopBar() {
 
   return (
     <header className="flex h-16 items-center justify-between border-b border-border bg-background px-6 relative z-10 transition-colors">
-      {/* Left side: Search bar */}
-      <form onSubmit={handleSearch} className="flex-1 max-w-[400px] relative group">
-        <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-foreground transition-colors" />
-        <Input
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search across BennyBucks"
-          className="w-full pl-10 h-10 bg-muted border-none rounded-xl text-[13px] text-foreground placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-border"
-        />
-      </form>
+      {/* Left side: Logo & Search bar */}
+      <div className="flex items-center gap-6 flex-1">
+        <Link href="/home" className="text-xl font-semibold text-foreground no-underline shrink-0">
+          BennyBucks
+        </Link>
+        <form onSubmit={handleSearch} className="w-full max-w-[400px] relative group">
+          <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-foreground transition-colors" />
+          <Input
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search across BennyBucks"
+            className="w-full pl-10 h-10 bg-muted border-none rounded-xl text-[13px] text-foreground placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-border"
+          />
+        </form>
+      </div>
 
       {/* Right side: Actions & User */}
       <div className="flex items-center gap-2 sm:gap-4">

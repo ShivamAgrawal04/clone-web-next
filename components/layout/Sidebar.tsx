@@ -66,11 +66,7 @@ export function Sidebar({
         ${expanded ? "w-64" : "w-20"}
       `}
     >
-      <div className="px-7 py-6 text-xl font-semibold text-foreground">
-        {expanded ? "BennyBucks" : "B"}
-      </div>
-
-      <nav className="space-y-2 px-2">
+      <nav className="space-y-2 px-2 pt-6">
         {currentNavItems.map((item) => {
           const Icon = item.icon;
           const active = pathname === item.href;

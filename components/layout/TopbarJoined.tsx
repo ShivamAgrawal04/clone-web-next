@@ -9,7 +9,7 @@ import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function TopbarJoined() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export function TopbarJoined() {
           className="sm:hidden"
           variant="ghost"
           size="icon"
-          onClick={toggleTheme}
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           aria-label={
             theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
           }
@@ -49,7 +49,7 @@ export function TopbarJoined() {
         <Button
           variant="ghost"
           size="icon"
-          onClick={toggleTheme}
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
         >
           {theme === "dark" ? <Sun /> : <Moon />}
